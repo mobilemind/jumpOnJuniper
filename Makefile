@@ -31,7 +31,7 @@ GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
 REPLACETOKENS = perl -p -i -e 's/$(MMVERSION)/$(VERSION)/g;' $@; perl -p -i -e 's/$(MMBUILDDATE)/$(BUILDDATE)/g;' $@
 
 default: $(PROJECTS) | $(BUILDDIR) $(WEBDIR) $(IMGDIR)
-	@(chmod -R 755 $(WEBDIR); $(GRECHO) 'make:' "Done. See $(PROJ)/$(WEBDIR) directory.\n" )
+	@(chmod -R 755 $(WEBDIR); $(GRECHO) 'make:' "Done. See $(PROJ)/$(WEBDIR) directory for v$(VERSION).\n" )
 
 $(PROJ): $(MANIFESTS) $(COMPRESSEDFILES) | $(WEBDIR)
 	@(echo; \
@@ -66,12 +66,12 @@ $(PROJ): $(MANIFESTS) $(COMPRESSEDFILES) | $(WEBDIR)
 deploy: default
 	@echo "Deploy to: $$MYSERVER/me"
 	@(cd $(WEBDIR); \
-		scp -p $(PROJ) *.manifest "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me"; \
-		scp -p img/*.* "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img"; \
+		rsync -ptv --executability $(PROJ) *.manifest "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me"; \
+		rsync -pt  img/*.* "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img"; \
 		echo \
 	)
-	@$(GRECHO) 'make:' "Done. Deployed $(PROJECTS) to $$MYSERVER/me\nTo update gh-pages on github.com do:\
-		\n\tgit checkout gh-pages && make deploy && git checkout master\n"
+	@$(GRECHO) 'make:' "Done. Deployed v$(VERSION) $(PROJECTS) to $$MYSERVER/me\nTo update gh-pages on github.com do:\
+		\n\tgit checkout gh-pages && make deploy && make clean && git checkout master\n"
 
 .PHONY: $(BUILDDIR)
 $(BUILDDIR):
