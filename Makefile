@@ -10,6 +10,7 @@ BUILDDIR := build
 COMMONLIB := $$HOME/common/lib
 WEBDIR := web
 IMGDIR := img
+TMPDIR := $$HOME/.$(PROJ)
 VPATH := $(WEBDIR):$(BUILDDIR)
 # files
 PROJECTS = $(PROJ)
@@ -66,12 +67,16 @@ $(PROJ): $(MANIFESTS) $(COMPRESSEDFILES) | $(WEBDIR)
 deploy: default
 	@echo "Deploy to: $$MYSERVER/me"
 	@(cd $(WEBDIR); \
-		rsync -ptv --executability $(PROJ) *.manifest "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me"; \
-		rsync -pt  img/*.* "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img"; \
+		rsync -ptuv --executability $(PROJ) *.manifest "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me"; \
+		rsync -ptu  img/*.* "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img"; \
 		echo \
 	)
-	@$(GRECHO) 'make:' "Done. Deployed v$(VERSION) $(PROJECTS) to $$MYSERVER/me\nTo update gh-pages on github.com do:\
-		\n\tgit checkout gh-pages && make deploy && make clean && git checkout master\n"
+	@echo "Preparing for gh-pages, copying to: $(TMPDIR)"
+	@cd $(WEBDIR) && \
+		rsync -ptru --executability $(PROJ) *.manifest ../$(VERSIONTXT) $(IMGDIR) $(TMPDIR)
+	@$(GRECHO) '\nmake:' "Done. Deployed v$(VERSION) $(PROJECT) to $$MYSERVER/me \
+		\n\tTo update gh-pages on github.com do:\
+		\ngit checkout gh-pages && make deploy && git checkout master\n"
 
 .PHONY: $(BUILDDIR)
 $(BUILDDIR):
