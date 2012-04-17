@@ -92,5 +92,6 @@ $(IMGDIR): | $(BUILDDIR)
 
 .PHONY: clean
 clean:
-	@echo 'Cleaning build directory and web directory...'
+	@echo 'Cleaning build directory, web directory, and $(TMPDIR)'
 	@rm -rf $(BUILDDIR)/* $(WEBDIR)/* || true
+	@[[ -d $(TMPDIR) ]] && rm -rfv $(TMPDIR) || true
