@@ -40,7 +40,7 @@ deploy: default
 	@[[ -z "$(shell git diff --name-only)" ]] && printf "\nNo changed files.\n\n" || true
 	@[[ -n "$(shell git diff --name-only)" ]] && ( git commit -a -m 'revised HTML to v$(VERSION)' && git push; \
 		git tag $(VERSION) && git push --tags; \
-		@printf "\nmake: \tDeploy: Done. Updated gh-pages from $(TMPDIR) to v$(VERSION). To return to master do:\
+		$(GRECHO) "\nmake: \tDeploy: Done. Updated gh-pages from $(TMPDIR) to v$(VERSION). To return to master do:\
 			\n\tgit checkout master && make clean\n\n"; \
 		) || true
 
