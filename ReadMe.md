@@ -11,14 +11,18 @@ The [hosted jOJ page](http://mmind.me/joj) is a form that will create the bookma
 explains how to store and edit the bookmarklet on your iPad or iPhone. Tap the
 [hosted jOJ page](http://mmind.me/jOJ) link and follow the instructions.
 
-The same form will eventually be hosted on github too.
+The same form is available as [jumpOnJuniper](http://mobilemind.github.com/jumpOnJuniper/) too.
+		
+See [http://mobilemind.github.com/jumpOnJuniper/](http://mobilemind.github.com/jumpOnJuniper/)
 
 ## Use ##
+
+Make sure you have installed/created a bookmark first (see above).
 
 Connect to the WiFi network and open a web page. The VisitorNet sign-in page should appear.
 
 Activate the jOJ bookmarklet (tap on the link for it in the bookmark bar or use Bookmarks
-menu). The default bookmark title is usually “jOJ login ___name___…” where ___name___ is the
+menu). The default bookmark title is usually “jOJ login ___name___&hellip;” where ___name___ is the
 first part of your Username (email).
 
 The bookmarklet created via installation will paste in the Username, the stored password 
