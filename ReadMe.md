@@ -11,9 +11,9 @@ The [hosted jOJ page](http://mmind.me/joj) is a form that will create the bookma
 explains how to store and edit the bookmarklet on your iPad or iPhone. Tap the
 [hosted jOJ page](http://mmind.me/jOJ) link and follow the instructions.
 
-The same form is available as [jumpOnJuniper](http://mobilemind.github.com/jumpOnJuniper/) too.
+The same form is available as [jumpOnJuniper](http://mobilemind.github.com/jumpOnJuniper/joj.html) too.
 		
-See [http://mobilemind.github.com/jumpOnJuniper/](http://mobilemind.github.com/jumpOnJuniper/)
+See [http://mobilemind.github.com/jumpOnJuniper/joj.html](http://mobilemind.github.com/jumpOnJuniper/joj.html)
 
 ## Use ##
 
