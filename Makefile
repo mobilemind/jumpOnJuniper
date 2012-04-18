@@ -18,9 +18,9 @@ VERSION := $(shell head -1 $(TMPDIR)/$(VERSIONTXT))
 GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
 
 default: $(HTMLFILES) | $(VERSIONTXT)
-	@printf "\nmake: \tUpdating gh-pages root files"
+	@printf "\nmake: \tUpdating gh-pages root files\n"
 	@rsync -ptu --executability $(TMPDIR)/*.manifest .
-	@[[ -d $(IMGDIR) ]] || mkdir -v $(IMGDIR)
+	@[[ -d $(IMGDIR) ]] || mkdir $(IMGDIR)
 	@rsync -ptu $(TMPDIR)/$(IMGDIR)/*.* $(IMGDIR)
 	@printf "\nmake: Done.\n\n"
 
@@ -32,7 +32,7 @@ default: $(HTMLFILES) | $(VERSIONTXT)
 	@cp -fpv $(TMPDIR)/$(shell basename $@ .gz) $@
 
 $(VERSIONTXT):
-	@rsync -ptu $(TMPDIR)/$(VERSION) .
+	@rsync -ptu $(TMPDIR)/$(VERSIONTXT) .
 
 .PHONY: deploy
 deploy: default
