@@ -38,11 +38,12 @@ $(VERSIONTXT):
 deploy: default
 	@printf "make: \tDeploy: Checking  git diff --name-only  as trigger to update gh-pages\n"
 	@[[ -z "$(shell git diff --name-only)" ]] && printf "\nNo changed files.\n\n" || true
-	@[[ -n "$(shell git diff --name-only)" ]] && ( git commit -a -m 'revised HTML to v$(VERSION)' && git push; \
-		git tag $(VERSION) && git push --tags; \
-		$(GRECHO) "\nmake: \tDeploy: Done. Updated gh-pages from $(TMPDIR) to v$(VERSION). To return to master do:\
-			\n\tgit checkout master && make clean\n\n"; \
-		) || true
+	@[[ -n "$(shell git diff --name-only)" ]] && ( \
+		git commit -a -m 'revised HTML to v$(VERSION)' && git push; \
+		( git tag $(VERSION) && git push --tags ) && \
+			$(GRECHO) "\nmake: \tDeploy: Done. Updated gh-pages from $(TMPDIR) to v$(VERSION). To return to master do:\
+				\n\tgit checkout master && make clean\n\n" \
+	) || true
 
 .PHONY: clean
 clean:
