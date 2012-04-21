@@ -1,7 +1,8 @@
+<!DOCTYPE HTML>
 <html lang="en">
 	<head>
 		<meta http-equiv=content-type content="text/html;charset=utf-8">
-		<meta name=keywords content="hosted,github,jumpOnJuniper,bookmark,Bookmarklet,maker,generator,paste,login,pastelet,username,password">
+		<meta name=keywords content="hosted,github,jumpOnJuniper,jump,Juniper,bookmark,Bookmarklet,maker,generator,paste,login,pastelet,username,password">
 		<meta name="robots" content="index,follow">
 		<meta name="format-detection" content="telephone=no">
 		<link rel="shortcut icon" href="img/joj.ico">
@@ -11,111 +12,141 @@
 		<link rel="apple-touch-icon" sizes="72x72" href="img/joj-icon-72.png">
 		<link rel="apple-touch-icon" sizes="144x144" href="img/joj-icon-144.png">
 		<link rel="canonical" href="http://mobilemind.github.com/joj/">
-		<title>jumpOnJuniper (github)</title>
+		<style type="text/css">
+			body {
+			  margin-top: 1.0em;
+			  background-color: #FFF;
+			  color: #333;
+			  font-family: Helvetica, Arial, FreeSans, san-serif;
+			}
+			#container {margin:0 auto; width:700px}
+			h1 {font-size: 3.8em; color: #000; margin-bottom: 3px}
+			h1 .small {font-size: 0.4em}
+			h1 a {text-decoration: none}
+			h2 {font-size: 1.5em; color: #000; font-weight: bold}
+			h3 {font-size: 1.1em; font-weight:bold; color:#222;
+				vertical-align:bottom; margin-bottom:0; padding:0; text-transform:none}
+			a {color: #DE7008}
+			.description {font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic}
+			.download { float: right}
+			a:hover {color:#E0AD12}
+			pre {background: #000; color: #fff; padding: 15px}
+			hr {border: 0; width: 80%; border-bottom: 1px solid #aaa}
+			.footer {text-align:center; padding-top:30px; font-style: italic}
+		</style>
+		<title>jumpOnJuniper @ GitHub</title>
 	</head>
 	<body>
-		<h1>jumpOnJuniper</h1>
-		
-		<p>The &ldquo;jumpOnJuniper&rdquo; bookmarklet streamlines logging in via Juniper Networks Infranet 
-		“VisitorNet” sites that control access to WiFi networks. The bookmarklet will paste in the 
-		Username and password values stored in the bookmark and then submit the form.</p>
-		
-		<h2>Install</h2>
-		
-		<p><strong>Mobile Safari</strong>
-		The <a href="http://mmind.me/joj">hosted jOJ page</a> is a form that will create the bookmarklet and
-		explains how to store and edit the bookmarklet on your iPad or iPhone. Tap the
-		<a href="http://mmind.me/jOJ">hosted jOJ page</a> link and follow the instructions.</p>
-		
-		<p>The same form is available as <a href="http://mobilemind.github.com/jumpOnJuniper/joj.html" title="jumpOnJuniper">github-hosted jOJ</a> too.</p>
-		
-		<p>See <a href="http://mobilemind.github.com/jumpOnJuniper/joj.html" title="jumpOnJuniper">http://mobilemind.github.com/jumpOnJuniper/joj.html</a></p>
-		
-		<h2>Use</h2>
-		
-		<p>Make sure you have installed/created a bookmark first (see above).</p>
-		
-		<p>Connect to the WiFi network and open a web page. The VisitorNet sign-in page should appear.</p>
-		
-		<p>Activate the jOJ bookmarklet (tap on the link for it in the bookmark bar or use Bookmarks
-		menu). The default bookmark title is usually “jOJ login <strong><em>name</em></strong>&hellip;” where <strong><em>name</em></strong> is the
-		first part of your Username (email).</p>
-		
-		<p>The bookmarklet created via installation will paste in the Username, the stored password 
-		and then submit the form.</p>
-		
-		<h4>Compatibility</h4>
-		
-		<p>Requires a browser that supports <code>javascript:</code> bookmarks.</p>
-		
-		<p>Tested with Firefox 11.0, Safari 5.1.x and Mobile Safari 5.x.</p>
-		
-		<hr />
-		
-		<h2>License</h2>
-		
-		<p>MIT License - <a href="http://www.opensource.org/licenses/mit-license.php">http://www.opensource.org/licenses/mit-license.php</a></p>
-		
-		<p>jumpOnJuniper
-		Copyright &copy; 2012 Tom King <a href="mailto:mobilemind@pobox.com">mobilemind@pobox.com</a></p>
-		
-		<p>Permission is hereby granted, free of charge, to any person obtaining
-		a copy of this software and associated documentation files (the
-		"Software"), to deal in the Software without restriction, including
-		without limitation the rights to use, copy, modify, merge, publish,
-		distribute, sublicense, and/or sell copies of the Software, and to
-		permit persons to whom the Software is furnished to do so, subject to
-		the following conditions:</p>
-		
-		<p>The above copyright notice and this permission notice shall be
-		included in all copies or substantial portions of the Software.</p>
-		
-		<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-		EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-		MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-		NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-		LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-		OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-		WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-		
-		<hr />
-		
-		<h2>Build Requirements</h2>
-		
-		<p>The jumpOnJuniper Makefile requires htmlcompressor. The htmlcompressor project has its own license
-		and sub-projects. End-users are responsible for obtaining a htmlcompressor and its related
-		components, under their respective license terms.</p>
-		
-		<p>For htmlcompressor see: <a href="https://code.google.com/p/htmlcompressor/">https://code.google.com/p/htmlcompressor/</a></p>
-		
-		<p>The jumpOnJuniper Makefile also requires bash shell, make, gzip, perl, tidy (or tidy-html5), jsl,
-		node (nodejs on Windows) and optionally uses growlnotify. Required utilities are easily
-		installed on Mac OS X via homebrew or on Windows via Cygwin setup.</p>
-		
-		<p>The W3C tidy-html5 is available here: <a href="http://w3c.github.com/tidy-html5/">http://w3c.github.com/tidy-html5/</a></p>
-		
-		<p><strong>Mac</strong></p>
-		
-		<ul>
-		<li>For utilities such as <strong>jsl</strong> and <strong>node</strong> using homebrew see: <a href="http://mxcl.github.com/homebrew/">http://mxcl.github.com/homebrew/</a></li>
-		<li>For <strong>growlnotify</strong> (requires Growl), see: <a href="http://growl.info">http://growl.info</a></li>
-		</ul>
-		
-		<p><strong>Win</strong></p>
-		
-		<ul>
-		<li>For <strong>Cygwin</strong> and related utilities such as <strong>make</strong>, <strong>gzip</strong>, <strong>perl</strong>, <strong>tidy</strong>, <strong>nodejs</strong>,
-		see: <a href="http://www.cygwin.com/">http://www.cygwin.com/</a></li>
-		<li>For <strong>growlnotify</strong> (requires Growl for Windows), see: <a href="http://growlforwindows.com">http://growlforwindows.com</a></li>
-		<li>For <strong>jsl</strong>, see: <a href="http://www.javascriptlint.com/">http://www.javascriptlint.com/</a></li>
-		</ul>
-		
-		<hr />
-		
-		<h2>Build</h2>
-		
-		<p>Use <code>make</code> at the command shell prompt to create the joj HTML page and manifest.
-		See <code>/web/</code> directory for results.</p>
-		
+		<a href="http://github.com/mobilemind/jumpOnJuniper" title="Fork jumpOnJuniper on GitHub"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+		<div id="container">
+			<h1><a href="http://github.com/mobilemind/jumpOnJuniper">jumpOnJuniper</a>
+				<span class="small" style="color: #333"> by <a href="http://github.com/mobilemind">mobilemind</a>
+				</span>
+			</h1>
+			<div class="description">Bookmark to quickly connect to VisitorNet (Juniper Infranet sign-on)</div>
+
+			<p>The &ldquo;jumpOnJuniper&rdquo; bookmarklet streamlines logging in via Juniper Networks 
+			Infranet &ldquo;VisitorNet&ldquo; sites that control access to WiFi networks. The utility 
+			generates a bookmark that will paste in the Username and password values stored in the 
+			bookmark and then submit the form to kick-off the login process.</p>
+
+			<h2>Generate a bookmark (Mobile Safari)</h2>
+			<p>The <a href="http://mmind.me/joj">hosted jOJ page</a> is a form that will create the 
+				bookmarklet and explains how to store and edit the bookmarklet on your iPad or iPhone. 
+				Tap a link below and follow the on-screen instructions.</p>
+			<ul>
+				<li><a href="http://mmind.me/jOJ" class="desclink" title="jumpOnJuniper on mmind.me">
+						jumpOnJuniper (hosted on mmind.me)</a>
+				</li>
+				<li><a href="http://mobilemind.github.com/jumpOnJuniper/joj.html" class="desclink" title="jumpOnJuniper on GitHub">
+						jumpOnJuniper (hosted on GitHub)</a>
+				</li>
+			</ul>
+
+			<h3>Use a bookmark</h3>
+			<p>Make sure you have installed/created a bookmark first (see above).</p>
+			<p>Connect to the WiFi network and open a web page. The VisitorNet sign-in page should appear.</p>
+			<p>Activate the jOJ bookmarklet (tap on the link for it in the bookmark bar or use Bookmarks 
+				menu). The default bookmark title is usually &ldquo;jOJ login <strong><em>name</em></strong>
+				&hellip;&rdquo; where <strong><em>name</em></strong> is the first part of your Username (email).
+			</p>
+			<p>The bookmarklet created via installation will paste in the Username, the stored password 
+			and then submit the form.</p>
+
+			<h3>Compatibility</h3>
+			<p>Requires a browser that supports <code>javascript:</code> bookmarks.</p>
+			<p>Tested with Firefox 11.0, Safari 5.1.x and Mobile Safari 5.x.</p>
+
+			<hr>
+
+			<h3>License</h3>
+			<p>MIT License - <a href="http://www.opensource.org/licenses/mit-license.php">http://www.opensource.org/licenses/mit-license.php</a></p>
+			<p>jumpOnJuniper Copyright &copy; 2012 Tom King <a href="mailto:mobilemind@pobox.com">
+			mobilemind@pobox.com</a></p>
+
+			<p>Permission is hereby granted, free of charge, to any person obtaining 
+			a copy of this software and associated documentation files (the 
+			"Software"), to deal in the Software without restriction, including 
+			without limitation the rights to use, copy, modify, merge, publish, 
+			distribute, sublicense, and/or sell copies of the Software, and to 
+			permit persons to whom the Software is furnished to do so, subject to 
+			the following conditions:</p>
+
+			<p>The above copyright notice and this permission notice shall be 
+			included in all copies or substantial portions of the Software.</p>
+
+			<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
+			EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
+			MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
+			NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE 
+			LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION 
+			OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
+			WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+
+			<hr>
+
+			<h2>Source</h2>
+			<p>You can download this project in either 
+				<a href="http://github.com/mobilemind/jumpOnJuniper/zipball/master">zip</a> or 
+				<a href="http://github.com/mobilemind/jumpOnJuniperjumpOnJuniper/tarball/master">tar</a> formats.</p>
+			<br>You can also clone the project with <a href="http://git-scm.com">Git</a> by running:<br>
+				<code>$ git clone git://github.com/mobilemind/jumpOnJuniper</code>
+			<div class="footer">get the source code on GitHub : <a href="http://github.com/mobilemind/jumpOnJuniper">mobilemind/jumpOnJuniper</a></div>
+
+			<h3>Build Requirements</h3>
+			<p>The jumpOnJuniper Makefile requires htmlcompressor. The htmlcompressor project has its own 
+			license and sub-projects. End-users are responsible for obtaining a htmlcompressor and its 
+			related components, under their respective license terms.</p>
+
+			<p>For htmlcompressor see: <a href="https://code.google.com/p/htmlcompressor/">https://code.google.com/p/htmlcompressor/</a></p>
+
+			<p>The jumpOnJuniper Makefile also requires bash shell, make, gzip, perl, tidy (or tidy-html5), 
+			jsl, node (nodejs on Windows) and optionally uses growlnotify. Required utilities are easily 
+			installed on Mac OS X via homebrew or on Windows via Cygwin setup.</p>
+
+			<p>The W3C tidy-html5 is available here: <a href="http://w3c.github.com/tidy-html5/">http://w3c.github.com/tidy-html5/</a></p>
+
+			<h4>Mac</h4>
+			<ul>
+				<li>For utilities such as <strong>jsl</strong> and <strong>node</strong> using homebrew see: 
+					<a href="http://mxcl.github.com/homebrew/">http://mxcl.github.com/homebrew/</a></li>
+				<li>For <strong>growlnotify</strong> (requires Growl), see: <a href="http://growl.info">
+					http://growl.info</a></li>
+			</ul>
+
+			<h4>Win</h4>
+			<ul>
+				<li>For <strong>Cygwin</strong> and related utilities such as <strong>make</strong>, <strong>gzip</strong>, <strong>perl</strong>, <strong>tidy</strong>, <strong>nodejs</strong>,
+				see: <a href="http://www.cygwin.com/">http://www.cygwin.com/</a></li>
+				<li>For <strong>growlnotify</strong> (requires Growl for Windows), see: <a href="http://growlforwindows.com">http://growlforwindows.com</a></li>
+				<li>For <strong>jsl</strong>, see: <a href="http://www.javascriptlint.com/">http://www.javascriptlint.com/</a></li>
+			</ul>
+
+			<h3>Build</h3>
+			<p>Use <code>make</code> at the command shell prompt to create the joj HTML page and manifest. 
+			See <code>/web/</code> directory for results.</p>
+			<p>&nbsp;</p>
+		</div>
 	</body>
 </html>
