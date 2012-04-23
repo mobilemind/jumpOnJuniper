@@ -186,8 +186,8 @@
 
 			function pastelet(u,p) {
 				u = u.match(/^ *(.*?) *$/)[1]; // strip leading/trailing spaces to help w/iOS 5 shortcut text
-				return !(u + p) ? '' : "var d=document,f='frmLogin';d.getElementById('username').value='" + u + 
-				"';d.getElementById('password').value='" + p + "';d.getElementById(f).submit();void('_MmVERSION_')";
+				return !(u + p) ? '' : "if(!location.href.match(/^https?:\\/\\/visitornet/))location.href='http://visitornet.boeing.com/';if(false);else{var d=document;d.getElementById('username').value='" + 
+					u +  "';d.getElementById('password').value='" + p + "';d.getElementById('frmLogin').submit()}void('_MmVERSION_')";
 			}
 		</script>
 	</head>
