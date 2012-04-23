@@ -207,7 +207,7 @@
 				<p>Enter the Username to paste and password. Then tap <b>Make jOJ Bookmark</b> to reload this page for Step 2.</p>
 				<form id="pltMkr" method="GET" action= "." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value)); return false" autocapitalize="off">
 					<label for="username">Username:&nbsp;
-						<input type="email" id="username" name="uid" class="pStr" size="25" maxlength="255" placeholder="email@company.com" autocorrect="on" autocomplete="on" required autofocus>
+						<input type="email" id="username" name="uid" tabindex="1" class="pStr" size="25" maxlength="255" placeholder="email@company.com" autocorrect="on" autocomplete="on" required autofocus>
 					</label>
 					<label for="pwd" style="color: #777777"><br>Old password:&nbsp;
 						<input type="text" id="pwd" name="pwd" class="pStr" style="font-family:monospace" size="9" maxlength="255" placeholder="Not found" autocorrect="off" autocomplete="off">
@@ -215,13 +215,13 @@
 					<label for="password">&nbsp;&nbsp;
 						<input type="button" id="pwdCopy" value="Copy to Password" onclick="if(
 						document.getElementById('pwd').value)document.getElementById('password').value=document.getElementById('pwd').value;document.getElementById('password').focus;"><br>Password:&nbsp;
-						<input type="password" id="password" class="pStr" name="password" size="9" maxlength="255" required autocorrect="off" autocomplete="off" spellcheck="false">
+						<input type="password" id="password" tabindex="2" class="pStr" name="password" size="9" maxlength="255" required autocorrect="off" autocomplete="off" spellcheck="false">
 					</label>
 					<br><br>
-					<input type="submit" id="mkPltBtn" value="Make jOJ Bookmark" class="btn">&nbsp;&nbsp;&nbsp;<input type="button" id="reset" value="Reset" onclick="location.href=location.protocol+'//'+location.host+location.port+location.pathname">
+					<input type="submit" id="mkPltBtn" tabindex="3" value="Make jOJ Bookmark" class="btn">&nbsp;&nbsp;&nbsp;<input type="button" id="reset" value="Reset" onclick="location.href=location.protocol+'//'+location.host+location.port+location.pathname">
 					<br><br>
 					<label id="yp" for="bmrk" class="vp">Your jumpOnJuniper bookmark:&nbsp;
-						<textarea id="bmrk" cols="36" rows="5" class="vp" wrap="soft" spellcheck="false">No Bookmark yet. View Step 1 for instructions.</textarea>
+						<textarea id="bmrk" tabindex="4" cols="36" rows="5" class="vp" wrap="soft" spellcheck="false">No Bookmark yet. View Step 1 for instructions.</textarea>
 					</label>
 				</form>
 				<p id="pal" style="display:none">Bookmark as link: <a id="pl" href="." title="Pastelet">jumpOnJuniper</a><br><br></p>
