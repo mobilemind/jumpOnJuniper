@@ -48,7 +48,7 @@ $(PROJ): $(MANIFESTS) $(COMPRESSEDFILES) | $(WEBDIR)
 		cp -Rfp $(SRCDIR)/$(IMGDIR) $(WEBDIR) )
 
 # run through html compressor and into gzip
-%.html.gz: %.html | $(BUILDDIR)  $(COMMONLIB)/$(YUICOMPRESSOR.jar) $(HTMLCOMPRESSORPATH)$(HTMLCOMPRESSORJAR)
+%.html.gz: %.html | $(BUILDDIR)  $(COMMONLIB)/$(YUICOMPRESSOR.jar) $(COMMONLIB)/$(HTMLCOMPRESSORJAR)
 	@(echo "Compressing $^..."; \
 		$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) $(BUILDDIR)/$^ | gzip -f9 > $(BUILDDIR)/$@ )
 
@@ -61,7 +61,7 @@ $(COMMONLIB)/$(YUICOMPRESSOR.jar):
 		rm -rf "$(COMMONLIB)/$(YUICOMPRESSOR)" \
 		)
 
-$(HTMLCOMPRESSORPATH)$(HTMLCOMPRESSORJAR):
+$(COMMONLIB)/$(HTMLCOMPRESSORJAR):
 	@[[ -f "$(COMMONLIB)/$(HTMLCOMPRESSORJAR)" ]] || ( \
 		printf "\n\tFetching $(HTMLCOMPRESSORJAR)...\n"; \
 		curl -# --create-dirs -o "$(COMMONLIB)/$(HTMLCOMPRESSORJAR)" "$(HTMLCOMPRESSORURL)" \
