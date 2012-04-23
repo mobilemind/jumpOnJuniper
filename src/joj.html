@@ -210,10 +210,10 @@
 						<input type="email" id="username" name="uid" tabindex="1" class="pStr" size="25" maxlength="255" placeholder="email@company.com" autocorrect="on" autocomplete="on" required autofocus>
 					</label>
 					<label for="pwd" style="color: #777777"><br>Old password:&nbsp;
-						<input type="text" id="pwd" name="pwd" class="pStr" style="font-family:monospace" size="9" maxlength="255" placeholder="Not found" autocorrect="off" autocomplete="off">
+						<input type="text" id="pwd" name="pwd" tabindex="-1" class="pStr" style="font-family:monospace" size="9" maxlength="255" placeholder="Not found" autocorrect="off" autocomplete="off">
 					</label>
 					<label for="password">&nbsp;&nbsp;
-						<input type="button" id="pwdCopy" value="Copy to Password" onclick="if(
+						<input type="button" id="pwdCopy" tabindex="-1" value="Copy to Password" onclick="if(
 						document.getElementById('pwd').value)document.getElementById('password').value=document.getElementById('pwd').value;document.getElementById('password').focus;"><br>Password:&nbsp;
 						<input type="password" id="password" tabindex="2" class="pStr" name="password" size="9" maxlength="255" required autocorrect="off" autocomplete="off" spellcheck="false">
 					</label>
