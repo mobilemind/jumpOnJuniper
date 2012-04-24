@@ -128,14 +128,14 @@
 							try {
 								var q = location.search, m = [];
 								q = decodeURIComponent(q.substr(1));
-								m = q.match(/^javascript:(.*?)value='(.*?)'(.*?)value='(.*?)'/);
+								m = q.match(/^javascript:(.*?)u='(.*?)',p='(.*?)',/);
 								if (!m) throw 'No match in: ' + q;
 								else {
 									if (!m[2]) throw 'No login found in: ' + m;
 									else {
 										document.title = 'jOJ login ' + m[2].replace(/\W.*/, "…");
 										document.getElementById('username').value = m[2];
-										if (m[4]) document.getElementById('password').value = m[4];
+										if (m[3]) document.getElementById('password').value = m[3];
 									}
 								}
 								// put a more human-readable, but URI encoded, version of bookmarklet in textarea
@@ -186,9 +186,9 @@
 
 			function pastelet(u,p) {
 				u = u.match(/^ *(.*?) *$/)[1]; // strip leading/trailing spaces to help w/iOS 5 shortcut text
-				return !(u + p) ? '' : "var lh=location.href;if(lh.match(/^https:\\/\\/visitornet(.*?)p=sn-postauth-show.*/)){console.log('submitForm');submitForm('sn-postauth-proceed','Proceed')}" + 
-					"else if(lh.match(/^https?:\\/\\/(mmind.me\\/joj\\/?|visitornet(.*?)welcome.cgi)$/)){var d=document;d.getElementById('username').value='" + 
-					u +  "';d.getElementById('password').value='" + p + "';d.getElementById('frmLogin').submit()}else location.href='https://visitornet.boeing.com/';void('_MmVERSION_')";
+				return !(u + p) ? '' : "var u='" + u + "',p='" + p + "',d=document,h=location.href;" +
+					"if(h.match(/^https:\\/\\/visitornet(.*?)p=sn-postauth-show/))submitForm('sn-postauth-proceed','Proceed');else if(h.match(/^https?:\\/\\/(mmind\\.me\\/joj\\/?|visitornet(.*?)welcome\\.cgi)$/)){d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin').submit()}" +
+					"else if(h.match(/^https?:\\/\\/(mmind\\.me\\/vnet|\\w{3}-vn-\\d\\d\.b|mobilem.*?\\/VNet\\/)/)){d.getElementsByName('uid')[0].value=u;d.getElementById('pwd').value=p;d.getElementsByName('agreeToTerms')[0].checked=1;d.forms[0].submit()}else location.href='https://visitornet.boeing.com/';void('_MmVERSION_')";
 			}
 		</script>
 	</head>
@@ -222,7 +222,7 @@
 					<input type="submit" id="mkPltBtn" tabindex="3" value="Make jOJ Bookmark" class="btn">&nbsp;&nbsp;&nbsp;<input type="button" id="reset" value="Reset" onclick="location.href=location.protocol+'//'+location.host+location.port+location.pathname">
 					<br><br>
 					<label id="yp" for="bmrk" class="vp">Your jumpOnJuniper bookmark:&nbsp;
-						<textarea id="bmrk" tabindex="4" cols="36" rows="5" class="vp" wrap="soft" spellcheck="false">No Bookmark yet. View Step 1 for instructions.</textarea>
+						<textarea id="bmrk" tabindex="4" cols="40" rows="5" class="vp" wrap="soft" spellcheck="false">No Bookmark yet. View Step 1 for instructions.</textarea>
 					</label>
 				</form>
 				<p id="pal" style="display:none">Bookmark as link: <a id="pl" href="." title="Pastelet">jumpOnJuniper</a><br><br></p>
