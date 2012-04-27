@@ -97,7 +97,7 @@ deploy: default
 		rsync -ptru --executability $(PROJ) *.manifest ../$(VERSIONTXT) $(IMGDIR) $(TMPDIR)
 	@$(GRECHO) '\nmake:' "Done. Deployed v$(VERSION) $(PROJECT) to $$MYSERVER/me \
 		\n\tTo update gh-pages on github.com do:\
-		\ngit checkout gh-pages && make deploy && git checkout master\n"
+		\ngit checkout gh-pages && make clean && make deploy && git checkout master\n"
 
 .PHONY: $(BUILDDIR)
 $(BUILDDIR):
