@@ -3,7 +3,8 @@
 ##
 # JOJ PROJECT (jumpOnJuniper)
 ##
-PROJ = joj
+PROJ := joj
+GITHUBPROJ := jumpOnJuniper
 # directories/paths
 IMGDIR := img
 TMPDIR := $$HOME/.$(PROJ)
@@ -11,10 +12,12 @@ TMPDIR := $$HOME/.$(PROJ)
 MANIFESTS := $(PROJ).manifest $(SUBPROJ).manifest
 HTMLFILES := $(PROJ).html $(SUBPROJ).html
 VERSIONTXT := VERSION.txt
+# urls
+VERSIONURL := https://raw.github.com/mobilemind/$(GITHUBPROJ)/master/src/$(VERSIONTXT)
 # macros/utils
 MANIFESTS := $(PROJ).manifest
 HTMLFILES := $(PROJ).html
-VERSION := $(shell head -1 $(TMPDIR)/$(VERSIONTXT))
+VERSION = $(shell head -1 $(VERSIONTXT))
 GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
 
 default: $(HTMLFILES) | $(VERSIONTXT)
@@ -32,7 +35,7 @@ default: $(HTMLFILES) | $(VERSIONTXT)
 	@cp -fpv $(TMPDIR)/$(shell basename $@ .gz) $@
 
 $(VERSIONTXT):
-	@rsync -ptu $(TMPDIR)/$(VERSIONTXT) .
+	@curl -# -o $@ $(VERSIONURL)
 
 .PHONY: deploy
 deploy: default
