@@ -187,7 +187,7 @@
 			// 	b = d.getElementById('proceedButton'),
 			// 	f = d.forms[0];
 			// if (h.match(/^https:\\/\\/visitornet(.*?)p=sn-postauth-show/)) b ? b.click() : f.submit();
-			// else if (h.match(/^https?:\\/\\/(mmind\\.me\\/joj\\/?|mobilemind\\..*?\\/joj.*?|visitornet(.*?)welcome\\.cgi)$/)) {
+			// else if (h.match(/^https?:\\/\\/(mmind\\.me\\/joj(\\/|\\?)?.*|mobilemind\\..*?\\/joj.*|visitornet(.*?)welcome\\.cgi)$/)) {
 			// 	d.getElementById('username').value = u;
 			// 	d.getElementById('password').value = p;
 			// 	d.getElementById('frmLogin').submit()
@@ -202,7 +202,7 @@
 			// actually creates bookmarklet given 'u' = user ID and 'p' = password
 			function pastelet(u,p) {
 				u = u.match(/^ *(.*?) *$/)[1]; // strip leading/trailing spaces to help w/iOS 5 shortcut text
-				return !(u + p) ? '' : "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),f=d.forms[0];if(h.match(/^https:\\/\\/visitornet(.*?)p=sn-postauth-show/))b?b.click():f.submit();else if(h.match(/^https?:\\/\\/(mmind\\.me\\/joj\\/?|mobilemind\\..*?\\/joj.*?|visitornet(.*?)welcome\\.cgi)$/)){d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin').submit()}else if(h.match(/^https?:\\/\\/(mmind\\.me\\/vnet|\\w{3}-vn-\\d\\d\.b|mobilem.*?\\/VNet\\/)/)){d.getElementsByName('uid')[0].value=u;d.getElementById('pwd').value=p;d.getElementsByName('agreeToTerms')[0].checked=1;f.submit()}else location.href='https://visitornet.boeing.com/';void('_MmVERSION_')";
+				return !(u + p) ? '' : "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),f=d.forms[0];if(h.match(/^https:\\/\\/visitornet(.*?)p=sn-postauth-show/))b?b.click():f.submit();else if(h.match(/^https?:\\/\\/(mmind\\.me\\/joj(\\/|\\?)?.*|mobilemind\\..*?\\/joj.*|visitornet(.*?)welcome\\.cgi)$/)){d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin').submit()}else if(h.match(/^https?:\\/\\/(mmind\\.me\\/vnet|\\w{3}-vn-\\d\\d\.b|mobilem.*?\\/VNet\\/)/)){d.getElementsByName('uid')[0].value=u;d.getElementById('pwd').value=p;d.getElementsByName('agreeToTerms')[0].checked=1;f.submit()}else location.href='https://visitornet.boeing.com/';void('_MmVERSION_')";
 			}
 		</script>
 	</head>
