@@ -7,7 +7,6 @@ PROJ := joj
 GITHUBPROJ := jumpOnJuniper
 
 # directories/paths
-IMGDIR := img
 COMMONLIB := $$HOME/common/lib
 
 # files
@@ -30,7 +29,7 @@ GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
 REPLACETOKENS = perl -pi -e 's/_MmVERSION_/$(VERSION)/g;s/_MmBUILDDATE_/$(BUILDDATE)/g;' $@
 
 
-default: $(HTMLFILE) $(MANIFEST) $(IMGDIR)
+default: $(HTMLFILE) $(MANIFEST) img
 	@printf "\nmake: Done. Updated $(HTMLFILE) and $(MANIFEST) to $(VERSION).\n\n"
 
 %.html:
@@ -46,10 +45,10 @@ default: $(HTMLFILE) $(MANIFEST) $(IMGDIR)
 	@curl -# -O $(SRCURL)/$@
 	@$(REPLACETOKENS)
 
-$(IMGDIR):
-	@[[ -d $(IMGDIR) ]] || mkdir $(IMGDIR)
+img:
+	@[[ -d img ]] || mkdir img
 	@printf "\nFetch from $$MYSERVER and update $@\n"
-	@rsync -ptuq "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img/*.*" $(IMGDIR)
+	@rsync -ptuq "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img/*.*" img
 
 .PHONY: deploy
 deploy: default
@@ -63,4 +62,4 @@ deploy: default
 
 .PHONY: clean
 clean:
-	rm -rf $(HTMLFILE) $(MANIFEST) $(IMGDIR)
+	rm -rf $(HTMLFILE) $(MANIFEST) img
