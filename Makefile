@@ -34,22 +34,22 @@ YUICOMPRESSORURL := http://yui.zenfs.com/releases/yuicompressor/$(YUICOMPRESSOR)
 TIDY := $(shell hash tidy-html5 2>/dev/null && echo 'tidy-html5' || (hash tidy 2>/dev/null && echo 'tidy' || exit 1))
 JSL := $(shell hash jsl 2>/dev/null && echo 'jsl' || exit 1)
 GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
-REPLACETOKENS = perl -p -i -e 's/$(MMVERSION)/$(VERSION)/g;' $@; perl -p -i -e 's/$(MMBUILDDATE)/$(BUILDDATE)/g;' $@
+REPLACETOKENS = perl -pi -e 's/$(MMVERSION)/$(VERSION)/g;s/$(MMBUILDDATE)/$(BUILDDATE)/g;' $@
 
 
 default: $(PROJECTS) | $(BUILDDIR) $(WEBDIR) $(IMGDIR)
 	@(chmod -R 755 $(WEBDIR); $(GRECHO) 'make:' "Done. See $(PROJ)/$(WEBDIR) directory for v$(VERSION).\n" )
 
 $(PROJ): $(MANIFESTS) $(COMPRESSEDFILES) | $(WEBDIR)
-	@(echo; echo "Copying built files..." )
+	@printf "\nCopying built files...\n"
 	@cp -fp $(BUILDDIR)/$@.html.gz $(WEBDIR)/$@
 	@cp -fp $(BUILDDIR)/$@.manifest $(WEBDIR)
 	@cp -Rfp $(SRCDIR)/$(IMGDIR) $(WEBDIR)
 
 # run through html compressor and into gzip
 %.html.gz: %.html | $(BUILDDIR)  $(COMMONLIB)/$(YUICOMPRESSOR.jar) $(COMMONLIB)/$(HTMLCOMPRESSORJAR)
-	@(echo "Compressing $^..."; \
-		$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) $(BUILDDIR)/$^ | gzip -f9 > $(BUILDDIR)/$@ )
+	@echo "Compressing $^..."
+	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) $(BUILDDIR)/$^ | gzip -f9 > $(BUILDDIR)/$@
 
 $(COMMONLIB)/$(YUICOMPRESSOR.jar):
 	@[[ -f "$(COMMONLIB)/$(YUICOMPRESSOR).jar" ]] || ( \
@@ -57,18 +57,16 @@ $(COMMONLIB)/$(YUICOMPRESSOR.jar):
 		curl -# --create-dirs -o "$(COMMONLIB)/$(YUICOMPRESSOR).zip" "$(YUICOMPRESSORURL)"; \
 		unzip -d "$(COMMONLIB)" "$(COMMONLIB)/$(YUICOMPRESSOR).zip" "$(YUICOMPRESSOR)/build/$(YUICOMPRESSOR).jar"; \
 		mv -fv "$(COMMONLIB)/$(YUICOMPRESSOR)/build/$(YUICOMPRESSOR).jar" "$(COMMONLIB)"; \
-		rm -rf "$(COMMONLIB)/$(YUICOMPRESSOR)" \
-		)
+		rm -rf "$(COMMONLIB)/$(YUICOMPRESSOR)" )
 
 $(COMMONLIB)/$(HTMLCOMPRESSORJAR):
 	@[[ -f "$(COMMONLIB)/$(HTMLCOMPRESSORJAR)" ]] || ( \
 		printf "\n\tFetching $(HTMLCOMPRESSORJAR)...\n"; \
-		curl -# --create-dirs -o "$(COMMONLIB)/$(HTMLCOMPRESSORJAR)" "$(HTMLCOMPRESSORURL)" \
-	)
+		curl -# --create-dirs -o "$(COMMONLIB)/$(HTMLCOMPRESSORJAR)" "$(HTMLCOMPRESSORURL)" )
 
 # copy HTML to $(BUILDDIR) and replace tokens, then check with tidy & jsl (JavaScript Lint)
 %.html: $(SRCDIR)/%.html $(VERSIONTXT) | $(BUILDDIR)
-	@(echo; echo "$@: validate with $(TIDY) and $(JSL)")
+	@printf "\n$@: validate with $(TIDY) and $(JSL)\n"
 	@cp -fp $(SRCDIR)/$@ $(BUILDDIR)
 	@(	cd $(BUILDDIR); \
 		$(REPLACETOKENS); \
@@ -85,11 +83,9 @@ $(COMMONLIB)/$(HTMLCOMPRESSORJAR):
 .PHONY: deploy
 deploy: default
 	@echo "Deploy to: $$MYSERVER/me"
-	@(cd $(WEBDIR); \
+	@(	cd $(WEBDIR); \
 		rsync -ptuv --executability $(PROJ) *.manifest "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me"; \
-		rsync -ptu  img/*.* "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img"; \
-		echo \
-	)
+		rsync -ptu  img/*.* "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img" )
 	@$(GRECHO) '\nmake:' "Done. Deployed v$(VERSION) $(PROJECT) to $$MYSERVER/me \
 		\n\tTo update gh-pages on github.com do:\
 		\ngit checkout gh-pages && make clean && make deploy && git checkout master\n"
