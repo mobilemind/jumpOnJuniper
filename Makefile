@@ -10,7 +10,6 @@ GITHUBPROJ := jumpOnJuniper
 COMMONLIB := $$HOME/common/lib
 
 # files
-MANIFEST := $(PROJ).manifest
 HTMLFILE := $(PROJ).html
 
 # urls
@@ -18,7 +17,7 @@ SRCURL := https://raw.github.com/mobilemind/$(GITHUBPROJ)/master/src/
 
 # macros/utils
 BUILDDATE := $(shell date)
-VERSION = $(shell curl -sf $(SRCURL)/VERSION.txt | head -n 1)
+VERSION = $(shell curl -sf $(SRCURL)/VERSION.txt | head -n 1)g
 GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
 HTMLCOMPRESSORPATH := $(shell [[ 'cygwin' == $$OSTYPE ]] && echo "`cygpath -w $(COMMONLIB)`\\" || echo "$(COMMONLIB)/")
 HTMLCOMPRESSOR := java -jar '$(HTMLCOMPRESSORPATH)htmlcompressor-1.5.2.jar'
@@ -26,11 +25,11 @@ COMPRESSOPTIONS := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --r
 TIDY := $(shell hash tidy-html5 2>/dev/null && echo 'tidy-html5' || (hash tidy 2>/dev/null && echo 'tidy' || exit 1))
 JSL := $(shell hash jsl 2>/dev/null && echo 'jsl' || exit 1)
 GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
-REPLACETOKENS = perl -pi -e 's/_MmVERSION_/$(VERSION)/g;s/_MmBUILDDATE_/$(BUILDDATE)/g;' $@
+REPLACETOKENS = perl -pi -e 's/_MmVERSION_/$(VERSION)/g;s/_MmBUILDDATE_/$(BUILDDATE)/g;s/ manifest=.*?(?= |>)//g' $@
 
 
-default: $(HTMLFILE) $(MANIFEST) img
-	@printf "\nmake: Done. Updated $(HTMLFILE) and $(MANIFEST) to $(VERSION).\n\n"
+default: $(HTMLFILE) img
+	@printf "\nmake: Done. Updated $(HTMLFILE) to $(VERSION).\n\n"
 
 %.html:
 	@printf "\nFetch from github and update $@\n"
@@ -39,11 +38,6 @@ default: $(HTMLFILE) $(MANIFEST) img
 	@$(TIDY) -eq $@; [[ $$? -lt 2 ]] && true
 	@$(JSL) -nologo -nofilelisting -nosummary -process $@
 	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) -o $@.tmp $@ && mv -f $@.tmp $@
-
-%.manifest: $(HTMLFILE)
-	@printf "\nFetch from github and update $@\n"
-	@curl -# -O $(SRCURL)/$@
-	@$(REPLACETOKENS)
 
 img:
 	@[[ -d img ]] || mkdir img
@@ -62,4 +56,4 @@ deploy: default
 
 .PHONY: clean
 clean:
-	rm -rf $(HTMLFILE) $(MANIFEST) img
+	rm -rf $(HTMLFILE) img
