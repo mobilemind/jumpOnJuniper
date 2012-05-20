@@ -70,7 +70,7 @@ $(COMMONLIB)/$(HTMLCOMPRESSORJAR):
 	@cp -fp $(SRCDIR)/$@ $(BUILDDIR)
 	@(	cd $(BUILDDIR); \
 		$(REPLACETOKENS); \
-		$(TIDY) -eq $@; [[ $$? -lt 2 ]] && -; \
+		$(TIDY) -eq $@; [[ $$? -lt 2 ]] && true; \
 		$(JSL) -nologo -nofilelisting -nosummary -process $@ )
 
 # copy manifest to $(BUILDDIR) and replace tokens
@@ -105,4 +105,4 @@ $(IMGDIR): | $(BUILDDIR)
 .PHONY: clean
 clean:
 	@echo 'Cleaning build directory & web directory'
-	@rm -rf $(BUILDDIR)/* $(WEBDIR)/* || -
+	@rm -rf $(BUILDDIR)/* $(WEBDIR)/*
