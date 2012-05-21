@@ -38,7 +38,7 @@ REPLACETOKENS = perl -pi -e 's/$(MMVERSION)/$(VERSION)/g;s/$(MMBUILDDATE)/$(BUIL
 
 
 default: $(PROJECTS) | $(BUILDDIR) $(WEBDIR) $(IMGDIR)
-	@(chmod -R 755 $(WEBDIR); $(GRECHO) 'make:' "Done. See $(PROJ)/$(WEBDIR) directory for v$(VERSION).\n" )
+	@(chmod -R 755 $(WEBDIR); $(GRECHO) 'make $(PROJ):' "Done. See $(PROJ)/$(WEBDIR) directory for v$(VERSION).\n" )
 
 $(PROJ): $(MANIFESTS) $(COMPRESSEDFILES) | $(WEBDIR)
 	@printf "\nCopying built files...\n"
@@ -86,7 +86,7 @@ deploy: default
 	@(	cd $(WEBDIR); \
 		rsync -ptuv --executability $(PROJ) *.manifest "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me"; \
 		rsync -ptu  img/*.* "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img" )
-	@$(GRECHO) '\nmake:' "Done. Deployed v$(VERSION) $(PROJECT) to $$MYSERVER/me \
+	@$(GRECHO) '\nmake $(PROJ):' "Done. Deployed v$(VERSION) $(PROJECT) to $$MYSERVER/me \
 		\n\tTo update gh-pages on github.com do:\
 		\ngit checkout gh-pages && make clean && make deploy && git checkout master\n"
 
@@ -104,5 +104,5 @@ $(IMGDIR): | $(BUILDDIR)
 
 .PHONY: clean
 clean:
-	@echo 'Cleaning build directory & web directory'
+	@echo 'make $(PROJ): Cleaning build directory & web directory'
 	@rm -rf $(BUILDDIR)/* $(WEBDIR)/*
