@@ -46,7 +46,7 @@ img:
 
 .PHONY: deploy
 deploy: default
-	@printf "make: \tDeploy: Checking  git diff --name-only  as trigger to update gh-pages\n"
+	@printf "make: \tDeploy: Checking  git diff --name-only as trigger to update gh-pages\n"
 	@[[ -n "$(shell git diff --name-only)" ]] && ( \
 		git commit -a -m 'revised HTML to v$(VERSION)' && git push origin gh-pages; \
 		( git tag $(VERSION) && git push --tags origin gh-pages ) && \
