@@ -16,7 +16,6 @@ VPATH := $(WEBDIR):$(BUILDDIR)
 # files
 PROJECTS = $(PROJ)
 COMPRESSEDFILES = $(PROJ).html.gz
-MANIFESTS = $(PROJ).manifest
 VERSIONTXT := $(SRCDIR)/VERSION.txt
 
 # macros/utils
@@ -40,10 +39,9 @@ REPLACETOKENS = perl -pi -e 's/$(MMVERSION)/$(VERSION)/g;s/$(MMBUILDDATE)/$(BUIL
 default: $(PROJECTS) | $(BUILDDIR) $(WEBDIR) $(IMGDIR)
 	@(chmod -R 755 $(WEBDIR); $(GRECHO) 'make $(PROJ):' "Done. See $(PROJ)/$(WEBDIR) directory for v$(VERSION).\n" )
 
-$(PROJ): $(MANIFESTS) $(COMPRESSEDFILES) | $(WEBDIR)
+$(PROJ): $(COMPRESSEDFILES) | $(WEBDIR)
 	@printf "\nCopying built files...\n"
 	@cp -fp $(BUILDDIR)/$@.html.gz $(WEBDIR)/$@
-	@cp -fp $(BUILDDIR)/$@.manifest $(WEBDIR)
 	@cp -Rfp $(SRCDIR)/$(IMGDIR) $(WEBDIR)
 
 # run through html compressor and into gzip
@@ -73,18 +71,12 @@ $(COMMONLIB)/$(HTMLCOMPRESSORJAR):
 		$(TIDY) -eq $@; [[ $$? -lt 2 ]] && true; \
 		$(JSL) -nologo -nofilelisting -nosummary -process $@ )
 
-# copy manifest to $(BUILDDIR) and replace tokens
-%.manifest: $(SRCDIR)/%.manifest $(VERSIONTXT) | $(BUILDDIR)
-	@(echo; echo $@ )
-	@cp -fp $(SRCDIR)/$@ $(BUILDDIR)
-	@cd $(BUILDDIR) && $(REPLACETOKENS)
-
 # deploy
 .PHONY: deploy
 deploy: default
 	@echo "Deploy to: $$MYSERVER/me"
 	@(	cd $(WEBDIR); \
-		rsync -ptuv --executability $(PROJ) *.manifest "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me"; \
+		rsync -ptuv --executability $(PROJ) "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me"; \
 		rsync -ptu  img/*.* "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img" )
 	@$(GRECHO) '\nmake $(PROJ):' "Done. Deployed v$(VERSION) $(PROJECT) to $$MYSERVER/me \
 		\n\tTo update gh-pages on github.com do:\
