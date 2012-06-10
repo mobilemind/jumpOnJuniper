@@ -52,6 +52,7 @@ deploy: default
 		( git tag $(VERSION) && git push --tags origin gh-pages ) && \
 			$(GRECHO) "\nmake: \tDeploy: Done. Updated gh-pages to v$(VERSION). To return to master do:\
 				\n\tgit checkout master && make clean\n\n" \
+			|| $(GRECHO) "\nmake: \tDeploy: Error with git push --tags origin gh-pages. Verify gh-pages is v$(VERSION)."
 	) || $(GRECHO) "\nmake: \tDeploy: Done. No changed files.\n\n"
 
 .PHONY: clean
