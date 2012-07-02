@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
 	<head>
-		<meta http-equiv="content-type" content="text/html;charset=utf-8">
+		<meta charset="utf-8">
 		<meta name="keywords" content="iPad,VisitorNet,jumpOnJuniper,bookmark,Bookmarklet,maker,generator,javascript,paste,login,pastelet,username,password">
 		<meta name="robots" content="index,nofollow">
 		<meta name="viewport" content="width=device-width,user-scalable=no">
@@ -224,17 +224,18 @@
 			<h1>Step 1: Enter the text</h1>
 			<div class="grp">
 				<p>Enter the Username to paste and password. Then tap <b>Make jOJ Bookmark</b> to reload this page for Step 2.</p>
-				<form id="pltMkr" method="GET" action= "." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value)); return false" autocapitalize="off">
+				<form id="pltMkr" method="GET" action= "." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value)); return false">
 					<label for="username">Username:&nbsp;
-						<input type="email" id="username" name="uid" tabindex="1" class="pStr" size="25" maxlength="255" placeholder="email@company.com" autocorrect="on" autocomplete="on" required autofocus>
+						<input type="email" id="username" name="uid" tabindex="1" class="pStr" size="25" maxlength="255" placeholder="email@company.com" autocorrect="on" autocomplete="on" autocapitalize="off" required autofocus>
 					</label>
 					<label for="pwd" style="color: #777777"><br>Old password:&nbsp;
-						<input type="text" id="pwd" name="pwd" tabindex="-1" class="pStr" style="font-family:monospace" size="9" maxlength="255" placeholder="Not found" autocorrect="off" autocomplete="off">
+						<input type="text" id="pwd" name="pwd" tabindex="-1" class="pStr" style="font-family:monospace" size="9" maxlength="255" placeholder="Not found" autocorrect="off" autocomplete="off" autocapitalize="off">
 					</label>
-					<label for="password">&nbsp;&nbsp;
-						<input type="button" id="pwdCopy" tabindex="-1" value="Copy to Password" onclick="if(
-						document.getElementById('pwd').value)document.getElementById('password').value=document.getElementById('pwd').value;document.getElementById('password').focus;"><br>Password:&nbsp;
-						<input type="password" id="password" tabindex="2" class="pStr" name="password" size="9" maxlength="255" required autocorrect="off" autocomplete="off" spellcheck="false">
+					&nbsp;&nbsp;
+					<input type="button" id="pwdCopy" tabindex="-1" value="Copy to Password" onclick="if(
+						document.getElementById('pwd').value)document.getElementById('password').value=document.getElementById('pwd').value;document.getElementById('password').focus;">
+					<label for="password"><br>Password:&nbsp;
+						<input type="password" id="password" tabindex="2" class="pStr" name="password" size="9" maxlength="255" required autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false">
 					</label>
 					<br><br>
 					<input type="submit" id="mkPltBtn" tabindex="3" value="Make jOJ Bookmark" class="btn">
