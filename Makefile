@@ -25,7 +25,7 @@ COMPRESSOPTIONS := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --r
 TIDY := $(shell hash tidy-html5 2>/dev/null && echo 'tidy-html5' || (hash tidy 2>/dev/null && echo 'tidy' || exit 1))
 JSL := $(shell hash jsl 2>/dev/null && echo 'jsl' || exit 1)
 GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
-REPLACETOKENS = perl -pi -e 's/_MmVERSION_/$(VERSION)/g;s/_MmBUILDDATE_/$(BUILDDATE)/g;s/ manifest=.*?(?= |>)//g' $@
+REPLACETOKENS = perl -pi -e 's/_MmVERSION_/$(VERSION)/g;s/_MmBUILDDATE_/$(BUILDDATE)/g' $@
 
 
 default: $(HTMLFILE) img
