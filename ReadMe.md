@@ -1,12 +1,12 @@
-# jumpOnJuniper #
+# jumpOnJuniper
 
 The “jumpOnJuniper” bookmarklet streamlines logging in via Juniper Networks Infranet 
 “VisitorNet” sites that control access to WiFi networks. The bookmarklet will paste in the 
 Username and password values stored in the bookmark and then submit the form.
 
-## Install ##
+# Install
 
-**Mobile Safari**
+## Mobile Safari
 The [hosted jOJ page][mmjoj] is a form that will create the bookmarklet and
 explains how to store and edit the bookmarklet on your iPad or iPhone. Tap the
 [hosted jOJ page][mmjoj] link and follow the instructions.
@@ -18,8 +18,7 @@ See [http://mobilemind.github.com/jumpOnJuniper/joj.html][ghjoj]
 [mmjoj]: http://mmind.me/joj  "jumpOnJuniper (mmind.me site)"
 [ghjoj]: http://mobilemind.github.com/jumpOnJuniper/joj.html  "jumpOnJuniper (github site)"
 
-
-## Use ##
+# Use
 
 Make sure you have installed/created a bookmark first (see above).
 
@@ -32,15 +31,13 @@ first part of your Username (email).
 The bookmarklet created via installation will paste in the Username, the stored password 
 and then submit the form.
 
-#### Compatibility
+# Compatibility
 
 Requires a browser that supports `javascript:` bookmarks.
 
-Tested with Firefox 11.0, Safari 5.1.x and Mobile Safari 5.x.
+Tested with Firefox 11.x - 13.x, Safari 5.1.x and Mobile Safari 5.x.
 
-----------
-
-## License ##
+# License
 
 MIT License - [http://www.opensource.org/licenses/mit-license.php](http://www.opensource.org/licenses/mit-license.php)
 
@@ -68,7 +65,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----------
 
-## Build Requirements ##
+# Build Requirements
 
 The jumpOnJuniper Makefile requires htmlcompressor. The htmlcompressor project has its own license
 and sub-projects. End-users are responsible for obtaining a htmlcompressor and its related
@@ -82,21 +79,19 @@ installed on Mac OS X via homebrew or on Windows via Cygwin setup.
 
 The W3C tidy-html5 is available here: <http://w3c.github.com/tidy-html5/>
 
-**Mac**
+### Mac
 
 * For utilities such as **jsl** and **node** using homebrew see: <http://mxcl.github.com/homebrew/>
 * For **growlnotify** (requires Growl), see: <http://growl.info>
 
-**Win**
+### Win
 
 * For **Cygwin** and related utilities such as **make**, **gzip**, **perl**, **tidy**, **nodejs**,
 see: <http://www.cygwin.com/>
 * For **growlnotify** (requires Growl for Windows), see: <http://growlforwindows.com>
 * For **jsl**, see: <http://www.javascriptlint.com/>
 
-----------
+## Build
 
-## Build ##
-
-Use ````make```` at the command shell prompt to create the joj HTML page and manifest.
-See ````/web/```` directory for results.
+Use `make` at the command shell prompt to create the joj HTML page and manifest.  
+See `/web/` directory for results.
