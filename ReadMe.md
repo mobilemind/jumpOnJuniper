@@ -7,13 +7,17 @@ Username and password values stored in the bookmark and then submit the form.
 ## Install ##
 
 **Mobile Safari**
-The [hosted jOJ page](http://mmind.me/joj) is a form that will create the bookmarklet and
+The [hosted jOJ page][mmjoj] is a form that will create the bookmarklet and
 explains how to store and edit the bookmarklet on your iPad or iPhone. Tap the
-[hosted jOJ page](http://mmind.me/jOJ) link and follow the instructions.
+[hosted jOJ page][mmjoj] link and follow the instructions.
 
-The same form is available as [jumpOnJuniper](http://mobilemind.github.com/jumpOnJuniper/joj.html) too.
+The same form is available as [jumpOnJuniper][ghjoj] too.
 		
-See [http://mobilemind.github.com/jumpOnJuniper/joj.html](http://mobilemind.github.com/jumpOnJuniper/joj.html)
+See [http://mobilemind.github.com/jumpOnJuniper/joj.html][ghjoj]
+
+[mmjoj]: http://mmind.me/joj  "jumpOnJuniper (mmind.me site)"
+[ghjoj]: http://mobilemind.github.com/jumpOnJuniper/joj.html  "jumpOnJuniper (github site)"
+
 
 ## Use ##
 
@@ -30,7 +34,7 @@ and then submit the form.
 
 #### Compatibility
 
-Requires a browser that supports ````javascript:```` bookmarks.
+Requires a browser that supports `javascript:` bookmarks.
 
 Tested with Firefox 11.0, Safari 5.1.x and Mobile Safari 5.x.
 
