@@ -23,7 +23,7 @@ MMBUILDDATE := _MmBUILDDATE_
 BUILDDATE := $(shell date)
 MMVERSION := _MmVERSION_
 VERSION := $(shell head -1 $(VERSIONTXT))
-HTMLCOMPRESSORJAR := htmlcompressor-1.5.2.jar
+HTMLCOMPRESSORJAR := htmlcompressor-1.5.3.jar
 HTMLCOMPRESSORURL := https://htmlcompressor.googlecode.com/files/$(HTMLCOMPRESSORJAR)
 HTMLCOMPRESSORPATH := $(shell [[ 'cygwin' == $$OSTYPE ]] && echo "`cygpath -w $(COMMONLIB)`\\" || echo "$(COMMONLIB)/")
 HTMLCOMPRESSOR := java -jar '$(HTMLCOMPRESSORPATH)$(HTMLCOMPRESSORJAR)'
