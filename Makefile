@@ -20,7 +20,7 @@ BUILDDATE := $(shell date)
 VERSION = $(shell curl -sf $(SRCURL)/VERSION.txt | head -n 1)g
 GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
 HTMLCOMPRESSORPATH := $(shell [[ 'cygwin' == $$OSTYPE ]] && echo "`cygpath -w $(COMMONLIB)`\\" || echo "$(COMMONLIB)/")
-HTMLCOMPRESSOR := java -jar '$(HTMLCOMPRESSORPATH)htmlcompressor-1.5.2.jar'
+HTMLCOMPRESSOR := java -jar '$(HTMLCOMPRESSORPATH)htmlcompressor-1.5.3.jar'
 COMPRESSOPTIONS := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --remove-surrounding-spaces min --compress-js --compress-css
 TIDY := $(shell hash tidy-html5 2>/dev/null && echo 'tidy-html5' || (hash tidy 2>/dev/null && echo 'tidy' || exit 1))
 JSL := $(shell hash jsl 2>/dev/null && echo 'jsl' || exit 1)
