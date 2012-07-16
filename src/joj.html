@@ -150,7 +150,7 @@
 										pl.innerHTML = document.title;
 									}
 								}
-					 			// unhide remaining steps
+								// unhide remaining steps
 								window.scrollTo(0,90+document.getElementById('pltMkr').scrollHeight);
 							}
 							catch (e) {
@@ -162,13 +162,12 @@
 					}
 					// hide address bar
 					else window.scrollTo(0,1);
-				}
-			,true);
+				}, true);
 			// reload page with new bookmarklet appended
 			function loadpg(p) {
 				if ('' !== p) {
-				  document.getElementById('bmrk').textContent = 'javascript:' + encodeURIComponent(p);
-				  location.href = location.protocol + '//' + location.host + location.port + location.pathname + '?javascript:' + encodeURIComponent(p);
+					document.getElementById('bmrk').textContent = 'javascript:' + encodeURIComponent(p);
+					location.href = location.protocol + '//' + location.host + location.port + location.pathname + '?javascript:' + encodeURIComponent(p);
 				}
 			}
 
@@ -182,23 +181,23 @@
 			// * void('_MmVERSION_') is a way to embed the version and provides cross-browser compatibility (a non-null return value causes some browsers to navigate)
 			//
 			// var u = 'user', p = 'pass',
-			// 	d = document,
-			// 	h = location.href,
-			// 	b = d.getElementById('proceedButton'),
-			//  s = d.getElementsByName('sn-postauth-proceed')[0],
-			//  r = d.getElementById('realm'),
-			// 	f = d.forms[0];
+			//	d = document,
+			//	h = location.href,
+			//	b = d.getElementById('proceedButton'),
+			//	s = d.getElementsByName('sn-postauth-proceed')[0],
+			//	r = d.getElementById('realm'),
+			//	f = d.forms[0];
 			// if (h.match(/^https:\\/\\/visitornet(.*?)p=sn-postauth-show/)){b ? b.click() : s.click(); f.submit()}
 			// else if (h.match(/^https?:\\/\\/(mmind\\.me\\/joj(\\/|\\?)?.*|mobilemind\\..*?\\/joj.*|visitornet(.*?)welcome\\.cgi)$/)) {
-			// 	r ? r.selectedIndex = 2 : 0;
-			//  d.getElementById('username').value = u;
-			// 	d.getElementById('password').value = p;
-			// 	d.getElementById('frmLogin').submit()
+			//	r ? r.selectedIndex = 2 : 0;
+			//	d.getElementById('username').value = u;
+			//	d.getElementById('password').value = p;
+			//	d.getElementById('frmLogin').submit()
 			// } else if (h.match(/^https?:\\/\\/(mmind\\.me\\/vnet|\\w{3}-vn-\\d\\d\.b|mobilem.*?\\/VNet\\/)/)) {
-			// 	d.getElementsByName('uid')[0].value = u;
-			// 	d.getElementById('pwd').value = p;
-			// 	d.getElementsByName('agreeToTerms')[0].checked = 1;
-			// 	f.submit()
+			//	d.getElementsByName('uid')[0].value = u;
+			//	d.getElementById('pwd').value = p;
+			//	d.getElementsByName('agreeToTerms')[0].checked = 1;
+			//	f.submit()
 			// } else location.href = 'https://visitornet.boeing.com/';
 			// void('_MmVERSION_')
 
