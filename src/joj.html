@@ -22,9 +22,10 @@
 				background-color: #72ab69;
 				font-family: Helvetica, sans-serif;
 				font-size: 17px;
+				-ms-text-size-adjust: none;
 				-webkit-text-size-adjust: none
 			}
-			#pg {
+			.pg {
 				margin: 0;
 				padding-bottom: 15px;
 				background-color: #72ab69
@@ -49,60 +50,61 @@
 				font-weight: normal;
 				padding: 7px
 			}
-			div.grp {
+			.grp {
 				margin: 0 10px;
 				padding: 0;
 				width: 94%;
 				background-color: #e0e6e0;
 				border: 1px solid #d9d9d9;
 				font-size: 15px;
-				-webkit-border-radius: 8px;
-				-moz-border-radius: 8px
+				border-radius: 8px;
 			}
-			div.fig {
+			.fig {
 				margin: 0;
 				padding: 4px 10px
 			}
 			.pStr {
 				font-size:large;
-				-webkit-appearance:textfield
+				-moz-appearance: textfield;
+				-webkit-appearance: textfield
+			}
+			.bmrk {
+				font-size:large;
+				-moz-appearance: textfield-multiline;
+				-webkit-appearance: textarea
 			}
 			.btn {
 				display: inline-block;
 				vertical-align: baseline;
-				margin: 0 2px;
+				margin:2px 0 4px 33px;
 				outline: none;
 				cursor: pointer;
 				text-align: center;
 				text-decoration: none;
 				height: 40px;
 				width: 200px;
-				margin:2px 0px 4px 33px;
 				font: 16px/100% Arial, Helvetica, sans-serif;
 				padding: .5em 2em .55em;
 				text-shadow: 0 1px 1px rgba(0,0,0,.3);
-				-webkit-border-radius: .5em;
-				-moz-border-radius: .5em;
 				border-radius: .5em;
-				-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-				-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
 				box-shadow: 0 1px 2px rgba(0,0,0,.2);
 				color: #fafffa;
 				border: solid 1px #2E8022;
 				background: #75AC6C;
-				background: -webkit-gradient(linear, left top, left bottom, from(#90B880), to(#4C9840));
-				background: -moz-linear-gradient(top, #90B880, #4C9840);
+				background: -moz-linear-gradient(0deg, #90B880, #4C9840);
+				background: -webkit-gradient(linear, left top, left bottom, from(#90B880), to(#4C9840))
 			}
 			.btn:hover {
 				background: #75AC6C;
-				background: -webkit-gradient(linear, left top, left bottom, from(#87B67E), to(#489536));
-				background: -moz-linear-gradient(top, #91B98A, #4D9941);
+				background: -moz-linear-gradient(0deg, #91B98A, #4D9941);
+				background: -webkit-gradient(linear, left top, left bottom, from(#87B67E), to(#489536))
 			}
 			.btn:active {
 				color: #75AC6C;
+				background: #75AC6C;
+				background: -moz-linear-gradient(0deg, #4D9941,  #91B98A);
 				background: -webkit-gradient(linear, left top, left bottom, from(#4D9941), to(#91B98A));
-				background: -moz-linear-gradient(top, #4D9941,  #91B98A);
-				filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#4D9941', endColorstr='#91B98A');
+				filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#4D9941', endColorstr='#91B98A')
 			}
 			.vp {
 				vertical-align:top
@@ -118,48 +120,47 @@
 		<!-- code w/onLoad handler + function to create bookmarklet string -->
 		<script type="text/javascript">
 			// listener to dynamically position page for initial or return-trip
-			window.addEventListener('load',
-				function() {
-					if (location.search) {
-							// reload form UI from query string
-							try {
-								var q = location.search, m = [];
-								q = decodeURIComponent(q.substr(1));
-								m = q.match(/^javascript:(.*?)u='(.*?)',p='(.*?)',/);
-								if (!m) throw 'No match in: ' + q;
-								else {
-									if (!m[2]) throw 'No login found in: ' + m;
-									else {
-										document.title = 'jOJ ' + m[2].replace(/\W.*/, '');
-										document.getElementById('username').value = m[2];
-										if (m[3]) document.getElementById('password').value = m[3];
-									}
-								}
-								// put a more human-readable, but URI encoded, version of bookmarklet in textarea
-								document.getElementById('bmrk').textContent = encodeURI(q);
-								// if not iPhone/iPad unhide 'Pastelet as link' and set anchor tag
-								if (!(-1 != navigator.userAgent.indexOf('Safari') && -1 != navigator.userAgent.indexOf('Mobile'))) {
-									var pal = document.getElementById('pal'), pl = document.getElementById('pl');
-									if (pal && pl) {
-										pal.setAttribute("style", "display:inline;padding:7px;height:auto");
-										pl.setAttribute('href', document.getElementById('bmrk').textContent);
-										pl.setAttribute('title', document.title);
-										pl.innerHTML = document.title;
-									}
-								}
-								// unhide remaining steps
-								window.scrollTo(0,90+document.getElementById('pltMkr').scrollHeight);
+			window.addEventListener('load', function() {
+				if (location.search) {
+					// reload form UI from query string
+					try {
+						var q = location.search, m = [];
+						q = decodeURIComponent(q.substr(1));
+						m = q.match(/^javascript:(.*?)u='(.*?)',p='(.*?)',/);
+						if (!m) throw 'No match in: ' + q;
+						else {
+							if (!m[2]) throw 'No login found in: ' + m;
+							else {
+								document.title = 'jOJ ' + m[2].replace(/\W.*/, '');
+								document.getElementById('username').value = m[2];
+								if (m[3]) document.getElementById('password').value = m[3];
 							}
-							catch (e) {
-								console.log('error: ' + e);
-								alert("Unable to decode pastelet.\r\nForm will be reset.");
-								location.href = location.protocol + '//' + location.host + location.port + location.pathname;
-								return;
+						}
+						// put a more human-readable, but URI encoded, version of bookmarklet in textarea
+						document.getElementById('bmrk').textContent = encodeURI(q);
+						// if not iPhone/iPad unhide 'Pastelet as link' and set anchor tag
+						if (!(-1 != navigator.userAgent.indexOf('Safari') && -1 != navigator.userAgent.indexOf('Mobile'))) {
+							var pal = document.getElementById('pal'), pl = document.getElementById('pl');
+							if (pal && pl) {
+								pal.setAttribute("style", "display:inline;padding:7px;height:auto");
+								pl.setAttribute('href', document.getElementById('bmrk').textContent);
+								pl.setAttribute('title', document.title);
+								pl.innerHTML = document.title;
 							}
+						}
+						// unhide remaining steps
+						window.scrollTo(0,90+document.getElementById('pltMkr').scrollHeight);
 					}
-					// hide address bar
-					else window.scrollTo(0,1);
-				}, true);
+					catch (e) {
+						console.log('error: ' + e);
+						alert("Unable to decode pastelet.\r\nForm will be reset.");
+						location.href = location.protocol + '//' + location.host + location.port + location.pathname;
+						return;
+					}
+				}
+				// hide address bar
+				else window.scrollTo(0,1);
+			}, true);
 			// reload page with new bookmarklet appended
 			function loadpg(p) {
 				if ('' !== p) {
