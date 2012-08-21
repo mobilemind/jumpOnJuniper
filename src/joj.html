@@ -7,11 +7,10 @@
 		<meta name="viewport" content="width=device-width,user-scalable=no">
 		<meta name="format-detection" content="telephone=no">
 		<link rel="shortcut icon" href="img/joj.ico">
-		<link rel="apple-touch-icon" href="img/joj-icon-57.png">
-		<link rel="apple-touch-icon" sizes="57x57" href="img/joj-icon-57.png">
-		<link rel="apple-touch-icon" sizes="114x114" href="img/joj-icon-114.png">
-		<link rel="apple-touch-icon" sizes="72x72" href="img/joj-icon-72.png">
-		<link rel="apple-touch-icon" sizes="144x144" href="img/joj-icon-144.png">
+		<link rel="apple-touch-icon" href="img/joj-57.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="img/joj-114.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="img/joj-72.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="img/joj-144.png">
 		<link rel="canonical" href="http://mmind.me/joj">
 		<title>jumpOnJuniper v_MmVERSION_</title>
 		<style type="text/css">
@@ -182,25 +181,25 @@
 			//	s = d.getElementsByName('sn-postauth-proceed')[0],
 			//	r = d.getElementById('realm'),
 			//	f = d.forms[0];
-			// if (h.match(/^https:\\/\\/visitornet(.*?)p=sn-postauth-show/)){b ? b.click() : s.click(); f.submit()}
-			// else if (h.match(/^https?:\\/\\/(mmind\\.me\\/joj(\\/|\\?)?.*|mobilemind\\..*?\\/joj.*|visitornet(.*?)welcome\\.cgi)$/)) {
+			// if (h.match(/visitornet(.*?)p=sn-postauth-show/)) b ? b.click() : s.click(), f.submit();
+			// else if (h.match(/((mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)) {
 			//	r ? r.selectedIndex = 1 : 0;
 			//	d.getElementById('username').value = u;
 			//	d.getElementById('password').value = p;
 			//	d.getElementById('frmLogin') ? d.getElementById('frmLogin').submit() : 0
-			// } else if (h.match(/^https?:\\/\\/(mmind\\.me\\/vnet|\\w{3}-vn-\\d\\d\.b|mobilem.*?\\/VNet\\/)/)) {
+			// } else if (h.match(/(mmind\\.me\\/vnet|\\w{3}-vn-\\d\\d\.b|mobilem.*?\\/VNet\\/)/)) {
 			//	d.getElementsByName('uid')[0].value = u;
 			//	d.getElementById('pwd').value = p;
 			//	d.getElementsByName('agreeToTerms')[0].checked = 1;
 			//	f.submit()
-			// } else location.href = 'https://visitornet.boeing.com/';
+			// } else location.href = 'https://visitornet.boeing.com';
 			// void'_MmVERSION_'
 
 			// actually creates bookmarklet given 'u' = user ID and 'p' = password
-			// javascript:var%20u='user',p='password',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')%5B0%5D,r=d.getElementById('realm'),f=d.forms%5B0%5D;if(h.match(/%5Ehttps:%5C/%5C/visitornet(.*?)p=sn-postauth-show/))%7Bb?b.click():s.click();f.submit()%7Delse%20if(h.match(/%5Ehttps?:%5C/%5C/(mmind%5C.me%5C/joj(%5C/%7C%5C?)?.*%7Cmobilemind%5C..*?%5C/joj.*%7Cvisitornet(.*?)welcome%5C.cgi)$/))%7Br?r.selectedIndex=2:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin').submit()%7Delse%20if(h.match(/%5Ehttps?:%5C/%5C/(mmind%5C.me%5C/vnet%7C%5Cw%7B3%7D-vn-%5Cd%5Cd.b%7Cmobilem.*?%5C/VNet%5C/)/))%7Bd.getElementsByName('uid')%5B0%5D.value=u;d.getElementById('pwd').value=p;d.getElementsByName('agreeToTerms')%5B0%5D.checked=1;f.submit()%7Delse%20location.href='https://visitornet.boeing.com/';void'_MmVERSION_'
+			// javascript:var%20u='user',p='password',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')%5B0%5D,r=d.getElementById('realm'),f=d.forms%5B0%5D;if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else%20if(h.match(/(mmind%5C.me%5C/joj(%5C/%7C%5C?)?.*%7Cmobilemind%5C..*?%5C/joj.*%7Cvisitornet(.*?)welcome%5C.cgi)$/))%7Br?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0%7Delse%20if(h.match(/(mmind%5C.me%5C/vnet%7C%5Cw%7B3%7D-vn-%5Cd%5Cd.b%7Cmobilem.*?%5C/VNet%5C/)/))%7Bd.getElementsByName('uid')%5B0%5D.value=u;d.getElementById('pwd').value=p;d.getElementsByName('agreeToTerms')%5B0%5D.checked=1;f.submit()%7Delse%20location.href='https://visitornet.boeing.com';void'_MmVERSION_'
 			function pastelet(u,p) {
 				u = u.match(/^\s*(\S*?)\s*$/)[1]; // strip leading/trailing spaces to help w/iOS 5 shortcut text
-				return !(u + p) ? '' : "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/^https:\\/\\/visitornet(.*?)p=sn-postauth-show/)){b?b.click():s.click();f.submit()}else if(h.match(/^https?:\\/\\/(mmind\\.me\\/joj(\\/|\\?)?.*|mobilemind\\..*?\\/joj.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else if(h.match(/^https?:\\/\\/(mmind\\.me\\/vnet|\\w{3}-vn-\\d\\d\.b|mobilem.*?\\/VNet\\/)/)){d.getElementsByName('uid')[0].value=u;d.getElementById('pwd').value=p;d.getElementsByName('agreeToTerms')[0].checked=1;f.submit()}else location.href='https://visitornet.boeing.com/';void'_MmVERSION_'";
+				return !(u + p) ? '' : "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/((mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else if(h.match(/(mmind\\.me\\/vnet|\\w{3}-vn-\\d\\d\.b|mobilem.*?\\/VNet\\/)/)){d.getElementsByName('uid')[0].value=u;d.getElementById('pwd').value=p;d.getElementsByName('agreeToTerms')[0].checked=1;f.submit()}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'";
 			}
 		</script>
 	</head>
@@ -211,13 +210,13 @@
 			<h1>jump On Juniper v_MmVERSION_</h1>
 			<div class="grp">
 				<p>These steps make a bookmark that will fill-in the VisitorNet Username &amp; password and submit the login. See <a href="#notes" title="Notes &amp; Issues">Notes &amp; Troubleshooting</a> for more information.</p>
-				<p><b>Bookmark use</b>: Quick version- Follow instruction below. Then connect WiFi to VisitorNet, then tap the bookmark repeatedly until you are logged in. You'll need to wait
+				<p><b>Bookmark use</b>: Quick version- Follow instructions below. Then connect WiFi to VisitorNet. Open Mobile Safari, then tap the bookmark repeatedly until logged in. Wait
 					between taps to allow the initial sign-in and/or &ldquo;accept/decline&rdquo; page to load.</p>
 			</div>
 
 			<h1>Step 1: Enter the text</h1>
 			<div class="grp">
-				<p>Enter the Username to paste and password. Then tap <b>Make jOJ Bookmark</b> to reload this page for Step 2.</p>
+				<p>Enter the Username to paste and a Password. Then tap <b>Make jOJ Bookmark</b> to reload this page for Step 2.</p>
 				<form id="pltMkr" method="GET" action= "." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value)); return false">
 					<label for="username">Username:&nbsp;
 						<input type="text" id="username" name="uid" tabindex="1" class="pStr" size="9" maxlength="8" placeholder="username" autocorrect="off" autocomplete="off" autocapitalize="off" required autofocus>
@@ -264,7 +263,7 @@
 				<div class="fig"><img src="img/bkedit1i.png" alt="edit bookmark start" width="264" height="124"></div>
 				<p>Finally, tap and hold in the now empty <em>Address</em> field and select <b>Paste</b>. The updated book mark appears. The end of it looks like:</p>
 				<p>&nbsp;&hellip; <code>;void('v_MmVERSION_')</code></p>
-				<p>I wouldn't recommend doing this because the bookmark code is so long, but if you were to scroll to the start you'd see the bookmark begins:</p>
+				<p>I wouldn't recommend doing so because the bookmark code is so long, but if you scroll to the start you'll see the bookmark begins:</p>
 				<p>&nbsp;<code>javascript:var%20u=</code> &hellip;</p>
 			</div>
 
