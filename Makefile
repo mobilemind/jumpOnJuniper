@@ -42,7 +42,7 @@ default: $(HTMLFILE) img
 img:
 	@[[ -d img ]] || mkdir img
 	@printf "\nFetch from $$MYSERVER and update $@\n"
-	@rsync -ptuq "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img/*.*" img
+	@rsync -ptuq --exclude=*icon*.png "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img/*.*" img
 
 .PHONY: deploy
 deploy: default
