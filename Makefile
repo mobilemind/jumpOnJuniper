@@ -19,11 +19,11 @@ SRCURL := https://raw.github.com/mobilemind/$(GITHUBPROJ)/master/src/
 BUILDDATE := $(shell date)
 VERSION = $(shell curl -sf $(SRCURL)/VERSION.txt | head -n 1)g
 GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
-HTMLCOMPRESSORPATH := $(shell [[ 'cygwin' == $$OSTYPE ]] && echo "`cygpath -w $(COMMONLIB)`\\" || echo "$(COMMONLIB)/")
-HTMLCOMPRESSOR := java -jar '$(HTMLCOMPRESSORPATH)htmlcompressor-1.5.3.jar'
-COMPRESSOPTIONS := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --remove-surrounding-spaces min --compress-js --compress-css
+HTMLCOMPRESSORPATH := $(shell [ 'cygwin' = $$OSTYPE ] && echo "`cygpath -w $(COMMONLIB)`\\" || echo "$(COMMONLIB)/")
+HTMLCOMPRESSOR := $(shell [ 'darwin12' = $$OSTYPE ] && echo 'htmlcompressor' || echo "java -jar '$(HTMLCOMPRESSORPATH)htmlcompressor-1.5.3.jar'")
+COMPRESSOPTIONS := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --remove-surrounding-spaces min --remove-input-attr --remove-script-attr --remove-http-protocol --simple-bool-attr --simple-doctype --compress-js --compress-css --nomunge
 TIDY := $(shell hash tidy-html5 2>/dev/null && echo 'tidy-html5' || (hash tidy 2>/dev/null && echo 'tidy' || exit 1))
-JSL := $(shell hash jsl 2>/dev/null && echo 'jsl' || exit 1)
+JSL := $(shell type -p jsl || exit 1)
 GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
 REPLACETOKENS = perl -pi -e 's/_MmVERSION_/$(VERSION)/g;s/_MmBUILDDATE_/$(BUILDDATE)/g' $@
 
@@ -35,19 +35,19 @@ default: $(HTMLFILE) img
 	@printf "\nFetch from github and update $@\n"
 	@curl -# -O $(SRCURL)/$@
 	@$(REPLACETOKENS)
-	@$(TIDY) -eq $@; [[ $$? -lt 2 ]] && true
+	@$(TIDY) -eq $@; [ $$? -lt 2 ] && true
 	@$(JSL) -nologo -nofilelisting -nosummary -process $@
 	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) -o $@.tmp $@ && mv -f $@.tmp $@
 
 img:
-	@[[ -d img ]] || mkdir img
+	@[ -d img ] || mkdir img
 	@printf "\nFetch from $$MYSERVER and update $@\n"
-	@rsync -ptuq --exclude=*icon*.png "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img/*.*" img
+	@rsync -ptuq --exclude=*icon*.png --exclude=vnet*.* --exclude=pastelet.* "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img/*.*" img
 
 .PHONY: deploy
 deploy: default
 	@printf "make: \tDeploy: Checking  git diff --name-only as trigger to update gh-pages\n"
-	@[[ -n "$(shell git diff --name-only)" ]] && ( \
+	@[ -n "$(shell git diff --name-only)" ] && ( \
 		git commit -a -m 'revised HTML to v$(VERSION)' && git push origin gh-pages; \
 		( git tag $(VERSION) && git push --tags origin gh-pages ) && \
 			$(GRECHO) "\nmake: \tDeploy: Done. Updated gh-pages to v$(VERSION). To return to master do:\
