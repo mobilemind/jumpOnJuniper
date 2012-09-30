@@ -16,6 +16,7 @@ VPATH := $(WEBDIR):$(BUILDDIR)
 # files
 PROJECTS = $(PROJ)
 COMPRESSEDFILES = $(PROJ).html.gz
+
 VERSIONTXT := $(SRCDIR)/VERSION.txt
 
 # macros/utils
@@ -25,14 +26,14 @@ MMVERSION := _MmVERSION_
 VERSION := $(shell head -1 $(VERSIONTXT))
 HTMLCOMPRESSORJAR := htmlcompressor-1.5.3.jar
 HTMLCOMPRESSORURL := https://htmlcompressor.googlecode.com/files/$(HTMLCOMPRESSORJAR)
-HTMLCOMPRESSORPATH := $(shell [[ 'cygwin' == $$OSTYPE ]] && echo "`cygpath -w $(COMMONLIB)`\\" || echo "$(COMMONLIB)/")
-HTMLCOMPRESSOR := java -jar '$(HTMLCOMPRESSORPATH)$(HTMLCOMPRESSORJAR)'
-COMPRESSOPTIONS := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --remove-surrounding-spaces min --compress-js --compress-css
+HTMLCOMPRESSORPATH := $(shell [ 'cygwin' != $$OSTYPE ] && echo "$(COMMONLIB)/" || echo "`cygpath -w $(COMMONLIB)`\\")
+HTMLCOMPRESSOR := $(shell [ 'darwin12' = $$OSTYPE ] && echo 'htmlcompressor' || echo "java -jar '$(HTMLCOMPRESSORPATH)$(HTMLCOMPRESSORJAR)'")
+COMPRESSOPTIONS := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --remove-surrounding-spaces min --remove-input-attr --remove-script-attr --remove-http-protocol --simple-bool-attr --simple-doctype --compress-js --compress-css --nomunge
 YUICOMPRESSOR := yuicompressor-2.4.7
 YUICOMPRESSORURL := http://yui.zenfs.com/releases/yuicompressor/$(YUICOMPRESSOR).zip
 TIDY := $(shell hash tidy-html5 2>/dev/null && echo 'tidy-html5' || (hash tidy 2>/dev/null && echo 'tidy' || exit 1))
 JSL := $(shell hash jsl 2>/dev/null && echo 'jsl' || exit 1)
-GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
+GRECHO := $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
 REPLACETOKENS = perl -pi -e 's/$(MMVERSION)/$(VERSION)/g;s/$(MMBUILDDATE)/$(BUILDDATE)/g;' $@
 
 
@@ -50,15 +51,15 @@ $(PROJ): $(COMPRESSEDFILES) | $(WEBDIR)
 	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) $(BUILDDIR)/$^ | gzip -f9 > $(BUILDDIR)/$@
 
 $(COMMONLIB)/$(YUICOMPRESSOR.jar):
-	@[[ -f "$(COMMONLIB)/$(YUICOMPRESSOR).jar" ]] || ( \
+	@[ -f "$(COMMONLIB)/$(YUICOMPRESSOR).jar" ] || ( \
 		printf "\n\tFetching $(YUICOMPRESSOR)...\n"; \
 		curl -# --create-dirs -o "$(COMMONLIB)/$(YUICOMPRESSOR).zip" "$(YUICOMPRESSORURL)"; \
 		unzip -d "$(COMMONLIB)" "$(COMMONLIB)/$(YUICOMPRESSOR).zip" "$(YUICOMPRESSOR)/build/$(YUICOMPRESSOR).jar"; \
 		mv -fv "$(COMMONLIB)/$(YUICOMPRESSOR)/build/$(YUICOMPRESSOR).jar" "$(COMMONLIB)"; \
-		rm -rf "$(COMMONLIB)/$(YUICOMPRESSOR)" )
+		rm -Rf "$(COMMONLIB)/$(YUICOMPRESSOR)" )
 
 $(COMMONLIB)/$(HTMLCOMPRESSORJAR):
-	@[[ -f "$(COMMONLIB)/$(HTMLCOMPRESSORJAR)" ]] || ( \
+	@[ -f "$(COMMONLIB)/$(HTMLCOMPRESSORJAR)" ] || ( \
 		printf "\n\tFetching $(HTMLCOMPRESSORJAR)...\n"; \
 		curl -# --create-dirs -o "$(COMMONLIB)/$(HTMLCOMPRESSORJAR)" "$(HTMLCOMPRESSORURL)" )
 
@@ -68,7 +69,7 @@ $(COMMONLIB)/$(HTMLCOMPRESSORJAR):
 	@cp -fp $(SRCDIR)/$@ $(BUILDDIR)
 	@(	cd $(BUILDDIR); \
 		$(REPLACETOKENS); \
-		$(TIDY) -eq $@; [[ $$? -lt 2 ]] && true; \
+		$(TIDY) -eq $@; [ $$? -lt 2 ] && true; \
 		$(JSL) -nologo -nofilelisting -nosummary -process $@ )
 
 # deploy
@@ -84,11 +85,11 @@ deploy: default
 
 .PHONY: $(BUILDDIR)
 $(BUILDDIR):
-	@[[ -d $(BUILDDIR) ]] || mkdir -m 744 $(BUILDDIR)
+	@[ -d $(BUILDDIR) ] || mkdir -m 744 $(BUILDDIR)
 
 .PHONY: $(WEBDIR)
 $(WEBDIR):
-	@[[ -d $(WEBDIR) ]] || mkdir -m 744 $(WEBDIR)
+	@[ -d $(WEBDIR) ] || mkdir -m 744 $(WEBDIR)
 
 .PHONY: $(IMGDIR)
 $(IMGDIR): | $(BUILDDIR)
@@ -97,4 +98,4 @@ $(IMGDIR): | $(BUILDDIR)
 .PHONY: clean
 clean:
 	@echo 'make $(PROJ): Cleaning build directory & web directory'
-	@rm -rf $(BUILDDIR)/* $(WEBDIR)/*
+	@rm -Rf $(BUILDDIR)/* $(WEBDIR)/*
