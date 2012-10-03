@@ -38,7 +38,8 @@ REPLACETOKENS = perl -pi -e 's/$(MMVERSION)/$(VERSION)/g;s/$(MMBUILDDATE)/$(BUIL
 
 
 default: $(PROJECTS) | $(BUILDDIR) $(WEBDIR) $(IMGDIR)
-	@(chmod -R 755 $(WEBDIR); $(GRECHO) 'make $(PROJ):' "Done. See $(PROJ)/$(WEBDIR) directory for v$(VERSION).\n" )
+	@chmod -R 755 $(WEBDIR)
+	@$(GRECHO) 'make $(PROJ):' "Done. See $(PROJ)/$(WEBDIR) directory for v$(VERSION).\n"
 
 $(PROJ): $(COMPRESSEDFILES) | $(WEBDIR)
 	@printf "\nCopying built files...\n"
@@ -69,7 +70,7 @@ $(COMMONLIB)/$(HTMLCOMPRESSORJAR):
 	@cp -fp $(SRCDIR)/$@ $(BUILDDIR)
 	@(	cd $(BUILDDIR); \
 		$(REPLACETOKENS); \
-		$(TIDY) -eq $@; [ $$? -lt 2 ] && true; \
+		$(TIDY) -eq $@ || [ $$? -lt 2 ]; \
 		$(JSL) -nologo -nofilelisting -nosummary -process $@ )
 
 # deploy
