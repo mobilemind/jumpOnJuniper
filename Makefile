@@ -8,7 +8,7 @@ PROJ = joj
 # directories/paths
 SRCDIR := src
 BUILDDIR := build
-COMMONLIB := $$HOME/common/lib
+COMMONLIB = ~/common/lib
 WEBDIR := web
 IMGDIR := img
 VPATH := $(WEBDIR):$(BUILDDIR)
@@ -52,34 +52,34 @@ $(PROJ): $(COMPRESSEDFILES) | $(WEBDIR)
 	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) $(BUILDDIR)/$^ | gzip -f9 > $(BUILDDIR)/$@
 
 $(COMMONLIB)/$(YUICOMPRESSOR.jar):
-	@[ -f "$(COMMONLIB)/$(YUICOMPRESSOR).jar" ] || ( \
-		printf "\n\tFetching $(YUICOMPRESSOR)...\n"; \
-		curl -# --create-dirs -o "$(COMMONLIB)/$(YUICOMPRESSOR).zip" "$(YUICOMPRESSORURL)"; \
-		unzip -d "$(COMMONLIB)" "$(COMMONLIB)/$(YUICOMPRESSOR).zip" "$(YUICOMPRESSOR)/build/$(YUICOMPRESSOR).jar"; \
-		mv -fv "$(COMMONLIB)/$(YUICOMPRESSOR)/build/$(YUICOMPRESSOR).jar" "$(COMMONLIB)"; \
-		rm -Rf "$(COMMONLIB)/$(YUICOMPRESSOR)" )
+ifeq ($(wildcard "$(COMMONLIB)/$(YUICOMPRESSOR).jar"),)
+	@printf "\n\tFetching $(YUICOMPRESSOR)...\n"
+	@curl -# --create-dirs -o "$(COMMONLIB)/$(YUICOMPRESSOR).zip" "$(YUICOMPRESSORURL)"
+	@unzip -d "$(COMMONLIB)" "$(COMMONLIB)/$(YUICOMPRESSOR).zip" "$(YUICOMPRESSOR)/build/$(YUICOMPRESSOR).jar"
+	@mv -fv "$(COMMONLIB)/$(YUICOMPRESSOR)/build/$(YUICOMPRESSOR).jar" "$(COMMONLIB)"
+	@rm -Rf "$(COMMONLIB)/$(YUICOMPRESSOR)"
+endif
 
 $(COMMONLIB)/$(HTMLCOMPRESSORJAR):
-	@[ -f "$(COMMONLIB)/$(HTMLCOMPRESSORJAR)" ] || ( \
-		printf "\n\tFetching $(HTMLCOMPRESSORJAR)...\n"; \
-		curl -# --create-dirs -o "$(COMMONLIB)/$(HTMLCOMPRESSORJAR)" "$(HTMLCOMPRESSORURL)" )
+ifeq ($(wildcard $(COMMONLIB)/$(HTMLCOMPRESSORJAR)),)
+	@printf "\n\tFetching $(HTMLCOMPRESSORJAR)...\n"
+	@curl -# --create-dirs -o "$(COMMONLIB)/$(HTMLCOMPRESSORJAR)" "$(HTMLCOMPRESSORURL)"
+endif
 
 # copy HTML to $(BUILDDIR) and replace tokens, then check with tidy & jsl (JavaScript Lint)
 %.html: $(SRCDIR)/%.html $(VERSIONTXT) | $(BUILDDIR)
 	@printf "\n$@: validate with $(TIDY) and $(JSL)\n"
 	@cp -fp $(SRCDIR)/$@ $(BUILDDIR)
-	@(	cd $(BUILDDIR); \
-		$(REPLACETOKENS); \
-		$(TIDY) -eq $@ || [ $$? -lt 2 ]; \
-		$(JSL) -nologo -nofilelisting -nosummary -process $@ )
+	@cd $(BUILDDIR) && $(REPLACETOKENS)
+	@$(TIDY) -eq $(BUILDDIR)/$@ || [ $$? -lt 2 ]
+	@$(JSL) -nologo -nofilelisting -nosummary -process $(BUILDDIR)/$@
 
 # deploy
 .PHONY: deploy
 deploy: default
 	@echo "Deploy to: $$MYSERVER/me"
-	@(	cd $(WEBDIR); \
-		rsync -ptuv --executability $(PROJ) "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me"; \
-		rsync -ptu --exclude=img/*icon*.png img/*.* "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img" )
+	@rsync -ptuv --executability $(WEBDIR)/$(PROJ) "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me"
+	@rsync -ptuv --exclude=*icon*.png $(WEBDIR)/img/*.* "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img"
 	@$(GRECHO) '\nmake $(PROJ):' "Done. Deployed v$(VERSION) $(PROJECT) to $$MYSERVER/me \
 		\n\tTo update gh-pages on github.com do:\
 		\ngit checkout gh-pages && make clean && make deploy && git checkout master\n"
