@@ -7,7 +7,7 @@ PROJ := joj
 GITHUBPROJ := jumpOnJuniper
 
 # directories/paths
-COMMONLIB := $$HOME/common/lib
+COMMONLIB := ~/common/lib
 
 # files
 HTMLFILE := $(PROJ).html
@@ -35,7 +35,7 @@ default: $(HTMLFILE) img
 	@printf "\nFetch from github and update $@\n"
 	@curl -# -O $(SRCURL)/$@
 	@$(REPLACETOKENS)
-	@$(TIDY) -eq $@; [ $$? -lt 2 ] && true
+	@$(TIDY) -eq $@ || [ $$? -lt 2 ]
 	@$(JSL) -nologo -nofilelisting -nosummary -process $@
 	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) -o $@.tmp $@ && mv -f $@.tmp $@
 
@@ -47,13 +47,14 @@ img:
 .PHONY: deploy
 deploy: default
 	@printf "make: \tDeploy: Checking  git diff --name-only as trigger to update gh-pages\n"
-	@[ -n "$(shell git diff --name-only)" ] && ( \
-		git commit -a -m 'revised HTML to v$(VERSION)' && git push origin gh-pages; \
-		( git tag $(VERSION) && git push --tags origin gh-pages ) && \
-			$(GRECHO) "\nmake: \tDeploy: Done. Updated gh-pages to v$(VERSION). To return to master do:\
-				\n\tgit checkout master && make clean\n\n" \
-			|| $(GRECHO) "\nmake: \tDeploy: Error with git push --tags origin gh-pages. Verify gh-pages is v$(VERSION)." \
-	) || $(GRECHO) "\nmake: \tDeploy: Done. No changed files.\n\n"
+ifeq ($(shell git diff --name-only),)
+	@$(GRECHO) "\nmake: \tDeploy: Done. No changed files.\n\n"
+else
+	@git commit -a -m 'revised HTML to v$(VERSION)' && git push origin gh-pages;
+	@git tag $(VERSION) && git push --tags origin gh-pages && \
+		$(GRECHO) "\nmake: \tDeploy: Done. Updated gh-pages to v$(VERSION). To return to master do:\n\tgit checkout master && make clean\n\n" \
+		|| $(GRECHO) "\nmake: \tDeploy: Error with git push --tags origin gh-pages. Verify gh-pages is v$(VERSION)."
+endif
 
 .PHONY: clean
 clean:
