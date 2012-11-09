@@ -49,11 +49,13 @@ $(PROJ): $(COMPRESSEDFILES) | $(WEBDIR)
 
 # run through html compressor and into gzip
 %.html.gz: %.html | $(BUILDDIR)  $(COMMONLIB)/$(YUICOMPRESSOR.jar) $(COMMONLIB)/$(HTMLCOMPRESSORJAR)
-	@echo "Compressing $^..."
+	@echo "Compressing $^ ($$(stat -f%z $(BUILDDIR)/$^) bytes)..."
 	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) $(BUILDDIR)/$^ | gzip -f9 > $(BUILDDIR)/$@
+	@echo "$(BUILDDIR)/$@: $$(stat -f%z $(BUILDDIR)/$@) bytes"
+	@echo
 
 $(COMMONLIB)/$(YUICOMPRESSOR.jar):
-ifeq ($(wildcard "$(COMMONLIB)/$(YUICOMPRESSOR).jar"),)
+ifneq ($(wildcard "$(COMMONLIB)/$(YUICOMPRESSOR).jar"),)
 	@printf "\n\tFetching $(YUICOMPRESSOR)...\n"
 	@curl -# --create-dirs -o "$(COMMONLIB)/$(YUICOMPRESSOR).zip" "$(YUICOMPRESSORURL)"
 	@unzip -d "$(COMMONLIB)" "$(COMMONLIB)/$(YUICOMPRESSOR).zip" "$(YUICOMPRESSOR)/build/$(YUICOMPRESSOR).jar"
@@ -62,7 +64,7 @@ ifeq ($(wildcard "$(COMMONLIB)/$(YUICOMPRESSOR).jar"),)
 endif
 
 $(COMMONLIB)/$(HTMLCOMPRESSORJAR):
-ifeq ($(wildcard $(COMMONLIB)/$(HTMLCOMPRESSORJAR)),)
+ifneq ($(wildcard $(COMMONLIB)/$(HTMLCOMPRESSORJAR)),)
 	@printf "\n\tFetching $(HTMLCOMPRESSORJAR)...\n"
 	@curl -# --create-dirs -o "$(COMMONLIB)/$(HTMLCOMPRESSORJAR)" "$(HTMLCOMPRESSORURL)"
 endif
@@ -74,6 +76,7 @@ endif
 	@cd $(BUILDDIR) && $(REPLACETOKENS)
 	@$(TIDY) -eq $(BUILDDIR)/$@ || [ $$? -lt 2 ]
 	@$(JSL) -nologo -nofilelisting -nosummary -process $(BUILDDIR)/$@
+	@echo
 
 # deploy
 .PHONY: deploy
