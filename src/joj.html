@@ -151,11 +151,11 @@
 						console.log('error: ' + e);
 						alert("Unable to decode pastelet.\r\nForm will be reset.");
 						location.href = location.protocol + '//' + location.host + location.port + location.pathname;
-						return;
 					}
 				}
 				// hide address bar
 				else window.scrollTo(0,1);
+				return;
 			}, true);
 			// reload page with new bookmarklet appended
 			function loadpg(p) {
@@ -278,7 +278,7 @@
 			<h1>Using jumpOnJuniper</h1>
 			<div class="grp">
 				<p>Connect to a VisitorNet WiFI access point. Tap the <em>jOJ</em> bookmark once to go to VisitorNet sign-in page,
-					then tap it <em>again</em> to &ldquo;paste&rdquo; the stored username and password. 
+					then tap it <em>again</em> to &ldquo;paste&rdquo; the stored username and password.
 					Finally, after the screen updates, tap the bookmark a third time to automagically scroll down and accept the Terms.</p>
 				<p><b>PRO TIP</b></p>
 				<p>Use the <a href="img/Always_Show_Bookmarks_bar.png">Settings app &mdash; Safari</a> settings to set <b>
@@ -298,7 +298,7 @@
 				</ol>
 				<p>Troubleshooting</p>
 				<ul>
-					<li>Ensure your bookmark is the latest version. Look at the last view characters of the bookmark &ldquo;address&rdquo; for the version number found between parenthesis. 
+					<li>Ensure your bookmark is the latest version. Look at the last view characters of the bookmark &ldquo;address&rdquo; for the version number found between parenthesis.
 					For example, &hellip;<b><code>void'v_MmVERSION_'</code></b> would indicate you bookmark is current against the title of this page, <i>jumpOnJuniper <b>v_MmVERSION_</b></i>.</li>
 					<li>Force a refresh of this page by holding down the shift key and clicking on the browser refresh button. If the title of the page changes to a new number, then your browser had cached
 					an older version of this page. Make a new bookmark or update the old one using the new, reloaded page.</li>
