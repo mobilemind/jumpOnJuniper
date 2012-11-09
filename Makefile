@@ -7,7 +7,7 @@ PROJ := joj
 GITHUBPROJ := jumpOnJuniper
 
 # directories/paths
-COMMONLIB := ~/common/lib
+COMMONLIB := $$HOME/common/lib
 
 # files
 HTMLFILE := $(PROJ).html
@@ -19,9 +19,11 @@ SRCURL := https://raw.github.com/mobilemind/$(GITHUBPROJ)/master/src/
 BUILDDATE := $(shell date)
 VERSION = $(shell curl -sf $(SRCURL)/VERSION.txt | head -n 1)g
 GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
+HTMLCOMPRESSORJAR := htmlcompressor-1.5.3.jar
 HTMLCOMPRESSORPATH := $(shell [ 'cygwin' = $$OSTYPE ] && echo "`cygpath -w $(COMMONLIB)`\\" || echo "$(COMMONLIB)/")
-HTMLCOMPRESSOR := $(shell [ 'darwin12' = $$OSTYPE ] && echo 'htmlcompressor' || echo "java -jar '$(HTMLCOMPRESSORPATH)htmlcompressor-1.5.3.jar'")
-COMPRESSOPTIONS := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --remove-surrounding-spaces min --remove-input-attr --remove-script-attr --remove-http-protocol --simple-bool-attr --simple-doctype --compress-js --compress-css --nomunge
+# HTMLCOMPRESSOR := $(shell [ 'darwin12' = $$OSTYPE ] && echo 'htmlcompressor' || echo "java -jar '$(HTMLCOMPRESSORPATH)$(HTMLCOMPRESSORJAR)'")
+HTMLCOMPRESSOR := java -jar '$(HTMLCOMPRESSORPATH)$(HTMLCOMPRESSORJAR)'
+COMPRESSOPTIONS := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --remove-surrounding-spaces all --remove-input-attr --remove-form-attr --remove-script-attr --remove-http-protocol --simple-doctype --compress-js --compress-css --nomunge
 TIDY := $(shell hash tidy-html5 2>/dev/null && echo 'tidy-html5' || (hash tidy 2>/dev/null && echo 'tidy' || exit 1))
 JSL := $(shell type -p jsl || exit 1)
 GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
