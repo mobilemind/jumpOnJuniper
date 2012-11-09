@@ -39,7 +39,9 @@ default: $(HTMLFILE) img
 	@$(REPLACETOKENS)
 	@$(TIDY) -eq $@ || [ $$? -lt 2 ]
 	@$(JSL) -nologo -nofilelisting -nosummary -process $@
+	@echo "$@: $$(stat -f%z $@) bytes"
 	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) -o $@.tmp $@ && mv -f $@.tmp $@
+	@echo "$@: $$(stat -f%z $@) bytes optimized"
 
 img:
 	@[ -d img ] || mkdir img
