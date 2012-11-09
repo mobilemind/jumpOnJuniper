@@ -26,8 +26,7 @@ MMVERSION := _MmVERSION_
 VERSION := $(shell head -1 $(VERSIONTXT))
 HTMLCOMPRESSORJAR := htmlcompressor-1.5.3.jar
 HTMLCOMPRESSORURL := https://htmlcompressor.googlecode.com/files/$(HTMLCOMPRESSORJAR)
-HTMLCOMPRESSORPATH := $(shell [ 'cygwin' != $$OSTYPE ] && echo "$(COMMONLIB)/" || echo "`cygpath -w $(COMMONLIB)`\\")
-# HTMLCOMPRESSOR := $(shell [ 'darwin12' = $$OSTYPE ] && echo 'htmlcompressor' || echo "java -jar '$(HTMLCOMPRESSORPATH)$(HTMLCOMPRESSORJAR)'")
+HTMLCOMPRESSORPATH := $(shell [ 'cygwin' = $$OSTYPE ] && echo "`cygpath -w $(COMMONLIB)`\\" || echo "$(COMMONLIB)/")
 HTMLCOMPRESSOR := java -jar '$(HTMLCOMPRESSORPATH)$(HTMLCOMPRESSORJAR)'
 COMPRESSOPTIONS := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --remove-surrounding-spaces all --remove-input-attr --remove-form-attr --remove-script-attr --remove-http-protocol --simple-doctype --compress-js --compress-css --nomunge
 YUICOMPRESSOR := yuicompressor-2.4.7
@@ -36,6 +35,7 @@ TIDY := $(shell hash tidy-html5 2>/dev/null && echo 'tidy-html5' || (hash tidy 2
 JSL := $(shell hash jsl 2>/dev/null && echo 'jsl' || exit 1)
 GRECHO := $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
 REPLACETOKENS = perl -pi -e 's/$(MMVERSION)/$(VERSION)/g;s/$(MMBUILDDATE)/$(BUILDDATE)/g;' $@
+STATFMT := $(shell [ 'cygwin' = $$OSTYPE ] && echo '--format=%s' || echo '-f%z' )
 
 
 default: $(PROJECTS) | $(BUILDDIR) $(WEBDIR) $(IMGDIR)
@@ -49,9 +49,9 @@ $(PROJ): $(COMPRESSEDFILES) | $(WEBDIR)
 
 # run through html compressor and into gzip
 %.html.gz: %.html | $(BUILDDIR)  $(COMMONLIB)/$(YUICOMPRESSOR.jar) $(COMMONLIB)/$(HTMLCOMPRESSORJAR)
-	@echo "Compressing $^ ($$(stat -f%z $(BUILDDIR)/$^) bytes)..."
+	@echo "Compressing $^ ($$(stat $(STATFMT) $(BUILDDIR)/$^) bytes)..."
 	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) $(BUILDDIR)/$^ | gzip -f9 > $(BUILDDIR)/$@
-	@echo "$(BUILDDIR)/$@: $$(stat -f%z $(BUILDDIR)/$@) bytes"
+	@echo "$(BUILDDIR)/$@: $$(stat $(STATFMT) $(BUILDDIR)/$@) bytes"
 	@echo
 
 $(COMMONLIB)/$(YUICOMPRESSOR.jar):
