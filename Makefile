@@ -21,13 +21,13 @@ VERSION = $(shell curl -sf $(SRCURL)/VERSION.txt | head -n 1)g
 GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
 HTMLCOMPRESSORJAR := htmlcompressor-1.5.3.jar
 HTMLCOMPRESSORPATH := $(shell [ 'cygwin' = $$OSTYPE ] && echo "`cygpath -w $(COMMONLIB)`\\" || echo "$(COMMONLIB)/")
-# HTMLCOMPRESSOR := $(shell [ 'darwin12' = $$OSTYPE ] && echo 'htmlcompressor' || echo "java -jar '$(HTMLCOMPRESSORPATH)$(HTMLCOMPRESSORJAR)'")
 HTMLCOMPRESSOR := java -jar '$(HTMLCOMPRESSORPATH)$(HTMLCOMPRESSORJAR)'
 COMPRESSOPTIONS := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --remove-surrounding-spaces all --remove-input-attr --remove-form-attr --remove-script-attr --remove-http-protocol --simple-doctype --compress-js --compress-css --nomunge
 TIDY := $(shell hash tidy-html5 2>/dev/null && echo 'tidy-html5' || (hash tidy 2>/dev/null && echo 'tidy' || exit 1))
 JSL := $(shell type -p jsl || exit 1)
 GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
 REPLACETOKENS = perl -pi -e 's/_MmVERSION_/$(VERSION)/g;s/_MmBUILDDATE_/$(BUILDDATE)/g' $@
+STATFMT := $(shell [ 'cygwin' = $$OSTYPE ] && echo '--format=%s' || echo '-f%z' )
 
 
 default: $(HTMLFILE) img
@@ -39,9 +39,9 @@ default: $(HTMLFILE) img
 	@$(REPLACETOKENS)
 	@$(TIDY) -eq $@ || [ $$? -lt 2 ]
 	@$(JSL) -nologo -nofilelisting -nosummary -process $@
-	@echo "$@: $$(stat -f%z $@) bytes"
+	@echo "$@: $$(stat $(STATFMT) $@) bytes"
 	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) -o $@.tmp $@ && mv -f $@.tmp $@
-	@echo "$@: $$(stat -f%z $@) bytes optimized"
+	@echo "$@: $$(stat $(STATFMT) $@) bytes optimized"
 
 img:
 	@[ -d img ] || mkdir img
