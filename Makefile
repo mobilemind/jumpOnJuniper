@@ -8,7 +8,7 @@ PROJ = joj
 # directories/paths
 SRCDIR := src
 BUILDDIR := build
-COMMONLIB = ~/common/lib
+COMMONLIB = $$HOME/common/lib
 WEBDIR := web
 IMGDIR := img
 VPATH := $(WEBDIR):$(BUILDDIR)
@@ -27,8 +27,9 @@ VERSION := $(shell head -1 $(VERSIONTXT))
 HTMLCOMPRESSORJAR := htmlcompressor-1.5.3.jar
 HTMLCOMPRESSORURL := https://htmlcompressor.googlecode.com/files/$(HTMLCOMPRESSORJAR)
 HTMLCOMPRESSORPATH := $(shell [ 'cygwin' != $$OSTYPE ] && echo "$(COMMONLIB)/" || echo "`cygpath -w $(COMMONLIB)`\\")
-HTMLCOMPRESSOR := $(shell [ 'darwin12' = $$OSTYPE ] && echo 'htmlcompressor' || echo "java -jar '$(HTMLCOMPRESSORPATH)$(HTMLCOMPRESSORJAR)'")
-COMPRESSOPTIONS := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --remove-surrounding-spaces min --remove-input-attr --remove-script-attr --remove-http-protocol --simple-bool-attr --simple-doctype --compress-js --compress-css --nomunge
+# HTMLCOMPRESSOR := $(shell [ 'darwin12' = $$OSTYPE ] && echo 'htmlcompressor' || echo "java -jar '$(HTMLCOMPRESSORPATH)$(HTMLCOMPRESSORJAR)'")
+HTMLCOMPRESSOR := java -jar '$(HTMLCOMPRESSORPATH)$(HTMLCOMPRESSORJAR)'
+COMPRESSOPTIONS := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --remove-surrounding-spaces all --remove-input-attr --remove-form-attr --remove-script-attr --remove-http-protocol --simple-doctype --compress-js --compress-css --nomunge
 YUICOMPRESSOR := yuicompressor-2.4.7
 YUICOMPRESSORURL := http://yui.zenfs.com/releases/yuicompressor/$(YUICOMPRESSOR).zip
 TIDY := $(shell hash tidy-html5 2>/dev/null && echo 'tidy-html5' || (hash tidy 2>/dev/null && echo 'tidy' || exit 1))
@@ -81,8 +82,7 @@ deploy: default
 	@rsync -ptuv --executability $(WEBDIR)/$(PROJ) "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me"
 	@rsync -ptuv --exclude=*icon*.png $(WEBDIR)/img/*.* "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img"
 	@$(GRECHO) '\nmake $(PROJ):' "Done. Deployed v$(VERSION) $(PROJECT) to $$MYSERVER/me \
-		\n\tTo update gh-pages on github.com do:\
-		\ngit checkout gh-pages && make clean && make deploy && git checkout master\n"
+		\n\tTo update gh-pages on github.com do:\ngit checkout gh-pages && make clean && make deploy && git checkout master\n"
 
 .PHONY: $(BUILDDIR)
 $(BUILDDIR):
