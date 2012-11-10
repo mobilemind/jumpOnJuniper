@@ -27,7 +27,7 @@ TIDY := $(shell hash tidy-html5 2>/dev/null && echo 'tidy-html5' || (hash tidy 2
 JSL := $(shell type -p jsl || exit 1)
 GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
 REPLACETOKENS = perl -pi -e 's/_MmVERSION_/$(VERSION)/g;s/_MmBUILDDATE_/$(BUILDDATE)/g' $@
-STATFMT := $(shell [ 'cygwin' = $$OSTYPE ] && echo '--format=%s' || echo '-f%z' )
+STATFMT := $(shell [ 'cygwin' = $$OSTYPE ] && echo '-c %s' || echo '-f%z' )
 
 
 default: $(HTMLFILE) img
