@@ -35,7 +35,7 @@ TIDY := $(shell hash tidy-html5 2>/dev/null && echo 'tidy-html5' || (hash tidy 2
 JSL := $(shell hash jsl 2>/dev/null && echo 'jsl' || exit 1)
 GRECHO := $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
 REPLACETOKENS = perl -pi -e 's/$(MMVERSION)/$(VERSION)/g;s/$(MMBUILDDATE)/$(BUILDDATE)/g;' $@
-STATFMT := $(shell [ 'cygwin' = $$OSTYPE ] && echo '--format=%s' || echo '-f%z' )
+STATFMT := $(shell [ 'cygwin' = $$OSTYPE ] && echo '-c %s' || echo '-f%z' )
 
 
 default: $(PROJECTS) | $(BUILDDIR) $(WEBDIR) $(IMGDIR)
