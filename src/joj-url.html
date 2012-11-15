@@ -47,7 +47,6 @@
 			.bmrk {
 				vertical-align: top;
 				font-family: monospace;
-				-moz-appearance: textfield-multiline;
 				-webkit-appearance: textarea
 			}
 			.btn {
@@ -68,13 +67,11 @@
 				color: #fafffa;
 				border: solid 1px #2E8022;
 				background: #75AC6C;
-				background: -moz-linear-gradient(90deg, #4C9840, #90B880);
 				background: -webkit-gradient(linear, left top, left bottom, from(#90B880), to(#4C9840))
 			}
 			.btn:active {
 				color: #75AC6C;
 				background: #75AC6C;
-				background: -moz-linear-gradient(90deg, #91B98A, #4D9941);
 				background: -webkit-gradient(linear, left top, left bottom, from(#4D9941), to(#91B98A))
 			}
 			.vp {
@@ -86,12 +83,8 @@
 			generated URL first displays as http://mmind.me/joj?javascript:var%20d='...
 			Copyright (c) 2012 Tom King. All rights reserved.
 		-->
-
-		<!-- onLoad handler + function to create bookmarklet string -->
 		<script type="text/javascript">
-			// listener to dynamically position page for initial or return-trip
-			window.addEventListener('load', function(){return window.scrollTo(0,1);}, true);
-			// reload page with new bookmarklet appended
+			// load bookmark link on page with new bookmarklet appended
 			function loadpg(p) {
 				if ('' !== p) {
 					var pal = document.getElementById('pal'), pl = document.getElementById('pl'), t = 'joj ' + document.getElementById('username').value;
@@ -112,7 +105,7 @@
 	<body>
 		<h1>jump On Juniper v_MmVERSION_</h1>
 		<div class="grp">
-			<p>Enter the Username to paste and a Password. Then &nbsp;<b>Make jOJ Bookmark</b>.</p>
+			<p>Enter Username and Password, then&nbsp;<b>Make jOJ Bookmark</b>.</p>
 			<form id="pltMkr" method="GET" action= "." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value)); return false">
 				<label for="username">Username:&nbsp;
 					<input type="text" id="username" name="uid" tabindex="1" class="pStr" size="9" maxlength="8" placeholder="username" autocorrect="off" autocomplete="off" autocapitalize="off" required autofocus>
@@ -123,7 +116,7 @@
 				<br><br>
 				<input type="submit" id="mkPltBtn" tabindex="3" value="Make jOJ Bookmark" class="btn">
 				&nbsp;&nbsp;&nbsp;
-				<input type="button" id="reset" value="Reset" onclick="location.href='//'+location.host+location.port+location.pathname">
+				<input type="button" id="reset" value="Reset" onclick="document.getElementById('username').value=document.getElementById('password').value=document.getElementById('bmrk').textContent='';">
 				<br><br>
 				<label id="yp" for="bmrk" class="vp">Bookmark Address:&nbsp;
 					<textarea id="bmrk" tabindex="4" cols="40" rows="5" class="bmrk" wrap="soft" spellcheck="false">No Bookmark yet. See Step 1 instructions.</textarea>
