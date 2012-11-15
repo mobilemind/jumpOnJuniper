@@ -140,7 +140,7 @@
 					catch (e) {
 						console.log('error: ' + e);
 						alert("Unable to decode pastelet.\r\nForm will be reset.");
-						location.href = location.protocol + '//' + location.host + location.port + location.pathname;
+						location.href = '//' + location.host + location.port + location.pathname;
 					}
 				}
 				// hide address bar
@@ -151,7 +151,7 @@
 			function loadpg(p) {
 				if ('' !== p) {
 					document.getElementById('bmrk').textContent = 'javascript:' + encodeURIComponent(p);
-					location.href = location.protocol + '//' + location.host + location.port + location.pathname + '?javascript:' + encodeURIComponent(p);
+					location.href = '//' + location.host + location.port + location.pathname + '?javascript:' + encodeURIComponent(p);
 				}
 			}
 
@@ -216,7 +216,7 @@
 				<br><br>
 				<input type="submit" id="mkPltBtn" tabindex="3" value="Make jOJ Bookmark" class="btn">
 				&nbsp;&nbsp;&nbsp;
-				<input type="button" id="reset" value="Reset" onclick="location.href=location.protocol+'//'+location.host+location.port+location.pathname">
+				<input type="button" id="reset" value="Reset" onclick="location.href='//'+location.host+location.port+location.pathname">
 				<br><br>
 				<label id="yp" for="bmrk" class="vp">Bookmark Address:&nbsp;
 					<textarea id="bmrk" tabindex="4" cols="40" rows="5" class="bmrk" wrap="soft" spellcheck="false">No Bookmark yet. See Step 1 instructions.</textarea>
