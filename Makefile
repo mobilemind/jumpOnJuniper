@@ -40,6 +40,7 @@ STATFMT := $(shell [ 'cygwin' = $$OSTYPE ] && echo '-c %s' || echo '-f%z' )
 
 default: $(PROJECTS) | $(BUILDDIR) $(WEBDIR) $(IMGDIR)
 	@chmod 755 $(WEBDIR)/$(PROJ)
+	@chmod 744 $(WEBDIR)/$(PROJ).url
 	@chmod -R 744 $(WEBDIR)/$(IMGDIR)
 	@$(GRECHO) 'make $(PROJ):' "Done. See $(PROJ)/$(WEBDIR) directory for v$(VERSION).\n"
 
@@ -91,7 +92,7 @@ endif
 .PHONY: deploy
 deploy: default
 	@echo "Deploy to: $$MYSERVER/me"
-	@rsync -ptuv --executability $(WEBDIR)/$(PROJ) "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me"
+	@rsync -ptuv --executability $(WEBDIR)/$(PROJ) $(WEBDIR)/$(PROJ).url "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me"
 	@rsync -ptuv --exclude=*icon*.png $(WEBDIR)/img/*.* "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img"
 	@$(GRECHO) '\nmake $(PROJ):' "Done. Deployed v$(VERSION) $(PROJECT) to $$MYSERVER/me \
 		\n\tTo update gh-pages on github.com do:\ngit checkout gh-pages && make clean && make deploy && git checkout master\n"
