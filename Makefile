@@ -15,7 +15,7 @@ VPATH := $(WEBDIR):$(BUILDDIR)
 
 # files
 PROJECTS = $(PROJ)
-COMPRESSEDFILES = $(PROJ).html.gz
+COMPRESSEDFILES = $(PROJ).html.gz $(PROJ)-url.url
 
 VERSIONTXT := $(SRCDIR)/VERSION.txt
 
@@ -47,11 +47,18 @@ $(PROJ): $(COMPRESSEDFILES) | $(WEBDIR)
 	@printf "\nCopying built files...\n"
 	@cp -Rfp $(SRCDIR)/$(IMGDIR) $(WEBDIR)
 	@cp -fp $(BUILDDIR)/$@.html.gz $(WEBDIR)/$@
+	@cp -fp $(BUILDDIR)/$@-url.html $(WEBDIR)/$@-url
 
 # run through html compressor and into gzip
-%.html.gz: %.html | $(BUILDDIR)  $(COMMONLIB)/$(YUICOMPRESSOR.jar) $(COMMONLIB)/$(HTMLCOMPRESSORJAR)
+$(PROJ).html.gz: $(PROJ).html | $(BUILDDIR)  $(COMMONLIB)/$(YUICOMPRESSOR.jar) $(COMMONLIB)/$(HTMLCOMPRESSORJAR)
 	@echo "Compressing $^ $$(stat $(STATFMT) $(BUILDDIR)/$^) bytes..."
 	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) $(BUILDDIR)/$^ | gzip -f9 > $(BUILDDIR)/$@
+	@echo "   $(BUILDDIR)/$@  $$(stat $(STATFMT) $(BUILDDIR)/$@) bytes"
+
+# run through html compressor
+$(PROJ)-url.url: $(PROJ)-url.html | $(BUILDDIR)  $(COMMONLIB)/$(YUICOMPRESSOR.jar) $(COMMONLIB)/$(HTMLCOMPRESSORJAR)
+	@echo "Compressing $^ $$(stat $(STATFMT) $(BUILDDIR)/$^) bytes..."
+	@$(HTMLCOMPRESSOR) -o $(BUILDDIR)/$@ $(COMPRESSOPTIONS) $(BUILDDIR)/$^
 	@echo "   $(BUILDDIR)/$@  $$(stat $(STATFMT) $(BUILDDIR)/$@) bytes"
 
 $(COMMONLIB)/$(YUICOMPRESSOR.jar):
