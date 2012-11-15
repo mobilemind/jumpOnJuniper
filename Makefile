@@ -39,7 +39,8 @@ STATFMT := $(shell [ 'cygwin' = $$OSTYPE ] && echo '-c %s' || echo '-f%z' )
 
 
 default: $(PROJECTS) | $(BUILDDIR) $(WEBDIR) $(IMGDIR)
-	@chmod -R 755 $(WEBDIR)
+	@chmod 755 $(WEBDIR)/$(PROJ)
+	@chmod -R 744 $(WEBDIR)/$(IMGDIR)
 	@$(GRECHO) 'make $(PROJ):' "Done. See $(PROJ)/$(WEBDIR) directory for v$(VERSION).\n"
 
 $(PROJ): $(COMPRESSEDFILES) | $(WEBDIR)
