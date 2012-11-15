@@ -15,7 +15,7 @@ VPATH := $(WEBDIR):$(BUILDDIR)
 
 # files
 PROJECTS = $(PROJ)
-COMPRESSEDFILES = $(PROJ).html.gz $(PROJ)-url.url
+COMPRESSEDFILES = $(PROJ).html.gz $(PROJ).url
 
 VERSIONTXT := $(SRCDIR)/VERSION.txt
 
@@ -47,7 +47,7 @@ $(PROJ): $(COMPRESSEDFILES) | $(WEBDIR)
 	@printf "\nCopying built files...\n"
 	@cp -Rfp $(SRCDIR)/$(IMGDIR) $(WEBDIR)
 	@cp -fp $(BUILDDIR)/$@.html.gz $(WEBDIR)/$@
-	@cp -fp $(BUILDDIR)/$@-url.url $(WEBDIR)/$@-url.url
+	@cp -fp $(BUILDDIR)/$@.url $(WEBDIR)/$@.url
 
 # run through html compressor and into gzip
 $(PROJ).html.gz: $(PROJ).html | $(BUILDDIR)  $(COMMONLIB)/$(YUICOMPRESSOR.jar) $(COMMONLIB)/$(HTMLCOMPRESSORJAR)
@@ -56,7 +56,7 @@ $(PROJ).html.gz: $(PROJ).html | $(BUILDDIR)  $(COMMONLIB)/$(YUICOMPRESSOR.jar) $
 	@echo "   $(BUILDDIR)/$@  $$(stat $(STATFMT) $(BUILDDIR)/$@) bytes"
 
 # run through html compressor and base64 encode
-$(PROJ)-url.url: $(PROJ)-url.html | $(BUILDDIR)  $(COMMONLIB)/$(YUICOMPRESSOR.jar) $(COMMONLIB)/$(HTMLCOMPRESSORJAR)
+$(PROJ).url: $(PROJ).url.html | $(BUILDDIR)  $(COMMONLIB)/$(YUICOMPRESSOR.jar) $(COMMONLIB)/$(HTMLCOMPRESSORJAR)
 	@echo "Compressing & base64 encoding $^ $$(stat $(STATFMT) $(BUILDDIR)/$^) bytes..."
 	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) $(BUILDDIR)/$^ | base64 -o $(BUILDDIR)/$@.tmp
 	@printf "data:text/html;charset=utf-8;base64," | cat - $(BUILDDIR)/$@.tmp > $(BUILDDIR)/$@
