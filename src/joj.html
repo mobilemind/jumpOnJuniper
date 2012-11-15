@@ -22,17 +22,12 @@
 				font-family: Helvetica, sans-serif;
 				font-size: 17px;
 				-webkit-text-size-adjust: none
-			}
-			.pg {
-				margin: 0;
-				padding-bottom: 15px;
-				background-color: #72ab69
+				padding-bottom: 15px
 			}
 			h1 {
-				font-size:17px;
+				font-size: 17px;
 				color: #FFFAFA;
-				margin: 14px 9px 6px 20px;
-				padding: 0
+				margin: 14px 9px 6px 20px
 			}
 			p {
 				margin: 0;
@@ -50,12 +45,11 @@
 			}
 			.grp {
 				margin: 0 10px;
-				padding: 0;
 				width: 94%;
 				background-color: #e0e6e0;
 				border: 1px solid #d9d9d9;
 				font-size: 15px;
-				border-radius: 8px;
+				border-radius: 8px
 			}
 			.fig {
 				margin: 0;
@@ -66,7 +60,9 @@
 				appearance: textfield
 			}
 			.bmrk {
-				font-size:large;
+				vertical-align: top;
+				font-size: large;
+				font-family: monospace;
 				-moz-appearance: textfield-multiline;
 				-webkit-appearance: textarea
 			}
@@ -90,11 +86,6 @@
 				background: #75AC6C;
 				background: -moz-linear-gradient(90deg, #4C9840, #90B880);
 				background: -webkit-gradient(linear, left top, left bottom, from(#90B880), to(#4C9840))
-			}
-			.btn:hover {
-				background: #75AC6C;
-				background: -moz-linear-gradient(90deg, #4D9941, #91B98A);
-				background: -webkit-gradient(linear, left top, left bottom, from(#87B67E), to(#489536))
 			}
 			.btn:active {
 				color: #75AC6C;
@@ -205,101 +196,99 @@
 	</head>
 
 	<body>
-		<div id="pg">
-			<noscript><b>&nbsp;&nbsp;Javascript must be enabled for this app.</b></noscript>
-			<h1>jump On Juniper v_MmVERSION_</h1>
-			<div class="grp">
-				<p>Use this to automate VisitorNet login. See&nbsp;<a href="#notes" title="Notes &amp; Issues">Notes &amp; Troubleshooting</a>&nbsp;for more information.</p>
-				<p><b>Quick start</b>: Use instructions below. Then connect to visitornet WiFi. Open Mobile Safari, then tap the bookmark repeatedly until logged in. Wait
-					between taps to allow the initial page or &ldquo;accept/decline&rdquo; page to load.</p>
-			</div>
-
-			<h1>Step 1: Enter the text</h1>
-			<div class="grp">
-				<p>Enter the Username to paste and a Password. Then tap&nbsp;<b>Make jOJ Bookmark</b>&nbsp;to reload this page for Step 2.</p>
-				<form id="pltMkr" method="GET" action= "." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value)); return false">
-					<label for="username">Username:&nbsp;
-						<input type="text" id="username" name="uid" tabindex="1" class="pStr" size="9" maxlength="8" placeholder="username" autocorrect="off" autocomplete="off" autocapitalize="off" required autofocus>
-					</label>
-					<label for="password"><br>Password:&nbsp;
-						<input type="password" id="password" tabindex="2" class="pStr" name="password" size="9" maxlength="8" required autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false">
-					</label>
-					<br><br>
-					<input type="submit" id="mkPltBtn" tabindex="3" value="Make jOJ Bookmark" class="btn">
-					&nbsp;&nbsp;&nbsp;
-					<input type="button" id="reset" value="Reset" onclick="location.href=location.protocol+'//'+location.host+location.port+location.pathname">
-					<br><br>
-					<label id="yp" for="bmrk" class="vp">Bookmark Address:&nbsp;
-						<textarea id="bmrk" tabindex="4" cols="40" rows="5" class="vp" wrap="soft" spellcheck="false">No Bookmark yet. See Step 1 instructions.</textarea>
-					</label>
-				</form>
-				<p id="pal" style="display:none">Bookmark as link:&nbsp;<a id="pl" href="." title="Pastelet">jumpOnJuniper</a><br><br></p>
-			</div>
-
-			<h1>Step 2: Add a Bookmark</h1>
-			<div class="grp">
-				<p>Tap the action button on the toolbar. Then select&nbsp;<b>Add Bookmark</b></p>
-				<div class="fig"><img class="fig" src="img/bkaddi.png" alt="add bookmark" width="225" height="158"></div>
-				<p>Take note of the name (or edit it), and then tap&nbsp;<b>Save</b>.</p>
-				<div class="fig"><img src="img/bksavei.png" alt="save bookmark" width="264" height="175"></div>
-			</div>
-
-			<h1>Step 3: Edit the Bookmark</h1>
-			<div class="grp">
-				<p>First, tap on the text box with&nbsp;<b>Code for your bookmark</b>. Then&nbsp;<b>Select all</b>&nbsp;of the text and&nbsp;<b>Copy</b>&nbsp;it to the clipboard.</p>
-				<p>Now edit the bookmark you added in step 2 to turn it into a javascript bookmark. Tap the Bookmarks button in the toolbar.</p>
-				<p>Navigate to the bookmark you just saved.&nbsp;<i>Do not select the bookmark.</i>&nbsp;Tap&nbsp;<b>Edit</b>&nbsp;to make changes.</p>
-				<div class="fig"><img src="img/bkopeni.png" alt="open bookmarks" width="264" height="160"></div>
-				<p>In the &ldquo;Edit&rdquo; pop-over, tap on the bookmark name.</p>
-				<div class="fig"><img src="img/bkmodifyi.png" alt="edit bookmarks" width="264" height="116"></div>
-				<p>In the&nbsp;<b>Edit Bookmark</b>&nbsp;pop-over, tap in the field that begins with &ldquo;<code><b>http:</b></code>
-					&rdquo;. It is easiest to replace all of it with the contents of the clipboard, so simply tap the circle with an X in it. Refer to image below.</p>
-				<div class="fig"><img src="img/bkedit1i.png" alt="edit bookmark start" width="264" height="124"></div>
-				<p>Finally, tap and hold in the now empty&nbsp;<em>Address</em>&nbsp;field and select&nbsp;<b>Paste</b>. The updated book mark appears. The end of it looks like:</p>
-				<p>&nbsp;&hellip;&nbsp;<code>;void('v_MmVERSION_')</code></p>
-				<p>I wouldn't recommend doing so because the bookmark code is so long, but if you scroll to the start you'll see the bookmark begins:</p>
-				<p>&nbsp;<code>javascript:var%20u=</code> &hellip;</p>
-			</div>
-
-			<h1>Step 4: Save the Bookmark</h1>
-			<div class="grp">
-				<p>Back-up a level in the edit pop-over by tapping the button to the left of &ldquo;Edit Bookmark&rdquo;.</p>
-				<div class="fig"><img src="img/bkbacki.png" alt="open bookmarks" width="270" height="34"></div>
-				<p>Save the bookmark by tapping&nbsp;<b>Done</b>.</p>
-				<div class="fig"><img src="img/bkdonei.png" alt="edit bookmarks" width="270" height="34"></div>
-			</div>
-
-			<h1>Using jumpOnJuniper</h1>
-			<div class="grp">
-				<p>Connect to a VisitorNet WiFi access point. Tap the&nbsp;<em>jOJ</em>&nbsp;bookmark once to go to VisitorNet sign-in page,
-					then &nbsp;<em>again</em>&nbsp; to &ldquo;paste&rdquo; the stored username &amp; password.
-					Finally, after the screen updates, tap the bookmark a third time to accept the Terms.</p>
-				<p><b>PRO TIP</b></p>
-				<p>Use the&nbsp;<a href="img/Always_Show_Bookmarks_bar.png">Settings app &mdash; Safari</a>&nbsp;settings to set&nbsp;<b>
-					Always Show Bookmarks Bar</b>&nbsp;as&nbsp;<b>ON</b>&nbsp;and save (<i>or move</i>) the&nbsp;<em>jOJ</em>&nbsp;bookmark to the&nbsp;<b>
-					Bookmarks Bar</b>&nbsp;folder. Then you can more quickly tap the link for your login.</p>
-				<div class="fig"><img src="img/bkbarlinki.png" alt="open bookmarks" width="244" height="108"></div>
-			</div>
-
-			<h1>Notes &amp; Troubleshooting</h1>
-			<div class="grp" id="notes">
-				<p>Notes</p>
-				<ol>
-					<li>This experimental project is done during off-hours. Let me know if you find something to fix. My email is:&nbsp;<a href="mailto:mobilemind%40pobox%2ecom">mobilemind&#64;pobox&#46;com</a>.</li>
-					<li>Screen captures above do not accurately depict the current javascript. Sorry, deal with it.</li>
-					<li>If you're unsure about entering your password; don't use this bookmark.</li>
-				</ol>
-				<p>Troubleshooting</p>
-				<ul>
-					<li>Make sure your VisitorNet credentials are correct and aren't expired.</li>
-					<li>Ensure your bookmark is the latest version. Check the last few characters of the bookmark &ldquo;address&rdquo; for the version number found in quotes.
-					For example, &hellip;<b><code>void'v_MmVERSION_'</code></b>&nbsp;would indicate you bookmark is current against the title of this page,&nbsp;<i>jumpOnJuniper&nbsp;<b>v_MmVERSION_</b></i>.</li>
-					<li>Force a refresh of this page by holding down the shift key and clicking on the browser refresh button. If the title of the page changes to a new number, then your browser had cached
-					an older version of this page. Make a new bookmark or update the old one using the reloaded page.</li>
-				</ul>
-				<p>Copyright &copy; 2012 Tom King. All rights reserved.</p>
-			</div>
-
+		<noscript><b>&nbsp;&nbsp;Javascript must be enabled for this app.</b></noscript>
+		<h1>jump On Juniper v_MmVERSION_</h1>
+		<div class="grp">
+			<p>Use this to automate VisitorNet login. See&nbsp;<a href="#notes" title="Notes &amp; Issues">Notes &amp; Troubleshooting</a>&nbsp;for more information.</p>
+			<p><b>Quick start</b>: Use instructions below. Then connect to visitornet WiFi. Open Mobile Safari, then tap the bookmark repeatedly until logged in. Wait
+				between taps to allow the initial page or &ldquo;accept/decline&rdquo; page to load.</p>
 		</div>
+
+		<h1>Step 1: Enter the text</h1>
+		<div class="grp">
+			<p>Enter the Username to paste and a Password. Then tap&nbsp;<b>Make jOJ Bookmark</b>&nbsp;to reload this page for Step 2.</p>
+			<form id="pltMkr" method="GET" action= "." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value)); return false">
+				<label for="username">Username:&nbsp;
+					<input type="text" id="username" name="uid" tabindex="1" class="pStr" size="9" maxlength="8" placeholder="username" autocorrect="off" autocomplete="off" autocapitalize="off" required autofocus>
+				</label>
+				<label for="password"><br>Password:&nbsp;
+					<input type="password" id="password" tabindex="2" class="pStr" name="password" size="9" maxlength="8" required autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false">
+				</label>
+				<br><br>
+				<input type="submit" id="mkPltBtn" tabindex="3" value="Make jOJ Bookmark" class="btn">
+				&nbsp;&nbsp;&nbsp;
+				<input type="button" id="reset" value="Reset" onclick="location.href=location.protocol+'//'+location.host+location.port+location.pathname">
+				<br><br>
+				<label id="yp" for="bmrk" class="vp">Bookmark Address:&nbsp;
+					<textarea id="bmrk" tabindex="4" cols="40" rows="5" class="bmrk" wrap="soft" spellcheck="false">No Bookmark yet. See Step 1 instructions.</textarea>
+				</label>
+			</form>
+			<p id="pal" style="display:none">Bookmark as link:&nbsp;<a id="pl" href="." title="Pastelet">jumpOnJuniper</a><br><br></p>
+		</div>
+
+		<h1>Step 2: Add a Bookmark</h1>
+		<div class="grp">
+			<p>Tap the action button on the toolbar. Then select&nbsp;<b>Add Bookmark</b></p>
+			<div class="fig"><img class="fig" src="img/bkaddi.png" alt="add bookmark" width="225" height="158"></div>
+			<p>Take note of the name (or edit it), and then tap&nbsp;<b>Save</b>.</p>
+			<div class="fig"><img src="img/bksavei.png" alt="save bookmark" width="264" height="175"></div>
+		</div>
+
+		<h1>Step 3: Edit the Bookmark</h1>
+		<div class="grp">
+			<p>First, tap on the text box with&nbsp;<b>Code for your bookmark</b>. Then&nbsp;<b>Select all</b>&nbsp;of the text and&nbsp;<b>Copy</b>&nbsp;it to the clipboard.</p>
+			<p>Now edit the bookmark you added in step 2 to turn it into a javascript bookmark. Tap the Bookmarks button in the toolbar.</p>
+			<p>Navigate to the bookmark you just saved.&nbsp;<i>Do not select the bookmark.</i>&nbsp;Tap&nbsp;<b>Edit</b>&nbsp;to make changes.</p>
+			<div class="fig"><img src="img/bkopeni.png" alt="open bookmarks" width="264" height="160"></div>
+			<p>In the &ldquo;Edit&rdquo; pop-over, tap on the bookmark name.</p>
+			<div class="fig"><img src="img/bkmodifyi.png" alt="edit bookmarks" width="264" height="116"></div>
+			<p>In the&nbsp;<b>Edit Bookmark</b>&nbsp;pop-over, tap in the field that begins with &ldquo;<code><b>http:</b></code>
+				&rdquo;. It is easiest to replace all of it with the contents of the clipboard, so simply tap the circle with an X in it. Refer to image below.</p>
+			<div class="fig"><img src="img/bkedit1i.png" alt="edit bookmark start" width="264" height="124"></div>
+			<p>Finally, tap and hold in the now empty&nbsp;<em>Address</em>&nbsp;field and select&nbsp;<b>Paste</b>. The updated book mark appears. The end of it looks like:</p>
+			<p>&nbsp;&hellip;&nbsp;<code>;void('v_MmVERSION_')</code></p>
+			<p>I wouldn't recommend doing so because the bookmark code is so long, but if you scroll to the start you'll see the bookmark begins:</p>
+			<p>&nbsp;<code>javascript:var%20u=</code> &hellip;</p>
+		</div>
+
+		<h1>Step 4: Save the Bookmark</h1>
+		<div class="grp">
+			<p>Back-up a level in the edit pop-over by tapping the button to the left of &ldquo;Edit Bookmark&rdquo;.</p>
+			<div class="fig"><img src="img/bkbacki.png" alt="open bookmarks" width="270" height="34"></div>
+			<p>Save the bookmark by tapping&nbsp;<b>Done</b>.</p>
+			<div class="fig"><img src="img/bkdonei.png" alt="edit bookmarks" width="270" height="34"></div>
+		</div>
+
+		<h1>Using jumpOnJuniper</h1>
+		<div class="grp">
+			<p>Connect to a VisitorNet WiFi access point. Tap the&nbsp;<em>jOJ</em>&nbsp;bookmark once to go to VisitorNet sign-in page,
+				then &nbsp;<em>again</em>&nbsp; to &ldquo;paste&rdquo; the stored username &amp; password.
+				Finally, after the screen updates, tap the bookmark a third time to accept the Terms.</p>
+			<p><b>PRO TIP</b></p>
+			<p>Use the&nbsp;<a href="img/Always_Show_Bookmarks_bar.png">Settings app &mdash; Safari</a>&nbsp;settings to set&nbsp;<b>
+				Always Show Bookmarks Bar</b>&nbsp;as&nbsp;<b>ON</b>&nbsp;and save (<i>or move</i>) the&nbsp;<em>jOJ</em>&nbsp;bookmark to the&nbsp;<b>
+				Bookmarks Bar</b>&nbsp;folder. Then you can more quickly tap the link for your login.</p>
+			<div class="fig"><img src="img/bkbarlinki.png" alt="open bookmarks" width="244" height="108"></div>
+		</div>
+
+		<h1>Notes &amp; Troubleshooting</h1>
+		<div class="grp" id="notes">
+			<p>Notes</p>
+			<ol>
+				<li>This experimental project is done during off-hours. Let me know if you find something to fix. My email is:&nbsp;<a href="mailto:mobilemind%40pobox%2ecom">mobilemind&#64;pobox&#46;com</a>.</li>
+				<li>Screen captures above do not accurately depict the current javascript. Sorry, deal with it.</li>
+				<li>If you're unsure about entering your password; don't use this bookmark.</li>
+			</ol>
+			<p>Troubleshooting</p>
+			<ul>
+				<li>Make sure your VisitorNet credentials are correct and aren't expired.</li>
+				<li>Ensure your bookmark is the latest version. Check the last few characters of the bookmark &ldquo;address&rdquo; for the version number found in quotes.
+				For example, &hellip;<b><code>void'v_MmVERSION_'</code></b>&nbsp;would indicate you bookmark is current against the title of this page,&nbsp;<i>jumpOnJuniper&nbsp;<b>v_MmVERSION_</b></i>.</li>
+				<li>Force a refresh of this page by holding down the shift key and clicking on the browser refresh button. If the title of the page changes to a new number, then your browser had cached
+				an older version of this page. Make a new bookmark or update the old one using the reloaded page.</li>
+			</ul>
+			<p>Copyright &copy; 2012 Tom King. All rights reserved.</p>
+		</div>
+		<br>
 	</body>
 </html>
