@@ -44,15 +44,14 @@ default: $(PROJECTS) | $(BUILDDIR) $(WEBDIR) $(IMGDIR)
 
 $(PROJ): $(COMPRESSEDFILES) | $(WEBDIR)
 	@printf "\nCopying built files...\n"
-	@cp -fp $(BUILDDIR)/$@.html.gz $(WEBDIR)/$@
 	@cp -Rfp $(SRCDIR)/$(IMGDIR) $(WEBDIR)
+	@cp -fp $(BUILDDIR)/$@.html.gz $(WEBDIR)/$@
 
 # run through html compressor and into gzip
 %.html.gz: %.html | $(BUILDDIR)  $(COMMONLIB)/$(YUICOMPRESSOR.jar) $(COMMONLIB)/$(HTMLCOMPRESSORJAR)
-	@echo "Compressing $^ ($$(stat $(STATFMT) $(BUILDDIR)/$^) bytes)..."
+	@echo "Compressing $^ $$(stat $(STATFMT) $(BUILDDIR)/$^) bytes..."
 	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) $(BUILDDIR)/$^ | gzip -f9 > $(BUILDDIR)/$@
-	@echo "$(BUILDDIR)/$@: $$(stat $(STATFMT) $(BUILDDIR)/$@) bytes"
-	@echo
+	@echo "   $(BUILDDIR)/$@  $$(stat $(STATFMT) $(BUILDDIR)/$@) bytes"
 
 $(COMMONLIB)/$(YUICOMPRESSOR.jar):
 ifneq ($(wildcard "$(COMMONLIB)/$(YUICOMPRESSOR).jar"),)
