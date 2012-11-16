@@ -10,10 +10,13 @@ GITHUBPROJ := jumpOnJuniper
 COMMONLIB := $$HOME/common/lib
 
 # files
-HTMLFILE := $(PROJ).html
+JOJHTML := $(PROJ).html
+HTMLFILES := $(JOJHTML) index.html
+JOJFILE := joj.url
 
 # urls
 SRCURL := https://raw.github.com/mobilemind/$(GITHUBPROJ)/master/src/
+JOJURL := http://mmind.me/$(JOJFILE)
 
 # macros/utils
 BUILDDATE := $(shell date)
@@ -29,12 +32,11 @@ GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
 REPLACETOKENS = perl -pi -e 's/_MmVERSION_/$(VERSION)/g;s/_MmBUILDDATE_/$(BUILDDATE)/g' $@
 STATFMT := $(shell [ 'cygwin' = $$OSTYPE ] && echo '-c %s' || echo '-f%z' )
 
-
-default: $(HTMLFILE) img
+default: $(HTMLFILES) img
 	@printf "\nmake: Done. Updated $(HTMLFILE) to $(VERSION).\n\n"
 
-%.html:
-	@printf "\nFetch from github and update $@\n"
+$(PROJ).html:
+	@printf "\nFetch $@ from github and update...\n"
 	@curl -# -O $(SRCURL)/$@
 	@$(REPLACETOKENS)
 	@$(TIDY) -eq $@ || [ $$? -lt 2 ]
@@ -43,9 +45,19 @@ default: $(HTMLFILE) img
 	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) -o $@.tmp $@ && mv -f $@.tmp $@
 	@echo "$@: $$(stat $(STATFMT) $@) bytes optimized"
 
+index.html: $(JOJFILE)
+	@printf "\nReplace tokens in $@ and validate...\n"
+	@perl -p -i -e 'BEGIN{open F,"$(JOJFILE)";@f=<F>}s#_-DATA-URL-HERE-_#@f#' $@
+	@$(TIDY) -eq $@ || [ $$? -lt 2 ]
+	@$(JSL) -nologo -nofilelisting -nosummary -process $@
+
+$(JOJFILE):
+	@printf "\nDownload and trim $(JOJFILE) ...\n"
+	@curl -# $(JOJURL) | tr -d '\n' > $(JOJFILE)
+
 img:
 	@[ -d img ] || mkdir img
-	@printf "\nFetch from $$MYSERVER and update $@\n"
+	@printf "\nFetch $@/ from $$MYSERVER and update...\n"
 	@rsync -ptuq --exclude=*icon*.png --exclude=vnet*.* --exclude=pastelet.* "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img/*.*" img
 
 .PHONY: deploy
@@ -62,4 +74,4 @@ endif
 
 .PHONY: clean
 clean:
-	rm -rf $(HTMLFILE) img
+	rm -rf $(JOJFILE) $(JOJHTML) img
