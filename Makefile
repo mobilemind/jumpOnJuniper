@@ -112,4 +112,4 @@ $(IMGDIR): | $(BUILDDIR)
 .PHONY: clean
 clean:
 	@echo 'make $(PROJ): Cleaning build directory & web directory'
-	@rm -Rf $(BUILDDIR)/* $(WEBDIR)/*
+	@rm -Rf $(BUILDDIR)/* $(WEBDIR)/* $(PROJ).url
