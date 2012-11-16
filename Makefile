@@ -33,7 +33,7 @@ REPLACETOKENS = perl -pi -e 's/_MmVERSION_/$(VERSION)/g;s/_MmBUILDDATE_/$(BUILDD
 STATFMT := $(shell [ 'cygwin' = $$OSTYPE ] && echo '-c %s' || echo '-f%z' )
 
 default: $(HTMLFILES) img
-	@printf "\nmake: Done. Updated $(HTMLFILE) to $(VERSION).\n\n"
+	@printf "\nmake: Done. Updated $(HTMLFILES) to $(VERSION).\n\n"
 
 $(PROJ).html:
 	@printf "\nFetch $@ from github and update...\n"
@@ -47,7 +47,7 @@ $(PROJ).html:
 
 index.html: $(JOJFILE)
 	@printf "\nReplace tokens in $@ and validate...\n"
-	@perl -p -i -e 'BEGIN{open F,"$(JOJFILE)";@f=<F>}s#_-DATA-URL-HERE-_#@f#' $@
+	@perl -p -i -e 'BEGIN{open F,"$(JOJFILE)";@f=<F>}s#data:text/html;charset=utf-8;base64,.*" class="desclink"#@f" class="desclink"#' $@
 	@$(TIDY) -eq $@ || [ $$? -lt 2 ]
 	@$(JSL) -nologo -nofilelisting -nosummary -process $@
 
