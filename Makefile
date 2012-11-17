@@ -59,7 +59,7 @@ $(PROJ).html.gz: $(PROJ).html | $(BUILDDIR)  $(COMMONLIB)/$(YUICOMPRESSOR.jar) $
 # run through html compressor and base64 encode
 $(PROJ).url: $(PROJ).url.html | $(BUILDDIR)  $(COMMONLIB)/$(YUICOMPRESSOR.jar) $(COMMONLIB)/$(HTMLCOMPRESSORJAR)
 	@echo "Compressing & base64 encoding $^ $$(stat $(STATFMT) $(BUILDDIR)/$^) bytes..."
-	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) $(BUILDDIR)/$^ | base64 -o $(BUILDDIR)/$@.tmp
+	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) $(BUILDDIR)/$^ | base64 > $(BUILDDIR)/$@.tmp
 	@printf "data:text/html;charset=utf-8;base64," | cat - $(BUILDDIR)/$@.tmp > $(BUILDDIR)/$@
 	@rm $(BUILDDIR)/$@.tmp
 	@echo "   $(BUILDDIR)/$@  $$(stat $(STATFMT) $(BUILDDIR)/$@) bytes"
