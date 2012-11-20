@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html>
 <head>
-	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<meta name="viewport" content="width=device-width">
 	<title>jumpOnJuniper v_MmVERSION_</title>
 	<!-- v_MmVERSION_; 2012/11/15 Tom King; build date: _MmBUILDDATE_
 		jumpOnJuniper a data URL formlet-based bookmark-generator to simplify use of Juniper Infranet-based VisitorNet
@@ -9,9 +9,8 @@
 		Copyright (c) 2012 Tom King. All rights reserved.
 	-->
 	<script type="text/javascript">
-		// load bookmark link on page with new bookmarklet appended
 		function loadpg(p) {
-			if ('' !== p) {
+			if (p) {
 				var pal = document.getElementById('pal'), pl = document.getElementById('pl'), t = 'joj ' + document.getElementById('username').value;
 				document.getElementById('bmrk').textContent = 'javascript:' + encodeURIComponent(p);
 				pal.setAttribute("style", "display:inline;padding:7px;height:auto");
