@@ -28,7 +28,8 @@ HTMLCOMPRESSORJAR := htmlcompressor-1.5.3.jar
 HTMLCOMPRESSORURL := https://htmlcompressor.googlecode.com/files/$(HTMLCOMPRESSORJAR)
 HTMLCOMPRESSORPATH := $(shell [ 'cygwin' = $$OSTYPE ] && echo "`cygpath -w $(COMMONLIB)`\\" || echo "$(COMMONLIB)/")
 HTMLCOMPRESSOR := java -jar '$(HTMLCOMPRESSORPATH)$(HTMLCOMPRESSORJAR)'
-COMPRESSOPTIONS := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --remove-surrounding-spaces all --remove-input-attr --remove-form-attr --remove-script-attr --remove-http-protocol --simple-doctype --compress-js --compress-css --nomunge
+COMPRESSOPTIONSPAGE := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --remove-surrounding-spaces all --remove-input-attr --remove-form-attr --remove-script-attr --remove-http-protocol --simple-doctype --compress-js --compress-css --nomunge
+COMPRESSOPTIONSDATA := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --remove-surrounding-spaces all --remove-input-attr --remove-form-attr --remove-script-attr --simple-doctype --compress-js --compress-css --nomunge
 YUICOMPRESSOR := yuicompressor-2.4.7
 YUICOMPRESSORURL := http://yui.zenfs.com/releases/yuicompressor/$(YUICOMPRESSOR).zip
 TIDY := $(shell hash tidy-html5 2>/dev/null && echo 'tidy-html5' || (hash tidy 2>/dev/null && echo 'tidy' || exit 1))
@@ -53,13 +54,13 @@ $(PROJ): $(COMPRESSEDFILES) | $(WEBDIR)
 # run through html compressor and into gzip
 $(PROJ).html.gz: $(PROJ).html | $(BUILDDIR)  $(COMMONLIB)/$(YUICOMPRESSOR.jar) $(COMMONLIB)/$(HTMLCOMPRESSORJAR)
 	@echo "Compressing $^ $$(stat $(STATFMT) $(BUILDDIR)/$^) bytes..."
-	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) $(BUILDDIR)/$^ | gzip -f9 > $(BUILDDIR)/$@
+	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONSPAGE) $(BUILDDIR)/$^ | gzip -f9 > $(BUILDDIR)/$@
 	@echo "   $(BUILDDIR)/$@  $$(stat $(STATFMT) $(BUILDDIR)/$@) bytes"
 
 # run through html compressor and base64 encode
 $(PROJ).url: $(PROJ).url.html | $(BUILDDIR)  $(COMMONLIB)/$(YUICOMPRESSOR.jar) $(COMMONLIB)/$(HTMLCOMPRESSORJAR)
 	@echo "Compressing & base64 encoding $^ $$(stat $(STATFMT) $(BUILDDIR)/$^) bytes..."
-	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) $(BUILDDIR)/$^ | base64 > $(BUILDDIR)/$@.tmp
+	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONSDATA) $(BUILDDIR)/$^ | base64 > $(BUILDDIR)/$@.tmp
 	@printf "data:text/html;charset=utf-8;base64," | cat - $(BUILDDIR)/$@.tmp > $(BUILDDIR)/$@
 	@rm $(BUILDDIR)/$@.tmp
 	@echo "   $(BUILDDIR)/$@  $$(stat $(STATFMT) $(BUILDDIR)/$@) bytes"
