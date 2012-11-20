@@ -13,7 +13,7 @@
 			if (p) {
 				var pal = document.getElementById('pal'), pl = document.getElementById('pl'), t = 'joj ' + document.getElementById('username').value;
 				document.getElementById('bmrk').textContent = 'javascript:' + encodeURIComponent(p);
-				pal.setAttribute("style", "display:inline;padding:7px;height:auto");
+				pal.setAttribute("style", "display:inline");
 				pl.setAttribute('href', document.getElementById('bmrk').textContent);
 				pl.setAttribute('title', t);
 				pl.innerHTML = t;
@@ -30,10 +30,10 @@
 	<b>jump On Juniper v_MmVERSION_</b>
 	<p>Enter User and Password, then&nbsp;<b>Make jOJ Bookmark</b>.</p>
 	<form id="pltMkr" method="POST" action= "." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value)); return false">
-		<label for="username">User:&nbsp;
+		<label for="username">User:
 			<input type="text" id="username" tabindex="1" size="9" maxlength="8" autocorrect="off" autocomplete="off" autocapitalize="off" required autofocus>
 		</label>
-		<label for="password"><br>Password:&nbsp;
+		<label for="password"><br>Password:
 			<input type="password" id="password" tabindex="2" size="9" maxlength="8" required autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false">
 		</label>
 		<br><br>
@@ -41,11 +41,11 @@
 		&nbsp; &nbsp;
 		<input type="button" value="Reset" onclick="document.getElementById('username').value=document.getElementById('password').value=document.getElementById('bmrk').textContent='';">
 		<br><br>
-		<label for="bmrk">Bookmark:&nbsp;
+		<label for="bmrk">Bookmark:
 			<textarea id="bmrk" tabindex="4" cols="40" rows="5" wrap="soft" spellcheck="false"></textarea>
 		</label>
 	</form>
-		<p id="pal" style="display:none">Link:&nbsp;<a id="pl" href="." title="jOJ">jOJ</a><br><br></p>
+		<p id="pal" style="display:none">Link:<a id="pl">jOJ</a><br></p>
 	<p>Copyright &copy; 2012 Tom King. All rights reserved.</p>
 	<p><a href="http://mmind.me/joj" title="jOJ online">jumpOnJuniper online</a></p>
 </body>
