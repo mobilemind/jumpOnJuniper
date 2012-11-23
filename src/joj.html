@@ -114,14 +114,10 @@
 						q = decodeURIComponent(q.substr(1));
 						m = q.match(/^javascript:(.*?)u='(.*?)',p='(.*?)',/);
 						if (!m) throw 'No match in: ' + q;
-						else {
-							if (!m[2]) throw 'No login found in: ' + m;
-							else {
-								document.title = 'jOJ ' + m[2].replace(/\W.*/, '');
-								document.getElementById('username').value = m[2];
-								if (m[3]) document.getElementById('password').value = m[3];
-							}
-						}
+						if (!m[2]) throw 'No login found in: ' + m;
+						document.title = 'jOJ ' + m[2].replace(/\W.*/, '');
+						document.getElementById('username').value = m[2];
+						if (m[3]) document.getElementById('password').value = m[3];
 						// put a more human-readable, but URI encoded, version of bookmarklet in textarea
 						document.getElementById('bmrk').textContent = encodeURI(q);
 						// if not iPhone/iPad unhide 'Pastelet as link' and set anchor tag
@@ -149,10 +145,9 @@
 			}, true);
 			// reload page with new bookmarklet appended
 			function loadpg(p) {
-				if ('' !== p) {
-					document.getElementById('bmrk').textContent = 'javascript:' + encodeURIComponent(p);
-					location.href = '//' + location.host + location.port + location.pathname + '?javascript:' + encodeURIComponent(p);
-				}
+				if (!p) return;
+				document.getElementById('bmrk').textContent = 'javascript:' + encodeURIComponent(p);
+				location.href = '//' + location.host + location.port + location.pathname + '?javascript:' + encodeURIComponent(p);
 			}
 
 			//	jumpOnJuniper a bookmark-generator to simplify use of Juniper Infranet-based VisitorNet
@@ -195,7 +190,7 @@
 	</head>
 
 	<body>
-		<noscript><b>&nbsp;&nbsp;Javascript must be enabled for this app.</b></noscript>
+		<noscript><b>Javascript must be enabled for this app.</b></noscript>
 		<h1>jump On Juniper v_MmVERSION_</h1>
 		<div class="grp">
 			<p>Use this to automate VisitorNet login. See&nbsp;<a href="#notes" title="Notes &amp; Issues">Notes &amp; Troubleshooting</a>&nbsp;for more information.</p>
@@ -222,7 +217,7 @@
 					<textarea id="bmrk" tabindex="4" cols="40" rows="5" class="bmrk" wrap="soft" spellcheck="false">No Bookmark yet. See Step 1 instructions.</textarea>
 				</label>
 			</form>
-			<p id="pal" style="display:none">Bookmark as link:&nbsp;<a id="pl" href="." title="Pastelet">jumpOnJuniper</a><br><br></p>
+			<p id="pal" style="display:none">Bookmark as link:&nbsp;<a id="pl"></a><br><br></p>
 		</div>
 
 		<h1>Step 2: Add a Bookmark</h1>
@@ -239,7 +234,7 @@
 			<p>Now edit the bookmark you added in step 2 to turn it into a javascript bookmark. Tap the Bookmarks button in the toolbar.</p>
 			<p>Navigate to the bookmark you just saved.&nbsp;<i>Do not select the bookmark.</i>&nbsp;Tap&nbsp;<b>Edit</b>&nbsp;to make changes.</p>
 			<div class="fig"><img src="img/bkopeni.png" alt="open bookmarks" width="264" height="160"></div>
-			<p>In the &ldquo;Edit&rdquo; pop-over, tap on the bookmark name.</p>
+			<p>In the <b>Edit</b> pop-over, tap on the bookmark name.</p>
 			<div class="fig"><img src="img/bkmodifyi.png" alt="edit bookmarks" width="264" height="116"></div>
 			<p>In the&nbsp;<b>Edit Bookmark</b>&nbsp;pop-over, tap in the field that begins with &ldquo;<code><b>http:</b></code>
 				&rdquo;. It is easiest to replace all of it with the contents of the clipboard, so simply tap the circle with an X in it. Refer to image below.</p>
@@ -247,7 +242,7 @@
 			<p>Finally, tap and hold in the now empty&nbsp;<em>Address</em>&nbsp;field and select&nbsp;<b>Paste</b>. The updated book mark appears. The end of it looks like:</p>
 			<p>&nbsp;&hellip;&nbsp;<code>;void('v_MmVERSION_')</code></p>
 			<p>I wouldn't recommend doing so because the bookmark code is so long, but if you scroll to the start you'll see the bookmark begins:</p>
-			<p>&nbsp;<code>javascript:var%20u=</code> &hellip;</p>
+			<p>&nbsp;<code>javascript:var%20u=</code>&hellip;</p>
 		</div>
 
 		<h1>Step 4: Save the Bookmark</h1>
@@ -260,7 +255,7 @@
 
 		<h1>Using jumpOnJuniper</h1>
 		<div class="grp">
-			<p>Connect to a VisitorNet WiFi access point. Tap the&nbsp;<em>jOJ</em>&nbsp;bookmark once to go to VisitorNet sign-in page,
+			<p>Connect to a VisitorNet WiFi access point. Tap the&nbsp;<em>jOJ</em>&nbsp;bookmark to go to VisitorNet sign-in page,
 				then &nbsp;<em>again</em>&nbsp; to &ldquo;paste&rdquo; the stored username &amp; password.
 				Finally, after the screen updates, tap the bookmark a third time to accept the Terms.</p>
 			<p><b>PRO TIP</b></p>
