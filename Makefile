@@ -8,7 +8,7 @@ PROJ = joj
 # directories/paths
 SRCDIR := src
 BUILDDIR := build
-COMMONLIB = $$HOME/common/lib
+COMMONLIB := $$HOME/common/lib
 WEBDIR := web
 IMGDIR := img
 VPATH := $(WEBDIR):$(BUILDDIR)
@@ -38,6 +38,7 @@ GRECHO := $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
 REPLACETOKENS = perl -pi -e 's/$(MMVERSION)/$(VERSION)/g;s/$(MMBUILDDATE)/$(BUILDDATE)/g;' $@
 STATFMT := $(shell [ 'cygwin' = $$OSTYPE ] && echo '-c %s' || echo '-f%z' )
 
+.PHONY: deploy clean $(BUILDDIR) $(WEBDIR) $(IMGDIR)
 
 default: $(PROJECTS) | $(BUILDDIR) $(WEBDIR) $(IMGDIR)
 	@chmod 755 $(WEBDIR)/$(PROJ)
@@ -90,7 +91,6 @@ endif
 	@echo
 
 # deploy
-.PHONY: deploy
 deploy: default
 	@echo "Deploy to: $$MYSERVER/me"
 	@rsync -ptuv --executability $(WEBDIR)/$(PROJ) $(WEBDIR)/$(PROJ).url "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me"
@@ -98,19 +98,13 @@ deploy: default
 	@$(GRECHO) '\nmake $(PROJ):' "Done. Deployed v$(VERSION) $(PROJECT) to $$MYSERVER/me \
 		\n\tTo update gh-pages on github.com do:\ngit checkout gh-pages && make clean && make deploy && git checkout master\n"
 
-.PHONY: $(BUILDDIR)
-$(BUILDDIR):
-	@[ -d $(BUILDDIR) ] || mkdir -m 744 $(BUILDDIR)
+# create directories needed
+$(BUILDDIR) $(WEBDIR):
+	@[ -d $@ ] || mkdir -m 744 $@
 
-.PHONY: $(WEBDIR)
-$(WEBDIR):
-	@[ -d $(WEBDIR) ] || mkdir -m 744 $(WEBDIR)
-
-.PHONY: $(IMGDIR)
 $(IMGDIR): | $(BUILDDIR)
 	@cp -Rfp $(SRCDIR)/$(IMGDIR) $(BUILDDIR)
 
-.PHONY: clean
 clean:
 	@echo 'make $(PROJ): Cleaning build directory & web directory'
-	@rm -Rf $(BUILDDIR)/* $(WEBDIR)/* $(PROJ).url
+	@rm -Rf $(BUILDDIR) $(WEBDIR) $(PROJ).url
