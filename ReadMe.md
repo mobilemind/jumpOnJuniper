@@ -1,7 +1,7 @@
 # jumpOnJuniper
 
-The “jumpOnJuniper” (jOJ) bookmarklet streamlines logging in via Juniper Networks Infranet 
-“VisitorNet” sites that control access to WiFi networks. The bookmarklet will paste in the 
+The “jumpOnJuniper” (jOJ) bookmarklet streamlines logging in via Juniper Networks Infranet
+“VisitorNet” sites that control access to WiFi networks. The bookmarklet will paste in the
 Username and password values stored in the bookmark and then submit the form.
 
 ## Install
@@ -13,7 +13,7 @@ explains how to store and edit the bookmarklet on your iPad or iPhone. Tap the
 
 The same form is available as [jumpOnJuniper][ghjoj] in case there is an issue following
 one of the links above.
-		
+
 ### Desktop Browser
 Select a link below and then follow the on-screen instructions. Note that on a desktop
 machine the browser may allow you to drag or right-click and bookmark the underlined
@@ -34,7 +34,7 @@ Activate the jOJ bookmarklet (tap on the link for it in the bookmark bar or use 
 menu). The default bookmark title is usually “jOJ login ___name___&hellip;” where ___name___ is the
 first part of your Username (email).
 
-The bookmarklet created via installation will paste in the Username, the stored password 
+The bookmarklet created via installation will paste in the Username, the stored password
 and then submit the form.
 
 ## Compatibility
@@ -48,7 +48,7 @@ Tested with Firefox 11.x - 13.x, Safari 5.1.x and Mobile Safari 5.x.
 MIT License - <http://www.opensource.org/licenses/mit-license.php>
 
 jumpOnJuniper
-Copyright (c) 2012 Tom King <mobilemind@pobox.com>
+Copyright (c) 2012, 2013 Tom King <mobilemind@pobox.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -93,5 +93,5 @@ see: <http://www.cygwin.com/>
 * For **jsl**, see: <http://www.javascriptlint.com/>
 
 ## Build
-Use `make` at the command shell prompt to create the joj HTML page and manifest.  
+Use `make` at the command shell prompt to create the joj HTML page and manifest.
 See `/web/` directory for results.
