@@ -21,7 +21,10 @@
 				font-family: Helvetica, sans-serif;
 				font-size: 17px;
 				-webkit-text-size-adjust: none
-				padding-bottom: 15px
+				padding-bottom: 15px;
+				-moz-user-select: -moz-none;
+				-webkit-user-select: none;
+				user-select: none
 			}
 			h1 {
 				font-size: 17px;
@@ -131,7 +134,7 @@
 							}
 						}
 						// unhide remaining steps
-						window.scrollTo(0,110+document.getElementById('pltMkr').scrollHeight);
+						window.scrollTo(0,200+document.getElementById('pltMkr').scrollHeight);
 					}
 					catch (e) {
 						console.log('error: ' + e);
