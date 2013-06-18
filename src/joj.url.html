@@ -13,7 +13,10 @@
 			font-family: Helvetica, sans-serif;
 			font-size: 17px;
 			-webkit-text-size-adjust: none
-			padding-bottom: 15px
+			padding-bottom: 15px;
+			-moz-user-select: -moz-none;
+			-webkit-user-select: none;
+			user-select: none
 		}
 		h1 {
 			font-size: 17px;
@@ -114,7 +117,7 @@
 			<br><br>
 			<input type="submit" id="mkPltBtn" tabindex="3" value="Make jOJ Bookmark" class="btn">
 			&nbsp; &nbsp;
-			<input type="button" id="reset" value="Reset" onclick="document.getElementById('username').value=document.getElementById('password').value=document.getElementById('bmrk').textContent='';">
+			<input type="button" id="reset" value="Reset" onclick="document.getElementById('username').value=document.getElementById('password').value=document.getElementById('bmrk').textContent=''">
 			<br><br>
 			<label id="yp" for="bmrk" class="vp">Bookmark Address:&nbsp;
 				<textarea id="bmrk" tabindex="4" cols="40" rows="5" class="bmrk" wrap="soft" spellcheck="false"></textarea>
