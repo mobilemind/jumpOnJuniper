@@ -30,8 +30,8 @@ HTMLCOMPRESSORPATH := $(shell [ 'cygwin' = $$OSTYPE ] && echo "`cygpath -w $(COM
 HTMLCOMPRESSOR := java -jar '$(HTMLCOMPRESSORPATH)$(HTMLCOMPRESSORJAR)'
 COMPRESSOPTIONSPAGE := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --remove-surrounding-spaces all --remove-input-attr --remove-form-attr --remove-script-attr --remove-http-protocol --simple-doctype --compress-js --compress-css --nomunge
 COMPRESSOPTIONSDATA := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --remove-surrounding-spaces all --remove-input-attr --remove-form-attr --remove-script-attr --simple-doctype --compress-js --compress-css --nomunge
-YUICOMPRESSOR := yuicompressor-2.4.7
-YUICOMPRESSORURL := http://yui.zenfs.com/releases/yuicompressor/$(YUICOMPRESSOR).zip
+YUICOMPRESSOR := yuicompressor-2.4.8
+YUICOMPRESSORURL := http://tml.github.io/yui/$(YUICOMPRESSOR).zip
 TIDY := $(shell hash tidy-html5 2>/dev/null && echo 'tidy-html5' || (hash tidy 2>/dev/null && echo 'tidy' || exit 1))
 JSL := $(shell hash jsl 2>/dev/null && echo 'jsl' || exit 1)
 GRECHO := $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
