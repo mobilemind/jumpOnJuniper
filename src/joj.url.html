@@ -81,20 +81,20 @@
 		// load bookmark link on page with new bookmarklet appended
 		function loadpg(p) {
 			if (p) {
-				var pal = document.getElementById('pal'), pl = document.getElementById('pl'), t = 'joj ' + document.getElementById('username').value;
-				document.getElementById('bmrk').textContent = 'javascript:' + encodeURIComponent(p);
-				pal.setAttribute("style", "display:inline;padding:7px;height:auto");
+				var pl = document.getElementById('pl'), t = 'joj ' + document.getElementById('username').value;
+				document.getElementById('bmrk').textContent = 'javascript:' + encodeURI(p);
+				document.getElementById('pal').setAttribute("style", "display:inline;padding:7px;height:auto");
 				pl.setAttribute('href', document.getElementById('bmrk').textContent);
 				pl.setAttribute('title', t);
 				pl.innerHTML = t;
 			}
-			return;
 		}
 		function pastelet(u,p) {
-			if (u +p) {
+			if (u + p) {
 				u = u.match(/^\s*(\S*?)\s*$/)[1]; // strip leading/trailing spaces to help w/iOS 5 shortcut text
-				return "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;charset=utf-8;base64.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'";
+				p = "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'";
 			}
+			return p;
 		}
 	</script>
 </head>

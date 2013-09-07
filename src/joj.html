@@ -163,7 +163,7 @@
 			//	r = d.getElementById('realm'),
 			//	f = d.forms[0];
 			// if (h.match(/visitornet(.*?)p=sn-postauth-show/)) b ? b.click() : s.click(), f.submit(); // click agreement
-			// else if (h.match(/(^data:text\/html;charset=utf-8;base64.*|(mmind\\.me|mobilemind\\..*?) \\/joj(\\/|\\?) ?.*|visitornet(.*?)welcome\\.cgi|^data:)$/)) {
+			// else if (h.match(/(^data:text\/html;.*|(mmind\\.me|mobilemind\\..*?) \\/joj(\\/|\\?) ?.*|visitornet(.*?)welcome\\.cgi|^data:)$/)) {
 			//	// fill-in login form
 			//	r ? r.selectedIndex = 1 : 0;
 			//	d.getElementById('username').value = u;
@@ -172,13 +172,13 @@
 			// } else location.href = 'https://visitornet.boeing.com'; // redirect to login form
 			// void'_MmVERSION_'
 
-			// actually creates bookmarklet given 'u' = usr ID and 'p' = pass
-			// javascript:var%20u='usr',p='pass',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')%5B0%5D,r=d.getElementById('realm'),f=d.forms%5B0%5D;if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else%20if(h.match(/(mmind%5C.me%5C/joj(%5C/%7C%5C?)?.*%7Cmobilemind%5C..*?%5C/joj.*%7Cvisitornet(.*?)welcome%5C.cgi)$/))%7Br?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0%7Delse%20location.href='https://visitornet.boeing.com';void'_MmVERSION_'
+			// creates & returns bookmarklet given 'u' = usr ID and 'p' = pass
 			function pastelet(u,p) {
 				if (u + p) {
 					u = u.match(/^\s*(\S*?)\s*$/)[1]; // strip leading/trailing spaces to help w/iOS 5 shortcut text
-					return "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;charset=utf-8;base64.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'";
+					p = "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'";
 				}
+				return p;
 			}
 		</script>
 	</head>
