@@ -19,11 +19,12 @@
 				width: 100%;
 				font-family: Helvetica, sans-serif;
 				font-size: 17px;
-				-webkit-text-size-adjust: none
+				-webkit-text-size-adjust: none;
 				padding-bottom: 15px;
-				-moz-user-select: -moz-none;
+				-moz-user-select: none;
 				-webkit-user-select: none;
-				user-select: none
+				-moz-appearance: none;
+				-webkit-appearance: none;
 			}
 			h1 {
 				font-size: 17px;
@@ -31,7 +32,6 @@
 			}
 			p {
 				margin: 0;
-				font-weight: normal;
 				padding: 7px
 			}
 			ol, ul {
@@ -41,7 +41,6 @@
 			form {
 				border: hidden;
 				margin: 0;
-				font-weight: normal;
 				padding: 7px
 			}
 			.grp {
@@ -57,7 +56,7 @@
 				padding: 4px 10px
 			}
 			.pStr {
-				font-size:large;
+				font-size: large;
 				appearance: textfield
 			}
 			.bmrk {
@@ -79,10 +78,21 @@
 				text-shadow: 0 1px 1px rgba(0,0,0,.3);
 				color: #fafffa;
 				border: solid 1px #2E8022;
+				border-radius: 0px;
 				background: #75AC6C;
-				appearance: button;
+				appearance: none;
+				-webkit-appearance: none
 			}
-			.btn:active {
+			.rst {
+				color: #fafffa;
+				border-style: none;
+				background: #75AC6C;
+				margin:2px 0 4px 16px;
+				cursor: pointer;
+				border-radius: 0px;
+				-webkit-appearance: none
+			}
+			btn:active, .rst:active {
 				color: #000;
 				background: #2E8022;
 			}
@@ -194,7 +204,7 @@
 
 		<h1>Step 1: Enter the text</h1>
 		<div class="grp">
-			<p>Enter the Username to paste and a Password. Then tap&#32;<b>Make jOJ Bookmark</b>&#32;to reload this page for Step&#32;2.</p>
+			<p>Enter the Username to paste and a Password. Then tap&#32;<b>Make jOJ Bookmark</b>&#32;to reload this page for Step 2.</p>
 			<form id="pltMkr" method="GET" action= "." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value)); return false">
 				<label for="username">Username:&nbsp;
 					<input type="text" id="username" name="uid" tabindex="1" class="pStr" size="9" maxlength="8" placeholder="username" autocorrect="off" autocomplete="off" autocapitalize="off" required autofocus>
@@ -205,7 +215,7 @@
 				<br><br>
 				<input type="submit" id="mkPltBtn" tabindex="3" value="Make jOJ Bookmark" class="btn">
 				&nbsp; &nbsp;
-				<input type="button" id="reset" value="Reset" onclick="location.href='//'+location.host+location.port+location.pathname">
+				<input type="button" id="reset" value="Reset" class="rst" onclick="location.href='//'+location.host+location.port+location.pathname">
 				<br><br>
 				<label id="yp" for="bmrk" class="vp">Bookmark Address:&nbsp;
 					<textarea id="bmrk" tabindex="4" cols="40" rows="5" class="bmrk" wrap="soft" spellcheck="false">No Bookmark yet. See Step 1 instructions.</textarea>
@@ -228,10 +238,10 @@
 			<p>Now edit the bookmark you added in step 2 to turn it into a javascript bookmark. Tap the Bookmarks button in the toolbar.</p>
 			<p>Navigate to the bookmark you just saved.&#32;<i>Do not select the bookmark.</i>&nbsp;Tap&nbsp;<b>Edit</b>&nbsp;to make changes.</p>
 			<div class="fig"><img src="img/bkopeni.png" alt="open bookmarks" width="264" height="160"></div>
-			<p>In the <b>Edit</b> pop-over, tap on the bookmark name.</p>
+			<p>In the&#32;<b>Edit</b>&#32;pop-over, tap on the bookmark name.</p>
 			<div class="fig"><img src="img/bkmodifyi.png" alt="edit bookmarks" width="264" height="116"></div>
 			<p>In the&#32;<b>Edit Bookmark</b>&#32;pop-over, tap in the field that begins with &ldquo;<code><b>http:</b></code>
-				&rdquo;. It is easiest to replace all of it with the contents of the clipboard, so simply tap the circle with an X in it. Refer to image below.</p>
+				&rdquo;. It is easiest to replace all of it with the contents of the clipboard, so simply tap the circle with an X in it.</p>
 			<div class="fig"><img src="img/bkedit1i.png" alt="edit bookmark start" width="264" height="124"></div>
 			<p>Finally, tap and hold in the now empty&#32;<em>Address</em>&nbsp;field and select&#32;<b>Paste</b>. The updated book mark appears. The bookmark ends with:
 			  &#32;<code>void('v_MmVERSION_')</code></p>
@@ -248,9 +258,8 @@
 
 		<h1>Using jumpOnJuniper</h1>
 		<div class="grp">
-			<p>Connect to a VisitorNet WiFi access point. Tap the&#32;<em>jOJ</em>&#32;bookmark to go to VisitorNet sign-in page,
-				then &#32;<em>again</em>&#32; to &ldquo;paste&rdquo; the stored username &amp; password.
-				Finally, after the screen updates, tap the bookmark a third time to accept the Terms.</p>
+			<p>Connect to a VisitorNet WiFi radio. Tap the&#32;<em>jOJ</em>&#32;bookmark to go to VisitorNet sign-in page, then&#32;<em>again</em>&#32;
+				to &ldquo;paste&rdquo; the stored username &amp; password. Finally, after the screen updates, tap the bookmark a third time to accept the Terms.</p>
 			<p><b>PRO TIP</b></p>
 			<p>Use the&#32;<a href="img/Always_Show_Bookmarks_bar.png">Settings app &mdash; Safari</a>&#32;settings to set&nbsp;<b>
 				Always Show Bookmarks Bar</b>&#32;as&#32;<b>ON</b>&#32;and save (<i>or move</i>) the&#32;<em>jOJ</em>&#32;bookmark to the&#32;<b>
@@ -262,17 +271,18 @@
 		<div class="grp" id="notes">
 			<p>Notes</p>
 			<ol>
-				<li>This project is done during off-hours. If you find something to fix my email is:&#32;<a href="mailto:mobilemind%40pobox%2ecom">mobilemind&#64;pobox&#46;com</a>.</li>
-				<li>Screen captures above don't depict the current javascript. Sorry, deal with it.</li>
+				<li>This is an off-hours project. If you find something to fix send email to:&#32;<a href="mailto:mobilemind%40pobox%2ecom">mobilemind&#64;pobox&#46;com</a>.</li>
+				<li>Screen captures above don't depict the current javascript. Sorry.</li>
 				<li>If you're unsure about entering your password; don't use this bookmark.</li>
 			</ol>
 			<p>Troubleshooting</p>
 			<ul>
 				<li>Ensure your VisitorNet credentials are correct and aren't expired.</li>
-				<li>Use the latest bookmark version. The last few characters of the bookmark &ldquo;address&rdquo; include the version number in quotes.
-				For example,&#32;<b><code>void'v_MmVERSION_'</code></b>&#32;would indicate you bookmark is current against the title of this page,&#32;<i>jumpOnJuniper&nbsp;<b>v_MmVERSION_</b></i>.</li>
-				<li>Force a refresh of this page by holding down the shift key while clicking the browser refresh button. If the title of the page changes to a new number, then your browser had cached
-				an old version of the page. Use the reloaded page to make or update your bookmark.</li>
+				<li>Use the latest bookmark version. The bookmark &ldquo;address&rdquo; ends with the version number in quotes. For example,&#32;
+					<b><code>void'v_MmVERSION_'</code></b>&#32;would indicate you bookmark is current against the title of this page,&#32;
+					<i>jumpOnJuniper&nbsp;<b>v_MmVERSION_</b></i>.</li>
+				<li>Force a refresh of this page by holding down the shift key while clicking the browser refresh button. If the title of the page changes
+					to a new number, then your browser had cached an old version of the page. Use the reloaded page to make or update your bookmark.</li>
 			</ul>
 			<p>Copyright &copy; 2012, 2013 Tom King. All rights reserved.</p>
 		</div>
