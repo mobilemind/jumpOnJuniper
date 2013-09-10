@@ -72,11 +72,12 @@
 				pl.innerHTML = t;
 			}
 			else {
-				u.value = document.getElementById('password').value =  b.textContent = t;
+				b.textContent = t;
 				pl.setAttribute('href', t);
 				pl.setAttribute('title', t);
 				pl.innerHTML = t;
 				document.getElementById('pal').setAttribute("style", "display:none;padding:0;height:0");
+				u.focus();
 			}
 		}
 		function pastelet(u,p) {
@@ -98,7 +99,7 @@
 			<br><br>
 			<input type="submit" id="mkPltBtn" tabindex="3" value="Make jOJ Bookmark">
 			&nbsp; &nbsp;
-			<input type="button" id="reset" value="Reset" onclick="loadpg('')">
+			<input type="reset" id="reset" value="Reset" onclick="loadpg('')">
 			<br><br>
 			<label id="yp" for="bmrk">Bookmark Address:&#32;
 				<textarea id="bmrk" tabindex="4" cols="40" rows="5" wrap="soft" spellcheck="false"></textarea>
@@ -106,7 +107,7 @@
 		</form>
 		<p id="pal" style="display:none">Bookmark link:&#32;<a id="pl" href="." title="jOJ">jOJ</a><br><br></p>
 	</div>
-	<p style="font-size:x-small; padding 0">&nbsp;&nbsp;Copyright &copy; 2012, 2013 Tom King. All rights reserved.</p>
+	<p style="font-size:x-small; padding: 0">&nbsp;&nbsp;Copyright &copy; 2012, 2013 Tom King. All rights reserved.</p>
 	<p style="padding: 0">&nbsp;&nbsp;<a href="http://mmind.me/joj" title="jOJ online">jumpOnJuniper online</a></p>
 </body>
 </html>
