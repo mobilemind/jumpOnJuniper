@@ -62,38 +62,43 @@
 	  document.ontouchmove = function(evt) {evt.preventDefault();};
 		// load bookmark link on page with new bookmarklet appended
 		function loadpg(p) {
+			var pl = document.getElementById('pl'), u = document.getElementById('username'), b = document.getElementById('bmrk'), t = '';
 			if (p) {
-				var pl = document.getElementById('pl'), t = 'joj ' + document.getElementById('username').value;
-				document.getElementById('bmrk').textContent = 'javascript:' + encodeURI(p);
+				t = 'joj ' + u.value;
+				b.textContent = 'javascript:' + encodeURI(p);
 				document.getElementById('pal').setAttribute("style", "display:inline;padding:7px;height:auto");
-				pl.setAttribute('href', document.getElementById('bmrk').textContent);
+				pl.setAttribute('href', b.textContent);
 				pl.setAttribute('title', t);
 				pl.innerHTML = t;
 			}
+			else {
+				u.value = document.getElementById('password').value =  b.textContent = t;
+				pl.setAttribute('href', t);
+				pl.setAttribute('title', t);
+				pl.innerHTML = t;
+				document.getElementById('pal').setAttribute("style", "display:none;padding:0;height:0");
+			}
 		}
 		function pastelet(u,p) {
-			if (u + p) {
-				u = u.match(/^\s*(\S*?)\s*$/)[1]; // strip leading/trailing spaces to help w/iOS 5 shortcut text
-				p = "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'";
-			}
-			return p;
+			u = u.match(/^\s*(\S*?)\s*$/)[1]; // strip leading/trailing spaces to help w/iOS 5 shortcut text
+			return "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'";
 		}
 	</script>
 </head>
 <body>
-	<p style="margin:4px 8px 5px 20px"><b>jump On Juniper v_MmVERSION_</b></p>
+	<p style="margin:3px 0 4px 20px"><b>jump On Juniper v_MmVERSION_</b></p>
 	<div id="grp">
 		<form id="pltMkr" method="POST" action= "." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value)); return false">
 			<label for="username">Username:&#32;
 				<input type="text" id="username" name="uid" tabindex="1" class="pStr" size="9" maxlength="8" placeholder="username" autocorrect="off" autocomplete="off" autocapitalize="off" required autofocus>
 			</label>
 			<label for="password"><br>Password:&#32;
-				<input type="password" id="password" tabindex="2" class="pStr" name="password" size="9" maxlength="8" required autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false">
+				<input type="password" id="password" tabindex="2" class="pStr" name="password" size="9" maxlength="8" required autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" required>
 			</label>
 			<br><br>
 			<input type="submit" id="mkPltBtn" tabindex="3" value="Make jOJ Bookmark">
 			&nbsp; &nbsp;
-			<input type="button" id="reset" value="Reset" onclick="document.getElementById('username').value=document.getElementById('password').value=document.getElementById('bmrk').textContent=''">
+			<input type="button" id="reset" value="Reset" onclick="loadpg('')">
 			<br><br>
 			<label id="yp" for="bmrk">Bookmark Address:&#32;
 				<textarea id="bmrk" tabindex="4" cols="40" rows="5" wrap="soft" spellcheck="false"></textarea>
