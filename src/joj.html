@@ -16,89 +16,64 @@
 			body {
 				margin: 0;
 				padding: 0;
+				padding-bottom: 15px;
 				width: 100%;
 				font-family: Helvetica, sans-serif;
 				font-size: 17px;
 				-webkit-text-size-adjust: none;
-				padding-bottom: 15px;
 				-moz-user-select: none;
 				-webkit-user-select: none;
 				-moz-appearance: none;
-				-webkit-appearance: none;
+				-webkit-appearance: none
 			}
-			h1 {
-				font-size: 17px;
-				margin: 14px 9px 6px 20px
-			}
-			p {
-				margin: 0;
-				padding: 7px
-			}
-			ol, ul {
-				line-height: 1.3;
-				padding-right: 7px
-			}
-			form {
-				border: hidden;
-				margin: 0;
-				padding: 7px
-			}
+			h1 { font-size: 17px; margin: 14px 9px 6px 20px }
+			ol, ul { line-height: 1.3; padding 4px }
+			form { border: hidden; margin: 0 }
 			.grp {
 				margin: 0 10px;
 				width: 94%;
+				border-radius: 8px;
 				border: 1px solid #72ab69;
 				background-color: #e0e6e0;
 				font-size: 15px;
-				border-radius: 8px
+				padding: 7px
 			}
-			.fig {
-				margin: 0;
-				padding: 4px 10px
-			}
-			.pStr {
-				font-size: large;
-				appearance: textfield
-			}
-			.bmrk {
-				vertical-align: top;
-				font-family: monospace;
-				-moz-appearance: textfield-multiline;
-				-webkit-appearance: textarea
-			}
-			.btn {
+			.fig { margin: 0; padding: 4px 10px }
+			.pStr {	font-size: large }
+			#bmrk { vertical-align: top; font-family: monospace }
+			#mkPltBtn {
+				height: 38px;
+				width: 172px;
+				margin: 2px 0 4px 33px;
 				display: inline-block;
 				vertical-align: baseline;
-				margin:2px 0 4px 33px;
+				border-radius: 0;
+				border: solid 1px #2E8022;
 				cursor: pointer;
 				text-align: center;
-				height: 40px;
-				width: 200px;
 				font: 16px/100% Arial, Helvetica, sans-serif;
 				padding: .5em 2em .55em;
 				text-shadow: 0 1px 1px rgba(0,0,0,.3);
 				color: #fafffa;
+				border-radius: 0;
 				border: solid 1px #2E8022;
-				border-radius: 0px;
 				background: #75AC6C;
 				appearance: none;
 				-webkit-appearance: none
 			}
-			.rst {
+			#reset {
+				height: 24px;
+				width: 60px;
 				color: #fafffa;
-				border-style: none;
+				border-radius: 0;
+				border: solid 1px #2E8022;
 				background: #75AC6C;
-				margin:2px 0 4px 16px;
+				margin: 2px 0 4px 16px;
 				cursor: pointer;
-				border-radius: 0px;
 				-webkit-appearance: none
 			}
-			btn:active, .rst:active {
-				color: #000;
-				background: #2E8022;
-			}
-			.vp {
-				vertical-align:top
-			}
+			#mkPltBtn:active, #reset:active { color: #000; background: #2E8022 }
+			#yp { vertical-align:top }
 		</style>
 		<!-- v_MmVERSION_; 2012/04/14 Tom King; build date: _MmBUILDDATE_
 
@@ -213,12 +188,12 @@
 					<input type="password" id="password" tabindex="2" class="pStr" name="password" size="9" maxlength="8" required autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false">
 				</label>
 				<br><br>
-				<input type="submit" id="mkPltBtn" tabindex="3" value="Make jOJ Bookmark" class="btn">
+				<input type="submit" id="mkPltBtn" tabindex="3" value="Make jOJ Bookmark">
 				&nbsp; &nbsp;
-				<input type="button" id="reset" value="Reset" class="rst" onclick="location.href='//'+location.host+location.port+location.pathname">
+				<input type="button" id="reset" value="Reset" onclick="location.href='//'+location.host+location.port+location.pathname">
 				<br><br>
-				<label id="yp" for="bmrk" class="vp">Bookmark Address:&nbsp;
-					<textarea id="bmrk" tabindex="4" cols="40" rows="5" class="bmrk" wrap="soft" spellcheck="false">No Bookmark yet. See Step 1 instructions.</textarea>
+				<label id="yp" for="bmrk">Bookmark Address:&nbsp;
+					<textarea id="bmrk" tabindex="4" cols="40" rows="5" wrap="soft" spellcheck="false">No Bookmark yet. See Step 1 instructions.</textarea>
 				</label>
 			</form>
 			<p id="pal" style="display:none">Bookmark as link:&nbsp;<a id="pl"></a><br><br></p>
