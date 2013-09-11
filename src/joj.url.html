@@ -70,6 +70,9 @@
 				pl.setAttribute('href', b.textContent);
 				pl.setAttribute('title', t);
 				pl.innerHTML = t;
+				b.select();
+				b.focus();
+				document.execCommand('SelectAll',true,'');
 			}
 			else {
 				b.textContent = t;
@@ -102,7 +105,7 @@
 			<input type="reset" id="reset" value="Reset" onclick="loadpg('')">
 			<br><br>
 			<label id="yp" for="bmrk">Bookmark Address:&#32;
-				<textarea id="bmrk" tabindex="4" cols="40" rows="5" wrap="soft" spellcheck="false"></textarea>
+				<textarea id="bmrk" tabindex="4" cols="40" rows="5" wrap="soft" spellcheck="false" contenteditable></textarea>
 			</label>
 		</form>
 		<p id="pal" style="display:none">Bookmark link:&#32;<a id="pl" href="." title="jOJ">jOJ</a><br><br></p>

@@ -84,7 +84,7 @@
 				if (location.search) {
 					// reload form UI from query string
 					try {
-						var q = location.search, m = [];
+						var q = location.search, m = [], b = document.getElementById('bmrk');
 						q = decodeURIComponent(q.substr(1));
 						m = q.match(/^javascript:(.*?)u='(.*?)',p='(.*?)',/);
 						if (!m) throw 'No match in: ' + q;
@@ -93,7 +93,9 @@
 						document.getElementById('username').value = m[2];
 						if (m[3]) document.getElementById('password').value = m[3];
 						// put a more human-readable, but URI encoded, version of bookmarklet in textarea
-						document.getElementById('bmrk').textContent = encodeURI(q);
+						b.textContent = encodeURI(q);
+						// unhide remaining steps
+						window.scrollTo(0,200+document.getElementById('pltMkr').scrollHeight);
 						// if not iPhone/iPad unhide 'Pastelet as link' and set anchor tag
 						if (!(-1 != navigator.userAgent.indexOf('Safari') && -1 != navigator.userAgent.indexOf('Mobile'))) {
 							var pal = document.getElementById('pal'), pl = document.getElementById('pl');
@@ -104,8 +106,12 @@
 								pl.innerHTML = document.title;
 							}
 						}
-						// unhide remaining steps
-						window.scrollTo(0,200+document.getElementById('pltMkr').scrollHeight);
+						else {
+							b.select();
+							b.focus();
+							document.execCommand('SelectAll',true,'');
+							
+						}
 					}
 					catch (e) {
 						console.log('error: ' + e);
@@ -188,7 +194,7 @@
 				<input type="reset" id="reset" value="Reset" onclick="location.href='//'+location.host+location.port+location.pathname">
 				<br><br>
 				<label id="yp" for="bmrk">Bookmark Address:&nbsp;
-					<textarea id="bmrk" tabindex="4" cols="40" rows="5" wrap="soft" spellcheck="false">No Bookmark yet. See Step 1 instructions.</textarea>
+					<textarea id="bmrk" tabindex="4" cols="40" rows="5" wrap="soft" spellcheck="false" contenteditable>No Bookmark yet. See Step 1 instructions.</textarea>
 				</label>
 			</form>
 			<p id="pal" style="display:none">Bookmark as link:&nbsp;<a id="pl"></a><br><br></p>
