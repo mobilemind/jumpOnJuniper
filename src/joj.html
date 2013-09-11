@@ -106,12 +106,8 @@
 								pl.innerHTML = document.title;
 							}
 						}
-						else {
-							b.select();
-							b.focus();
-							document.execCommand('SelectAll',true,'');
-							
-						}
+						b.select();
+						b.focus();
 					}
 					catch (e) {
 						console.log('error: ' + e);

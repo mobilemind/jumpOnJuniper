@@ -31,7 +31,7 @@
 			border: solid 1px #2E8022;
 			-webkit-appearance: none;
 			background: #75AC6C;
-			margin: 2px 0 4px 20px;
+			margin: 9px 0 12px 20px;
 			cursor: pointer;
 			display: inline-block;
 			vertical-align: baseline;
@@ -79,7 +79,7 @@
 				pl.setAttribute('href', t);
 				pl.setAttribute('title', t);
 				pl.innerHTML = t;
-				document.getElementById('pal').setAttribute("style", "display:none;padding:0;height:0");
+				document.getElementById('pal').setAttribute("style", "display:none;padding:0");
 				u.focus();
 			}
 		}
@@ -97,15 +97,15 @@
 				<input type="text" id="username" name="uid" tabindex="1" class="pStr" size="9" maxlength="8" placeholder="username" autocorrect="off" autocomplete="off" autocapitalize="off" required autofocus>
 			</label>
 			<label for="password"><br>Password:&#32;
-				<input type="password" id="password" tabindex="2" class="pStr" name="password" size="9" maxlength="8" required autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+				<input type="password" id="password" tabindex="2" class="pStr" name="password" size="9" maxlength="8" required>
 			</label>
-			<br><br>
+			<br>
 			<input type="submit" id="mkPltBtn" tabindex="3" value="Make jOJ Bookmark">
 			&nbsp; &nbsp;
 			<input type="reset" id="reset" value="Reset" onclick="loadpg('')">
-			<br><br>
+			<br>
 			<label id="yp" for="bmrk">Bookmark Address:&#32;
-				<textarea id="bmrk" tabindex="4" cols="40" rows="5" wrap="soft" spellcheck="false" contenteditable></textarea>
+				<textarea id="bmrk" tabindex="4" cols="40" rows="5" wrap="soft" spellcheck="false"></textarea>
 			</label>
 		</form>
 		<p id="pal" style="display:none">Bookmark link:&#32;<a id="pl" href="." title="jOJ">jOJ</a><br><br></p>
