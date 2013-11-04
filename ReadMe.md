@@ -23,7 +23,7 @@ link that appears upon completing Step 1.
 * [jOJ hosted on github.com][ghjoj]
 
 [mmjoj]: http://mmind.me/joj  "jumpOnJuniper (mmind.me site)"
-[ghjoj]: http://mobilemind.github.com/jumpOnJuniper/joj.html  "jumpOnJuniper (github site)"
+[ghjoj]: http://mobilemind.github.io/jumpOnJuniper/joj.html  "jumpOnJuniper (github site)"
 
 ## Use
 Make sure you have installed/created a bookmark first (see above).
