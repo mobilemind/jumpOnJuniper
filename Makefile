@@ -15,7 +15,7 @@ VPATH := $(WEBDIR):$(BUILDDIR)
 
 # files
 PROJECTS = $(PROJ)
-COMPRESSEDFILES = $(PROJ).html.gz $(PROJ).url
+COMPRESSEDFILES = $(PROJ).html.gz $(PROJ).url $(PROJ).manifest
 
 VERSIONTXT := $(SRCDIR)/VERSION.txt
 
@@ -49,8 +49,11 @@ default: $(PROJECTS) | $(BUILDDIR) $(WEBDIR) $(IMGDIR)
 $(PROJ): $(COMPRESSEDFILES) | $(WEBDIR)
 	@printf "\nCopying built files...\n"
 	@cp -Rfp $(SRCDIR)/$(IMGDIR) $(WEBDIR)
-	@cp -fp $(BUILDDIR)/$@.html.gz $(WEBDIR)/$@
-	@cp -fp $(BUILDDIR)/$@.url $(WEBDIR)/$@.url
+	@echo "$(SRCDIR)/$(IMGDIR)/ -> $(WEBDIR)/$(IMGDIR)/"
+	@cp -fpv $(BUILDDIR)/$@.html.gz $(WEBDIR)/$@
+	@cp -fpv $(BUILDDIR)/$@.manifest $(WEBDIR)/$@.manifest
+	@cp -fpv $(BUILDDIR)/$@.url $(WEBDIR)/$@.url
+	@echo
 
 # run through html compressor and into gzip
 $(PROJ).html.gz: $(PROJ).html | $(BUILDDIR)  $(COMMONLIB)/$(YUICOMPRESSOR.jar) $(COMMONLIB)/$(HTMLCOMPRESSORJAR)
@@ -80,6 +83,12 @@ ifneq ($(wildcard $(COMMONLIB)/$(HTMLCOMPRESSORJAR)),)
 	@curl -# --create-dirs -o "$(COMMONLIB)/$(HTMLCOMPRESSORJAR)" "$(HTMLCOMPRESSORURL)"
 endif
 
+# copy manifest to $(BUILDDIR) and replace tokens
+%.manifest: $(SRCDIR)/%.manifest $(VERSIONTXT) | $(BUILDDIR)
+	@printf "\n$@: replace tokens and copy to $(BUILDDIR)\n"
+	@cp -fpv $(SRCDIR)/$@ $(BUILDDIR)
+	@cd $(BUILDDIR) && $(REPLACETOKENS)
+
 # copy HTML to $(BUILDDIR) and replace tokens, then check with tidy & jsl (JavaScript Lint)
 %.html: $(SRCDIR)/%.html $(VERSIONTXT) | $(BUILDDIR)
 	@printf "\n$@: validate with $(TIDY) and $(JSL)\n"
@@ -92,7 +101,7 @@ endif
 # deploy
 deploy: default
 	@echo "Deploy to: $$MYSERVER/me"
-	@rsync -ptuv --executability $(WEBDIR)/$(PROJ) $(WEBDIR)/$(PROJ).url "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me"
+	@rsync -ptuv --executability $(WEBDIR)/$(PROJ) $(WEBDIR)/$(PROJ).manifest $(WEBDIR)/$(PROJ).url "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me"
 	@rsync -ptuv --exclude=*icon*.png $(WEBDIR)/img/*.* "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img"
 	@$(GRECHO) '\nmake $(PROJ):' "Done. Deployed v$(VERSION) $(PROJECT) to $$MYSERVER/me \
 		\n\tTo update gh-pages on github.com do:\ngit checkout gh-pages && make clean && make deploy && git checkout master\n"
