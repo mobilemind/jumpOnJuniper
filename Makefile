@@ -11,7 +11,7 @@ COMMONLIB := $$HOME/common/lib
 
 # files
 JOJHTML := $(PROJ).html
-HTMLFILES := $(JOJHTML) $(JOJ).manifest index.html
+HTMLFILES := $(JOJHTML) $(PROJ).manifest index.html
 JOJFILE := joj.url
 
 # urls
@@ -45,7 +45,7 @@ $(PROJ).html:
 	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) -o $@.tmp $@ && mv -f $@.tmp $@
 	@echo "$@: $$(stat $(STATFMT) $@) bytes optimized"
 
-$(JOJ).manifest:
+$(PROJ).manifest:
 	@printf "\nFetch $@ from github and update...\n"
 	@curl -# -O $(SRCURL)/$@
 	@$(REPLACETOKENS)
