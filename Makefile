@@ -79,4 +79,4 @@ endif
 
 .PHONY: clean
 clean:
-	rm -rf $(JOJFILE) $(JOJHTML) $(JOJ).manifest img
+	rm -rf $(JOJFILE) $(JOJHTML) $(PROJ).manifest img
