@@ -11,7 +11,7 @@ COMMONLIB := $$HOME/common/lib
 
 # files
 JOJHTML := $(PROJ).html
-HTMLFILES := $(JOJHTML) index.html
+HTMLFILES := $(JOJHTML) $(JOJ).manifest index.html
 JOJFILE := joj.url
 
 # urls
@@ -45,6 +45,11 @@ $(PROJ).html:
 	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) -o $@.tmp $@ && mv -f $@.tmp $@
 	@echo "$@: $$(stat $(STATFMT) $@) bytes optimized"
 
+$(JOJ).manifest:
+	@printf "\nFetch $@ from github and update...\n"
+	@curl -# -O $(SRCURL)/$@
+	@$(REPLACETOKENS)
+
 index.html: $(JOJFILE)
 	@printf "\nReplace tokens in $@ and validate...\n"
 	@perl -p -i -e 'BEGIN{open F,"$(JOJFILE)";@f=<F>}s#data:text/html;charset=utf-8;base64,.*" class="desclink"#@f" class="desclink"#' $@
@@ -74,4 +79,4 @@ endif
 
 .PHONY: clean
 clean:
-	rm -rf $(JOJFILE) $(JOJHTML) img
+	rm -rf $(JOJFILE) $(JOJHTML) $(JOJ).manifest img
