@@ -7,123 +7,106 @@
 	<style type="text/css">
 		body {
 			margin: 0;
-			padding: 0;
-			width: 100%;
-			background-color: #72ab69;
 			font-family: Helvetica, sans-serif;
-			font-size: 17px;
-			-webkit-text-size-adjust: none
-			padding-bottom: 15px
+			font-size: 14px;
+			-webkit-text-size-adjust: none;
+			-moz-user-select: none;
+			-webkit-user-select: none
 		}
-		h1 {
-			font-size: 17px;
-			color: #FFFAFA;
-			margin: 14px 9px 6px 20px
-		}
-		p {
-			margin: 0;
-			font-weight: normal;
-			padding: 7px
-		}
-		form {
-			border: hidden;
-			margin: 0;
-			font-weight: normal;
-			padding: 7px
-		}
-		.grp {
+		form { padding: 6px; border: hidden }
+		#grp {
 			margin: 0 10px;
-			width: 94%;
-			background-color: #e0e6e0;
-			border: 1px solid #d9d9d9;
-			font-size: 15px;
-			border-radius: 8px
+			width: 95%;
+			border-radius: 6px;
+			border: 1px solid #72ab69;
+			background-color: #e0e6e0
 		}
-		.pStr {
-			font-size:large;
-			appearance: textfield
-		}
-		.bmrk {
-			vertical-align: top;
-			font-family: monospace;
-			-webkit-appearance: textarea
-		}
-		.btn {
+		.pStr {	font-size: large }
+		#bmrk { vertical-align: top; font-family: monospace }
+		#mkPltBtn {
+			height: 38px;
+			width: 172px;
+			color: #fafffa;
+			border-radius: 0;
+			border: 1px solid #2E8022;
+			background: #75AC6C;
+			margin: 9px 0 12px 20px;
+			cursor: pointer;
 			display: inline-block;
 			vertical-align: baseline;
-			margin:2px 0 4px 33px;
-			outline: none;
-			cursor: pointer;
 			text-align: center;
-			text-decoration: none;
-			height: 40px;
-			width: 200px;
-			font: 16px/100% Arial, Helvetica, sans-serif;
-			padding: .5em 2em .55em;
-			text-shadow: 0 1px 1px rgba(0,0,0,.3);
-			border-radius: .5em;
-			box-shadow: 0 1px 2px rgba(0,0,0,.2);
+			font: 14px/100% Arial, Helvetica, sans-serif;
+			-webkit-appearance: none
+		}
+		#mkPltBtn:active, #reset:active { color: #000; background: #2E8022 }
+		#reset {
+			height: 24px;
+			width: 60px;
 			color: #fafffa;
-			border: solid 1px #2E8022;
+			border-radius: 0;
+			border: 1px solid #2E8022;
 			background: #75AC6C;
-			background: -webkit-gradient(linear, left top, left bottom, from(#90B880), to(#4C9840))
+			margin: 2px 0 4px 12px;
+			cursor: pointer;
+			-webkit-appearance: none
 		}
-		.btn:active {
-			color: #75AC6C;
-			background: #75AC6C;
-			background: -webkit-gradient(linear, left top, left bottom, from(#4D9941), to(#91B98A))
-		}
-		.vp {
-			vertical-align:top
-		}
+		#yp { vertical-align:top }
 	</style>
 	<!-- v_MmVERSION_; 2012/11/15 Tom King; build date: _MmBUILDDATE_
 		jumpOnJuniper a data URL formlet-based bookmark-generator to simplify use of Juniper Infranet-based VisitorNet
 		generated URL first displays as http://mmind.me/joj?javascript:var%20d='...
-		Copyright (c) 2012 Tom King. All rights reserved.
+		Copyright (c) 2012, 2013 Tom King. All rights reserved.
 	-->
 	<script type="text/javascript">
 		// load bookmark link on page with new bookmarklet appended
 		function loadpg(p) {
-			if ('' !== p) {
-				var pal = document.getElementById('pal'), pl = document.getElementById('pl'), t = 'joj ' + document.getElementById('username').value;
-				document.getElementById('bmrk').textContent = 'javascript:' + encodeURIComponent(p);
-				pal.setAttribute("style", "display:inline;padding:7px;height:auto");
-				pl.setAttribute('href', document.getElementById('bmrk').textContent);
+			var pl = document.getElementById('pl'), u = document.getElementById('username'), b = document.getElementById('bmrk'), t = '';
+			if (p) {
+				t = 'joj ' + u.value;
+				b.textContent = 'javascript:' + encodeURI(p);
+				document.getElementById('pal').setAttribute("style", "display:inline;padding:7px;height:auto");
+				pl.setAttribute('href', b.textContent);
 				pl.setAttribute('title', t);
 				pl.innerHTML = t;
+				b.select();
+				b.focus();
+				document.execCommand('SelectAll',true,'');
 			}
-			return;
+			else {
+				b.textContent = t;
+				pl.setAttribute('href', t);
+				pl.setAttribute('title', t);
+				pl.innerHTML = t;
+				document.getElementById('pal').setAttribute("style", "display:none;padding:0");
+				u.focus();
+			}
 		}
 		function pastelet(u,p) {
 			u = u.match(/^\s*(\S*?)\s*$/)[1]; // strip leading/trailing spaces to help w/iOS 5 shortcut text
-			return !(u + p) ? '' : "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;charset=utf-8;base64,(.*?)|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'";
+			return "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'";
 		}
 	</script>
 </head>
 <body>
-	<h1>jump On Juniper v_MmVERSION_</h1>
-	<div class="grp">
-		<p>Enter Username and Password, then&nbsp;<b>Make jOJ Bookmark</b>.</p>
+	<p style="margin:3px 0 4px 20px"><b>jump On Juniper v_MmVERSION_</b></p>
+	<div id="grp">
 		<form id="pltMkr" method="POST" action= "." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value)); return false">
-			<label for="username">Username:&nbsp;
-				<input type="text" id="username" name="uid" tabindex="1" class="pStr" size="9" maxlength="8" placeholder="username" autocorrect="off" autocomplete="off" autocapitalize="off" required autofocus>
+			<label for="username">Username:&#32;
+				<input type="text" id="username" name="uid" tabindex="1" class="pStr" size="9" maxlength="8" placeholder="username" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" required autofocus>
 			</label>
-			<label for="password"><br>Password:&nbsp;
-				<input type="password" id="password" tabindex="2" class="pStr" name="password" size="9" maxlength="8" required autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false">
+			<label for="password"><br>Password:&#32;
+				<input type="password" id="password" tabindex="2" class="pStr" name="password" size="9" maxlength="8" required>
 			</label>
-			<br><br>
-			<input type="submit" id="mkPltBtn" tabindex="3" value="Make jOJ Bookmark" class="btn">
+			<br>
+			<input type="submit" id="mkPltBtn" tabindex="3" value="Make jOJ Bookmark">
 			&nbsp; &nbsp;
-			<input type="button" id="reset" value="Reset" onclick="document.getElementById('username').value=document.getElementById('password').value=document.getElementById('bmrk').textContent='';">
-			<br><br>
-			<label id="yp" for="bmrk" class="vp">Bookmark Address:&nbsp;
-				<textarea id="bmrk" tabindex="4" cols="40" rows="5" class="bmrk" wrap="soft" spellcheck="false"></textarea>
-			</label>
+			<input type="reset" id="reset" value="Reset" tabindex="5" onclick="loadpg('')">
 		</form>
-		<p id="pal" style="display:none">Bookmark as link:&nbsp;<a id="pl" href="." title="jOJ">jOJ</a><br><br></p>
+		&nbsp;Bookmark Address:<br>
+		&nbsp;<textarea id="bmrk" tabindex="4" cols="40" rows="5" wrap="soft"></textarea><br>
+		<p id="pal" style="display:none">Bookmark link:&#32;<a id="pl" href="." title="jOJ">jOJ</a><br><br></p>
 	</div>
-	<p>Copyright &copy; 2012, 2013 Tom King. All rights reserved.</p>
-	<p><a href="http://mmind.me/joj" title="jOJ online">jumpOnJuniper online</a></p>
+	<p style="font-size:x-small;padding:0">&nbsp;&nbsp;Copyright &copy; 2012, 2013 Tom King. All rights reserved.</p>
+	<p style="padding:0">&nbsp;&nbsp;<a href="http://mmind.me/joj" title="jOJ online">jumpOnJuniper online</a></p>
 </body>
 </html>

@@ -23,7 +23,7 @@ link that appears upon completing Step 1.
 * [jOJ hosted on github.com][ghjoj]
 
 [mmjoj]: http://mmind.me/joj  "jumpOnJuniper (mmind.me site)"
-[ghjoj]: http://mobilemind.github.com/jumpOnJuniper/joj.html  "jumpOnJuniper (github site)"
+[ghjoj]: http://mobilemind.github.io/jumpOnJuniper/joj.html  "jumpOnJuniper (github site)"
 
 ## Use
 Make sure you have installed/created a bookmark first (see above).
@@ -31,8 +31,8 @@ Make sure you have installed/created a bookmark first (see above).
 Connect to the WiFi network and open a web page. The VisitorNet sign-in page should appear.
 
 Activate the jOJ bookmarklet (tap on the link for it in the bookmark bar or use Bookmarks
-menu). The default bookmark title is usually “jOJ login ___name___&hellip;” where ___name___ is the
-first part of your Username (email).
+menu). The default bookmark title is usually "jOJ login ___name___&hellip;"
+ where ___name___ is the first part of your Username (email).
 
 The bookmarklet created via installation will paste in the Username, the stored password
 and then submit the form.
@@ -41,7 +41,7 @@ and then submit the form.
 
 Requires a browser that supports `javascript:` bookmarks.
 
-Tested with Firefox 11.x - 13.x, Safari 5.1.x and Mobile Safari 5.x.
+Tested with Firefox 11.x - 23.x, Safari 5.1.x - 6.x and Mobile Safari 5.x - 6.x.
 
 ## License
 
@@ -70,14 +70,14 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Build Requirements
-The jumpOnJuniper Makefile requires htmlcompressor. The htmlcompressor project has its own license
-and sub-projects. End-users are responsible for obtaining a htmlcompressor and its related
-components, under their respective license terms.
+The jumpOnJuniper Makefile requires htmlcompressor. The htmlcompressor project has its own
+license and sub-projects. End-users are responsible for obtaining a htmlcompressor and its
+related components, under their respective license terms.
 
 For htmlcompressor see: <https://code.google.com/p/htmlcompressor/>
 
-The jumpOnJuniper Makefile also requires bash shell, make, gzip, perl, tidy (or tidy-html5), jsl,
-node (nodejs on Windows) and optionally uses growlnotify. Required utilities are easily
+The jumpOnJuniper Makefile also requires bash shell, make, gzip, perl, tidy (or tidy-html5),
+jsl, node (nodejs on Windows) and optionally uses growlnotify. Required utilities are easily
 installed on Mac OS X via homebrew or on Windows via Cygwin setup.
 
 The W3C tidy-html5 is available here: <http://w3c.github.com/tidy-html5/>
@@ -87,8 +87,9 @@ The W3C tidy-html5 is available here: <http://w3c.github.com/tidy-html5/>
 * For **growlnotify** (requires Growl), see: <http://growl.info>
 
 ### Win
-* For **Cygwin** and related utilities such as **make**, **gzip**, **perl**, **tidy**, **nodejs**,
-see: <http://www.cygwin.com/>
+* For **Cygwin** and related utilities such as **make**, **gzip**, **perl**, **tidy**,
+**nodejs**, see: <http://www.cygwin.com/>. jumpOnJuniper compiles under Cygwin 1.7.18 for
+either 32 bit or 64 bit versions of Windows.
 * For **growlnotify** (requires Growl for Windows), see: <http://growlforwindows.com>
 * For **jsl**, see: <http://www.javascriptlint.com/>
 
