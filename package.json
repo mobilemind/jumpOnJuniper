@@ -1,10 +1,10 @@
 {
   "name": "jumpOnJuniper",
-  "description": "A bookmarklet to streamline logging into a Juniper Networks Infranet 'VisitorNet' site.',
-  "version": "5.3.1",
+  "description": "A bookmarklet to streamline logging into a Juniper Networks Infranet VisitorNet site.",
+  "version": "6.8.0",
   "homepage": "https://github.com/mobilemind/jumpOnJuniper",
   "author": {
-    "name": "\"mobilemind\" Tom King",
+    "name": "'mobilemind' Tom King",
     "email": "mobilemind@pobox.com",
     "url": "http://mobilemind.net/"
   },
@@ -15,27 +15,27 @@
   "bugs": {
     "url": "https://github.com/mobilemind/jumpOnJuniper/issues"
   },
-  "licenses": [
-    {
+  "licenses": [{
       "type": "MIT",
       "url": "https://github.com/mobilemind/jumpOnJuniper/blob/master/LICENSE-MIT"
-    }
-  ],
+  }],
   "main": "Gruntfile.js",
   "engines": {
-    "node": "0.8.x"
-  },
-  "scripts": {
-    "test": "grunt test"
+    "node": "0.10.x"
   },
   "dependencies": {
     "grunt": "0.4.x"
   },
   "devDependencies": {
-    "grunt-contrib-jshint": ">=0.1.1",
-    "grunt-contrib-nodeunit": ">=0.1.2"
+    "grunt-cli": "0.1.x",
+    "grunt": "0.4 .x",
+    "grunt-string-replace": "0.2.x",
+    "grunt-contrib-jshint": "0.7.x",
+    "grunt-html-minify": "0.3.x",
+    "grunt-html-validation": "0.1.x"
   },
-  "keywords": [
-    "bookmarklet"
-  ]
+  "scripts": {
+     "test": "grunt test --verbose"
+  },
+  "keywords": [ "bookmarklet" ]
 }
