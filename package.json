@@ -24,18 +24,15 @@
     "node": "0.10.x"
   },
   "dependencies": {
-    "grunt": "0.4.x"
-  },
-  "devDependencies": {
     "grunt-cli": "0.1.x",
-    "grunt": "0.4 .x",
+    "grunt": "0.4.x",
     "grunt-string-replace": "0.2.x",
-    "grunt-contrib-jshint": "0.7.x",
+    "grunt-contrib-jshint": "0.8.x",
     "grunt-html-minify": "0.3.x",
     "grunt-html-validation": "0.1.x"
   },
   "scripts": {
-     "test": "grunt test --verbose"
+     "test": "grunt"
   },
   "keywords": [ "bookmarklet" ]
 }
