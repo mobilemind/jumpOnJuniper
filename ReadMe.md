@@ -1,4 +1,5 @@
 # jumpOnJuniper
+[![Build Status](https://secure.travis-ci.org/mobilemind/jumpOnJuniper.png?branch=trygrunt)](http://travis-ci.org/mobilemind/jumpOnJuniper)
 
 The “jumpOnJuniper” (jOJ) bookmarklet streamlines logging in via Juniper Networks Infranet
 “VisitorNet” sites that control access to WiFi networks. The bookmarklet will paste in the
