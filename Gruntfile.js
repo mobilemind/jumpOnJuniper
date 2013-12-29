@@ -57,8 +57,8 @@ module.exports = function(grunt) {
       options: {}
     },
     validation: {
-      sources: ['src/*.html'],
-      web:  ['web/*.html', 'web/*.url'],
+      sources: ['src/joj*.html'],
+      web:  ['web/joj*.html'],
       options: {
         doctype: "HTML5",
         charset: "utf-8",
@@ -66,9 +66,6 @@ module.exports = function(grunt) {
           "Attribute autoc[a-z]+ not allowed on element input at this point."],
         reportpath: false
       }
-    },
-    watch: {
-      files: [ '<config:jshint.files>', 'src/*.html', 'src/*.manifest']
     }
   });
 
