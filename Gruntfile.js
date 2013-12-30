@@ -21,39 +21,20 @@ module.exports = function(grunt) {
         browser: true
       }
     },
-    "string-replace": {
-        main: {
-          src: ['src/joj.html'],
-          dest: 'web/joj.html'
-        },
-        manifest: {
-          src: ['src/joj.manifest'],
-          dest: 'web/joj.manifest'
-        },
-        dataurl: {
-          src: ['src/joj.url.html'],
-          dest: 'web/joj.url.html'
-        },
+    'string-replace': {
+        main: { src: ['src/joj.html'], dest: 'web/joj.html' },
+        manifest: { src: ['src/joj.manifest'], dest: 'web/joj.manifest' },
+        dataurl: { src: ['src/joj.url.html'], dest: 'web/joj.url.html' },
         options: {
-          replacements: [{
-            pattern: /_MmVERSION_/g,
-            replacement: '<%= pkg.version %>'
-            }, {
-            pattern: /_MmBUILDDATE_/g,
-            replacement: '<%= grunt.template.today() %>'
-            }
+          replacements: [
+            { pattern: /_MmVERSION_/g, replacement: '<%= pkg.version %>' },
+            { pattern: /_MmBUILDDATE_/g, replacement: '<%= grunt.template.today() %>' }
           ]
         }
     },
     html_minify: {
-      main: {
-        src: ['web/joj.html'],
-        dest: 'web/joj.html'
-      },
-      dataurl: {
-        src: ['web/joj.url.html'],
-        dest: 'web/joj.url.html'
-      },
+      main: { src: ['web/joj.html'], dest: 'web/joj.html' },
+      dataurl: { src: ['web/joj.url.html'], dest: 'web/joj.url.html' },
       options: {}
     },
     validation: {
@@ -69,28 +50,23 @@ module.exports = function(grunt) {
     }
   });
 
-  // Load "grunt-string-replace"
+  // Load plugins
   grunt.loadNpmTasks('grunt-string-replace');
-
-  // Load "jshint" plugin
   grunt.loadNpmTasks('grunt-contrib-jshint');
-
-  // Load "validation" HTML validation plugin
   grunt.loadNpmTasks('grunt-html-validation');
-
-  // Load "html-minify" plugin
   grunt.loadNpmTasks('grunt-html-minify');
 
   // replace tokens task
-  grunt.registerTask('tokenswap', ['string-replace:main', 'string-replace:manifest', 'string-replace:data' ]);
+  grunt.registerTask('tokenswap', 'replace tokens', function() {
+    grunt.task.run(['string-replace:main', 'string-replace:manifest', 'string-replace:dataurl']);
+  });
 
-  // test
-  // grunt.registerTask('test',  ['jshint', 'string-replace', 'validation']);
-
-  // Load local tasks
-  // grunt.loadTasks('tasks');
+  // reduce HTML task
+  grunt.registerTask('reducehtml', 'reduce html', function() {
+    grunt.task.run(['html_minify:main', 'html_minify:dataurl']);
+  });
 
   // Default task
-  grunt.registerTask('default', ['jshint:files', 'string-replace:main', 'string-replace:manifest', 'string-replace:dataurl', 'html_minify:main', 'html_minify:dataurl', 'validation:web' ]);
+  grunt.registerTask('default', ['jshint:files', 'tokenswap', 'reducehtml', 'validation:web' ]);
 
 };
