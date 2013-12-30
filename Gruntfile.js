@@ -1,9 +1,11 @@
-/*global module:false*/
+/* global module:false */
 module.exports = function(grunt) {
+  "use strict";
 
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    clean: ['web/', 'validation-status.json'],
     jshint: {
       files: ['Gruntfile.js'],
       options: {
@@ -13,12 +15,14 @@ module.exports = function(grunt) {
         latedef: true,
         newcap: true,
         noarg: true,
+        noempty: true,
+        strict: true,
         sub: true,
+        trailing: true,
         undef: true,
-        boss: true,
-        eqnull: true,
-        jquery: true,
-        browser: true
+        unused:true,
+        lastsemic: true,
+        node: true
       }
     },
     'string-replace': {
@@ -51,10 +55,13 @@ module.exports = function(grunt) {
   });
 
   // Load plugins
-  grunt.loadNpmTasks('grunt-string-replace');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-html-validation');
   grunt.loadNpmTasks('grunt-html-minify');
+  grunt.loadNpmTasks('grunt-string-replace');
+
+  grunt.log.writeln('\n' + grunt.config('pkg.name') + ' ' + grunt.config('pkg.version'));
 
   // replace tokens task
   grunt.registerTask('tokenswap', 'replace tokens', function() {
@@ -66,7 +73,10 @@ module.exports = function(grunt) {
     grunt.task.run(['html_minify:main', 'html_minify:dataurl']);
   });
 
-  // Default task
+  // test task
   grunt.registerTask('default', ['jshint:files', 'tokenswap', 'reducehtml', 'validation:web' ]);
+
+  // Default task
+  grunt.registerTask('default', ['clean', 'jshint:files', 'tokenswap', 'reducehtml', 'validation:web' ]);
 
 };
