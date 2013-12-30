@@ -74,7 +74,7 @@ module.exports = function(grunt) {
   });
 
   // test task
-  grunt.registerTask('default', ['jshint:files', 'tokenswap', 'reducehtml', 'validation:web' ]);
+  grunt.registerTask('test', ['jshint:files', 'tokenswap', 'reducehtml', 'validation:web' ]);
 
   // Default task
   grunt.registerTask('default', ['clean', 'jshint:files', 'tokenswap', 'reducehtml', 'validation:web' ]);
