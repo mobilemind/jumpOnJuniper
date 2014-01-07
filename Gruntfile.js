@@ -41,6 +41,9 @@ module.exports = function(grunt) {
       dataurl: { src: ['web/joj.url.html'], dest: 'web/joj.url.html' },
       options: {}
     },
+    qunit: {
+      all: ['tests/**/*.html']
+    },
     validation: {
       sources: ['src/joj*.html'],
       web:  ['web/joj*.html'],
@@ -57,8 +60,9 @@ module.exports = function(grunt) {
   // Load plugins
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-html-validation');
+  grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-html-minify');
+  grunt.loadNpmTasks('grunt-html-validation');
   grunt.loadNpmTasks('grunt-string-replace');
 
   grunt.log.writeln('\n' + grunt.config('pkg.name') + ' ' + grunt.config('pkg.version'));
@@ -74,7 +78,7 @@ module.exports = function(grunt) {
   });
 
   // test task
-  grunt.registerTask('test', ['jshint:files', 'tokenswap', 'reducehtml', 'validation:web' ]);
+  grunt.registerTask('test', ['jshint:files', 'tokenswap', 'reducehtml', 'qunit', 'validation:web' ]);
 
   // Default task
   grunt.registerTask('default', ['clean', 'jshint:files', 'tokenswap', 'reducehtml', 'validation:web' ]);
