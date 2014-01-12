@@ -33,6 +33,7 @@
     "grunt-contrib-zopfli": "0.4.x",
     "grunt-html-minify": "0.3.x",
     "grunt-html-validation": "0.1.x",
+    "grunt-sftp-deploy": "0.0.x",
     "text2datauri": "0.0.x"
   },
   "scripts": {
