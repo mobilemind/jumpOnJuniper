@@ -5,7 +5,10 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    clean: ['web/', 'validation-status.json'],
+    clean: {
+      files: ['web/', 'validation-status.json'],
+      build: ['web/joj.html', 'web/joj.url.html']
+    },
     jshint: {
       files: ['Gruntfile.js'],
       options: {
@@ -54,16 +57,47 @@ module.exports = function(grunt) {
           "Attribute autoc[a-z]+ not allowed on element input at this point."],
         reportpath: false
       }
+    },
+    zopfli: {
+      main: { src: ['web/joj.html'], dest: 'web/joj' },
+      dataurl: { src: ['web/joj.url.html'], dest: 'web/joj.url' },
+      options: {
+        verbose: false,
+        verbose_more: false,
+        numiterations: 1000,
+        blocksplitting: true,
+        blocksplittinglast: false,
+        blocksplittingmax: 15
+      }
+    },
+    text2datauri:  {
+      'web/joj.url': 'web/joj.url.html',
+      options: {
+        sourceCharset: 'utf-8', // 'utf-8' or 'ascii'; actual format not validated (yet?)
+        protocol: 'data:', // any string; this is not validated by text2datauri
+        mimeType: 'text/html', // any string;  this is not validated by text2datauri
+        targetCharset: 'utf-8', // 'utf-8' or ''; metadata only- output is always utf-8
+        encoding: 'base64' // 'base64' or 'uri'; use 'uri' for encodeURIComponent() encoding
+      }
+    },
+    rename: {
+      main: {
+        files: [ {src: ['web/joj.gz'], dest: 'web/joj'} ]
+      }
     }
   });
 
   // Load plugins
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-qunit');
+  grunt.loadNpmTasks('grunt-contrib-rename');
+  grunt.loadNpmTasks('grunt-contrib-zopfli');
   grunt.loadNpmTasks('grunt-html-minify');
   grunt.loadNpmTasks('grunt-html-validation');
   grunt.loadNpmTasks('grunt-string-replace');
+  grunt.loadNpmTasks('text2datauri');
 
   grunt.log.writeln('\n' + grunt.config('pkg.name') + ' ' + grunt.config('pkg.version'));
 
@@ -77,10 +111,17 @@ module.exports = function(grunt) {
     grunt.task.run(['html_minify:main', 'html_minify:dataurl']);
   });
 
+  // maximum gzip
+  grunt.registerTask('gziphtml', 'gzip html', function() {
+    grunt.task.run(['zopfli:main']);
+  });
+
   // test task
   grunt.registerTask('test', ['jshint:files', 'tokenswap', 'reducehtml', 'qunit', 'validation:web' ]);
 
   // Default task
-  grunt.registerTask('default', ['clean', 'jshint:files', 'tokenswap', 'reducehtml', 'validation:web' ]);
+  grunt.registerTask('default', ['clean:files',
+    'jshint:files', 'tokenswap', 'reducehtml', 'validation:web',
+    'gziphtml', 'text2datauri', 'rename:main', 'clean:build']);
 
 };

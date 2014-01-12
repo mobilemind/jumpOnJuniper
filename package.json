@@ -27,11 +27,15 @@
     "grunt-cli": "0.1.x",
     "grunt": "0.4.x",
     "grunt-contrib-clean": "0.5.x",
+    "grunt-contrib-copy": "0.5.x",
     "grunt-contrib-jshint": "0.8.x",
     "grunt-contrib-qunit": "0.3.x",
+    "grunt-contrib-rename": "0.0.3",
+    "grunt-contrib-zopfli": "0.4.x",
     "grunt-html-minify": "0.3.x",
     "grunt-html-validation": "0.1.x",
-    "grunt-string-replace": "0.2.x"
+    "grunt-string-replace": "0.2.x",
+    "text2datauri": "0.0.x"
   },
   "scripts": {
      "test": "grunt test"
