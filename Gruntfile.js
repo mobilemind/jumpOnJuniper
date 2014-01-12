@@ -80,7 +80,20 @@ module.exports = function(grunt) {
       main: {
         files: [ {src: ['web/joj.gz'], dest: 'web/joj'} ]
       }
+    },
+  'sftp-deploy': {
+    main: {
+      auth: {
+        host: process.env.MYSERVER,
+        port: 22,
+        authKey: 'privateKeyCustom'
+      },
+      src: 'web',
+      dest: process.env.MYSERVERHOME + '/me/joj2',
+      exclusions: ['web/**/.DS_Store', 'web/img/**'],
+      server_sep: '/'
     }
+}
   });
 
   // Load plugins
@@ -91,6 +104,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-zopfli');
   grunt.loadNpmTasks('grunt-html-minify');
   grunt.loadNpmTasks('grunt-html-validation');
+  grunt.loadNpmTasks('grunt-sftp-deploy');
   grunt.loadNpmTasks('text2datauri');
 
   grunt.log.writeln('\n' + grunt.config('pkg.name') + ' ' + grunt.config('pkg.version'));
@@ -102,5 +116,8 @@ module.exports = function(grunt) {
 
   // Default task
   grunt.registerTask('default', ['clean', 'test', 'clean:build']);
+
+  // deploy task
+  grunt.registerTask('deploy', ['default', 'sftp-deploy']);
 
 };
