@@ -33,7 +33,7 @@ module.exports = function(grunt) {
         nonull: true,
         noprocess: '**/*.png',
         process: function (content, srcpath) {
-          content = content.replace(/_MmVERSION_/g, grunt.config('pkg.name'));
+          content = content.replace(/_MmVERSION_/g, grunt.config('pkg.version'));
           return content.replace(/_MmBUILDDATE_/g, grunt.template.today());
         }
       },
