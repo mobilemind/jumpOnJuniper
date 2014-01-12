@@ -36,7 +36,7 @@
     "text2datauri": "0.0.x"
   },
   "scripts": {
-     "test": "grunt"
+     "test": "grunt test"
   },
   "keywords": [ "bookmarklet" ]
 }
