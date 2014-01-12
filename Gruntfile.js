@@ -23,29 +23,26 @@ module.exports = function(grunt) {
         sub: true,
         trailing: true,
         undef: true,
-        unused:true,
+        unused: false,
         lastsemic: true,
         node: true
       }
     },
-    'string-replace': {
-        main: { src: ['src/joj.html'], dest: 'web/joj.html' },
-        manifest: { src: ['src/joj.manifest'], dest: 'web/joj.manifest' },
-        dataurl: { src: ['src/joj.url.html'], dest: 'web/joj.url.html' },
-        options: {
-          replacements: [
-            { pattern: /_MmVERSION_/g, replacement: '<%= pkg.version %>' },
-            { pattern: /_MmBUILDDATE_/g, replacement: '<%= grunt.template.today() %>' }
-          ]
+    copy: {
+      options: {
+        nonull: true,
+        noprocess: '**/*.png',
+        process: function (content, srcpath) {
+          content = content.replace(/_MmVERSION_/g, grunt.config('pkg.name'));
+          return content.replace(/_MmBUILDDATE_/g, grunt.template.today());
         }
+      },
+      main: { files: [ {expand: true, cwd: 'src/', src: ['**'], dest: 'web/'} ]}
     },
     html_minify: {
       main: { src: ['web/joj.html'], dest: 'web/joj.html' },
       dataurl: { src: ['web/joj.url.html'], dest: 'web/joj.url.html' },
       options: {}
-    },
-    qunit: {
-      all: ['tests/**/*.html']
     },
     validation: {
       sources: ['src/joj*.html'],
@@ -60,7 +57,6 @@ module.exports = function(grunt) {
     },
     zopfli: {
       main: { src: ['web/joj.html'], dest: 'web/joj' },
-      dataurl: { src: ['web/joj.url.html'], dest: 'web/joj.url' },
       options: {
         verbose: false,
         verbose_more: false,
@@ -91,37 +87,21 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-rename');
   grunt.loadNpmTasks('grunt-contrib-zopfli');
   grunt.loadNpmTasks('grunt-html-minify');
   grunt.loadNpmTasks('grunt-html-validation');
-  grunt.loadNpmTasks('grunt-string-replace');
   grunt.loadNpmTasks('text2datauri');
 
   grunt.log.writeln('\n' + grunt.config('pkg.name') + ' ' + grunt.config('pkg.version'));
 
-  // replace tokens task
-  grunt.registerTask('tokenswap', 'replace tokens', function() {
-    grunt.task.run(['string-replace:main', 'string-replace:manifest', 'string-replace:dataurl']);
-  });
-
-  // reduce HTML task
-  grunt.registerTask('reducehtml', 'reduce html', function() {
-    grunt.task.run(['html_minify:main', 'html_minify:dataurl']);
-  });
-
-  // maximum gzip
-  grunt.registerTask('gziphtml', 'gzip html', function() {
-    grunt.task.run(['zopfli:main']);
-  });
-
   // test task
-  grunt.registerTask('test', ['jshint:files', 'tokenswap', 'reducehtml', 'qunit', 'validation:web' ]);
+  // Default task
+  grunt.registerTask('test', ['jshint', 'copy', 'html_minify:main', 'html_minify:dataurl',
+    'validation:web','zopfli', 'text2datauri', 'rename:main']);
 
   // Default task
-  grunt.registerTask('default', ['clean:files',
-    'jshint:files', 'tokenswap', 'reducehtml', 'validation:web',
-    'gziphtml', 'text2datauri', 'rename:main', 'clean:build']);
+  grunt.registerTask('default', ['jshint', 'clean', 'copy', 'html_minify:main', 'html_minify:dataurl',
+    'validation:web', 'zopfli', 'text2datauri', 'rename:main', 'clean:build']);
 
 };
