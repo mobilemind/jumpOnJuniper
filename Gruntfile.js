@@ -89,7 +89,7 @@ module.exports = function(grunt) {
         authKey: 'privateKeyCustom'
       },
       src: 'web',
-      dest: process.env.MYSERVERHOME + '/me/joj2',
+      dest: process.env.MYSERVERHOME + '/me',
       exclusions: ['web/**/.DS_Store', 'web/img/**'],
       server_sep: '/'
     }
