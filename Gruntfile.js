@@ -60,7 +60,7 @@ module.exports = function(grunt) {
       options: {
         verbose: false,
         verbose_more: false,
-        numiterations: 1000,
+        numiterations: 110,
         blocksplitting: true,
         blocksplittinglast: false,
         blocksplittingmax: 15
@@ -101,7 +101,6 @@ module.exports = function(grunt) {
     'validation:web','zopfli', 'text2datauri', 'rename:main']);
 
   // Default task
-  grunt.registerTask('default', ['jshint', 'clean', 'copy', 'html_minify:main', 'html_minify:dataurl',
-    'validation:web', 'zopfli', 'text2datauri', 'rename:main', 'clean:build']);
+  grunt.registerTask('default', ['clean', 'test', 'clean:build']);
 
 };
