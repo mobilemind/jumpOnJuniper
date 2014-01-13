@@ -41,14 +41,14 @@ and then submit the form.
 
 Requires a browser that supports `javascript:` bookmarks.
 
-Tested with Firefox 11.x - 23.x, Safari 5.1.x - 6.x and Mobile Safari 5.x - 6.x.
+Tested with Firefox 11.x - 26.x, Safari 5.1.x - 7.x and Mobile Safari 5.x - 7.x.
 
 ## License
 
 MIT License - <http://www.opensource.org/licenses/mit-license.php>
 
 jumpOnJuniper
-Copyright (c) 2012, 2013 Tom King <mobilemind@pobox.com>
+Copyright (c) 2012, 2013, 2014 Tom King <mobilemind@pobox.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -81,6 +81,10 @@ jsl, node (nodejs on Windows) and optionally uses growlnotify. Required utilitie
 installed on Mac OS X via homebrew or on Windows via Cygwin setup.
 
 The W3C tidy-html5 is available here: <http://w3c.github.com/tidy-html5/>
+
+> **NOTE**: An alternative build system using grunt is available on the
+> [trygrunt](https://github.com/mobilemind/jumpOnJuniper/tree/trygrunt#) branch of this
+> repository.
 
 ### Mac
 * For utilities such as **jsl** and **node** using homebrew see: <http://mxcl.github.com/homebrew/>
