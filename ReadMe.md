@@ -71,11 +71,13 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Build
-The jumpOnJuniper `trygrunt` branch uses node and grunt. To clone and build this branch
-of the project do the following:
+The jumpOnJuniper `trygrunt` branch uses [node](http://nodejs.org/) and
+[grunt](http://gruntjs.com/). To clone and build this branch of the project do the
+following:
 ````shell
-git clone https://github.com/mobilemind/jumpOnJuniper/tree/trygrunt#
+git clone https://github.com/mobilemind/jumpOnJuniper
 cd jumpOnJuniper
+git checkout trygrunt
 node install
 grunt
 ````
