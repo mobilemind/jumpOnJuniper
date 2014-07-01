@@ -92,7 +92,7 @@ module.exports = function(grunt) {
       src: 'web',
       dest: process.env.MYSERVERHOME + '/me',
       exclusions: ['web/**/.DS_Store', 'web/img/**'],
-      server_sep: '/'
+      serverSep: '/'
     }
 }
   });
