@@ -2,7 +2,7 @@
 <html lang=en>
 <head>
 	<meta name=viewport content="width=device-width,user-scalable=no">
-	<meta name="format-detection" content="telephone=no">
+	<meta name=format-detection content="telephone=no">
 	<title>jumpOnJuniper v_MmVERSION_</title>
 	<style type="text/css">
 		body {
@@ -70,7 +70,7 @@
 				pl.innerHTML = t;
 				b.select();
 				b.focus();
-				document.execCommand('SelectAll',true,'');
+				document.execCommand('SelectAll',true,'')
 			}
 			else {
 				b.textContent = t;
@@ -78,21 +78,21 @@
 				pl.setAttribute('title', t);
 				pl.innerHTML = t;
 				document.getElementById('pal').setAttribute("style", "display:none;padding:0");
-				u.focus();
+				u.focus()
 			}
 		}
 		function pastelet(u,p) {
 			u = u.match(/^\s*(\S*?)\s*$/)[1]; // strip leading/trailing spaces to help w/iOS 5 shortcut text
-			return "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'";
+			return "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'"
 		}
 	</script>
 </head>
 <body>
 	<p style="margin:3px 0 4px 20px"><b>jump On Juniper v_MmVERSION_</b></p>
 	<div id=grp>
-		<form id=pltMkr method="POST" action="." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value)); return false">
+		<form id=pltMkr method=POST action="." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value)); return false">
 			<label for=username>Username:&#32;
-				<input type=text id=username name=uid tabindex=1 class=pStr size=9 maxlength=8 placeholder="username" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" required autofocus>
+				<input id=username name=uid tabindex=1 class=pStr size=9 maxlength=8 placeholder="username" autocorrect=off autocomplete=off autocapitalize=off spellcheck=false required autofocus>
 			</label>
 			<label for=password><br>Password:&#32;
 				<input type=password id=password tabindex=2 class=pStr name=password size=9 maxlength=8 required>
@@ -103,7 +103,7 @@
 			<input type=reset id=reset value="Reset" tabindex=5 onclick="loadpg('')">
 		</form>
 		&nbsp;Bookmark Address:<br>
-		&nbsp;<textarea id=bmrk tabindex=4 cols=40 rows=5 wrap="soft"></textarea><br>
+		&nbsp;<textarea id=bmrk tabindex=4 cols=40 rows=5 wrap=soft></textarea><br>
 		<p id=pal style="display:none">Bookmark link:&#32;<a id=pl href="." title="jOJ">jOJ</a><br><br></p>
 	</div>
 	<p style="font-size:x-small;padding:0">&nbsp;&nbsp;Copyright &copy; 2012, 2013, 2014 Tom King. All rights reserved.</p>

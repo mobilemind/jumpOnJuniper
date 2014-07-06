@@ -4,7 +4,7 @@
 	<meta name=keywords content="iPad,VisitorNet,jumpOnJuniper,bookmark,Bookmarklet,maker,generator,javascript,paste,login,pastelet,username,password">
 	<meta name=robots content="index,nofollow">
 	<meta name=viewport content="width=device-width,user-scalable=no">
-	<meta name="format-detection" content="telephone=no">
+	<meta name=format-detection content="telephone=no">
 	<link rel="shortcut icon" href="img/joj.ico">
 	<link rel="apple-touch-icon" href="img/joj-57.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="img/joj-114.png">
@@ -103,16 +103,16 @@
 							pal.setAttribute("style", "display:inline;padding:7px;height:auto");
 							pl.setAttribute('href', document.getElementById('bmrk').textContent);
 							pl.setAttribute('title', document.title);
-							pl.innerHTML = document.title;
+							pl.innerHTML = document.title
 						}
 					}
 					b.select();
-					b.focus();
+					b.focus()
 				}
 				catch (e) {
 					console.log('error: ' + e);
 					alert("Unable to decode pastelet.\r\nForm will be reset.");
-					location.replace('//' + location.host + location.port + location.pathname);
+					location.replace('//' + location.host + location.port + location.pathname)
 				}
 			}
 			// hide address bar
@@ -124,7 +124,7 @@
 			if (p) {
 				p = 'javascript:' + encodeURIComponent(p);
 				document.getElementById('bmrk').textContent = p;
-				location.href = '//' + location.host + location.port + location.pathname + '?' + p;
+				location.href = '//' + location.host + location.port + location.pathname + '?' + p
 			}
 		}
 
@@ -158,7 +158,7 @@
 		function pastelet(u,p) {
 			if (u + p) {
 				u = u.match(/^\s*(\S*?)\s*$/)[1]; // strip leading/trailing spaces to help w/iOS 5 shortcut text
-				p = "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'";
+				p = "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'"
 			}
 			return p;
 		}
@@ -177,15 +177,15 @@
 	<h1>Step 1: Enter the text</h1>
 	<div class=grp>
 		<p>Enter the Username to paste and a Password. Then tap&#32;<b>Make jOJ Bookmark</b>&#32;to reload this page for Step 2.</p>
-		<form id="pltMkr" method="GET" action= "." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value)); return false">
+		<form id=pltMkr method=GET action="." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value)); return false">
 			<label for=username>Username:&nbsp;
-				<input type=text id=username name=uid tabindex=1 class=pStr size=9 maxlength=8 placeholder=username autocorrect=off autocomplete=off autocapitalize=off required autofocus>
+				<input id=username name=uid tabindex=1 class=pStr size=9 maxlength=8 placeholder=username autocorrect=off autocomplete=off autocapitalize=off required autofocus>
 			</label>
 			<label for=password><br>Password:&nbsp;
 				<input type=password id=password tabindex=2 class=pStr name=password size=9 maxlength=8 required autocorrect=off autocomplete=off autocapitalize=off spellcheck=false>
 			</label>
 			<br><br>
-			<input type=submit id="mkPltBtn" tabindex=3 value="Make jOJ Bookmark">
+			<input type=submit id=mkPltBtn tabindex=3 value="Make jOJ Bookmark">
 			&nbsp; &nbsp;
 			<input type=reset id=reset value="Reset" onclick="location.href='//'+location.host+location.port+location.pathname">
 			<br><br>
