@@ -58,7 +58,9 @@ $(PROJ): $(COMPRESSEDFILES) | $(WEBDIR)
 # run through html compressor and into gzip
 $(PROJ).html.gz: $(PROJ).html | $(BUILDDIR)  $(COMMONLIB)/$(YUICOMPRESSOR.jar) $(COMMONLIB)/$(HTMLCOMPRESSORJAR)
 	@echo "Compressing $^ $$(stat $(STATFMT) $(BUILDDIR)/$^) bytes..."
-	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONSPAGE) $(BUILDDIR)/$^ | gzip -f9 > $(BUILDDIR)/$@
+	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONSPAGE) -o $(BUILDDIR)/$^.tmp $(BUILDDIR)/$^
+	@zopfli -i15 -c $(BUILDDIR)/$^.tmp > $(BUILDDIR)/$^.gz
+	@rm -f $(BUILDDIR)/$^.tmp
 	@echo "   $(BUILDDIR)/$@  $$(stat $(STATFMT) $(BUILDDIR)/$@) bytes"
 
 # run through html compressor and base64 encode
