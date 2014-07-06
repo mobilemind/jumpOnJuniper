@@ -15,7 +15,7 @@ HTMLFILES := $(JOJHTML) $(PROJ).manifest index.html
 JOJFILE := joj.url
 
 # urls
-SRCURL := https://raw.githubusercontent.com/mobilemind/$(GITHUBPROJ)/master/src/
+SRCURL := https://raw.githubusercontent.com/mobilemind/$(GITHUBPROJ)/master/src
 JOJURL := http://mmind.me/$(JOJFILE)
 
 # macros/utils
