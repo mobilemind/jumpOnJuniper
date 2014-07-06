@@ -78,7 +78,7 @@ following:
 git clone https://github.com/mobilemind/jumpOnJuniper
 cd jumpOnJuniper
 git checkout trygrunt
-node install
+npm install
 grunt
 ````
 The built files will be in `web` and include the following:
