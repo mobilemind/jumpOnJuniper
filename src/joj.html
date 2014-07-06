@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
-<html lang="en" manifest="joj.manifest">
+<html lang=en manifest="joj.manifest">
 <head>
-	<meta name="keywords" content="iPad,VisitorNet,jumpOnJuniper,bookmark,Bookmarklet,maker,generator,javascript,paste,login,pastelet,username,password">
-	<meta name="robots" content="index,nofollow">
-	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<meta name=keywords content="iPad,VisitorNet,jumpOnJuniper,bookmark,Bookmarklet,maker,generator,javascript,paste,login,pastelet,username,password">
+	<meta name=robots content="index,nofollow">
+	<meta name=viewport content="width=device-width,user-scalable=no">
 	<meta name="format-detection" content="telephone=no">
 	<link rel="shortcut icon" href="img/joj.ico">
 	<link rel="apple-touch-icon" href="img/joj-57.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="img/joj-114.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="img/joj-72.png">
 	<link rel="apple-touch-icon" sizes="144x144" href="img/joj-144.png">
-	<link rel="canonical" href="http://mmind.me/joj">
+	<link rel=canonical href="http://mmind.me/joj">
 	<title>jumpOnJuniper v_MmVERSION_</title>
 	<style type="text/css">
 		body {
@@ -168,79 +168,79 @@
 <body>
 	<noscript><b>Javascript must be enabled for this app.</b></noscript>
 	<h1>jump On Juniper v_MmVERSION_</h1>
-	<div class="grp">
+	<div class=grp>
 		<p>Use this to automate VisitorNet login. Follow steps below to create a bookmark.</p>
 		<p><b>Using the bookmark:</b>&#32;Connect to Visitornet WiFi. Open Safari, then tap the bookmark 3 times to log-in. Wait between taps to allow the VisitorNet pages to load.</p>
 		<p>See&#32;<a href="#notes" title="Notes &amp; Issues">Notes &amp; Troubleshooting</a>&#32;for more information.</p>
 	</div>
 
 	<h1>Step 1: Enter the text</h1>
-	<div class="grp">
+	<div class=grp>
 		<p>Enter the Username to paste and a Password. Then tap&#32;<b>Make jOJ Bookmark</b>&#32;to reload this page for Step 2.</p>
 		<form id="pltMkr" method="GET" action= "." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value)); return false">
-			<label for="username">Username:&nbsp;
-				<input type="text" id="username" name="uid" tabindex="1" class="pStr" size="9" maxlength="8" placeholder="username" autocorrect="off" autocomplete="off" autocapitalize="off" required autofocus>
+			<label for=username>Username:&nbsp;
+				<input type=text id=username name=uid tabindex=1 class=pStr size=9 maxlength=8 placeholder=username autocorrect=off autocomplete=off autocapitalize=off required autofocus>
 			</label>
-			<label for="password"><br>Password:&nbsp;
-				<input type="password" id="password" tabindex="2" class="pStr" name="password" size="9" maxlength="8" required autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false">
+			<label for=password><br>Password:&nbsp;
+				<input type=password id=password tabindex=2 class=pStr name=password size=9 maxlength=8 required autocorrect=off autocomplete=off autocapitalize=off spellcheck=false>
 			</label>
 			<br><br>
-			<input type="submit" id="mkPltBtn" tabindex="3" value="Make jOJ Bookmark">
+			<input type=submit id="mkPltBtn" tabindex=3 value="Make jOJ Bookmark">
 			&nbsp; &nbsp;
-			<input type="reset" id="reset" value="Reset" onclick="location.href='//'+location.host+location.port+location.pathname">
+			<input type=reset id=reset value="Reset" onclick="location.href='//'+location.host+location.port+location.pathname">
 			<br><br>
-			<label id="yp" for="bmrk">Bookmark Address:&nbsp;
-				<textarea id="bmrk" tabindex="4" cols="40" rows="5" wrap="soft" spellcheck="false" contenteditable>No Bookmark yet. See Step 1 instructions.</textarea>
+			<label id=yp for=bmrk>Bookmark Address:&nbsp;
+				<textarea id=bmrk tabindex=4 cols=40 rows=5 wrap=soft spellcheck=false contenteditable>No Bookmark yet. See Step 1 instructions.</textarea>
 			</label>
 		</form>
-		<p id="pal" style="display:none">Bookmark as link:&nbsp;<a id="pl"></a><br><br></p>
+		<p id=pal style="display:none">Bookmark as link:&nbsp;<a id=pl></a><br><br></p>
 	</div>
 
 	<h1>Step 2: Add a Bookmark</h1>
-	<div class="grp">
+	<div class=grp>
 		<p>Tap the action button on the toolbar. Then select&#32;<b>Add Bookmark.</b></p>
-		<div class="fig"><img class="fig" src="img/bkaddi.png" alt="add bookmark" width="225" height="158"></div>
+		<div class=fig><img class=fig src="img/bkaddi.png" alt="add bookmark" width=225 height=158></div>
 		<p>Take note of the name (or edit it), and then tap&#32;<b>Save</b>.</p>
-		<div class="fig"><img src="img/bksavei.png" alt="save bookmark" width="264" height="175"></div>
+		<div class=fig><img src="img/bksavei.png" alt="save bookmark" width=264 height=175></div>
 	</div>
 
 	<h1>Step 3: Edit the Bookmark</h1>
-	<div class="grp">
+	<div class=grp>
 		<p>First, tap on the text box with&#32;<b>Code for your bookmark</b>. Then&#32;<b>Select all</b>&#32;of the text and&#32;<b>Copy</b>&#32;it to the clipboard.</p>
 		<p>Now edit the bookmark you added in step 2 to turn it into a javascript bookmark. Tap the Bookmarks button in the toolbar.</p>
 		<p>Navigate to the bookmark you just saved.&#32;<i>Do not select the bookmark.</i>&nbsp;Tap&nbsp;<b>Edit</b>&nbsp;to make changes.</p>
-		<div class="fig"><img src="img/bkopeni.png" alt="open bookmarks" width="264" height="160"></div>
+		<div class=fig><img src="img/bkopeni.png" alt="open bookmarks" width=264 height=160></div>
 		<p>In the&#32;<b>Edit</b>&#32;pop-over, tap on the bookmark name.</p>
-		<div class="fig"><img src="img/bkmodifyi.png" alt="edit bookmarks" width="264" height="116"></div>
+		<div class=fig><img src="img/bkmodifyi.png" alt="edit bookmarks" width=264 height=116></div>
 		<p>In the&#32;<b>Edit Bookmark</b>&#32;pop-over, tap in the field that begins with &ldquo;<code><b>http:</b></code>
 			&rdquo;. It is easiest to replace all of it with the contents of the clipboard, so simply tap the circle with an X in it.</p>
-		<div class="fig"><img src="img/bkedit1i.png" alt="edit bookmark start" width="264" height="124"></div>
+		<div class=fig><img src="img/bkedit1i.png" alt="edit bookmark start" width=264 height=124></div>
 		<p>Finally, tap and hold in the now empty&#32;<em>Address</em>&nbsp;field and select&#32;<b>Paste</b>. The updated book mark appears. The bookmark ends with:
 			&#32;<code>void('v_MmVERSION_')</code></p>
 		<p>The bookmark code is quite long, but if you scroll to the start you'll see the bookmark begins:&#32;<code>javascript:var%20u=</code>&hellip;</p>
 	</div>
 
 	<h1>Step 4: Save the Bookmark</h1>
-	<div class="grp">
+	<div class=grp>
 		<p>Back-up a level in the edit pop-over by tapping the button to the left of &ldquo;Edit Bookmark&rdquo;.</p>
-		<div class="fig"><img src="img/bkbacki.png" alt="open bookmarks" width="270" height="34"></div>
+		<div class=fig><img src="img/bkbacki.png" alt="open bookmarks" width=270 height=34></div>
 		<p>Save the bookmark by tapping&#32;<b>Done</b>.</p>
-		<div class="fig"><img src="img/bkdonei.png" alt="edit bookmarks" width="270" height="34"></div>
+		<div class=fig><img src="img/bkdonei.png" alt="edit bookmarks" width=270 height=34></div>
 	</div>
 
 	<h1>Using jumpOnJuniper</h1>
-	<div class="grp">
+	<div class=grp>
 		<p>Connect to a VisitorNet WiFi radio. Tap the&#32;<em>jOJ</em>&#32;bookmark to go to VisitorNet sign-in page, then&#32;<em>again</em>&#32;
 			to &ldquo;paste&rdquo; the stored username &amp; password. Finally, after the screen updates, tap the bookmark a third time to accept the Terms.</p>
 		<p><b>PRO TIP</b></p>
 		<p>Use the&#32;<a href="img/Always_Show_Bookmarks_bar.png">Settings app &mdash; Safari</a>&#32;settings to set&nbsp;<b>
 			Always Show Bookmarks Bar</b>&#32;as&#32;<b>ON</b>&#32;and save (<i>or move</i>) the&#32;<em>jOJ</em>&#32;bookmark to the&#32;<b>
 			Bookmarks Bar</b>&#32;folder. Then you can more quickly tap the link for your login.</p>
-		<div class="fig"><img src="img/bkbarlinki.png" alt="open bookmarks" width="244" height="108"></div>
+		<div class=fig><img src="img/bkbarlinki.png" alt="open bookmarks" width=244 height=108></div>
 	</div>
 
 	<h1>Notes &amp; Troubleshooting</h1>
-	<div class="grp" id="notes">
+	<div class=grp id=notes>
 		<p>Notes</p>
 		<ol>
 			<li>This is an off-hours project. If you find something to fix send email to:&#32;<a href="mailto:mobilemind%40pobox%2ecom">mobilemind&#64;pobox&#46;com</a>.</li>
