@@ -11,7 +11,7 @@
 	<link rel="apple-touch-icon" sizes="72x72" href="img/joj-72.png">
 	<link rel="apple-touch-icon" sizes="144x144" href="img/joj-144.png">
 	<link rel=canonical href="http://mmind.me/joj">
-	<title>jumpOnJuniper v_MmVERSION_</title>
+	<title>jumpOnJuniper _MmVERSION_</title>
 	<style type="text/css">
 		body {
 			margin: 0;
@@ -117,7 +117,7 @@
 			}
 			// hide address bar
 			else window.scrollTo(0,1);
-			return;
+			return true;
 		}, true);
 		// reload page with new bookmarklet appended
 		function loadpg(p) {
@@ -167,7 +167,7 @@
 
 <body>
 	<noscript><b>Javascript must be enabled for this app.</b></noscript>
-	<h1>jump On Juniper v_MmVERSION_</h1>
+	<h1>jump On Juniper _MmVERSION_</h1>
 	<div class=grp>
 		<p>Use this to automate VisitorNet login. Follow steps below to create a bookmark.</p>
 		<p><b>Using the bookmark:</b>&#32;Connect to Visitornet WiFi. Open Safari, then tap the bookmark 3 times to log-in. Wait between taps to allow the VisitorNet pages to load.</p>
@@ -177,7 +177,7 @@
 	<h1>Step 1: Enter the text</h1>
 	<div class=grp>
 		<p>Enter the Username to paste and a Password. Then tap&#32;<b>Make jOJ Bookmark</b>&#32;to reload this page for Step 2.</p>
-		<form id="pltMkr" method=GET action= "." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value));return false">
+		<form id="pltMkr" method=get action="." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value));return false" onReset="location.href='//'+location.host+location.port+location.pathname">
 			<label for=username>Username:&#32;
 				<input id=username name=uid tabindex=1 class=pStr size=9 maxlength=8 placeholder=username autocorrect=off autocomplete=off autocapitalize=off required autofocus>
 			</label>
@@ -186,7 +186,7 @@
 			</label>
 			<br><br>
 			<input type=submit id="mkPltBtn" tabindex=3 value="Make jOJ Bookmark">&#32; &#32;
-			<input type=reset id=reset value="Reset" onclick="location.href='//'+location.host+location.port+location.pathname">
+			<input type=reset id=reset value=Reset>
 			<br><br>
 			<label id=yp for=bmrk>Bookmark Address:&#32;
 				<textarea id=bmrk tabindex=4 cols=40 rows=5 wrap=soft spellcheck=false contenteditable>No Bookmark yet. See Step 1 instructions.</textarea>
@@ -215,7 +215,7 @@
 			&rdquo;. It is easiest to replace all of it with the contents of the clipboard, so simply tap the circle with an X in it.</p>
 		<div class=fig><img src="img/bkedit1i.png" alt="edit bookmark start" width=264 height=124></div>
 		<p>Finally, tap and hold in the now empty&#32;<em>Address</em>&#32;field and select&#32;<b>Paste</b>. The updated book mark appears. The bookmark ends with:
-			&#32;<code>void('v_MmVERSION_')</code></p>
+			&#32;<code>void('_MmVERSION_')</code></p>
 		<p>The bookmark code is quite long, but if you scroll to the start you'll see the bookmark begins:&#32;<code>javascript:var%20u=</code>&hellip;</p>
 	</div>
 
@@ -250,8 +250,8 @@
 		<ul>
 			<li>Ensure your VisitorNet credentials are correct and aren't expired.</li>
 			<li>Use the latest bookmark version. The bookmark &ldquo;address&rdquo; ends with the version number in quotes. For example,&#32;
-				<b><code>void'v_MmVERSION_'</code></b>&#32;would indicate you bookmark is current against the title of this page,&#32;
-				<i>jumpOnJuniper&#32;<b>v_MmVERSION_</b></i>.</li>
+				<b><code>void'_MmVERSION_'</code></b>&#32;would indicate you bookmark is current against the title of this page,&#32;
+				<i>jumpOnJuniper&#32;<b>_MmVERSION_</b></i>.</li>
 			<li>Force a refresh of this page by holding down the shift key while clicking the browser refresh button. If the title of the page changes
 				to a new number, then your browser had cached an old version of the page. Use the reloaded page to make or update your bookmark.</li>
 		</ul>

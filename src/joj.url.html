@@ -3,7 +3,7 @@
 <head>
 	<meta name=viewport content="width=device-width,user-scalable=no">
 	<meta name="format-detection" content="telephone=no">
-	<title>jumpOnJuniper v_MmVERSION_</title>
+	<title>jumpOnJuniper _MmVERSION_</title>
 	<style type="text/css">
 		body {
 			margin: 0;
@@ -58,7 +58,7 @@
 		Copyright (c) 2012, 2013 Tom King. All rights reserved.
 	-->
 	<script type="text/javascript">
-		// load bookmark link on page with new bookmarklet appended
+		// load bookmark link on page with new bookmarklet appended or reset
 		function loadpg(p) {
 			var pl = document.getElementById('pl'), u = document.getElementById('username'), b = document.getElementById('bmrk'), t = '';
 			if (p) {
@@ -88,9 +88,9 @@
 	</script>
 </head>
 <body>
-	<p style="margin:3px 0 4px 20px"><b>jump On Juniper v_MmVERSION_</b></p>
+	<p style="margin:3px 0 4px 20px"><b>jump On Juniper _MmVERSION_</b></p>
 	<div id=grp>
-		<form id=pltMkr method=GET action="." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value));return false">
+		<form id=pltMkr method=get action="." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value));return false" onReset="loadpg()">
 			<label for=username>Username:&#32;
 				<input id=username name=uid tabindex=1 class=pStr size=9 maxlength=8 placeholder="username" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" required autofocus>
 			</label>
@@ -100,10 +100,10 @@
 			<br>
 			<input type=submit id=mkPltBtn tabindex=3 value="Make jOJ Bookmark">
 			&nbsp; &#32;
-			<input type=reset id=reset value="Reset" tabindex=5 onclick="loadpg('')">
+			<input type=reset id=reset value=Reset tabindex=5>
 		</form>
-		&nbsp;Bookmark Address:<br>&nbsp;<textarea id=bmrk tabindex=4 cols=40 rows=5 wrap="soft"></textarea><br>
-		<p id=pal style="display:none">Bookmark link:&#32;<a id=pl href="." title="jOJ">jOJ</a><br><br></p>
+		&nbsp;Bookmark Address:<br>&nbsp;<textarea id=bmrk tabindex=4 cols=40 rows=5 wrap=soft></textarea><br>
+		<p id=pal style="display:none">Bookmark link:&#32;<a id=pl href="." title=jOJ>jOJ</a><br><br></p>
 	</div>
 	<p style="font-size:x-small">&nbsp;&#32;Copyright &copy; 2012, 2013, 2014 Tom King. All rights reserved.</p>
 	<p>&nbsp;&#32;<a href="http://mmind.me/joj" title="jOJ online">jumpOnJuniper online</a></p>
