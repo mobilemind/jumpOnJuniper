@@ -116,5 +116,5 @@ $(IMGDIR): | $(BUILDDIR)
 	@cp -Rfp $(SRCDIR)/$(IMGDIR) $(BUILDDIR)
 
 clean:
-	@echo 'make $(PROJ): Cleaning build directory & web directory'
-	@rm -Rf $(BUILDDIR) $(WEBDIR) $(PROJ).url
+	@echo 'make $(PROJ): Cleaning build directory, web directory and misc. files from trygrunt branch of repo'
+	@rm -Rf $(BUILDDIR) $(WEBDIR) $(PROJ).url validation-status.json img
