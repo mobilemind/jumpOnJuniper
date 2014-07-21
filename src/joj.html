@@ -11,7 +11,7 @@
 	<link rel="apple-touch-icon" sizes="72x72" href="img/joj-72.png">
 	<link rel="apple-touch-icon" sizes="144x144" href="img/joj-144.png">
 	<link rel=canonical href="http://mmind.me/joj">
-	<title>jumpOnJuniper v_MmVERSION_</title>
+	<title>jumpOnJuniper _MmVERSION_</title>
 	<style type="text/css">
 		body {
 			margin: 0;
@@ -70,11 +70,11 @@
 		#mkPltBtn:active, #reset:active { color: #000; background: #2E8022 }
 		#yp { vertical-align:top }
 	</style>
-	<!-- v_MmVERSION_; 2012/04/14 Tom King; build date: _MmBUILDDATE_
+	<!-- _MmVERSION_; 2012/04/14 Tom King; build date: _MmBUILDDATE_
 
 		jumpOnJuniper a bookmark-generator to simplify use of Juniper Infranet-based VisitorNet
 		generated URL first displays as http://mmind.me/joj?javascript:var%20d='...
-		Copyright (c) 2012 Tom King. All rights reserved.
+		Copyright (c) 2012-2014 Tom King. All rights reserved.
 	-->
 
 	<!-- code w/onLoad handler + function to create bookmarklet string -->
@@ -112,7 +112,7 @@
 				catch (e) {
 					console.log('error: ' + e);
 					alert("Unable to decode pastelet.\r\nForm will be reset.");
-					location.replace('//' + location.host + location.port + location.pathname)
+					location.replace(location.pathname)
 				}
 			}
 			// hide address bar
@@ -130,7 +130,7 @@
 
 		//	jumpOnJuniper a bookmark-generator to simplify use of Juniper Infranet-based VisitorNet
 		//	generated URL first displays as http://mmind.me/joj?javascript:var%20d='...
-		//	Copyright (c) 2012 Tom King. All rights reserved
+		//	Copyright (c) 2012-2014 Tom King. All rights reserved
 		//
 		// Comments- Generated bookmarklet is carefully constructed for current version of VisitorNet
 		// *	Bookmarklet code is optimized for size (ie, string length of all the code).
@@ -167,7 +167,7 @@
 
 <body>
 	<noscript><b>Javascript must be enabled for this app.</b></noscript>
-	<h1>jump On Juniper v_MmVERSION_</h1>
+	<h1>jump On Juniper _MmVERSION_</h1>
 	<div class=grp>
 		<p>Use this to automate VisitorNet login. Follow steps below to create a bookmark.</p>
 		<p><b>Using the bookmark:</b>&#32;Connect to Visitornet WiFi. Open Safari, then tap the bookmark 3 times to log-in. Wait between taps to allow the VisitorNet pages to load.</p>
@@ -230,12 +230,12 @@
 
 	<h1>Using jumpOnJuniper</h1>
 	<div class=grp>
-		<p>Connect to a VisitorNet WiFi radio. Tap the&#32;<em>jOJ</em>&#32;bookmark to go to VisitorNet sign-in page, then&#32;<em>again</em>&#32;
-			to &ldquo;paste&rdquo; the stored username &amp; password. Finally, after the screen updates, tap the bookmark a third time to accept the Terms.</p>
+		<p>Connect to VisitorNet WiFi. Tap the&#32;<em>jOJ</em>&#32;bookmark to go to VisitorNet sign-in page, then&#32;<em>again</em>&#32;
+			to &ldquo;paste&rdquo; the stored username &amp; password. After the screen updates, tap the bookmark a third time to accept the Terms.</p>
 		<p><b>PRO TIP</b></p>
 		<p>Use the&#32;<a href="img/Always_Show_Bookmarks_bar.png">Settings app &mdash; Safari</a>&#32;settings to set&#32;<b>
 			Always Show Bookmarks Bar</b>&#32;as&#32;<b>ON</b>&#32;and save (<i>or move</i>) the&#32;<em>jOJ</em>&#32;bookmark to the&#32;<b>
-			Bookmarks Bar</b>&#32;folder. Then you can more quickly tap the link for your login.</p>
+			Bookmarks Bar</b>&#32;folder. Then you can quickly tap the link to login.</p>
 		<div class=fig><img src="img/bkbarlinki.png" alt="open bookmarks" width=244 height=108></div>
 	</div>
 
@@ -251,8 +251,8 @@
 		<ul>
 			<li>Ensure your VisitorNet credentials are correct and aren't expired.</li>
 			<li>Use the latest bookmark version. The bookmark &ldquo;address&rdquo; ends with the version number in quotes. For example,&#32;
-				<b><code>void'v_MmVERSION_'</code></b>&#32;would indicate you bookmark is current against the title of this page,&#32;
-				<i>jumpOnJuniper&#32;<b>v_MmVERSION_</b></i>.</li>
+				<b><code>void'_MmVERSION_'</code></b>&#32;would indicate you bookmark is current against the title of this page,&#32;
+				<i>jumpOnJuniper&#32;<b>_MmVERSION_</b></i>.</li>
 			<li>Force a refresh of this page by holding down the shift key while clicking the browser refresh button. If the title of the page changes
 				to a new number, then your browser had cached an old version of the page. Use the reloaded page to make or update your bookmark.</li>
 		</ul>
