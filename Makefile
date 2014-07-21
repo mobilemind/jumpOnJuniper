@@ -117,4 +117,4 @@ $(IMGDIR): | $(BUILDDIR)
 
 clean:
 	@echo 'make $(PROJ): Cleaning build directory, web directory and misc. files from trygrunt branch of repo'
-	@rm -Rf $(BUILDDIR) $(WEBDIR) $(PROJ).url validation-status.json img
+	@rm -Rf $(BUILDDIR) $(WEBDIR) $(PROJ).url img validation-status.json npm-debug.log node_modules
