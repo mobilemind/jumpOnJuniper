@@ -41,7 +41,7 @@ and then submit the form.
 
 Requires a browser that supports `javascript:` bookmarks.
 
-Tested with Firefox 11.x - 28.x, Safari 5.1.x - 7.x and Mobile Safari 5.x - 7.x.
+Tested with Firefox 11.x - 32.x, Safari 5.1.x - 7.x and Mobile Safari 5.x - 8.x.
 
 ## License
 

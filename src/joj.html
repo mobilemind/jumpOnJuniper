@@ -13,6 +13,19 @@
 	<link rel=canonical href="http://mmind.me/joj">
 	<title>jumpOnJuniper _MmVERSION_</title>
 	<style type="text/css">
+		textarea { overflow: auto; width: 98%; height: 10em }
+		@media only screen and (min-device-width: 413px) and (max-device-width: 415px) {
+		  textarea { height:14em!important }
+		}
+		@media only screen and (min-device-width: 374px) and (max-device-width: 376px) {
+		  textarea { height:18em!important }
+		}
+		@media only screen and (min-device-width: 359px) and (max-device-width: 361px) {
+		  textarea { height:15em!important }
+		}
+		@media only screen and (min-device-width: 319px) and (max-device-width: 321px) {
+		  textarea { height:12em!important }
+		}
 		body {
 			margin: 0;
 			padding: 0 1px 15px 0;
@@ -189,7 +202,7 @@
 			<input type=reset id=reset value=Reset>
 			<br><br>
 			<label id=yp for=bmrk>Bookmark Address:&#32;
-				<textarea id=bmrk tabindex=4 cols=40 rows=5 wrap=soft spellcheck=false contenteditable>No Bookmark yet. See Step 1 instructions.</textarea>
+				<textarea id=bmrk tabindex=4 wrap=soft spellcheck=false contenteditable>No Bookmark yet. See Step 1 instructions.</textarea>
 			</label>
 		</form>
 		<p id=pal style="display:none">Bookmark as link:&#32;<a id=pl></a><br><br></p>
