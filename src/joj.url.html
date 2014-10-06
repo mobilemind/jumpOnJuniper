@@ -5,30 +5,20 @@
 	<meta name="format-detection" content="telephone=no">
 	<title>jumpOnJuniper _MmVERSION_</title>
 	<style type="text/css">
-		textarea { overflow: auto; width: 98%; height: 10em }
-		@media only screen and (min-device-width: 413px) and (max-device-width: 415px) {
-		  textarea { height:14em!important }
-		}
-		@media only screen and (min-device-width: 374px) and (max-device-width: 376px) {
-		  textarea { height:18em!important }
-		}
-		@media only screen and (min-device-width: 359px) and (max-device-width: 361px) {
-		  textarea { height:15em!important }
-		}
-		@media only screen and (min-device-width: 319px) and (max-device-width: 321px) {
-		  textarea { height:12em!important }
-		}
 		body {
 			margin: 0;
 			font-family: Helvetica, sans-serif;
 			font-size: 14px;
 			-webkit-text-size-adjust: none;
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			-ms-user-select: none;
 			-moz-user-select: none;
 			-webkit-user-select: none
 		}
 		form { padding: 6px; border: hidden }
 		#grp {
-			margin: 0 10px;
+			margin: 3px;
 			width: 95%;
 			border-radius: 6px;
 			border: 1px solid #72ab69;
@@ -64,6 +54,19 @@
 			-webkit-appearance: none
 		}
 		#yp { vertical-align:top }
+		textarea {
+		  resize: vertical;
+		  overflow: visible;
+		  width: 98%;
+		  height: 10em;
+		  -ms-user-select: text;
+		  -moz-user-select: text;
+		  -webkit-user-select: text !important
+		}
+		@media only screen and (min-device-width: 413px) and (max-device-width: 415px) { textarea { height: 14em } }
+		@media only screen and (min-device-width: 374px) and (max-device-width: 376px) { textarea { height: 18em } }
+		@media only screen and (min-device-width: 359px) and (max-device-width: 361px) { textarea { height: 15em } }
+		@media only screen and (min-device-width: 319px) and (max-device-width: 321px) { textarea { height: 12em } }
 	</style>
 	<!-- v_MmVERSION_; 2012/11/15 Tom King; build date: _MmBUILDDATE_
 		jumpOnJuniper a data URL formlet-based bookmark-generator to simplify use of Juniper Infranet-based VisitorNet
@@ -81,9 +84,8 @@
 				pl.setAttribute('href', b.textContent);
 				pl.setAttribute('title', t);
 				pl.innerHTML = t;
-				b.select();
 				b.focus();
-				document.execCommand('SelectAll',true,'');
+				b.select();
 			}
 			else {
 				b.textContent = t;
@@ -95,7 +97,7 @@
 			}
 		}
 		function pastelet(u,p) {
-			u = u.match(/^\s*(\S*?)\s*$/)[1]; // strip leading/trailing spaces to help w/iOS 5 shortcut text
+			u = u.match(/^\s*(\S*?)\s*$/)[1]; // strip leading/trailing spaces to help w/iOS shortcut text
 			return "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'";
 		}
 	</script>
@@ -115,7 +117,7 @@
 			&nbsp; &#32;
 			<input type=reset id=reset value=Reset tabindex=5>
 		</form>
-		&nbsp;Bookmark Address:<br>&nbsp;<textarea id=bmrk tabindex=4 wrap=soft spellcheck=false contenteditable></textarea><br>
+		&nbsp;Bookmark Address:<br>&nbsp;<textarea id=bmrk tabindex=4 wrap=soft spellcheck=false contenteditable=true></textarea><br>
 		<p id=pal style="display:none">Bookmark link:&#32;<a id=pl href="." title=jOJ>jOJ</a><br><br></p>
 	</div>
 	<p style="font-size:x-small">&nbsp;&#32;Copyright &copy; 2012, 2013, 2014 Tom King. All rights reserved.</p>
