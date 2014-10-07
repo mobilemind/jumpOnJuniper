@@ -4,7 +4,7 @@
 	<meta name=keywords content="iPad,VisitorNet,jumpOnJuniper,bookmark,Bookmarklet,maker,generator,javascript,paste,login,pastelet,username,password">
 	<meta name=robots content="index,nofollow">
 	<meta name=viewport content="width=device-width,user-scalable=no">
-	<meta name="format-detection" content="telephone=no">
+	<meta name=format-detection content="telephone=no">
 	<link rel="shortcut icon" href="img/joj.ico">
 	<link rel="apple-touch-icon" href="img/joj-57.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="img/joj-114.png">
@@ -39,7 +39,7 @@
 			font-size: 15px
 		}
 		.fig { margin: 0; padding: 4px 10px }
-		.pStr {	font-size: large }
+		.pStr { font-size: large }
 		#bmrk { vertical-align: top; font-family: monospace }
 		#mkPltBtn {
 			height: 38px;
@@ -71,24 +71,24 @@
 		#mkPltBtn:active, #reset:active { color: #000; background: #2E8022 }
 		#yp { vertical-align:top }
 		textarea {
-		  resize: vertical;
-		  overflow: visible;
-		  width: 98%;
-		  height: 10em;
-		  -ms-user-select: text;
-		  -moz-user-select: text;
-		  -webkit-user-select: text !important
+			resize: vertical;
+			overflow: visible;
+			width: 98%;
+			height: 10em;
+			-ms-user-select: text;
+			-moz-user-select: text;
+			-webkit-user-select: text !important
 		}
 		@media only screen and (min-device-width: 413px) and (max-device-width: 415px) { textarea { height: 14em } }
 		@media only screen and (min-device-width: 374px) and (max-device-width: 376px) { textarea { height: 18em } }
 		@media only screen and (min-device-width: 359px) and (max-device-width: 361px) { textarea { height: 15em } }
 		@media only screen and (min-device-width: 319px) and (max-device-width: 321px) { textarea { height: 12em } }
 	</style>
-	<!-- v_MmVERSION_; 2012/04/14 Tom King; build date: _MmBUILDDATE_
+	<!-- _MmVERSION_; 2012/04/14 Tom King; build date: _MmBUILDDATE_
 
 		jumpOnJuniper a bookmark-generator to simplify use of Juniper Infranet-based VisitorNet
 		generated URL first displays as http://mmind.me/joj?javascript:var%20d='...
-		Copyright (c) 2012 Tom King. All rights reserved.
+		Copyright (c) 2012-2014 Tom King. All rights reserved.
 	-->
 
 	<!-- code w/onLoad handler + function to create bookmarklet string -->
@@ -131,7 +131,7 @@
 			}
 			// hide address bar
 			else window.scrollTo(0,1);
-			return true;
+			return;
 		}, true);
 		// reload page with new bookmarklet appended
 		function loadpg(p) {
@@ -144,11 +144,11 @@
 
 		//	jumpOnJuniper a bookmark-generator to simplify use of Juniper Infranet-based VisitorNet
 		//	generated URL first displays as http://mmind.me/joj?javascript:var%20d='...
-		//	Copyright (c) 2012 Tom King. All rights reserved
+		//	Copyright (c) 2012-2014 Tom King. All rights reserved
 		//
 		// Comments- Generated bookmarklet is carefully constructed for current version of VisitorNet
 		// *	Bookmarklet code is optimized for size (ie, string length of all the code).
-		// *    UserID (email) and password are used inline for tighter code.
+		// *	UserID (email) and password are used inline for tighter code.
 		// * void('_MmVERSION_') is a way to embed the version and provides cross-browser compatibility (a non-null return value causes some browsers to navigate)
 		//
 		// var u = 'user', p = 'pass',
@@ -190,8 +190,8 @@
 
 	<h1>Step 1: Enter the text</h1>
 	<div class=grp>
-		<p>Enter the Username to paste and a Password. Then tap&#32;<b>Make jOJ Bookmark</b>&#32;to reload this page for Step&nbsp;2.</p>
-		<form id="pltMkr" method=get action="." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value));return false" onReset="location.href='//'+location.host+location.port+location.pathname">
+		<p>Enter the Username to paste and a Password. Then tap&#32;<b>Make jOJ Bookmark</b>&#32;to reload this page for Step&#32;2.</p>
+		<form id=pltMkr method=GET action="." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value));return false" onReset="location.href='//'+location.host+location.port+location.pathname">
 			<label for=username>Username:&#32;
 				<input id=username name=uid tabindex=1 class=pStr size=9 maxlength=8 placeholder=username autocorrect=off autocomplete=off autocapitalize=off required autofocus>
 			</label>
@@ -199,7 +199,7 @@
 				<input type=password id=password tabindex=2 class=pStr name=password size=9 maxlength=8 required autocorrect=off autocomplete=off autocapitalize=off spellcheck=false>
 			</label>
 			<br><br>
-			<input type=submit id="mkPltBtn" tabindex=3 value="Make jOJ Bookmark">&#32; &#32;
+			<input type=submit id=mkPltBtn tabindex=3 value="Make jOJ Bookmark">&#32; &#32;
 			<input type=reset id=reset value=Reset>
 			<br><br>
 			<label id=yp for=bmrk>Bookmark Address:&#32;
@@ -211,7 +211,7 @@
 
 	<h1>Step 2: Add a Bookmark</h1>
 	<div class=grp>
-		<p>Tap the action button on the toolbar. Then select&#32;<b>Add&nbsp;Bookmark.</b></p>
+		<p>Tap the action button on the toolbar. Then select&#32;<b>Add&#32;Bookmark.</b></p>
 		<div class=fig><img class=fig src="img/bkaddi.png" alt="add bookmark" width=225 height=158></div>
 		<p>Take note of the name (or edit it), and then tap&#32;<b>Save</b>.</p>
 		<div class=fig><img src="img/bksavei.png" alt="save bookmark" width=264 height=175></div>
@@ -248,7 +248,7 @@
 		<p><b>PRO TIP</b></p>
 		<p>Use the&#32;<a href="img/Always_Show_Bookmarks_bar.png">Settings app &mdash; Safari</a>&#32;settings to set&#32;<b>
 			Always Show Bookmarks Bar</b>&#32;as&#32;<b>ON</b>&#32;and save (<i>or move</i>) the&#32;<em>jOJ</em>&#32;bookmark to the&#32;<b>
-			Bookmarks Bar</b>&#32;folder. Then you can more quickly tap the link to login.</p>
+			Bookmarks Bar</b>&#32;folder. Then you can quickly tap the link to login.</p>
 		<div class=fig><img src="img/bkbarlinki.png" alt="open bookmarks" width=244 height=108></div>
 	</div>
 

@@ -2,7 +2,7 @@
 <html lang=en>
 <head>
 	<meta name=viewport content="width=device-width,user-scalable=no">
-	<meta name="format-detection" content="telephone=no">
+	<meta name=format-detection content="telephone=no">
 	<title>jumpOnJuniper _MmVERSION_</title>
 	<style type="text/css">
 		body {
@@ -12,7 +12,6 @@
 			-webkit-text-size-adjust: none;
 			-moz-appearance: none;
 			-webkit-appearance: none;
-			-ms-user-select: none;
 			-moz-user-select: none;
 			-webkit-user-select: none
 		}
@@ -24,7 +23,7 @@
 			border: 1px solid #72ab69;
 			background-color: #e0e6e0
 		}
-		.pStr {	font-size: large }
+		.pStr { font-size: large }
 		#bmrk { vertical-align: top; font-family: monospace }
 		#mkPltBtn {
 			height: 38px;
@@ -55,13 +54,12 @@
 		}
 		#yp { vertical-align:top }
 		textarea {
-		  resize: vertical;
-		  overflow: visible;
-		  width: 98%;
-		  height: 10em;
-		  -ms-user-select: text;
-		  -moz-user-select: text;
-		  -webkit-user-select: text !important
+			resize: vertical;
+			overflow: visible;
+			width: 98%;
+			height: 10em;
+			-moz-user-select: text;
+			-webkit-user-select: text !important
 		}
 		@media only screen and (min-device-width: 413px) and (max-device-width: 415px) { textarea { height: 14em } }
 		@media only screen and (min-device-width: 374px) and (max-device-width: 376px) { textarea { height: 18em } }
@@ -74,7 +72,7 @@
 		Copyright (c) 2012, 2013 Tom King. All rights reserved.
 	-->
 	<script type="text/javascript">
-		// load bookmark link on page with new bookmarklet appended or reset
+		// load url w/ bookmarklet appended
 		function loadpg(p) {
 			var pl = document.getElementById('pl'), u = document.getElementById('username'), b = document.getElementById('bmrk'), t = '';
 			if (p) {
@@ -103,11 +101,11 @@
 	</script>
 </head>
 <body>
-	<p style="margin:3px 0 4px 20px"><b>jump On Juniper _MmVERSION_</b></p>
+	<p style="margin:3px 0 4px 20px"><b>jumpOnJuniper _MmVERSION_</b></p>
 	<div id=grp>
-		<form id=pltMkr method=get action="." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value));return false" onReset="loadpg()">
+		<form id=pltMkr method=GET action="." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value));return false" onReset="loadpg()">
 			<label for=username>Username:&#32;
-				<input id=username name=uid tabindex=1 class=pStr size=9 maxlength=8 placeholder="username" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" required autofocus>
+				<input id=username name=uid tabindex=1 class=pStr size=9 maxlength=8 placeholder=username autocorrect=off autocomplete=off autocapitalize=off spellcheck=false required autofocus>
 			</label>
 			<label for=password><br>Password:&#32;
 				<input type=password id=password tabindex=2 class=pStr name=password size=9 maxlength=8 required>
@@ -117,7 +115,7 @@
 			&nbsp; &#32;
 			<input type=reset id=reset value=Reset tabindex=5>
 		</form>
-		&nbsp;Bookmark Address:<br>&nbsp;<textarea id=bmrk tabindex=4 wrap=soft spellcheck=false contenteditable=true></textarea><br>
+		&nbsp;Bookmark Address:<br>&#32;<textarea id=bmrk tabindex=4 wrap=soft spellcheck=false></textarea><br>
 		<p id=pal style="display:none">Bookmark link:&#32;<a id=pl href="." title=jOJ>jOJ</a><br><br></p>
 	</div>
 	<p style="font-size:x-small">&nbsp;&#32;Copyright &copy; 2012, 2013, 2014 Tom King. All rights reserved.</p>
