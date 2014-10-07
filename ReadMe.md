@@ -1,5 +1,4 @@
 # jumpOnJuniper
-[![Build Status](https://secure.travis-ci.org/mobilemind/jumpOnJuniper.png?branch=trygrunt)](http://travis-ci.org/mobilemind/jumpOnJuniper)
 
 The “jumpOnJuniper” (jOJ) bookmarklet streamlines logging in via Juniper Networks Infranet
 “VisitorNet” sites that control access to WiFi networks. The bookmarklet will paste in the
@@ -42,7 +41,7 @@ and then submit the form.
 
 Requires a browser that supports `javascript:` bookmarks.
 
-Tested with Firefox 11.x - 28.x, Safari 5.1.x - 7.x and Mobile Safari 5.x - 7.x.
+Updated for Firefox 32.x, Safari 7.x and Mobile Safari 8.x (including iPhone 6 & iPhone 6 Plus).
 
 ## License
 
@@ -70,31 +69,34 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+## Build Requirements
+The jumpOnJuniper Makefile requires htmlcompressor. The htmlcompressor project has its own
+license and sub-projects. End-users are responsible for obtaining a htmlcompressor and its
+related components, under their respective license terms.
+
+For htmlcompressor see: <https://code.google.com/p/htmlcompressor/>
+
+The jumpOnJuniper Makefile also requires bash shell, make, gzip, perl, tidy (or tidy-html5),
+jsl, node (nodejs on Windows) and optionally uses growlnotify. Required utilities are easily
+installed on Mac OS X via homebrew or on Windows via Cygwin setup.
+
+The W3C tidy-html5 is available here: <http://w3c.github.com/tidy-html5/>
+
+> **NOTE**: An alternative build system using grunt is available on the
+> [trygrunt](https://github.com/mobilemind/jumpOnJuniper/tree/trygrunt#) branch of this
+> repository.
+
+### Mac
+* For utilities such as **jsl** and **node** using homebrew see: <http://mxcl.github.com/homebrew/>
+* For **growlnotify** (requires Growl), see: <http://growl.info>
+
+### Win
+* For **Cygwin** and related utilities such as **make**, **gzip**, **perl**, **tidy**,
+**nodejs**, see: <http://www.cygwin.com/>. jumpOnJuniper compiles under Cygwin 1.7.18 for
+either 32 bit or 64 bit versions of Windows.
+* For **growlnotify** (requires Growl for Windows), see: <http://growlforwindows.com>
+* For **jsl**, see: <http://www.javascriptlint.com/>
+
 ## Build
-The jumpOnJuniper `trygrunt` branch uses [node](http://nodejs.org/) and
-[grunt](http://gruntjs.com/). To clone and build this branch of the project do the
-following:
-````shell
-git clone https://github.com/mobilemind/jumpOnJuniper
-cd jumpOnJuniper
-git checkout trygrunt
-npm install
-grunt
-````
-The built files will be in `web` and include the following:
-
-* `img/` - directory containing the support images and an optional .ico file
-* `joj` - gzipped HTML5 file, serve as type "text/html; charset=utf-8" with Content-Encoding "gzip"
-* `joj.manifest` - HTML5 cache manifest file
-* `joj.url` - simplified form of `joj` as a standalone base64 encoded`data:` URL suitable
-for use as a bookmarklet
-
-### Deploy
-The `grunt deploy` task expects a local file named `.ftppass` in the local project
-directory _and_ environment variables `$MYSERVER` and `$MYSERVERHOME` (fully qualified
-file path to deployment directory on `$MYSERVER`).
-
-See [grunt-sftp-deploy](https://npmjs.org/package/grunt-sftp-deploy) documentation for
-more information on configuring sftp deployment.
-
-See `minimum.csp` for a sample Content Security Policy that could be applied to `joj`.
+Use `make` at the command shell prompt to create the joj HTML page and manifest.
+See `/web/` directory for results.
