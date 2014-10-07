@@ -44,6 +44,11 @@ module.exports = function(grunt) {
       dataurl: { src: ['web/joj.url.html'], dest: 'web/joj.url.html' },
       options: {}
     },
+    minifyHtml: {
+      main: { src: ['web/joj.html'], dest: 'web/joj.html' },
+      dataurl: { src: ['web/joj.url.html'], dest: 'web/joj.url.html' },
+      options: {}
+    },
     validation: {
       sources: ['src/joj*.html'],
       web:  ['web/joj*.html'],
@@ -104,6 +109,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-rename');
   grunt.loadNpmTasks('grunt-contrib-zopfli');
   grunt.loadNpmTasks('grunt-html-minify');
+  grunt.loadNpmTasks('grunt-minify-html');
   grunt.loadNpmTasks('grunt-html-validation');
   grunt.loadNpmTasks('grunt-sftp-deploy');
   grunt.loadNpmTasks('text2datauri');
@@ -112,7 +118,8 @@ module.exports = function(grunt) {
 
   // test task
   // Default task
-  grunt.registerTask('test', ['jshint', 'copy', 'html_minify:main', 'html_minify:dataurl',
+  grunt.registerTask('test', ['jshint', 'copy',
+    'html_minify:main', 'html_minify:dataurl', 'minifyHtml:main', 'minifyHtml:dataurl',
     'validation:web','zopfli', 'text2datauri', 'rename:main']);
 
   // Default task

@@ -32,6 +32,7 @@
     "grunt-contrib-rename": "0.0.x",
     "grunt-contrib-zopfli": "0.4.x",
     "grunt-html-minify": "0.3.x",
+    "grunt-minify-html": "1.0.x",
     "grunt-html-validation": "0.1.x",
     "grunt-sftp-deploy": "0.2.x",
     "text2datauri": "0.0.x"
