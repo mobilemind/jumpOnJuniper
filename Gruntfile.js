@@ -7,10 +7,14 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     clean: {
       files: ['web/', 'validation-status.json'],
-      build: ['web/joj.html', 'web/joj.url.html']
+      build: ['web/joj.html', 'web/joj.url.html', 'web/*.gz']
     },
     csslint: {
-    	files: ['src/joj.css']
+    	files: ['src/joj.css'],
+    	options: {
+    		important: false,
+    		"box-model": false
+    	}
     },
     cssmin: {
     	target: {
@@ -84,7 +88,7 @@ module.exports = function(grunt) {
         },
         report: 'min'
       },
-      sourceFiles: { files: [{
+      target: { files: [{
         expand: true,
         cwd: 'web',
         src: '*.js',
@@ -103,13 +107,17 @@ module.exports = function(grunt) {
       main: { files: [ {expand: true, cwd: 'src/', src: ['**'], dest: 'web/'} ]}
     },
     html_minify: {
-      main: { src: ['web/joj.html'], dest: 'web/joj.html' },
-      dataurl: { src: ['web/joj.url.html'], dest: 'web/joj.url.html' },
+      target: { files: [
+      	{ src: ['web/joj.html'], dest: 'web/joj.html' },
+      	{ src: ['web/joj.url.html'], dest: 'web/joj.url.html' } ]
+      },
       options: {}
     },
     minifyHtml: {
-      main: { src: ['web/joj.html'], dest: 'web/joj.html' },
-      dataurl: { src: ['web/joj.url.html'], dest: 'web/joj.url.html' },
+      target: { files: [
+      	{ src: ['web/joj.html'], dest: 'web/joj.html' },
+      	{ src: ['web/joj.url.html'], dest: 'web/joj.url.html' } ]
+      },
       options: {}
     },
     validation: {
@@ -152,7 +160,13 @@ module.exports = function(grunt) {
     },
     rename: {
       main: {
-        files: [ {src: ['web/joj.gz'], dest: 'web/joj'} ]
+        files: [
+        	{src: ['web/joj.gz'], dest: 'web/joj'},
+        	{src: ['web/joj.css.gz'], dest: 'web/joj.css'},
+       		{src: ['web/joj.js.gz'], dest: 'web/joj.js'} ]
+      },
+      options: {
+      	force: true
       }
     },
   'sftp-deploy': {
@@ -189,9 +203,8 @@ module.exports = function(grunt) {
 
   // test task
   // Default task
-  grunt.registerTask('test', ['jshint', 'csslint', 'copy', 'cssmin', 'uglify:sourceFiles',
-    'html_minify:main', 'html_minify:dataurl', 'minifyHtml:main', 'minifyHtml:dataurl',
-    'validation:web','zopfli', 'text2datauri', 'rename:main']);
+  grunt.registerTask('test', ['jshint', 'csslint', 'copy', 'cssmin', 'uglify',
+    'html_minify', 'minifyHtml', 'validation:web','zopfli', 'text2datauri', 'rename']);
 
   // Default task
   grunt.registerTask('default', ['clean', 'test', 'clean:build']);
