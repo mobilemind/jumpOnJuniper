@@ -117,16 +117,16 @@
 							pal.setAttribute("style", "display:inline;padding:7px;height:auto");
 							pl.setAttribute('href', document.getElementById('bmrk').textContent);
 							pl.setAttribute('title', document.title);
-							pl.innerHTML = document.title
+							pl.innerHTML = document.title;
 						}
 					}
 					b.select();
-					b.focus()
+					b.focus();
 				}
 				catch (e) {
 					console.log('error: ' + e);
 					alert("Unable to decode pastelet.\r\nForm will be reset.");
-					location.replace(location.pathname)
+					location.replace(location.pathname);
 				}
 			}
 			// hide address bar
@@ -138,7 +138,7 @@
 			if (p) {
 				p = 'javascript:' + encodeURIComponent(p);
 				document.getElementById('bmrk').textContent = p;
-				location.href = '//' + location.host + location.port + location.pathname + '?' + p
+				location.href = '//' + location.host + location.port + location.pathname + '?' + p;
 			}
 		}
 
@@ -172,7 +172,7 @@
 		function pastelet(u,p) {
 			if (u + p) {
 				u = u.match(/^\s*(\S*?)\s*$/)[1]; // strip leading/trailing spaces to help w/iOS 5 shortcut text
-				p = "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'"
+				p = "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'";
 			}
 			return p;
 		}
@@ -245,11 +245,6 @@
 	<div class=grp>
 		<p>Connect to VisitorNet WiFi. Tap the&#32;<em>jOJ</em>&#32;bookmark to go to VisitorNet sign-in page, then&#32;<em>again</em>&#32;
 			to &ldquo;paste&rdquo; the stored username &amp; password. After the screen updates, tap the bookmark a third time to accept the Terms.</p>
-		<p><b>PRO TIP</b></p>
-		<p>Use the&#32;<a href="img/Always_Show_Bookmarks_bar.png">Settings app &mdash; Safari</a>&#32;settings to set&#32;<b>
-			Always Show Bookmarks Bar</b>&#32;as&#32;<b>ON</b>&#32;and save (<i>or move</i>) the&#32;<em>jOJ</em>&#32;bookmark to the&#32;<b>
-			Bookmarks Bar</b>&#32;folder. Then you can quickly tap the link to login.</p>
-		<div class=fig><img src="img/bkbarlinki.png" alt="open bookmarks" width=244 height=108></div>
 	</div>
 
 	<h1>Notes &amp; Troubleshooting</h1>
@@ -269,7 +264,7 @@
 			<li>Force a refresh of this page by holding down the shift key while clicking the browser refresh button. If the title of the page changes
 				to a new number, then your browser had cached an old version of the page. Use the reloaded page to make or update your bookmark.</li>
 		</ul>
-		<p>Copyright &copy; 2012, 2013, 2014 Tom King. All rights reserved.</p>
+		<p>Copyright &copy; 2012, 2013, 2014, 2015 Tom King. All rights reserved.</p>
 	</div>
 	<br>
 </body>
