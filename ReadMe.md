@@ -69,34 +69,6 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-## Build Requirements
-The jumpOnJuniper Makefile requires htmlcompressor. The htmlcompressor project has its own
-license and sub-projects. End-users are responsible for obtaining a htmlcompressor and its
-related components, under their respective license terms.
-
-For htmlcompressor see: <https://code.google.com/p/htmlcompressor/>
-
-The jumpOnJuniper Makefile also requires bash shell, make, gzip, perl, tidy (or tidy-html5),
-jsl, node (nodejs on Windows) and optionally uses growlnotify. Required utilities are easily
-installed on Mac OS X via homebrew or on Windows via Cygwin setup.
-
-The W3C tidy-html5 is available here: <http://w3c.github.com/tidy-html5/>
-
-> **NOTE**: An alternative build system using grunt is available on the
-> [trygrunt](https://github.com/mobilemind/jumpOnJuniper/tree/trygrunt#) branch of this
-> repository.
-
-### Mac
-* For utilities such as **jsl** and **node** using homebrew see: <http://mxcl.github.com/homebrew/>
-* For **growlnotify** (requires Growl), see: <http://growl.info>
-
-### Win
-* For **Cygwin** and related utilities such as **make**, **gzip**, **perl**, **tidy**,
-**nodejs**, see: <http://www.cygwin.com/>. jumpOnJuniper compiles under Cygwin 1.7.18 for
-either 32 bit or 64 bit versions of Windows.
-* For **growlnotify** (requires Growl for Windows), see: <http://growlforwindows.com>
-* For **jsl**, see: <http://www.javascriptlint.com/>
-
 ## Build
-Use `make` at the command shell prompt to create the joj HTML page and manifest.
+Use `npm install && grunt` at the command shell prompt to create the joj HTML page and manifest.
 See `/web/` directory for results.
