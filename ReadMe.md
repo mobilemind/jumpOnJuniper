@@ -41,14 +41,14 @@ and then submit the form.
 
 Requires a browser that supports `javascript:` bookmarks.
 
-Updated for Firefox 32.x, Safari 7.x and Mobile Safari 8.x (including iPhone 6 & iPhone 6 Plus).
+Updated for Firefox 35.x, Safari 8.x and Mobile Safari 8.x (including iPhone 6 & iPhone 6 Plus).
 
 ## License
 
 MIT License - <http://www.opensource.org/licenses/mit-license.php>
 
 jumpOnJuniper
-Copyright (c) 2012, 2013, 2014 Tom King <mobilemind@pobox.com>
+Copyright (c) 2012, 2013, 2014, 2015 Tom King <mobilemind@pobox.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

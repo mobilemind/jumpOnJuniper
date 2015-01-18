@@ -1,6 +1,6 @@
 jumpOnJuniper
 https://github.com/mobilemind/jumpOnJuniper
-Copyright (c) 2012, 2013 Tom King mobilemind@pobox.com
+Copyright (c) 2012, 2013, 2014, 2015 Tom King mobilemind@pobox.com
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -20,15 +20,3 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-ATTRIBUTIONS
-The Makefile for the jumpOnJuniper project uses object code from
-htmlcompressor. The htmlcompressor project has its own license and
-sub-projects. End-users are responsible for obtaining a htmlcompressor
-and its related components, under their respective license terms.
-
-HTMLCOMPRESSOR
-https://code.google.com/p/htmlcompressor/
-The htmlcompressor object code can be obtained from the URL above.
-The copyright holder copyright provides it under the Apache License
-found at: https://www.apache.org/licenses/LICENSE-2.0

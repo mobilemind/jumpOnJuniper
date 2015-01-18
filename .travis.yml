@@ -1,9 +1,8 @@
-# required for Travis-CI
 # whitelist
 branches:
   only:
+    - master
     - trygrunt
-# on this branch (master) this file does nothing.
-# If it did something it would do:
-# script: make
-
+language: node_js
+node_js:
+  - "0.10"

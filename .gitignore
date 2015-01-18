@@ -1,3 +1,6 @@
+.ftppass
 web/
 joj.url
-.ftppass
+node_module/
+npm-debug.log
+tmp/
