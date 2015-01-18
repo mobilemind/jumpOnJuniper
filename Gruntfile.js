@@ -57,6 +57,7 @@ module.exports = function(grunt) {
         charset: "utf-8",
         relaxerror: ["Bad value cleartype for attribute http-equiv on element meta.",
           "Attribute autoc[a-z]+ not allowed on element input at this point.",
+          "Bad value  for attribute autocomplete on element input.",
           "Bad value robots for attribute name on element meta: Keyword robots is not registered."],
         reportpath: false
       }
