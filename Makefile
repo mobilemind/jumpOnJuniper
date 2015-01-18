@@ -20,7 +20,7 @@ JOJURL := http://mmind.me/$(JOJFILE)
 
 # macros/utils
 BUILDDATE := $(shell date)
-VERSION = 7.0.3g
+VERSION = 7.0.4g
 GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
 HTMLCOMPRESSORJAR := htmlcompressor-1.5.3.jar
 HTMLCOMPRESSORPATH := $(shell [ 'cygwin' = $$OSTYPE ] && echo "`cygpath -w $(COMMONLIB)`\\" || echo "$(COMMONLIB)/")
@@ -40,7 +40,7 @@ $(PROJ).html:
 	@curl -# -O $(SRCURL)/$@
 	@$(REPLACETOKENS)
 	@$(TIDY) -eq $@ || [ $$? -lt 2 ]
-	# @$(JSL) -nologo -nofilelisting -nosummary -process $@
+	@$(JSL) -nologo -nofilelisting -nosummary -process $@
 	@echo "$@: $$(stat $(STATFMT) $@) bytes"
 	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) -o $@.tmp $@ && mv -f $@.tmp $@
 	@echo "$@: $$(stat $(STATFMT) $@) bytes optimized"
