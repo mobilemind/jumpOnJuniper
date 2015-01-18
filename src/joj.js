@@ -1,7 +1,6 @@
 // code w/onLoad handler + function to create bookmarklet string
 "use strict";
 
-
 //	jumpOnJuniper a bookmark-generator to simplify use of Juniper Infranet-based VisitorNet
 //	generated URL first displays as http://mmind.me/joj?javascript:var%20d='...
 //	Copyright (c) 2012-2014 Tom King. All rights reserved
@@ -58,30 +57,26 @@ window.addEventListener('load', function() {
 			b.focus();
 		}
 		catch (e) {
-			console.log('error: ' + e);
 			window.alert("Unable to decode pastelet.\r\nForm will be reset.\r\n(" + e + ")");
 			window.location.replace(window.location.pathname);
 		}
 	}
-	// hide address bar
-	else {
-		var mainForm = document.getElementById('pltMkr');
-		mainForm.onreset = function() {
-			document.getElementById('bmrk').textContent = '';
-			window.location.href='//'+window.location.host+window.location.port+window.location.pathname;
-		};
 
-		mainForm.onsubmit = function() {
-			var p = pastelet(document.getElementById('username').value,document.getElementById('password').value);
-			// reload page with new bookmarklet appended
-			if (p) {
-				p = 'javascript:' + encodeURIComponent(p);
-				document.getElementById('bmrk').textContent = p;
-				window.location.href = '//' + window.location.host + window.location.port + window.location.pathname + '?' + p;
-			}
-			return false;
-		};
+	var mainForm = document.getElementById('pltMkr');
+	mainForm.onreset = function() {
+		document.getElementById('bmrk').textContent = '';
+		window.location.href='//'+window.location.host+window.location.port+window.location.pathname;
+	};
 
-		window.scrollTo(0,1);
-	}
+	mainForm.onsubmit = function() {
+		var p = pastelet(document.getElementById('username').value,document.getElementById('password').value);
+		// reload page with new bookmarklet appended
+		if (p) {
+			p = 'javascript:' + encodeURIComponent(p);
+			document.getElementById('bmrk').textContent = p;
+			window.location.href = '//' + window.location.host + window.location.port + window.location.pathname + '?' + p;
+		}
+		return false;
+	};
+
 }, true);
