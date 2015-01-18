@@ -91,12 +91,12 @@
 				pl.setAttribute('title', t);
 				pl.innerHTML = t;
 				document.getElementById('pal').setAttribute("style", "display:none;padding:0");
-				u.focus()
+				u.focus();
 			}
 		}
 		function pastelet(u,p) {
 			u = u.match(/^\s*(\S*?)\s*$/)[1]; // strip leading/trailing spaces to help w/iOS shortcut text
-			return "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'"
+			return "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'";
 		}
 	</script>
 </head>
@@ -118,7 +118,7 @@
 		&nbsp;Bookmark Address:<br>&#32;<textarea id=bmrk tabindex=4 wrap=soft spellcheck=false></textarea><br>
 		<p id=pal style="display:none">Bookmark link:&#32;<a id=pl href="." title=jOJ>jOJ</a><br><br></p>
 	</div>
-	<p style="font-size:x-small">&nbsp;&#32;Copyright &copy; 2012, 2013, 2014 Tom King. All rights reserved.</p>
+	<p style="font-size:x-small">&nbsp;&#32;Copyright &copy; 2012, 2013, 2014, 2015 Tom King. All rights reserved.</p>
 	<p>&nbsp;&#32;<a href="http://mmind.me/joj" title="jOJ online">jumpOnJuniper online</a></p>
 </body>
 </html>
