@@ -40,7 +40,7 @@ $(PROJ).html:
 	@curl -# -O $(SRCURL)/$@
 	@$(REPLACETOKENS)
 	@$(TIDY) -eq $@ || [ $$? -lt 2 ]
-	@$(JSL) -nologo -nofilelisting -nosummary -process $@
+	# @$(JSL) -nologo -nofilelisting -nosummary -process $@
 	@echo "$@: $$(stat $(STATFMT) $@) bytes"
 	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) -o $@.tmp $@ && mv -f $@.tmp $@
 	@echo "$@: $$(stat $(STATFMT) $@) bytes optimized"
