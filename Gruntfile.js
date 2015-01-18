@@ -9,10 +9,22 @@ module.exports = function(grunt) {
       files: ['web/', 'validation-status.json'],
       build: ['web/joj.html', 'web/joj.url.html']
     },
-    jshint: {
-      files: ['Gruntfile.js'],
+    csslint: {
+    	files: ['src/joj.css']
+    },
+    cssmin: {
+    	target: {
+    		files: { 'web/joj.css': ['src/joj.css'] }
+    	},
       options: {
-        curly: true,
+      	debug: true,
+        report: 'min'
+      }
+    },
+    jshint: {
+      files: ['Gruntfile.js', 'src/*.js'],
+      options: {
+        curly: false,
         eqeqeq: true,
         immed: true,
         latedef: true,
@@ -20,13 +32,64 @@ module.exports = function(grunt) {
         noarg: true,
         noempty: true,
         strict: true,
+        browser: true,
         sub: true,
         trailing: true,
         undef: true,
         unused: false,
         lastsemic: true,
+        scripturl: true,
         node: true
       }
+    },
+    uglify: {
+      options: {
+        stats: true,
+        maxLineLen: 32766,
+        mangle: {
+          sort: true,
+          toplevel: true
+        },
+        compress: {
+          sequences: true,
+          properties: true,
+          dead_code: false,
+          drop_console: false,
+          drop_debugger: true,
+          unsafe: true,
+          conditionals: true,
+          comparisons: true,
+          evaluate: true,
+          booleans: true,
+          loops: true,
+          unused: true,
+          hoist_funs: false,
+          hoist_vars: false,
+          if_return: true,
+          join_vars: true,
+          cascade: true,
+          warnings: true,
+          negate_iife: true,
+          side_effects: true,
+          global_defs: {}
+        },
+        codegen: {
+          quote_keys: false,
+          space_colon: false,
+          max_line_len: 32766,
+          ie_proof: false,
+          bracketize: false,
+          comments: false,
+          semicolons: true
+        },
+        report: 'min'
+      },
+      sourceFiles: { files: [{
+        expand: true,
+        cwd: 'web',
+        src: '*.js',
+        dest: 'web'
+      }]}
     },
     copy: {
       options: {
@@ -63,7 +126,11 @@ module.exports = function(grunt) {
       }
     },
     zopfli: {
-      main: { src: ['web/joj.html'], dest: 'web/joj' },
+      target: { files: [
+      	{ src: ['web/joj.html'], dest: 'web/joj' },
+      	{ src: ['web/joj.js'], dest: 'web/joj.js.gz' },
+      	{ src: ['web/joj.css'], dest: 'web/joj.css.gz' } ]
+      },
       options: {
         verbose: false,
         verbose_more: false,
@@ -106,7 +173,10 @@ module.exports = function(grunt) {
   // Load plugins
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-csslint');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-rename');
   grunt.loadNpmTasks('grunt-contrib-zopfli');
   grunt.loadNpmTasks('grunt-html-minify');
@@ -119,7 +189,7 @@ module.exports = function(grunt) {
 
   // test task
   // Default task
-  grunt.registerTask('test', ['jshint', 'copy',
+  grunt.registerTask('test', ['jshint', 'csslint', 'copy', 'cssmin', 'uglify:sourceFiles',
     'html_minify:main', 'html_minify:dataurl', 'minifyHtml:main', 'minifyHtml:dataurl',
     'validation:web','zopfli', 'text2datauri', 'rename:main']);
 
