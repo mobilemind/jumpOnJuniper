@@ -88,7 +88,7 @@
 
 			<h3>Compatibility</h3>
 			<p>Requires a browser that supports <code>javascript:</code> bookmarks.</p>
-			<p>Updated for Firefox 32.x, Safari 7.x and Mobile Safari 8.x (including iPhone 6 &amp; iPhone 6 Plus).</p>
+			<p>Updated for Firefox 35.x, Safari 8.x and Mobile Safari 8.x (including iPhone 6 &amp; iPhone 6 Plus).</p>
 
 			<hr>
 
@@ -126,53 +126,14 @@
 				<code>$ git clone git://github.com/mobilemind/jumpOnJuniper</code>
 			<div class="footer">get the source code on GitHub : <a href="http://github.com/mobilemind/jumpOnJuniper">mobilemind/jumpOnJuniper</a></div>
 
-			<h3>Build Requirements</h3>
-			<p>The jumpOnJuniper Makefile requires htmlcompressor. The htmlcompressor project has its own
-			license and sub-projects. End-users are responsible for obtaining a htmlcompressor and its
-			related components, under their respective license terms.</p>
-
-			<p>For htmlcompressor see: <a href="https://code.google.com/p/htmlcompressor/">https://code.google.com/p/htmlcompressor/</a></p>
-
-			<p>The jumpOnJuniper Makefile also requires bash shell, make, gzip, perl, tidy (or tidy-html5),
-			jsl, node (nodejs on Windows) and optionally uses growlnotify. Required utilities are easily
-			installed on Mac OS X via homebrew or on Windows via Cygwin setup.</p>
-
-			<p>The W3C tidy-html5 is available here: <a href="http://w3c.github.com/tidy-html5/">http://w3c.github.com/tidy-html5/</a></p>
-
-			<h4>Mac</h4>
-			<ul>
-				<li>Install utilities such as <strong>jsl</strong> using homebrew see:
-					<a href="http://mxcl.github.com/homebrew/">http://mxcl.github.com/homebrew/</a></li>
-				<li>For <strong>growlnotify</strong> (requires Growl), see: <a href="http://growl.info">
-					http://growl.info</a></li>
-			</ul>
-			<p>Shortcut means to installs:</p>
-			<p>Install brew:<br>
-			<code>/usr/bin/ruby -e &quot;$(/usr/bin/curl -fksSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)&quot;</code>
-			</p>
-			<p>Use brew to install jsl:<br>
-			<code>brew install jsl</code>
-			</p>
-
-			<h4>Win</h4>
-			<ul>
-				<li>For <strong>Cygwin</strong> and related utilities such as <strong>make</strong>,
-					<strong>gzip</strong>, <strong>curl</strong>, <strong>perl</strong>, and
-					<strong>tidy</strong>, see: <a href="http://www.cygwin.com/">http://www.cygwin.com/</a>
-				</li>
-				<li>For <strong>growlnotify</strong> (requires Growl for Windows), see:
-					<a href="http://growlforwindows.com">http://growlforwindows.com</a>
-				</li>
-				<li>For <strong>jsl</strong>, see: <a href="http://www.javascriptlint.com/">http://www.javascriptlint.com/</a></li>
-			</ul>
-
 			<h3>Build</h3>
-			<p>Use <code>make</code> at the command shell prompt to create the joj HTML page and manifest.
+			<p>Use <code>npm install</code> and <code>grunt</code> at the command shell prompt to create the joj HTML page and manifest.
 			See <code>/web/</code> directory for results.</p>
 			<p>Example:</p>
 			<p><code>git clone https://github.com/mobilemind/jumpOnJuniper.git</code><br>
 				<code>cd jumpOnJuniper</code><br>
-				<code>make</code><br>
+				<code>npm install</code><br>
+				<code>grunt</code><br>
 			</p>
 
 			<div class="footer">get the source code on GitHub : <a href="http://github.com/mobilemind/jumpOnJuniper">mobilemind/jumpOnJuniper</a></div>
