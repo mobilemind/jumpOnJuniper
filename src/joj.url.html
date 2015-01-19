@@ -15,61 +15,60 @@
 			-moz-user-select: none;
 			-webkit-user-select: none
 		}
-		form { padding: 6px; border: hidden }
-		#grp {
+		h1 {font-size: 18px; font-weight: bold; margin:3px 0 4px 20px}
+		div {
 			margin: 3px;
-			width: 95%;
+			padding: 5px;
 			border-radius: 6px;
 			border: 1px solid #72ab69;
 			background-color: #e0e6e0
 		}
-		.pStr { font-size: large }
-		#bmrk { vertical-align: top; font-family: monospace }
-		#mkPltBtn {
-			height: 38px;
-			width: 172px;
+		form { padding: 6px; border: hidden }
+		.b {
 			color: #fafffa;
 			border-radius: 0;
 			border: 1px solid #2E8022;
 			background: #75AC6C;
-			margin: 9px 0 12px 20px;
-			cursor: pointer;
 			display: inline-block;
 			vertical-align: baseline;
 			text-align: center;
-			font: 14px/100% Arial, Helvetica, sans-serif;
+			cursor: pointer;
+			-moz-appearance: none;
 			-webkit-appearance: none
 		}
-		#mkPltBtn:active, #reset:active { color: #000; background: #2E8022 }
-		#reset {
+		.s {
+			height: 38px;
+			width: 172px;
+			margin: 9px 0 12px 20px;
+			font: 16px/100% Arial, Helvetica, sans-serif;
+		}
+		.r {
 			height: 24px;
 			width: 60px;
-			color: #fafffa;
-			border-radius: 0;
-			border: 1px solid #2E8022;
-			background: #75AC6C;
 			margin: 2px 0 4px 12px;
-			cursor: pointer;
-			-webkit-appearance: none
+			font: 14px/100% Arial, Helvetica, sans-serif;
 		}
-		#yp { vertical-align:top }
+		.s:active .r:active  { color: #000; background: #2E8022 }
 		textarea {
+			vertical-align: top;
+			font-family: monospace;
 			resize: vertical;
 			overflow: visible;
 			width: 98%;
 			height: 10em;
 			-moz-user-select: text;
-			-webkit-user-select: text !important
+			-webkit-user-select: text !important;
+			user-select: text
 		}
 		@media only screen and (min-device-width: 413px) and (max-device-width: 415px) { textarea { height: 14em } }
 		@media only screen and (min-device-width: 374px) and (max-device-width: 376px) { textarea { height: 18em } }
 		@media only screen and (min-device-width: 359px) and (max-device-width: 361px) { textarea { height: 15em } }
 		@media only screen and (min-device-width: 319px) and (max-device-width: 321px) { textarea { height: 12em } }
 	</style>
-	<!-- v_MmVERSION_; 2012/11/15 Tom King; build date: _MmBUILDDATE_
+	<!-- v_MmVERSION_; 2015/01/18 Tom King; build date: _MmBUILDDATE_
 		jumpOnJuniper a data URL formlet-based bookmark-generator to simplify use of Juniper Infranet-based VisitorNet
 		generated URL first displays as http://mmind.me/joj?javascript:var%20d='...
-		Copyright (c) 2012, 2013 Tom King. All rights reserved.
+		Copyright (c) 2012-2015 Tom King. All rights reserved.
 	-->
 	<script type="text/javascript">
 		// load url w/ bookmarklet appended
@@ -101,24 +100,24 @@
 	</script>
 </head>
 <body>
-	<p style="margin:3px 0 4px 20px"><b>jumpOnJuniper _MmVERSION_</b></p>
-	<div id=grp>
+	<h1>jumpOnJuniper _MmVERSION_</h1>
+	<div>
 		<form id=pltMkr method=GET action="." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value));return false" onReset="loadpg()">
 			<label for=username>Username:&#32;
-				<input id=username name=uid tabindex=1 class=pStr size=9 maxlength=8 placeholder=username autocorrect=off autocomplete=off autocapitalize=off spellcheck=false required autofocus>
+				<input type=text id=username name=uid tabindex=1 size=9 maxlength=8 placeholder=username autocorrect=off autocomplete=off autocapitalize=off spellcheck=false required autofocus>
 			</label>
 			<label for=password><br>Password:&#32;
-				<input type=password id=password tabindex=2 class=pStr name=password size=9 maxlength=8 required>
+				<input type=password id=password tabindex=2 name=password size=9 maxlength=8 required>
 			</label>
 			<br>
-			<input type=submit id=mkPltBtn tabindex=3 value="Make jOJ Bookmark">
+			<input type=submit class="b s" id=mkPltBtn tabindex=3 value="Make jOJ Bookmark">
 			&nbsp; &#32;
-			<input type=reset id=reset value=Reset tabindex=5>
+			<input type=reset class="b r" id=reset value=Reset tabindex=5>
 		</form>
 		&nbsp;Bookmark Address:<br>&#32;<textarea id=bmrk tabindex=4 wrap=soft spellcheck=false></textarea><br>
 		<p id=pal style="display:none">Bookmark link:&#32;<a id=pl href="." title=jOJ>jOJ</a><br><br></p>
 	</div>
-	<p style="font-size:x-small">&nbsp;&#32;Copyright &copy; 2012, 2013, 2014, 2015 Tom King. All rights reserved.</p>
+	<p style="font-size:x-small">&nbsp;&#32;Copyright &copy; 2012-2015 Tom King. All rights reserved.</p>
 	<p>&nbsp;&#32;<a href="http://mmind.me/joj" title="jOJ online">jumpOnJuniper online</a></p>
 </body>
 </html>
