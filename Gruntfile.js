@@ -6,7 +6,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     clean: {
-      files: ['web/', 'validation-status.json'],
+      files: ['web/', 'validation-status.json', 'build/'],
       build: ['web/joj.html', 'web/joj.url.html', 'web/*.gz']
     },
     csslint: {
