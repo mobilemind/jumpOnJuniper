@@ -35,10 +35,10 @@
 		<p>Enter the Username to paste and a Password. Then tap&#32;<b>Make jOJ Bookmark</b>&#32;to reload this page for Step&#32;2.</p>
 		<form id=pltMkr method=GET action=".">
 			<label for=username>Username:&#32;
-				<input id=username name=uid tabindex=1 class=pStr size=9 maxlength=8 placeholder=username autocorrect=off autocomplete=off autocapitalize=off required autofocus>
+				<input id=username name=uid tabindex=1 class=te size=9 maxlength=8 placeholder=username autocorrect=off autocomplete=off autocapitalize=off required autofocus>
 			</label>
 			<label for=password><br>Password:&#32;
-				<input type=password id=password tabindex=2 class=pStr name=password size=9 maxlength=8 required autocorrect=off autocomplete=off autocapitalize=off spellcheck=false>
+				<input type=password id=password tabindex=2 class=te name=password size=9 maxlength=8 required autocorrect=off autocomplete=off autocapitalize=off spellcheck=false>
 			</label>
 			<br><br>
 			<input type=submit id=mkPltBtn class=mBtn tabindex=3 value="Make jOJ Bookmark">&#32; &#32;
@@ -48,6 +48,7 @@
 				<textarea id=bmrk tabindex=4 wrap=soft spellcheck=false>No Bookmark yet. See Step 1 instructions.</textarea>
 			</label>
 		</form>
+		<p id=bl class=n>Bookmark as link:&#32;<a id=pl></a></p>
 	</div>
 
 	<h1>Step 2: Add a Bookmark</h1>
