@@ -11,7 +11,8 @@ COMMONLIB := $$HOME/common/lib
 
 # files
 JOJHTML := $(PROJ).html
-HTMLFILES := $(JOJHTML) $(PROJ).manifest index.html
+PROJFILES := $(JOJHTML) $(PROJ).css $(PROJ).js $(PROJ).manifest
+HTMLFILES := $(PROJFILES) index.html
 JOJFILE := joj.url
 
 # urls
@@ -44,6 +45,15 @@ $(PROJ).html:
 	@echo "$@: $$(stat $(STATFMT) $@) bytes"
 	@$(HTMLCOMPRESSOR) $(COMPRESSOPTIONS) -o $@.tmp $@ && mv -f $@.tmp $@
 	@echo "$@: $$(stat $(STATFMT) $@) bytes optimized"
+
+$(PROJ).css:
+	@printf "\nFetch $@ from github...\n"
+	@curl -# -O $(SRCURL)/$@
+
+$(PROJ).js:
+	@printf "\nFetch $@ from github and update...\n"
+	@curl -# -O $(SRCURL)/$@
+	@$(REPLACETOKENS)
 
 $(PROJ).manifest:
 	@printf "\nFetch $@ from github and update...\n"
@@ -79,4 +89,4 @@ endif
 
 .PHONY: clean
 clean:
-	rm -rf $(JOJFILE) $(JOJHTML) $(PROJ).manifest img
+	rm -rf $(JOJFILE) $(PROJFILES) img
