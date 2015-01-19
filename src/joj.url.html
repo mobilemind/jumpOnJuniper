@@ -24,6 +24,7 @@
 			background-color: #e0e6e0
 		}
 		form { padding: 6px; border: hidden }
+		.t { font-size: large }
 		.b {
 			color: #fafffa;
 			border-radius: 0;
@@ -52,13 +53,14 @@
 		textarea {
 			vertical-align: top;
 			font-family: monospace;
+			font-size: medium;
+			overflow: scroll;
 			resize: vertical;
-			overflow: visible;
-			width: 98%;
+			width: 99%;
 			height: 10em;
-			-moz-user-select: text;
+			-moz-user-select: text !important;
 			-webkit-user-select: text !important;
-			user-select: text
+			user-select: text !important
 		}
 		@media only screen and (min-device-width: 413px) and (max-device-width: 415px) { textarea { height: 14em } }
 		@media only screen and (min-device-width: 374px) and (max-device-width: 376px) { textarea { height: 18em } }
@@ -75,21 +77,21 @@
 		function loadpg(p) {
 			var pl = document.getElementById('pl'), u = document.getElementById('username'), b = document.getElementById('bmrk'), t = '';
 			if (p) {
-				t = 'joj ' + u.value;
+				t = 'jOJ ' + u.value;
 				b.textContent = 'javascript:' + encodeURI(p);
-				document.getElementById('pal').setAttribute("style", "display:inline;padding:7px;height:auto");
-				pl.setAttribute('href', b.textContent);
-				pl.setAttribute('title', t);
+				document.getElementById('bl').style.display = 'block';
+				pl.href = b.textContent;
+				pl.title = t;
 				pl.innerHTML = t;
 				b.focus();
 				b.select();
 			}
 			else {
 				b.textContent = t;
-				pl.setAttribute('href', t);
-				pl.setAttribute('title', t);
+				pl.href = t;
+				pl.title = t;
 				pl.innerHTML = t;
-				document.getElementById('pal').setAttribute("style", "display:none;padding:0");
+				document.getElementById('bl').style.display = 'none';
 				u.focus();
 			}
 		}
@@ -104,10 +106,10 @@
 	<div>
 		<form id=pltMkr method=GET action="." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value));return false" onReset="loadpg()">
 			<label for=username>Username:&#32;
-				<input type=text id=username name=uid tabindex=1 size=9 maxlength=8 placeholder=username autocorrect=off autocomplete=off autocapitalize=off spellcheck=false required autofocus>
+				<input type=text id=username name=uid class=t tabindex=1 size=9 maxlength=8 placeholder=username autocorrect=off autocomplete=off autocapitalize=off spellcheck=false required autofocus>
 			</label>
 			<label for=password><br>Password:&#32;
-				<input type=password id=password tabindex=2 name=password size=9 maxlength=8 required>
+				<input type=password id=password name=password class=t tabindex=2 size=9 maxlength=8 required>
 			</label>
 			<br>
 			<input type=submit class="b s" id=mkPltBtn tabindex=3 value="Make jOJ Bookmark">
@@ -115,7 +117,7 @@
 			<input type=reset class="b r" id=reset value=Reset tabindex=5>
 		</form>
 		&nbsp;Bookmark Address:<br>&#32;<textarea id=bmrk tabindex=4 wrap=soft spellcheck=false></textarea><br>
-		<p id=pal style="display:none">Bookmark link:&#32;<a id=pl href="." title=jOJ>jOJ</a><br><br></p>
+		<p id=bl style="display:none">Bookmark link:&#32;<a id=pl href="." title=jOJ>jOJ</a></p>
 	</div>
 	<p style="font-size:x-small">&nbsp;&#32;Copyright &copy; 2012-2015 Tom King. All rights reserved.</p>
 	<p>&nbsp;&#32;<a href="http://mmind.me/joj" title="jOJ online">jumpOnJuniper online</a></p>
