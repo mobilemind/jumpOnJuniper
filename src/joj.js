@@ -46,13 +46,24 @@ window.addEventListener('load', function() {
 			m = q.match(/^javascript:(.*?)u='(.*?)',p='(.*?)',/);
 			if (!m) throw 'No match in: ' + q;
 			if (!m[2]) throw 'No login found in: ' + m;
-			document.title = 'jOJ ' + m[2].replace(/\W.*/, '');
+			var t = 'jOJ ' + m[2].replace(/\W.*/, '');
+			document.title = t;
 			document.getElementById('username').value = m[2];
 			if (m[3]) document.getElementById('password').value = m[3];
 			// put a more human-readable, but URI encoded, version of bookmarklet in textarea
 			b.textContent = encodeURI(q);
 			// unhide remaining steps
 			window.scrollTo(0,200+document.getElementById('pltMkr').scrollHeight);
+			// if not iPhone/iPad unhide 'Pastelet as link' and set anchor tag
+			if (!(-1 !== navigator.userAgent.indexOf('Safari') && -1 !== navigator.userAgent.indexOf('Mobile'))) {
+				var bl = document.getElementById('bl'), pl = document.getElementById('pl');
+				if (bl && pl) {
+					bl.style.display = 'block';
+					pl.href = document.getElementById('bmrk').textContent;
+					pl.title = t;
+					pl.innerHTML = t;
+				}
+			}
 			b.select();
 			b.focus();
 		}
