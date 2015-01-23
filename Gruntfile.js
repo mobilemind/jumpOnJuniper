@@ -30,7 +30,9 @@ module.exports = function(grunt) {
       options: {
         curly: false,
         eqeqeq: true,
+        bitwise: true,
         immed: true,
+        freeze: true,
         latedef: true,
         newcap: true,
         noarg: true,
@@ -40,6 +42,7 @@ module.exports = function(grunt) {
         sub: true,
         trailing: true,
         undef: true,
+        singleGroups: true,
         unused: false,
         lastsemic: true,
         scripturl: true,
