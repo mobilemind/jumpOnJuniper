@@ -17,7 +17,7 @@
 		}
 		h1 {font-size: 18px; font-weight: bold; margin:3px 0 4px 20px}
 		div {
-			margin: 3px;
+			margin: 5px;
 			padding: 5px;
 			border-radius: 6px;
 			border: 1px solid #72ab69;
@@ -30,26 +30,26 @@
 			border-radius: 0;
 			border: 1px solid #2E8022;
 			background: #75AC6C;
-			display: inline-block;
-			vertical-align: baseline;
 			text-align: center;
+			vertical-align: baseline;
 			cursor: pointer;
 			-moz-appearance: none;
 			-webkit-appearance: none
 		}
+		.b:active { color: #000; background: #2E8022 }
 		.s {
 			height: 38px;
 			width: 172px;
 			margin: 9px 0 12px 20px;
 			font: 16px/100% Arial, Helvetica, sans-serif;
+			display: inline-block
 		}
 		.r {
 			height: 24px;
 			width: 60px;
 			margin: 2px 0 4px 12px;
-			font: 14px/100% Arial, Helvetica, sans-serif;
+			font: 14px/100% Arial, Helvetica, sans-serif
 		}
-		.s:active .r:active  { color: #000; background: #2E8022 }
 		textarea {
 			vertical-align: top;
 			font-family: monospace;
@@ -57,7 +57,7 @@
 			overflow: scroll;
 			resize: vertical;
 			width: 99%;
-			height: 10em;
+			height: 11em;
 			-moz-user-select: text !important;
 			-webkit-user-select: text !important;
 			user-select: text !important
@@ -75,7 +75,7 @@
 	<script type="text/javascript">
 		// load url w/ bookmarklet appended
 		function loadpg(p) {
-			var pl = document.getElementById('pl'), u = document.getElementById('username'), b = document.getElementById('bmrk'), t = '';
+			var pl = document.getElementById('pl'), u = document.getElementById('username'), b = document.getElementById('bk'), t = '';
 			if (p) {
 				t = 'jOJ ' + u.value;
 				b.textContent = 'javascript:' + encodeURI(p);
@@ -116,7 +116,7 @@
 			&nbsp; &#32;
 			<input type=reset class="b r" id=reset value=Reset tabindex=5>
 		</form>
-		&nbsp;Bookmark Address:<br>&#32;<textarea id=bmrk tabindex=4 wrap=soft spellcheck=false></textarea><br>
+		&nbsp;Bookmark Address:<br>&#32;<textarea id=bk tabindex=4 wrap=soft spellcheck=false></textarea><br>
 		<p id=bl style="display:none">Bookmark link:&#32;<a id=pl href="." title=jOJ>jOJ</a></p>
 	</div>
 	<p style="font-size:x-small">&nbsp;&#32;Copyright &copy; 2012-2015 Tom King. All rights reserved.</p>

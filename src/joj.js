@@ -41,7 +41,7 @@ window.addEventListener('load', function() {
 	if (window.location.search) {
 		// reload form UI from query string
 		try {
-			var q = window.location.search, m = [], b = document.getElementById('bmrk');
+			var q = window.location.search, m = [], b = document.getElementById('bk');
 			q = decodeURIComponent(q.substr(1));
 			m = q.match(/^javascript:(.*?)u='(.*?)',p='(.*?)',/);
 			if (!m) throw 'No match in: ' + q;
@@ -59,7 +59,7 @@ window.addEventListener('load', function() {
 				var bl = document.getElementById('bl'), pl = document.getElementById('pl');
 				if (bl && pl) {
 					bl.style.display = 'block';
-					pl.href = document.getElementById('bmrk').textContent;
+					pl.href = document.getElementById('bk').textContent;
 					pl.title = t;
 					pl.innerHTML = t;
 				}
@@ -75,7 +75,7 @@ window.addEventListener('load', function() {
 
 	var mainForm = document.getElementById('pltMkr');
 	mainForm.onreset = function() {
-		document.getElementById('bmrk').textContent = '';
+		document.getElementById('bk').textContent = '';
 		window.location.href='//'+window.location.host+window.location.port+window.location.pathname;
 	};
 
@@ -84,7 +84,7 @@ window.addEventListener('load', function() {
 		// reload page with new bookmarklet appended
 		if (p) {
 			p = 'javascript:' + encodeURIComponent(p);
-			document.getElementById('bmrk').textContent = p;
+			document.getElementById('bk').textContent = p;
 			window.location.href = '//' + window.location.host + window.location.port + window.location.pathname + '?' + p;
 		}
 		return false;
