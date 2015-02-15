@@ -21,7 +21,7 @@ JOJURL := http://mmind.me/$(JOJFILE)
 
 # macros/utils
 BUILDDATE := $(shell date)
-VERSION = 7.0.8g
+VERSION = 7.0.9g
 GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
 HTMLCOMPRESSORJAR := htmlcompressor-1.5.3.jar
 HTMLCOMPRESSORPATH := $(shell [ 'cygwin' = $$OSTYPE ] && echo "`cygpath -w $(COMMONLIB)`\\" || echo "$(COMMONLIB)/")
