@@ -21,7 +21,7 @@
   }],
   "main": "Gruntfile.js",
   "engines": {
-    "node": ">=0.10.0 <0.13.0"
+      "node": ">=0.10.0 <0.13.0"
   },
   "devDependencies": {
     "grunt-cli": "0.1.x",
