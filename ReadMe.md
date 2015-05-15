@@ -41,7 +41,7 @@ and then submit the form.
 
 Requires a browser that supports `javascript:` bookmarks.
 
-Updated for Firefox 37.x, Safari 8.x and Mobile Safari 8.x (including iPhone 6 & iPhone 6 Plus).
+Updated for Firefox 38.x, Safari 8.x and Mobile Safari 8.x (including iPhone 6 & iPhone 6 Plus).
 
 ## License
 
