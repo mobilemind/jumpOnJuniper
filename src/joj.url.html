@@ -106,12 +106,12 @@
 <body>
 	<h1>jumpOnJuniper _MmVERSION_</h1>
 	<div>
-		<form id=pltMkr method=GET action="." onSubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value));return false" onReset="loadpg()">
+		<form id=pltMkr method=GET action="." onsubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value));return false" onreset="loadpg()">
 			<label for=username>Username:&#32;
-				<input type=text id=username name=uid class=t tabindex=1 size=9 maxlength=8 placeholder=username autocorrect=off autocomplete=off autocapitalize=off spellcheck=false required autofocus>
+				<input type=text id=username name=uid tabindex=1 class=t size=9 maxlength=8 required placeholder=username autocorrect=off autocomplete=off autocapitalize=off spellcheck=false autofocus>
 			</label>
 			<label for=password><br>Password:&#32;
-				<input type=password id=password name=password class=t tabindex=2 size=9 maxlength=8 required>
+				<input type=password id=password name=password tabindex=2 class=t size=9 maxlength=8 required>
 			</label>
 			<br>
 			<input type=submit class="b s" id=mkPltBtn tabindex=3 value="Make jOJ Bookmark">
