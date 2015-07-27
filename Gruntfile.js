@@ -123,19 +123,6 @@ module.exports = function(grunt) {
       },
       options: {}
     },
-    validation: {
-      sources: ['src/joj*.html'],
-      web:  ['web/joj*.html'],
-      options: {
-        doctype: "HTML5",
-        charset: "utf-8",
-        relaxerror: ["Bad value cleartype for attribute http-equiv on element meta.",
-          "Attribute autoc[a-z]+ not allowed on element input at this point.",
-          "Bad value  for attribute autocomplete on element input.",
-          "Bad value robots for attribute name on element meta: Keyword robots is not registered."],
-        reportpath: false
-      }
-    },
     zopfli: {
       target: { files: [
       	{ src: ['web/joj.html'], dest: 'web/joj' },
@@ -171,20 +158,7 @@ module.exports = function(grunt) {
       options: {
       	force: true
       }
-    },
-  'sftp-deploy': {
-    main: {
-      auth: {
-        host: process.env.MYSERVER,
-        port: 22,
-        authKey: 'privateKeyCustom'
-      },
-      src: 'web',
-      dest: process.env.MYSERVERHOME + '/me',
-      exclusions: ['web/**/.DS_Store', 'web/img/**'],
-      serverSep: '/'
     }
-}
   });
 
   // Load plugins
@@ -198,8 +172,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-zopfli');
   grunt.loadNpmTasks('grunt-html-minify');
   grunt.loadNpmTasks('grunt-minify-html');
-  grunt.loadNpmTasks('grunt-html-validation');
-  grunt.loadNpmTasks('grunt-sftp-deploy');
   grunt.loadNpmTasks('text2datauri');
 
   grunt.log.writeln('\n' + grunt.config('pkg.name') + ' ' + grunt.config('pkg.version'));
@@ -207,12 +179,9 @@ module.exports = function(grunt) {
   // test task
   // Default task
   grunt.registerTask('test', ['jshint', 'csslint', 'copy', 'cssmin', 'uglify',
-    'html_minify', 'minifyHtml', 'validation:web','zopfli', 'text2datauri', 'rename']);
+    'html_minify', 'minifyHtml', 'zopfli', 'text2datauri', 'rename']);
 
   // Default task
   grunt.registerTask('default', ['clean', 'test', 'clean:build']);
-
-  // deploy task
-  grunt.registerTask('deploy', ['default', 'sftp-deploy']);
 
 };
