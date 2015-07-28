@@ -38,28 +38,29 @@ function pastelet(u,p) {
 
 // listener to dynamically position page for initial or return-trip
 window.addEventListener('load', function() {
-	if (window.location.search) {
+	var wl = window.location, d = document;
+	if (wl.search) {
 		// reload form UI from query string
 		try {
-			var q = window.location.search, m = [], b = document.getElementById('bk');
+			var q = wl.search, m = [], b = d.getElementById('bk');
 			q = decodeURIComponent(q.substr(1));
 			m = q.match(/^javascript:(.*?)u='(.*?)',p='(.*?)',/);
 			if (!m) throw 'No match in: ' + q;
 			if (!m[2]) throw 'No login found in: ' + m;
 			var t = 'jOJ ' + m[2].replace(/\W.*/, '');
-			document.title = t;
-			document.getElementById('username').value = m[2];
-			if (m[3]) document.getElementById('password').value = m[3];
+			d.title = t;
+			d.getElementById('username').value = m[2];
+			if (m[3]) d.getElementById('password').value = m[3];
 			// put a more human-readable, but URI encoded, version of bookmarklet in textarea
 			b.textContent = encodeURI(q);
 			// unhide remaining steps
-			window.scrollTo(0,200+document.getElementById('pltMkr').scrollHeight);
+			window.scrollTo(0,200+d.getElementById('pltMkr').scrollHeight);
 			// if not iPhone/iPad unhide 'Pastelet as link' and set anchor tag
 			if (!(-1 !== navigator.userAgent.indexOf('Safari') && -1 !== navigator.userAgent.indexOf('Mobile'))) {
-				var bl = document.getElementById('bl'), pl = document.getElementById('pl');
+				var bl = d.getElementById('bl'), pl = d.getElementById('pl');
 				if (bl && pl) {
 					bl.style.display = 'block';
-					pl.href = document.getElementById('bk').textContent;
+					pl.href = d.getElementById('bk').textContent;
 					pl.title = t;
 					pl.innerHTML = t;
 				}
@@ -69,23 +70,23 @@ window.addEventListener('load', function() {
 		}
 		catch (e) {
 			window.alert("Unable to decode pastelet.\r\nForm will be reset.\r\n(" + e + ")");
-			window.location.replace(window.location.pathname);
+			wl.replace(wl.pathname);
 		}
 	}
 
-	var mainForm = document.getElementById('pltMkr');
+	var mainForm = d.getElementById('pltMkr');
 	mainForm.onreset = function() {
-		document.getElementById('bk').textContent = '';
-		window.location.href='//'+window.location.host+window.location.port+window.location.pathname;
+		d.getElementById('bk').textContent = '';
+		wl.href='//'+wl.host+wl.port+wl.pathname;
 	};
 
 	mainForm.onsubmit = function() {
-		var p = pastelet(document.getElementById('username').value,document.getElementById('password').value);
+		var p = pastelet(d.getElementById('username').value,d.getElementById('password').value);
 		// reload page with new bookmarklet appended
 		if (p) {
 			p = 'javascript:' + encodeURIComponent(p);
-			document.getElementById('bk').textContent = p;
-			window.location.href = '//' + window.location.host + window.location.port + window.location.pathname + '?' + p;
+			d.getElementById('bk').textContent = p;
+			wl.href = '//' + wl.host + wl.port + wl.pathname + '?' + p;
 		}
 		return false;
 	};
