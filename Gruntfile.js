@@ -132,7 +132,7 @@ module.exports = function(grunt) {
       options: {
         verbose: false,
         verbose_more: false,
-        numiterations: 110,
+        numiterations: 96,
         blocksplitting: true,
         blocksplittinglast: false,
         blocksplittingmax: 15
@@ -177,7 +177,6 @@ module.exports = function(grunt) {
   grunt.log.writeln('\n' + grunt.config('pkg.name') + ' ' + grunt.config('pkg.version'));
 
   // test task
-  // Default task
   grunt.registerTask('test', ['jshint', 'csslint', 'copy', 'cssmin', 'uglify',
     'html_minify', 'minifyHtml', 'zopfli', 'text2datauri', 'rename']);
 
