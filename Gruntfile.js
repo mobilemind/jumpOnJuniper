@@ -169,7 +169,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-rename');
-  grunt.loadNpmTasks('grunt-contrib-zopfli');
+  grunt.loadNpmTasks('grunt-zopfli-native');
   grunt.loadNpmTasks('grunt-html-minify');
   grunt.loadNpmTasks('grunt-minify-html');
   grunt.loadNpmTasks('text2datauri');
