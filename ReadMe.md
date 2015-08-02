@@ -72,3 +72,19 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ## Build
 Use `npm install && grunt` at the command shell prompt to create the joj HTML page and manifest.
 See `/web/` directory for results.
+
+[![Tag][tag-image]][tag-url]
+[![Build Status][build-image]][build-url]
+
+[![Dependency Status][dep-image]][dep-url]
+[![devDependency Status][devDep-image]][devDep-url]
+
+<!-- reference URLs -->
+[build-image]: https://secure.travis-ci.org/mobilemind/jumpOnJuniper.svg?branch=master
+[build-url]: http://travis-ci.org/mobilemind/jumpOnJuniper
+[tag-image]: https://img.shields.io/github/tag/mobilemind/jumpOnJuniper.svg
+[tag-url]: https://github.com/mobilemind/jumpOnJuniper/tags
+[dep-image]: https://david-dm.org/mobilemind/jumpOnJuniper.svg
+[dep-url]: https://david-dm.org/mobilemind/jumpOnJuniper
+[devDep-image]: https://img.shields.io/david/dev/mobilemind/jumpOnJuniper.svg
+[devDep-url]: https://david-dm.org/mobilemind/jumpOnJuniper#info=devDependencies
