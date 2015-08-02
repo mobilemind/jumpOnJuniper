@@ -21,7 +21,8 @@ module.exports = function(grunt) {
     		files: { 'web/joj.css': ['src/joj.css'] }
     	},
       options: {
-      	debug: true,
+        debug: false,
+        rebase: false,
         report: 'min'
       }
     },
