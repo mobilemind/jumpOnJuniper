@@ -21,7 +21,6 @@
       "node": ">=0.10.0 <0.13.0"
   },
   "devDependencies": {
-    "grunt-cli": ">=0.1.0",
     "grunt": "0.4.x",
     "grunt-contrib-clean": "0.6.x",
     "grunt-contrib-copy": "0.8.x",
@@ -35,8 +34,11 @@
     "grunt-minify-html": "2.0.x",
     "text2datauri": "0.0.x"
   },
+  "dependencies": {
+  },
   "scripts": {
-     "test": "grunt"
+     "preinstall": "npm install -g grunt-cli",
+     "test": "grunt --verbose"
   },
   "keywords": [ "bookmarklet" ]
 }
