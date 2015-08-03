@@ -22,9 +22,6 @@ link that appears upon completing Step 1.
 * [jOJ hosted on mmind.me site][mmjoj]
 * [jOJ hosted on github.com][ghjoj]
 
-[mmjoj]: http://mmind.me/joj  "jumpOnJuniper (mmind.me site)"
-[ghjoj]: http://mobilemind.github.io/jumpOnJuniper/joj.html  "jumpOnJuniper (github site)"
-
 ## Use
 Make sure you have installed/created a bookmark first (see above).
 
@@ -45,7 +42,7 @@ Updated for Firefox 39.x, Safari 8.x and Mobile Safari 8.x (including iPhone 6 &
 
 ## License
 
-MIT License - <http://www.opensource.org/licenses/mit-license.php>
+MIT License - <http://opensource.org/licenses/mit-license.php>
 
 jumpOnJuniper
 Copyright (c) 2012-2015 Tom King <mobilemind+joj@pobox.com>
@@ -73,6 +70,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 Use `npm install && grunt` at the command shell prompt to create the joj HTML page and manifest.
 See `/web/` directory for results.
 
+[![Built with Grunt][built-with-grunt-img]][built-with-grunt-url]
 [![Tag][tag-image]][tag-url]
 [![Build Status][build-image]][build-url]
 
@@ -80,6 +78,11 @@ See `/web/` directory for results.
 [![devDependency Status][devDep-image]][devDep-url]
 
 <!-- reference URLs -->
+[mmjoj]: http://mmind.me/joj  "jumpOnJuniper (mmind.me site)"
+[ghjoj]: http://mobilemind.github.io/jumpOnJuniper/joj.html  "jumpOnJuniper (github site)"
+<!-- Badge links -->
+[built-with-grunt-img]: https://cdn.gruntjs.com/builtwith.png
+[built-with-grunt-url]: http://gruntjs.com/
 [build-image]: https://secure.travis-ci.org/mobilemind/jumpOnJuniper.svg?branch=master
 [build-url]: http://travis-ci.org/mobilemind/jumpOnJuniper
 [tag-image]: https://img.shields.io/github/tag/mobilemind/jumpOnJuniper.svg
