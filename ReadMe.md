@@ -4,6 +4,9 @@ The “jumpOnJuniper” (jOJ) bookmarklet streamlines logging in via Juniper Net
 “VisitorNet” sites that control access to WiFi networks. The bookmarklet will paste in the
 Username and password values stored in the bookmark and then submit the form.
 
+Version 7.1.0 is expected to be the final version. I've learned as much as I needed to learned
+for this project and have no way to actually use it myself anymore.
+
 ## Install
 
 ### Mobile Safari
