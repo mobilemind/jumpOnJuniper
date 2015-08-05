@@ -105,7 +105,7 @@ module.exports = function(grunt) {
         noprocess: '**/*.png',
         process: function (content, srcpath) {
           content = content.replace(/_MmVERSION_/g, grunt.config('pkg.version'));
-          return content.replace(/_MmBUILDDATE_/g, grunt.template.today());
+          return content.replace(/_MmBUILDDATE_/g, grunt.template.date(new Date(), "ddd mmm dd yyyy"));
         }
       },
       main: { files: [ {expand: true, cwd: 'src/', src: ['**'], dest: 'web/'} ]}
@@ -126,11 +126,12 @@ module.exports = function(grunt) {
     },
     zopfli: {
       target: { files: [
-      	{ src: ['web/joj.html'], dest: 'web/joj' },
-      	{ src: ['web/joj.js'], dest: 'web/joj.js.gz' },
-      	{ src: ['web/joj.css'], dest: 'web/joj.css.gz' } ]
+        { src: ['web/joj.html'], dest: 'web/joj.deflate' },
+        { src: ['web/joj.js'], dest: 'web/joj.js.deflate' },
+        { src: ['web/joj.css'], dest: 'web/joj.css.deflate' } ]
       },
       options: {
+        mode: 'deflate',
         verbose: false,
         verbose_more: false,
         numiterations: 96,
@@ -152,9 +153,9 @@ module.exports = function(grunt) {
     rename: {
       main: {
         files: [
-        	{src: ['web/joj.gz'], dest: 'web/joj'},
-        	{src: ['web/joj.css.gz'], dest: 'web/joj.css'},
-       		{src: ['web/joj.js.gz'], dest: 'web/joj.js'} ]
+        	{src: ['web/joj.deflate'], dest: 'web/joj'},
+        	{src: ['web/joj.css.deflate'], dest: 'web/joj.css'},
+       		{src: ['web/joj.js.deflate'], dest: 'web/joj.js'} ]
       },
       options: {
       	force: true
