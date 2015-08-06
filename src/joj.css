@@ -31,7 +31,8 @@ form { border: hidden; margin: 0 }
 	padding: 0;
 	text-align: center;
 	vertical-align: baseline;
-	appearance: none
+	-moz-appearance: none;
+	-webkit-appearance: none
 }
 .b:active { color: #000; background: #2E8022 }
 .s {
