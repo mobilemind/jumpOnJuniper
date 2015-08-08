@@ -45,7 +45,7 @@ Updated for Firefox 35.x, Safari 8.x and Mobile Safari 8.x (including iPhone 6 &
 
 ## License
 
-MIT License - <http://www.opensource.org/licenses/mit-license.php>
+MIT License - <http://opensource.org/licenses/mit-license.php>
 
 jumpOnJuniper
 Copyright (c) 2012, 2013, 2014, 2015 Tom King <mobilemind@pobox.com>
