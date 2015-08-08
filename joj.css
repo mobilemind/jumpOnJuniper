@@ -1,17 +1,14 @@
 body {
 	margin: 0;
 	padding: 0 2px 15px 0;
-	font-family: Helvetica, sans-serif;
-	font-size: 17px;
+	font-family: sans-serif;
+	font-size: 16px;
 	-ms-text-size-adjust: none;
 	-webkit-text-size-adjust: none;
 	appearance: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	-webkit-user-select: none;
-	user-select: none;
+	user-select: none
 }
-h1 { font-size: 17px; margin: 14px 9px 6px 20px }
+h1 { font-size: 18px; margin: 14px 9px 6px 20px }
 div {
 	margin: 5px;
 	padding: 5px;
@@ -30,8 +27,7 @@ form { border: hidden; margin: 0 }
 	margin: 0;
 	padding: 0;
 	text-align: center;
-	vertical-align: baseline;
-	appearance: none
+	vertical-align: baseline
 }
 .b:active { color: #000; background: #2E8022 }
 .s {
@@ -39,17 +35,16 @@ form { border: hidden; margin: 0 }
 	width: 172px;
 	margin: 2px 0 4px 33px;
 	display: inline-block;
-	font: 16px/100% Arial, Helvetica, sans-serif;
+	font-size: 16px;
 	text-shadow: 0 1px 1px rgba(0,0,0,.3)
 }
 .r {
 	height: 24px;
 	width: 60px;
 	margin: 2px 0 4px 16px;
-	font: 12px/100% Arial, Helvetica, sans-serif
+	font-size: 12px;
 }
 textarea {
-	vertical-align: top;
 	font-family: monospace;
 	font-size: medium;
 	overflow: scroll;
