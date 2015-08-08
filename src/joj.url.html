@@ -3,72 +3,7 @@
 <head>
 	<meta name=viewport content="width=device-width,user-scalable=no">
 	<meta name=format-detection content="telephone=no">
-	<title>jumpOnJuniper _MmVERSION_</title>
-	<style type="text/css">
-		body {
-			margin: 0;
-			font-family: Helvetica, sans-serif;
-			font-size: 14px;
-			-webkit-text-size-adjust: none;
-			-moz-appearance: none;
-			-webkit-appearance: none;
-			-moz-user-select: none;
-			-webkit-user-select: none
-		}
-		h1 {font-size: 16px; font-weight: bold; margin:4px 0 4px 20px}
-		div {
-			margin: 5px;
-			padding: 5px;
-			border-radius: 6px;
-			border: 1px solid #72ab69;
-			background-color: #e0e6e0
-		}
-		form { padding: 6px; border: hidden }
-		.t { font-size: large }
-		.b {
-			color: #fafffa;
-			border-radius: 0;
-			border: 1px solid #2E8022;
-			background: #75AC6C;
-			margin: 0;
-			padding: 0;
-			text-align: center;
-			vertical-align: baseline;
-			cursor: pointer;
-			-moz-appearance: none;
-			-webkit-appearance: none
-		}
-		.b:active { color: #000; background: #2E8022 }
-		.s {
-			height: 38px;
-			width: 172px;
-			margin: 9px 0 12px 20px;
-			font: 16px/100% Arial, Helvetica, sans-serif;
-			display: inline-block
-		}
-		.r {
-			height: 24px;
-			width: 60px;
-			margin: 2px 0 4px 12px;
-			font: 14px/100% Arial, Helvetica, sans-serif
-		}
-		textarea {
-			vertical-align: top;
-			font-family: monospace;
-			font-size: medium;
-			overflow: scroll;
-			resize: none;
-			width: 99%;
-			height: 11em;
-			-moz-user-select: text !important;
-			-webkit-user-select: text !important;
-			user-select: text !important
-		}
-		@media only screen and (min-device-width: 413px) and (max-device-width: 415px) { textarea { height: 14em } }
-		@media only screen and (min-device-width: 374px) and (max-device-width: 376px) { textarea { height: 18em } }
-		@media only screen and (min-device-width: 359px) and (max-device-width: 361px) { textarea { height: 15em } }
-		@media only screen and (min-device-width: 319px) and (max-device-width: 321px) { textarea { height: 12em } }
-	</style>
+	<title>jOJ 7.13</title>
 	<!-- v_MmVERSION_; 2015/01/18 Tom King; build date: _MmBUILDDATE_
 		jumpOnJuniper a data URL formlet-based bookmark-generator to simplify use of Juniper Infranet-based VisitorNet
 		generated URL first displays as http://mmind.me/joj?javascript:var%20d='...
@@ -103,25 +38,23 @@
 		}
 	</script>
 </head>
-<body>
-	<h1>jumpOnJuniper _MmVERSION_</h1>
-	<div spellcheck=false>
+<body style="background-color:#DDD" spellcheck=false>
+	<h3>jOJ _MmVERSION_</h3>
 		<form id=pltMkr method=GET action="." onsubmit="loadpg(pastelet(document.getElementById('username').value,document.getElementById('password').value));return false" onreset="loadpg()">
-			<label for=username>Username:&#32;
-				<input type=text id=username name=uid placeholder=username tabindex=1 class=t size=9 maxlength=8 required autocorrect=off autocomplete=off autocapitalize=none autofocus>
+			<label for=username>Username:&nbsp;
+				<input type=text id=username name=uid placeholder=user size=9 maxlength=8 required autocorrect=off autocomplete=off autocapitalize=none autofocus>
 			</label>
-			<label for=password><br>Password:&#32;
-				<input type=password id=password name=password tabindex=2 class=t size=9 maxlength=8 required>
+			<label for=password>&nbsp;&nbsp;Password:&nbsp;
+				<input type=password id=password name=password size=9 maxlength=8 required>
 			</label>
-			<br>
-			<input type=submit class="b s" id=mkPltBtn tabindex=3 value="Make jOJ Bookmark">
-			&nbsp; &#32;
-			<input type=reset class="b r" id=reset value=Reset tabindex=5>
+			<p></p>
+			<input type=submit tabindex=3 value="Make jOJ Bookmark">
+			&nbsp;&nbsp;
+			<input type=reset value=Reset tabindex=5>
 		</form>
-		&nbsp;Bookmark Address:<br>&#32;<textarea id=bk tabindex=4 wrap=soft></textarea><br>
-		<p id=bl style="display:none">Bookmark link:&#32;<a id=pl href="." title=jOJ>jOJ</a></p>
-	</div>
-	<p style="font-size:x-small">&nbsp;&#32;Copyright &copy; 2012-2015 Tom King. All rights reserved.</p>
-	<p>&nbsp;&#32;<a href="http://mmind.me/joj" title="jOJ online">jumpOnJuniper online</a></p>
+		<p>Bookmark Address:<br><textarea id=bk tabindex=4 wrap=soft style="vertical-align:top;font-family:monospace;font-size:medium;overflow:scroll;resize:none;width:99%;height:12em"></textarea></p>
+		<p id=bl style="display:none">Bookmark link:&nbsp;<a id=pl href="." title=jOJ>jOJ</a></p>
+	<p style="font-size:x-small">Copyright &copy; 2012-2015 Tom King. All rights reserved.</p>
+	<p><a href="http://mmind.me/joj" title="jOJ online">jOJ online</a></p>
 </body>
 </html>
