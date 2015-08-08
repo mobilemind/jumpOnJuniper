@@ -5,7 +5,9 @@ body {
 	font-size: 16px;
 	-ms-text-size-adjust: none;
 	-webkit-text-size-adjust: none;
-	appearance: none;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
 	user-select: none
 }
 h1 { font-size: 18px; margin: 14px 9px 6px 20px }
@@ -16,7 +18,7 @@ div {
 	border: 1px solid #72ab69;
 	background-color: #e0e6e0
 }
-form { border: hidden; margin: 0 }
+form { margin: 0; border: 0 }
 .te { font-size: large }
 .b {
 	color: #fafffa;
@@ -27,7 +29,9 @@ form { border: hidden; margin: 0 }
 	margin: 0;
 	padding: 0;
 	text-align: center;
-	vertical-align: baseline
+	vertical-align: baseline;
+	-moz-appearance: none;
+	-webkit-appearance: none
 }
 .b:active { color: #000; background: #2E8022 }
 .s {
@@ -48,13 +52,13 @@ textarea {
 	font-family: monospace;
 	font-size: medium;
 	overflow: scroll;
-	resize: vertical;
+	resize: none;
 	width: 99%;
 	height: 11em;
 	-moz-user-select: text;
 	-ms-user-select: text;
 	-webkit-user-select: text;
-	user-select: text !important
+	user-select: text
 }
 .n {display:none}
 img { margin: 0; padding: 4px 10px }
