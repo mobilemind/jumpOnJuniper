@@ -57,7 +57,8 @@ textarea {
 	height: 11em;
 	-moz-user-select: text;
 	-ms-user-select: text;
-	-webkit-user-select: text
+	-webkit-user-select: text;
+	user-select: text
 }
 .n {display:none}
 img { margin: 0; padding: 4px 10px }
