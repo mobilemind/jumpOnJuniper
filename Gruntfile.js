@@ -105,7 +105,7 @@ module.exports = function(grunt) {
         noprocess: '**/*.png',
         process: function (content, srcpath) {
           content = content.replace(/_MmVERSION_/g, grunt.config('pkg.version'));
-          return content.replace(/_MmBUILDDATE_/g, grunt.template.date(new Date(), "ddd mmm dd yyyy"));
+          return content.replace(/_MmBUILDDATE_/g, grunt.template.date(new Date(), "ddd mmm dd yyyy h:MM TT"));
         }
       },
       main: { files: [ {expand: true, cwd: 'src/', src: ['**'], dest: 'web/'} ]}
