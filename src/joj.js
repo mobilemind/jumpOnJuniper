@@ -65,8 +65,8 @@ window.addEventListener('load', function() {
 					pl.innerHTML = t;
 				}
 			}
-			b.select();
 			b.focus();
+			b.select();
 		}
 		catch (e) {
 			window.alert("Unable to decode pastelet.\r\nForm will be reset.\r\n(" + e + ")");
