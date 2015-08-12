@@ -71,29 +71,21 @@
 	<script type="text/javascript">
 		// load url w/ bookmarklet appended
 		function loadpg(p) {
-			var pl = document.getElementById('pl'), u = document.getElementById('username'), b = document.getElementById('bk'), t = '';
+			var pl = document.getElementById('pl'), b = document.getElementById('bk');
 			if (p) {
-				t = 'jOJ ' + u.value;
-				b.textContent = 'javascript:' + encodeURI(p);
+				pl.href = b.textContent = 'javascript:' + encodeURI(p);
 				document.getElementById('bl').style.display = 'block';
-				pl.href = b.textContent;
-				pl.title = t;
-				pl.innerHTML = t;
+				pl.innerHTML = pl.title = 'jOJ ' + document.getElementById('username').value;
 				b.focus();
 				b.select();
 			}
 			else {
-				b.textContent = t;
-				pl.href = t;
-				pl.title = t;
-				pl.innerHTML = t;
+				pl.href = b.textContent = pl.innerHTML = pl.title = '';
 				document.getElementById('bl').style.display = 'none';
-				u.focus();
 			}
 		}
 		function pastelet(u,p) {
-			u = u.match(/^\s*(\S*?)\s*$/)[1]; // strip leading/trailing spaces to help w/iOS shortcut text
-			return "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'";
+			return "var u='" + u.match(/^\s*(\S*?)\s*$/)[1] + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'";
 		}
 	</script>
 </head>

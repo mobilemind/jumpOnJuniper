@@ -29,11 +29,7 @@
 
 // creates & returns bookmarklet given 'u' = usr ID and 'p' = pass
 function pastelet(u,p) {
-	if (u + p) {
-		u = u.match(/^\s*(\S*?)\s*$/)[1]; // strip leading/trailing spaces to help w/iOS 5 shortcut text
-		p = "var u='" + u + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'";
-	}
-	return p;
+	return u + p ? "var u='" + u.match(/^\s*(\S*?)\s*$/)[1] + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'" : '';
 }
 
 // listener to dynamically position page for initial or return-trip
@@ -47,26 +43,24 @@ window.addEventListener('load', function() {
 			m = q.match(/^javascript:(.*?)u='(.*?)',p='(.*?)',/);
 			if (!m) throw 'No match in: ' + q;
 			if (!m[2]) throw 'No login found in: ' + m;
-			var t = 'jOJ ' + m[2].replace(/\W.*/, '');
-			d.title = t;
+			d.title = 'jOJ ' + m[2].replace(/\W.*/, '');
 			d.getElementById('username').value = m[2];
 			if (m[3]) d.getElementById('password').value = m[3];
 			// put a more human-readable, but URI encoded, version of bookmarklet in textarea
 			b.textContent = encodeURI(q);
-			// unhide remaining steps
-			window.scrollTo(0,200+d.getElementById('pltMkr').scrollHeight);
 			// if not iPhone/iPad unhide 'Pastelet as link' and set anchor tag
 			if (!(-1 !== navigator.userAgent.indexOf('Safari') && -1 !== navigator.userAgent.indexOf('Mobile'))) {
 				var bl = d.getElementById('bl'), pl = d.getElementById('pl');
 				if (bl && pl) {
 					bl.style.display = 'block';
 					pl.href = d.getElementById('bk').textContent;
-					pl.title = t;
-					pl.innerHTML = t;
+					pl.innerHTML = pl.title = d.title;
 				}
 			}
 			b.focus();
 			b.select();
+			// unhide remaining steps
+			window.scrollTo(0,200+d.getElementById('pltMkr').scrollHeight);
 		}
 		catch (e) {
 			window.alert("Unable to decode pastelet.\r\nForm will be reset.\r\n(" + e + ")");
@@ -77,7 +71,7 @@ window.addEventListener('load', function() {
 	var mainForm = d.getElementById('pltMkr');
 	mainForm.onreset = function() {
 		d.getElementById('bk').textContent = '';
-		wl.href='//'+wl.host+wl.port+wl.pathname;
+		wl.href = '//' + wl.host + wl.port + wl.pathname;
 	};
 
 	mainForm.onsubmit = function() {
