@@ -6,13 +6,12 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     clean: {
-      files: ['web/', 'validation-status.json', 'build/'],
-      build: ['web/joj.html', 'web/joj.url.html', 'web/*.gz']
+      files: ['web/'],
+      build: ['web/joj.html', 'web/*.deflate', 'web/*.gz', ]
     },
     csslint: {
     	files: ['src/joj.css'],
     	options: {
-    		important: false,
     		"box-model": false
     	}
     },
@@ -113,14 +112,16 @@ module.exports = function(grunt) {
     html_minify: {
       target: { files: [
       	{ src: ['web/joj.html'], dest: 'web/joj.html' },
-      	{ src: ['web/joj.url.html'], dest: 'web/joj.url.html' } ]
+      	{ src: ['web/joj.url.html'], dest: 'web/joj.url.html' },
+      	{ src: ['web/joj.url.template.html'], dest: 'web/joj.url.template.html' } ]
       },
       options: {}
     },
     minifyHtml: {
       target: { files: [
       	{ src: ['web/joj.html'], dest: 'web/joj.html' },
-      	{ src: ['web/joj.url.html'], dest: 'web/joj.url.html' } ]
+      	{ src: ['web/joj.url.html'], dest: 'web/joj.url.html' },
+      	{ src: ['web/joj.url.template.html'], dest: 'web/joj.url.template.html' } ]
       },
       options: {}
     },
@@ -178,11 +179,27 @@ module.exports = function(grunt) {
 
   grunt.log.writeln('\n' + grunt.config('pkg.name') + ' ' + grunt.config('pkg.version'));
 
+  // build wrapper for joj.html
+  grunt.registerTask('jojurlfinalhtml', 'make HTML that pretty-prints joj.url', function() {
+    // read final bookmarklet and HTML wrapper template
+    var jojurlStr = grunt.file.read('web/joj.url');
+    if (!jojurlStr || 0 === jojurlStr.length) grunt.fail.fatal("Can't read from web/joj.url");
+    var jojurltemplateStr = grunt.file.read('web/joj.url.template.html');
+    if (!jojurltemplateStr || 0 === jojurltemplateStr.length) grunt.fail.fatal("Can't read from web/joj.url.template.html");
+    // do replacement
+    jojurltemplateStr = jojurltemplateStr.replace('_MmJOJURL_', jojurlStr);
+    if (grunt.file.write('web/joj.url.html', jojurltemplateStr)) {
+      grunt.log.writeln('web/joj.url.html updated to ' + grunt.config('pkg.version'));
+      return grunt.file.delete('web/joj.url.template.html');
+    }
+    else grunt.fail.fatal("Can't write to web/joj.url.html.");
+  });
+
   // test task
   grunt.registerTask('test', ['jshint', 'csslint', 'copy', 'cssmin', 'uglify',
     'html_minify', 'minifyHtml', 'zopfli', 'text2datauri', 'rename']);
 
   // Default task
-  grunt.registerTask('default', ['clean', 'test', 'clean:build']);
+  grunt.registerTask('default', ['clean', 'test', 'clean:build', 'jojurlfinalhtml']);
 
 };
