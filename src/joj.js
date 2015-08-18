@@ -18,7 +18,7 @@
 //	r = d.getElementById('realm'),
 //	f = d.forms[0];
 // if (h.match(/visitornet(.*?)p=sn-postauth-show/)) b ? b.click() : s.click(), f.submit(); // click agreement
-// else if (h.match(/(^data:text\/html;.*|(mmind\\.me|mobilemind\\..*?) \\/joj(\\/|\\?) ?.*|visitornet(.*?)welcome\\.cgi|^data:)$/)) {
+// else if (h.match(/^(data:)|(https?:\\/\\/((mmind\\.me\\/joj)|(mobilemind\\.github\\.io\\/.*\\/joj)|(visitornet\\.boeing\\.com\\/.*welcome\\.cgi)))/)) {
 //	// fill-in login form
 //	r ? r.selectedIndex = 1 : 0;
 //	d.getElementById('username').value = u;
@@ -29,7 +29,7 @@
 
 // creates & returns bookmarklet given 'u' = usr ID and 'p' = pass
 function pastelet(u,p) {
-	return u + p ? "var u='" + u.match(/^\s*(\S*?)\s*$/)[1] + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/(^data:text\\/html;.*|(mmind\\.me|mobilemind\\..*?)\\/joj(\\/|\\?)?.*|visitornet(.*?)welcome\\.cgi)$/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'" : '';
+	return u + p ? "var u='" + u.match(/^\s*(\S*?)\s*$/)[1] + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/^(data:)|(file:)|(https?:\\/\\/((mmind\\.me\\/joj)|(mobilemind\\.github\\.io\\/.*\\/joj)|(visitornet\\.boeing\\.com\\/.*welcome\\.cgi)))/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'_MmVERSION_'" : '';
 }
 
 // listener to dynamically position page for initial or return-trip
@@ -70,7 +70,6 @@ window.addEventListener('load', function() {
 
 	var mainForm = d.getElementById('pltMkr');
 	mainForm.onreset = function() {
-		d.getElementById('bk').textContent = '';
 		wl.href = '//' + wl.host + wl.port + wl.pathname;
 	};
 
@@ -78,8 +77,7 @@ window.addEventListener('load', function() {
 		var p = pastelet(d.getElementById('username').value,d.getElementById('password').value);
 		// reload page with new bookmarklet appended
 		if (p) {
-			p = 'javascript:' + encodeURIComponent(p);
-			d.getElementById('bk').textContent = p;
+			d.getElementById('bk').textContent = p = 'javascript:' + encodeURIComponent(p);
 			wl.href = '//' + wl.host + wl.port + wl.pathname + '?' + p;
 		}
 		return false;
