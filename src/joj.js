@@ -34,18 +34,18 @@ function pastelet(u,p) {
 
 // listener to dynamically position page for initial or return-trip
 window.addEventListener('load', function() {
-	var wl = window.location, d = document;
+	var wl = window.location, d = document, n = d.getElementById('username'), w = d.getElementById('password'), b = d.getElementById('bk');
 	if (wl.search) {
 		// reload form UI from query string
 		try {
-			var q = wl.search, m = [], b = d.getElementById('bk');
+			var q = wl.search, m = [];
 			q = decodeURIComponent(q.substr(1));
 			m = q.match(/^javascript:(.*?)u='(.*?)',p='(.*?)',/);
 			if (!m) throw 'No match in: ' + q;
 			if (!m[2]) throw 'No login found in: ' + m;
 			d.title = 'jOJ ' + m[2].replace(/\W.*/, '');
-			d.getElementById('username').value = m[2];
-			if (m[3]) d.getElementById('password').value = m[3];
+			n.value = m[2];
+			if (m[3]) w.value = m[3];
 			// put a more human-readable, but URI encoded, version of bookmarklet in textarea
 			b.textContent = encodeURI(q);
 			// if not iPhone/iPad unhide 'Pastelet as link' and set anchor tag
@@ -72,15 +72,14 @@ window.addEventListener('load', function() {
 	mainForm.onreset = function() {
 		wl.href = '//' + wl.host + wl.port + wl.pathname;
 	};
-
 	mainForm.onsubmit = function() {
-		var p = pastelet(d.getElementById('username').value,d.getElementById('password').value);
+		var p = pastelet(n.value,w.value);
 		// reload page with new bookmarklet appended
 		if (p) {
-			d.getElementById('bk').textContent = p = 'javascript:' + encodeURIComponent(p);
+			b.textContent = p = 'javascript:' + encodeURIComponent(p);
 			wl.href = '//' + wl.host + wl.port + wl.pathname + '?' + p;
 		}
 		return false;
 	};
-
+	b.onclick = function() { b.select(); };
 }, true);
