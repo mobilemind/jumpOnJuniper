@@ -52,7 +52,7 @@ textarea {
 	overflow: scroll;
 	resize: none;
 	width: 99%;
-	height: 11em;
+	height: 12em;
 	-moz-user-select: text;
 	-ms-user-select: text;
 	-webkit-user-select: text;
@@ -61,7 +61,7 @@ textarea {
 .n {display:none}
 img { margin: 0; padding: 4px 10px }
 ol, ul { line-height: 1.3}
-@media only screen and (min-device-width: 413px) and (max-device-width: 415px) { textarea { height: 14em } }
-@media only screen and (min-device-width: 374px) and (max-device-width: 376px) { textarea { height: 19em } }
-@media only screen and (min-device-width: 359px) and (max-device-width: 361px) { textarea { height: 16em } }
-@media only screen and (min-device-width: 319px) and (max-device-width: 321px) { textarea { height: 12em } }
+@media only screen and (min-device-width: 413px) and (max-device-width: 415px) { textarea { height: 18em } }
+@media only screen and (min-device-width: 374px) and (max-device-width: 376px) { textarea { height: 20em } }
+@media only screen and (min-device-width: 359px) and (max-device-width: 361px) { textarea { height: 14em } }
+@media only screen and (min-device-width: 319px) and (max-device-width: 321px) { textarea { height: 20em } }
