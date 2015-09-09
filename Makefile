@@ -21,7 +21,7 @@ JOJURL := http://mmind.me/$(JOJFILE)
 
 # macros/utils
 BUILDDATE := $(shell date)
-VERSION = 7.1.9g
+VERSION = 7.2.0g
 GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
 HTMLCOMPRESSORJAR := htmlcompressor-1.5.3.jar
 HTMLCOMPRESSORPATH := $(shell [ 'cygwin' = $$OSTYPE ] && echo "`cygpath -w $(COMMONLIB)`\\" || echo "$(COMMONLIB)/")
@@ -81,10 +81,9 @@ deploy: default
 ifeq ($(shell git diff --name-only),)
 	@$(GRECHO) "\nmake: \tDeploy: Done. No changed files.\n\n"
 else
-	@git commit -a -m 'revised HTML to v$(VERSION)' && git push origin gh-pages;
-	@git tag $(VERSION) && git push --tags origin gh-pages && \
-		$(GRECHO) "\nmake: \tDeploy: Done. Updated gh-pages to v$(VERSION). To return to master do:\n\tgit checkout master && make clean\n\n" \
-		|| $(GRECHO) "\nmake: \tDeploy: Error with git push --tags origin gh-pages. Verify gh-pages is v$(VERSION) or try\n\tgit tag -d $(VERSION) && git push origin :refs/tags/$(VERSION)\n\n"
+	@git commit -a -m 'revised HTML to v$(VERSION)'
+	git push origin gh-pages
+	$(GRECHO) "\nmake: \tDeploy: Done. Updated gh-pages to v$(VERSION). To return to master do:\n\tgit checkout master\n\n"
 endif
 
 .PHONY: clean
