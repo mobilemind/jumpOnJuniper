@@ -3,9 +3,10 @@ branches:
   except:
     - gh-pages
 sudo: false
+# zopfli needs C++11 extensions, circa 10/15 those are easier found in Travis w/clang
+env: CC=clang CXX=clang
 language: node_js
 node_js:
-  - "0.12"
-  - "4.0"
+  - "4.1"
 before_script:
   - npm install -g grunt-cli
