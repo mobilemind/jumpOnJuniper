@@ -8,7 +8,7 @@
 // Comments- Generated bookmarklet is carefully constructed for current version of VisitorNet
 // * Bookmarklet code is optimized for size (ie, string length of all the code).
 // * UserID (email) and password are used inline for tighter code.
-// * void('7.2.1g') is a way to embed the version and provides cross-browser compatibility (a non-null return value causes some browsers to navigate)
+// * void('7.2.2g') is a way to embed the version and provides cross-browser compatibility (a non-null return value causes some browsers to navigate)
 //
 // var u = 'user', p = 'pass',
 //	d = document,
@@ -25,11 +25,11 @@
 //	d.getElementById('password').value = p;
 //	d.getElementById('frmLogin') ? d.getElementById('frmLogin').submit() : 0
 // } else location.href = 'https://visitornet.boeing.com'; // redirect to login form
-// void'7.2.1g'
+// void'7.2.2g'
 
 // creates & returns bookmarklet given 'u' = usr ID and 'p' = pass
 function pastelet(u,p) {
-	return u + p ? "var u='" + u.match(/^\s*(\S*?)\s*$/)[1] + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/^(data:)|(file:)|(https?:\\/\\/((mmind\\.me\\/joj)|(mobilemind\\.github\\.io\\/.*\\/joj)|(visitornet\\.boeing\\.com\\/.*welcome\\.cgi)))/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'7.2.1g'" : '';
+	return u + p ? "var u='" + u.match(/^\s*(\S*?)\s*$/)[1] + "',p='" + p + "',d=document,h=location.href,b=d.getElementById('proceedButton'),s=d.getElementsByName('sn-postauth-proceed')[0],r=d.getElementById('realm'),f=d.forms[0];if(h.match(/visitornet(.*?)p=sn-postauth-show/))b?b.click():s.click(),f.submit();else if(h.match(/^(data:)|(file:)|(https?:\\/\\/((mmind\\.me\\/joj)|(mobilemind\\.github\\.io\\/.*\\/joj)|(visitornet\\.boeing\\.com\\/.*welcome\\.cgi)))/)){r?r.selectedIndex=1:0;d.getElementById('username').value=u;d.getElementById('password').value=p;d.getElementById('frmLogin')?d.getElementById('frmLogin').submit():0}else location.href='https://visitornet.boeing.com';void'7.2.2g'" : '';
 }
 
 // listener to dynamically position page for initial or return-trip
