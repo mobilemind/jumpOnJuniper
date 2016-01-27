@@ -10,20 +10,16 @@ for this project and have no way to actually use it myself anymore.
 ## Install
 
 ### Mobile Safari
-The [hosted jOJ page][mmjoj] is a form that will create the bookmarklet and
+The [hosted jOJ page][ghjoj] is a form that will create the bookmarklet and
 explains how to store and edit the bookmarklet on your iPad or iPhone. Tap the
-[hosted jOJ page][mmjoj] link and follow the instructions.
-
-The same form is available as [jumpOnJuniper][ghjoj] in case there is an issue following
-one of the links above.
+[hosted jOJ page][ghjoj] link and follow the instructions.
 
 ### Desktop Browser
-Select a link below and then follow the on-screen instructions. Note that on a desktop
+Select the link below and then follow the on-screen instructions. Note that on a desktop
 machine the browser may allow you to drag or right-click and bookmark the underlined
 link that appears upon completing Step 1.
 
-* [jOJ hosted on mmind.me site][mmjoj]
-* [jOJ hosted on github.com][ghjoj]
+[jOJ hosted on github.io][ghjoj]
 
 ## Use
 Make sure you have installed/created a bookmark first (see above).
@@ -41,7 +37,7 @@ and then submit the form.
 
 Requires a browser that supports `javascript:` bookmarks.
 
-Updated for Firefox 43.x, Safari 9.x and Mobile Safari 9.x (including iPhone 6/6S & iPhone 6/6S Plus).
+Updated for Firefox 44.x, Safari 9.x and Mobile Safari 9.x (including iPhone 6/6S & iPhone 6/6S Plus).
 
 ## License
 
@@ -81,8 +77,7 @@ See `/web/` directory for results.
 [![devDependency Status][devDep-image]][devDep-url]
 
 <!-- reference URLs -->
-[mmjoj]: http://mmind.me/joj  "jumpOnJuniper (mmind.me site)"
-[ghjoj]: http://mobilemind.github.io/jumpOnJuniper/joj.html  "jumpOnJuniper (github site)"
+[ghjoj]: https://mobilemind.github.io/jumpOnJuniper/joj.html  "jumpOnJuniper (github site)"
 <!-- Badge links -->
 [built-with-grunt-img]: https://cdn.gruntjs.com/builtwith.png
 [built-with-grunt-url]: http://gruntjs.com/
