@@ -5,8 +5,7 @@ sudo: false
 env: CC=clang CXX=clang
 language: node_js
 node_js:
-- '4.3'
-- '5.7'
+- '5.9'
 before_script:
 - npm install -g grunt-cli
 notifications:
