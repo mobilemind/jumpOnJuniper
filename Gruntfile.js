@@ -1,7 +1,5 @@
 /* global module:false */
 module.exports = function(grunt) {
-  "use strict";
-
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -21,6 +19,7 @@ module.exports = function(grunt) {
     	},
       options: {
         debug: false,
+        keepSpecialComments: 0,
         rebase: false,
         report: 'min'
       }
@@ -28,31 +27,37 @@ module.exports = function(grunt) {
     jshint: {
       files: ['Gruntfile.js', 'src/*.js'],
       options: {
+        bitwise: true,
         curly: false,
         eqeqeq: true,
-        bitwise: true,
-        immed: true,
+        // esversion: 5,
         freeze: true,
+        immed: true,
         latedef: true,
         newcap: true,
         noarg: true,
+        node: true,
         noempty: true,
-        strict: true,
-        browser: true,
-        sub: true,
+        singleGroups: true,
+        strict: "implied",
         trailing: true,
         undef: true,
-        singleGroups: true,
         unused: false,
+        // relax options
+        eqnull: true,
         lastsemic: true,
         scripturl: true,
-        node: true
+        // environments
+        browser: true
       }
     },
     uglify: {
       options: {
         stats: true,
         maxLineLen: 32766,
+        preserveComments: false,
+        screwIE8: true,
+        quoteStyle: 1,
         mangle: {
           sort: true,
           toplevel: true
@@ -75,19 +80,24 @@ module.exports = function(grunt) {
           if_return: true,
           join_vars: true,
           cascade: true,
+          collapse_vars: true,
           warnings: true,
           negate_iife: true,
+          keep_fargs: false,
           side_effects: true,
           global_defs: {}
         },
         codegen: {
+          beautify: false,
+          indent_level: 0,
           quote_keys: false,
           space_colon: false,
           max_line_len: 32766,
           ie_proof: false,
           bracketize: false,
           comments: false,
-          semicolons: true
+          semicolons: true,
+          quote_style: 1
         },
         report: 'min'
       },
