@@ -1,5 +1,4 @@
 // code w/onLoad handler + function to create bookmarklet string
-"use strict";
 
 //	jumpOnJuniper a bookmark-generator to simplify use of Juniper Infranet-based VisitorNet
 //	generated URL first displays as http://mmind.me/joj?javascript:var%20d='...
