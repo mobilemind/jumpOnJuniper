@@ -21,7 +21,7 @@ JOJURL := http://mmind.me/$(JOJFILE)
 
 # macros/utils
 BUILDDATE := $(shell date)
-VERSION = 7.2.2g
+VERSION = 7.2.4g
 GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
 COMPRESSOPTIONS := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --remove-surrounding-spaces all --remove-input-attr --remove-form-attr --remove-script-attr --remove-http-protocol --simple-doctype --compress-js --compress-css --nomunge
 TIDY := $(shell hash tidy-html5 2>/dev/null && echo 'tidy-html5' || (hash tidy 2>/dev/null && echo 'tidy' || exit 1))
