@@ -27,28 +27,7 @@ module.exports = function(grunt) {
     jshint: {
       files: ['Gruntfile.js', 'src/*.js'],
       options: {
-        bitwise: true,
-        curly: false,
-        eqeqeq: true,
-        // esversion: 5,
-        freeze: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        node: true,
-        noempty: true,
-        singleGroups: true,
-        strict: "implied",
-        trailing: true,
-        undef: true,
-        unused: false,
-        // relax options
-        eqnull: true,
-        lastsemic: true,
-        scripturl: true,
-        // environments
-        browser: true
+        jshintrc: '.jshintrc'
       }
     },
     uglify: {
