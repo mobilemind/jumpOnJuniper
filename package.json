@@ -29,7 +29,7 @@
     "grunt-contrib-jshint": ">=1.0.0",
     "grunt-contrib-uglify": ">=1.0.0",
     "grunt-contrib-rename": ">=0.0.3",
-    "grunt-zopfli-native": ">=0.5.0",
+    "grunt-zopfli-native": "git://github.com/mobilemind/grunt-zopfli-native.git",
     "grunt-html-minify": ">=0.3.0",
     "grunt-minify-html": ">=2.0.0",
     "text2datauri": ">=1.0.0"
