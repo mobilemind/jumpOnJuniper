@@ -5,7 +5,7 @@ sudo: false
 env: CC=clang CXX=clang
 language: node_js
 node_js:
-- '5.9'
+- '5'
 before_script:
 - npm config set progress=false ; npm install -g grunt-cli
 notifications:
