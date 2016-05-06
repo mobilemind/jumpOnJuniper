@@ -3,12 +3,13 @@ branches:
   - gh-pages
 sudo: false
 env:
-  - CXX=g++-4.8
+- CXX=g++-4.8
 language: node_js
 node_js:
-  - '5'
+- '5'
 before_script:
-  - npm config set progress=false ; npm install -g grunt-cli
+- npm config set progress=false
+- npm install -g grunt-cli
 notifications:
   slack:
     secure: hoS0M9NNVxrnIL5ZmMD+sFv1aSCBYcy8Xw2pCOvBFIfauw0J5ki9Z4hb00r42wxdRrgrWDBebclv3uQ/OLcrCKkvCqW3DbD24xMvdWmHTI1XIOmPsX5W0mG5EERMOIODDJ9viib0AfrUp6bXuN+5GYfnZhne3ZiA0AMWpXbU9a4=
