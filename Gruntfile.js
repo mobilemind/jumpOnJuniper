@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     clean: {
       files: ['web/'],
-      build: ['web/joj.html', 'web/*.deflate', 'web/*.gz', ]
+      build: ['web/joj.html', 'web/*.deflate', 'web/*.gz']
     },
     csslint: {
     	files: ['src/joj.css'],
@@ -150,6 +150,9 @@ module.exports = function(grunt) {
       options: {
       	force: true
       }
+    },
+		yamllint: {
+			files: { src: [ '*.yaml' ] }
     }
   });
 
@@ -165,6 +168,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-html-minify');
   grunt.loadNpmTasks('grunt-minify-html');
   grunt.loadNpmTasks('text2datauri');
+	grunt.loadNpmTasks('grunt-yamllint');
 
   grunt.log.writeln('\n' + grunt.config('pkg.name') + ' ' + grunt.config('pkg.version'));
 
@@ -186,7 +190,7 @@ module.exports = function(grunt) {
 
   // test task
   grunt.registerTask('test', ['jshint', 'csslint', 'copy', 'cssmin', 'uglify',
-    'html_minify', 'minifyHtml', 'zopfli', 'text2datauri', 'rename']);
+    'html_minify', 'minifyHtml', 'zopfli', 'text2datauri', 'rename', 'yamllint']);
 
   // Default task
   grunt.registerTask('default', ['clean', 'test', 'clean:build', 'jojurlfinalhtml']);
