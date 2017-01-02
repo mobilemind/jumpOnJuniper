@@ -40,8 +40,8 @@ window.addEventListener('load', function() {
 			var q = wl.search, m = [];
 			q = decodeURIComponent(q.substr(1));
 			m = q.match(/^javascript:(.*?)u='(.*?)',p='(.*?)',/);
-			if (!m) throw 'No match in: ' + q;
-			if (!m[2]) throw 'No login found in: ' + m;
+			if (!m) throw new Error('No match in: ' + q);
+			if (!m[2]) throw new Error('No login found in: ' + m);
 			d.title = 'jOJ ' + m[2].replace(/\W.*/, '');
 			n.value = m[2];
 			if (m[3]) w.value = m[3];
