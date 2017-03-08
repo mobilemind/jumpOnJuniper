@@ -2,7 +2,7 @@
 	"bitwise": true,
 	"curly": false,
 	"eqeqeq": true,
-	// "esversion": 5,
+	"esversion": 6,
 	"freeze": true,
 	"immed": true,
 	"latedef": true,
