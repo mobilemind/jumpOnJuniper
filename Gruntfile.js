@@ -229,7 +229,7 @@ module.exports = function (grunt) {
         // do replacement
         jojurltemplateStr = jojurltemplateStr.replace("_MmJOJURL_", jojurlStr);
         if (grunt.file.write("web/joj.url.html", jojurltemplateStr)) {
-            grunt.log.writeln("web/joj.url.html updated to " + grunt.config("pkg.version"));
+            grunt.log.writeln(`web/joj.url.html updated to ${grunt.config("pkg.version")}`);
             return grunt.file.delete("web/joj.url.template.html");
         }
         grunt.fail.fatal("Can't write to web/joj.url.html.");
