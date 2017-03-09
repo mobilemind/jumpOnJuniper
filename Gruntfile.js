@@ -20,8 +20,12 @@ module.exports = function (grunt) {
                 "report": "min"
             }
         },
+        "eslint": {
+            "options": {"configFile": ".eslintrc.yml"},
+            "target": ["Gruntfile.js", "src/*.js"]
+        },
         "jshint": {
-            "files": ["Gruntfile.js", "src/*.js"],
+            "files": ["src/*.js"],
             "options": {"jshintrc": ".jshintrc"}
         },
         "uglify": {
@@ -88,7 +92,7 @@ module.exports = function (grunt) {
                 "nonull": true,
                 "noprocess": "**/*.png",
                 "process": function (content, srcpath) {
-                    let result = content.replace(/_MmVERSION_/g, grunt.config("pkg.version"));
+                    const result = content.replace(/_MmVERSION_/g, grunt.config("pkg.version"));
                     return result.replace(/_MmBUILDDATE_/g, grunt.template.date(new Date(), "ddd mmm dd yyyy h:MM TT"));
                 }
             },
@@ -206,20 +210,21 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-uglify");
     grunt.loadNpmTasks("grunt-contrib-rename");
-    grunt.loadNpmTasks("grunt-zopfli-native");
+    grunt.loadNpmTasks("grunt-eslint");
     grunt.loadNpmTasks("grunt-html-minify");
     grunt.loadNpmTasks("grunt-minify-html");
-    grunt.loadNpmTasks("text2datauri");
     grunt.loadNpmTasks("grunt-yamllint");
+    grunt.loadNpmTasks("grunt-zopfli-native");
+    grunt.loadNpmTasks("text2datauri");
 
-    grunt.log.writeln("\n" + grunt.config("pkg.name") + " " + grunt.config("pkg.version"));
+    grunt.log.writeln(`\n${grunt.config("pkg.name")} ${grunt.config("pkg.version")}`);
 
     // build wrapper for joj.html
     grunt.registerTask("jojurlfinalhtml", "make HTML that pretty-prints joj.url", function () {
         // read final bookmarklet and HTML wrapper template
-        var jojurlStr = grunt.file.read("web/joj.url");
+        const jojurlStr = grunt.file.read("web/joj.url");
         if (!jojurlStr || 0 === jojurlStr.length) grunt.fail.fatal("Can't read from web/joj.url");
-        var jojurltemplateStr = grunt.file.read("web/joj.url.template.html");
+        let jojurltemplateStr = grunt.file.read("web/joj.url.template.html");
         if (!jojurltemplateStr || 0 === jojurltemplateStr.length) grunt.fail.fatal("Can't read from web/joj.url.template.html");
         // do replacement
         jojurltemplateStr = jojurltemplateStr.replace("_MmJOJURL_", jojurlStr);
@@ -232,8 +237,9 @@ module.exports = function (grunt) {
     });
 
     // test task
-    grunt.registerTask("test", ["jshint", "csslint", "copy", "cssmin", "uglify",
-        "html_minify", "minifyHtml", "zopfli", "text2datauri", "rename", "yamllint"]);
+    grunt.registerTask("test", ["yamllint", "eslint", "jshint", "csslint",
+        "copy", "cssmin", "uglify", "html_minify", "minifyHtml", "zopfli",
+        "text2datauri", "rename"]);
 
     // Default task
     grunt.registerTask("default", ["clean", "test", "clean:build", "jojurlfinalhtml"]);
