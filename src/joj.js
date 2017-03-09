@@ -1,8 +1,8 @@
 // code w/onLoad handler + function to create bookmarklet string
 
-//    jumpOnJuniper a bookmark-generator to simplify use of Juniper Infranet-based VisitorNet
-//    generated URL first displays as http://mmind.me/joj?javascript:var%20d='...
-//    Copyright (c) 2012-2014 Tom King. All rights reserved
+//  jumpOnJuniper a bookmark-generator to simplify use of Juniper Infranet-based VisitorNet
+//  generated URL first displays as http://mmind.me/joj?javascript:var%20d='...
+//  Copyright (c) 2012-2017 Tom King. All rights reserved
 //
 // Comments- Generated bookmarklet is carefully constructed for current version of VisitorNet
 // * Bookmarklet code is optimized for size (ie, string length of all the code).
@@ -33,7 +33,7 @@ function pastelet (u,p) {
 
 // listener to dynamically position page for initial or return-trip
 window.addEventListener("load", function () {
-    var wl = window.location, d = document, n = d.getElementById("username"), w = d.getElementById("password"), b = d.getElementById("bk");
+    const wl = window.location, d = document, n = d.getElementById("username"), w = d.getElementById("password"), b = d.getElementById("bk");
     if (wl.search) {
         // reload form UI from query string
         try {
@@ -49,7 +49,7 @@ window.addEventListener("load", function () {
             b.textContent = encodeURI(q);
             // if not iPhone/iPad unhide "Pastelet as link" and set anchor tag
             if (!(-1 !== navigator.userAgent.indexOf("Safari") && -1 !== navigator.userAgent.indexOf("Mobile"))) {
-                var bl = d.getElementById("bl"), pl = d.getElementById("pl");
+                const bl = d.getElementById("bl"), pl = d.getElementById("pl");
                 if (bl && pl) {
                     bl.style.display = "block";
                     pl.href = d.getElementById("bk").textContent;
@@ -66,7 +66,7 @@ window.addEventListener("load", function () {
         }
     }
 
-    var mainForm = d.getElementById("pltMkr");
+    const mainForm = d.getElementById("pltMkr");
     mainForm.onreset = function () {
         wl.href = "//" + wl.host + wl.port + wl.pathname;
     };
