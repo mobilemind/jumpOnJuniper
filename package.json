@@ -37,11 +37,13 @@
     "grunt-minify-html": ">=2.1.0",
     "grunt-yamllint": ">=0.3.0",
     "grunt-zopfli-native": ">=1.0.1",
-    "text2datauri": ">=1.0.0"
+    "text2datauri": ">=1.0.0",
+    "uglify-js":"git+https://github.com/mishoo/UglifyJS2.git#harmony"
   },
   "dependencies": {
   },
   "scripts": {
+     "install": "npm dedupe",
      "test": "grunt"
   },
   "keywords": [ "bookmarklet" ]
