@@ -71,7 +71,7 @@
 	<script type="text/javascript">
 		// load url w/ bookmarklet appended
 		function loadpg(p) {
-			var pl = document.getElementById('pl'), b = document.getElementById('bk'), bl = document.getElementById('bl'), u = document.getElementById('username');
+			const pl = document.getElementById('pl'), b = document.getElementById('bk'), bl = document.getElementById('bl'), u = document.getElementById('username');
 			if (p) {
 				pl.href = b.textContent = 'javascript:' + encodeURI(p);
 				bl.style.display = 'block';
