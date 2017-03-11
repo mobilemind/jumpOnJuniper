@@ -58,10 +58,13 @@ module.exports = function (grunt) {
                     "join_vars": true,
                     "cascade": true,
                     "collapse_vars": true,
+                    "reduce_vars": true,
                     "warnings": true,
                     "negate_iife": true,
                     "keep_fargs": false,
                     "side_effects": true,
+                    "unsafe_comps": true,
+                    "unsafe_math": true,
                     "global_defs": {}
                 },
                 "codegen": {
