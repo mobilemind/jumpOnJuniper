@@ -2,10 +2,27 @@
 module.exports = function (grunt) {
     // Project configuration
     grunt.initConfig({
-        "pkg": grunt.file.readJSON("package.json"),
         "clean": {
             "files": ["web/"],
             "build": ["web/joj.html", "web/*.deflate", "web/*.gz"]
+        },
+        "copy": {
+            "options": {
+                "nonull": true,
+                "noprocess": "**/*.png",
+                "process": function (content, srcpath) {
+                    const result = content.replace(/_MmVERSION_/g, grunt.config("pkg.version"));
+                    return result.replace(/_MmBUILDDATE_/g, grunt.template.date(new Date(), "ddd mmm dd yyyy h:MM TT"));
+                }
+            },
+            "main": {
+                "files": [{
+                    "expand": true,
+                    "cwd": "src/",
+                    "src": ["**"],
+                    "dest": "web/"
+                }]
+            }
         },
         "csslint": {
             "files": ["src/joj.css"],
@@ -24,9 +41,73 @@ module.exports = function (grunt) {
             "options": {"configFile": ".eslintrc.yml"},
             "target": ["Gruntfile.js", "src/*.js"]
         },
-        "jshint": {
-            "files": ["src/*.js"],
-            "options": {"jshintrc": ".jshintrc"}
+        "html_minify": {
+            "target": {
+                "files": [
+                    {
+                        "src": ["web/joj.html"],
+                        "dest": "web/joj.html"
+                    },
+                    {
+                        "src": ["web/joj.url.html"],
+                        "dest": "web/joj.url.html"
+                    },
+                    {
+                        "src": ["web/joj.url.template.html"],
+                        "dest": "web/joj.url.template.html"
+                    }
+                ]
+            },
+            "options": {}
+        },
+        "minifyHtml": {
+            "target": {
+                "files": [
+                    {
+                        "src": ["web/joj.html"],
+                        "dest": "web/joj.html"
+                    },
+                    {
+                        "src": ["web/joj.url.html"],
+                        "dest": "web/joj.url.html"
+                    },
+                    {
+                        "src": ["web/joj.url.template.html"],
+                        "dest": "web/joj.url.template.html"
+                    }
+                ]
+            },
+            "options": {}
+        },
+        "pkg": grunt.file.readJSON("package.json"),
+        "rename": {
+            "main": {
+                "files": [
+                    {
+                        "src": ["web/joj.deflate"],
+                        "dest": "web/joj"
+                    },
+                    {
+                        "src": ["web/joj.css.deflate"],
+                        "dest": "web/joj.css"
+                    },
+                    {
+                        "src": ["web/joj.js.deflate"],
+                        "dest": "web/joj.js"
+                    }
+                ]
+            },
+            "options": {"force": true}
+        },
+        "text2datauri": {
+            "web/joj.url": "web/joj.url.html",
+            "options": {
+                "sourceCharset": "utf-8", // 'utf-8' or 'ascii'; actual format not validated (yet?)
+                "protocol": "data:", // any string; this is not validated by text2datauri
+                "mimeType": "text/html", // any string;  this is not validated by text2datauri
+                "targetCharset": "utf-8", // 'utf-8' or ''; metadata only- output is always utf-8
+                "encoding": "base64" // 'base64' or 'uri'; use 'uri' for encodeURIComponent() encoding
+            }
         },
         "uglify": {
             "options": {
@@ -90,62 +171,7 @@ module.exports = function (grunt) {
                 }]
             }
         },
-        "copy": {
-            "options": {
-                "nonull": true,
-                "noprocess": "**/*.png",
-                "process": function (content, srcpath) {
-                    const result = content.replace(/_MmVERSION_/g, grunt.config("pkg.version"));
-                    return result.replace(/_MmBUILDDATE_/g, grunt.template.date(new Date(), "ddd mmm dd yyyy h:MM TT"));
-                }
-            },
-            "main": {
-                "files": [{
-                    "expand": true,
-                    "cwd": "src/",
-                    "src": ["**"],
-                    "dest": "web/"
-                }]
-            }
-        },
-        "html_minify": {
-            "target": {
-                "files": [
-                    {
-                        "src": ["web/joj.html"],
-                        "dest": "web/joj.html"
-                    },
-                    {
-                        "src": ["web/joj.url.html"],
-                        "dest": "web/joj.url.html"
-                    },
-                    {
-                        "src": ["web/joj.url.template.html"],
-                        "dest": "web/joj.url.template.html"
-                    }
-                ]
-            },
-            "options": {}
-        },
-        "minifyHtml": {
-            "target": {
-                "files": [
-                    {
-                        "src": ["web/joj.html"],
-                        "dest": "web/joj.html"
-                    },
-                    {
-                        "src": ["web/joj.url.html"],
-                        "dest": "web/joj.url.html"
-                    },
-                    {
-                        "src": ["web/joj.url.template.html"],
-                        "dest": "web/joj.url.template.html"
-                    }
-                ]
-            },
-            "options": {}
-        },
+        "yamllint": {"files": {"src": ["*.yaml"]}},
         "zopfli": {
             "target": {
                 "files": [
@@ -172,37 +198,7 @@ module.exports = function (grunt) {
                 "blocksplittinglast": false,
                 "blocksplittingmax": 15
             }
-        },
-        "text2datauri": {
-            "web/joj.url": "web/joj.url.html",
-            "options": {
-                "sourceCharset": "utf-8", // 'utf-8' or 'ascii'; actual format not validated (yet?)
-                "protocol": "data:", // any string; this is not validated by text2datauri
-                "mimeType": "text/html", // any string;  this is not validated by text2datauri
-                "targetCharset": "utf-8", // 'utf-8' or ''; metadata only- output is always utf-8
-                "encoding": "base64" // 'base64' or 'uri'; use 'uri' for encodeURIComponent() encoding
-            }
-        },
-        "rename": {
-            "main": {
-                "files": [
-                    {
-                        "src": ["web/joj.deflate"],
-                        "dest": "web/joj"
-                    },
-                    {
-                        "src": ["web/joj.css.deflate"],
-                        "dest": "web/joj.css"
-                    },
-                    {
-                        "src": ["web/joj.js.deflate"],
-                        "dest": "web/joj.js"
-                    }
-                ]
-            },
-            "options": {"force": true}
-        },
-        "yamllint": {"files": {"src": ["*.yaml"]}}
+        }
     });
 
     // Load plugins
@@ -210,7 +206,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-csslint");
     grunt.loadNpmTasks("grunt-contrib-cssmin");
-    grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-uglify");
     grunt.loadNpmTasks("grunt-contrib-rename");
     grunt.loadNpmTasks("grunt-eslint");
@@ -240,8 +235,8 @@ module.exports = function (grunt) {
     });
 
     // test task
-    grunt.registerTask("test", ["yamllint", "eslint", "jshint", "csslint",
-        "copy", "cssmin", "uglify", "html_minify", "minifyHtml", "zopfli",
+    grunt.registerTask("test", ["yamllint", "eslint", "csslint", "copy",
+        "cssmin", "uglify", "html_minify", "minifyHtml", "zopfli",
         "text2datauri", "rename"]);
 
     // Default task
