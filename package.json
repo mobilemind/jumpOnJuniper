@@ -1,7 +1,7 @@
 {
   "name": "jumpOnJuniper",
   "description": "A bookmarklet to streamline logging into a Juniper Networks Infranet VisitorNet site.",
-  "version": "7.2.7",
+  "version": "7.2.8",
   "homepage": "https://github.com/mobilemind/jumpOnJuniper",
   "author": {
     "name": "'mobilemind' Tom King",
@@ -31,19 +31,18 @@
     "grunt-contrib-csslint": ">=2.0.0",
     "grunt-contrib-cssmin": ">=2.0.0",
     "grunt-contrib-jshint": ">=1.1.0",
-    "grunt-contrib-uglify": ">=2.2.0",
+    "grunt-contrib-uglify": ">=2.2.1",
     "grunt-contrib-rename": ">=0.0.3",
     "grunt-html-minify": ">=0.3.1",
     "grunt-minify-html": ">=2.1.0",
     "grunt-yamllint": ">=0.3.0",
     "grunt-zopfli-native": ">=1.0.1",
-    "text2datauri": ">=1.0.0",
+    "text2datauri": ">=1.0.4",
     "uglify-js":"git+https://github.com/mishoo/UglifyJS2.git#harmony"
   },
   "dependencies": {
   },
   "scripts": {
-     "install": "npm dedupe",
      "test": "grunt"
   },
   "keywords": [ "bookmarklet" ]
