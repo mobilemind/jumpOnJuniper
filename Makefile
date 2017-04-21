@@ -22,11 +22,11 @@ JOJURL := http://mmind.me/$(JOJFILE)
 # macros/utils
 BUILDDATE := $(shell date)
 VERSION = 7.2.7g
-GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
+GRECHO = $(shell hash grecho >/dev/null 2>&1  && echo 'grecho' || echo 'printf')
 COMPRESSOPTIONS := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --remove-surrounding-spaces all --remove-input-attr --remove-form-attr --remove-script-attr --remove-http-protocol --simple-doctype --compress-js --compress-css --nomunge
-TIDY := $(shell hash tidy-html5 2>/dev/null && echo 'tidy-html5' || (hash tidy 2>/dev/null && echo 'tidy' || exit 1))
-JSL := $(shell type -p jsl || exit 1)
-GRECHO = $(shell hash grecho &> /dev/null && echo 'grecho' || echo 'printf')
+TIDY := $(shell hash tidy-html5 >/dev/null 2>&1  && echo 'tidy-html5' || (hash tidy >/dev/null 2>&1 && echo 'tidy' || echo 'echo "WARNING unable to: tidy"'))
+JSL := $(shell type -p jsl || echo 'echo "WARNING unable to (JavasSript lint): jsl"')
+GRECHO = $(shell hash grecho >/dev/null 2>&1  && echo 'grecho' || echo 'printf')
 REPLACETOKENS = perl -pi -e 's/_MmVERSION_/$(VERSION)/g;s/_MmBUILDDATE_/$(BUILDDATE)/g' $@
 STATFMT := $(shell [ 'cygwin' = $$OSTYPE ] && echo '-c %s' || echo '-f%z' )
 
