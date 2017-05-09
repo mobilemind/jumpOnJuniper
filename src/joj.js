@@ -37,7 +37,7 @@ window.addEventListener("load", function () {
     if (wl.search) {
         // reload form UI from query string
         try {
-            let q = wl.search, m = [];
+            var q = wl.search, m = [];
             q = decodeURIComponent(q.substr(1));
             m = q.match(/^javascript:(.*?)u='(.*?)',p='(.*?)',/);
             if (!m) throw new Error("No match in: " + q);
@@ -71,7 +71,7 @@ window.addEventListener("load", function () {
         wl.href = "//" + wl.host + wl.port + wl.pathname;
     };
     mainForm.onsubmit = function () {
-        let p = pastelet(n.value,w.value);
+        var p = pastelet(n.value,w.value);
         // reload page with new bookmarklet appended
         if (p) {
             b.textContent = p = "javascript:" + encodeURIComponent(p);
