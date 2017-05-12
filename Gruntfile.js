@@ -112,8 +112,8 @@ module.exports = function (grunt) {
         },
         "uglify": {
             "options": {
+                "beautify": false,
                 "codegen": {
-                    "beautify": false,
                     "bracketize": false,
                     "comments": false,
                     "ie_proof": false,
@@ -130,10 +130,11 @@ module.exports = function (grunt) {
                     "collapse_vars": true,
                     "comparisons": true,
                     "conditionals": true,
-                    "dead_code": false,
-                    "drop_console": false,
+                    "dead_code": true,
+                    "drop_console": true,
                     "drop_debugger": true,
                     "evaluate": true,
+                    "expression": false,
                     "global_defs": {},
                     "hoist_funs": false,
                     "hoist_vars": false,
@@ -142,26 +143,42 @@ module.exports = function (grunt) {
                     "keep_fargs": false,
                     "loops": true,
                     "negate_iife": true,
+                    "passes": 2,
                     "properties": true,
+                    "pure_funcs": [],
+                    "pure_getters": true,
                     "reduce_vars": true,
                     "sequences": true,
-                    "side_effects": true,
+                    "side_effects": false,
+                    "top_retain": [],
+                    "toplevel": true,
                     "unsafe": true,
                     "unsafe_comps": true,
                     "unsafe_math": true,
+                    "unsafe_proto": true,
                     "unused": true,
                     "warnings": true
                 },
-                "mangle": {
-                    "sort": true,
-                    "toplevel": true
-                },
+                "ie8": false,
+                "mangle": {"toplevel": true},
                 "maxLineLen": 32766,
+                "output": {
+                    "ascii_only": true,
+                    "bracketize": false,
+                    "comments": false,
+                    "indent_level": 0,
+                    "max_line_len": 32766,
+                    "quote_keys": false,
+                    "quote_style": 1,
+                    "semicolons": true,
+                    "space_colon": false
+                },
                 "preserveComments": false,
+                "properties": false,
                 "quoteStyle": 1,
                 "report": "min",
-                "screwIE8": true,
-                "stats": true
+                "stats": true,
+                "wrap": false
             },
             "target": {
                 "files": [{
