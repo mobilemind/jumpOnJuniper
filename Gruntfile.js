@@ -3,10 +3,18 @@ module.exports = function (grunt) {
     // Project configuration
     grunt.initConfig({
         "clean": {
-            "files": ["web/"],
-            "build": ["web/joj.html", "web/*.deflate", "web/*.gz"]
+            "build": ["web/joj.html", "web/*.deflate", "web/*.gz"],
+            "files": ["web/"]
         },
         "copy": {
+            "main": {
+                "files": [{
+                    "cwd": "src/",
+                    "dest": "web/",
+                    "expand": true,
+                    "src": ["**"]
+                }]
+            },
             "options": {
                 "nonull": true,
                 "noprocess": "**/*.png",
@@ -14,14 +22,6 @@ module.exports = function (grunt) {
                     const result = content.replace(/_MmVERSION_/g, grunt.config("pkg.version"));
                     return result.replace(/_MmBUILDDATE_/g, grunt.template.date(new Date(), "ddd mmm dd yyyy h:MM TT"));
                 }
-            },
-            "main": {
-                "files": [{
-                    "expand": true,
-                    "cwd": "src/",
-                    "src": ["**"],
-                    "dest": "web/"
-                }]
             }
         },
         "csslint": {
@@ -29,174 +29,175 @@ module.exports = function (grunt) {
             "options": {"box-model": false}
         },
         "cssmin": {
-            "target": {"files": {"web/joj.css": ["src/joj.css"]}},
             "options": {
                 "debug": false,
                 "keepSpecialComments": 0,
                 "rebase": false,
                 "report": "min"
-            }
+            },
+            "target": {"files": {"web/joj.css": ["src/joj.css"]}}
         },
         "eslint": {
             "options": {"configFile": ".eslintrc.yml"},
             "target": ["Gruntfile.js", "src/*.js"]
         },
         "html_minify": {
+            "options": {},
             "target": {
                 "files": [
                     {
-                        "src": ["web/joj.html"],
-                        "dest": "web/joj.html"
+                        "dest": "web/joj.html",
+                        "src": ["web/joj.html"]
                     },
                     {
-                        "src": ["web/joj.url.html"],
-                        "dest": "web/joj.url.html"
+                        "dest": "web/joj.url.html",
+                        "src": ["web/joj.url.html"]
                     },
                     {
-                        "src": ["web/joj.url.template.html"],
-                        "dest": "web/joj.url.template.html"
+                        "dest": "web/joj.url.template.html",
+                        "src": ["web/joj.url.template.html"]
+
                     }
                 ]
-            },
-            "options": {}
+            }
         },
         "minifyHtml": {
+            "options": {},
             "target": {
                 "files": [
                     {
-                        "src": ["web/joj.html"],
-                        "dest": "web/joj.html"
+                        "dest": "web/joj.html",
+                        "src": ["web/joj.html"]
                     },
                     {
-                        "src": ["web/joj.url.html"],
-                        "dest": "web/joj.url.html"
+                        "dest": "web/joj.url.html",
+                        "src": ["web/joj.url.html"]
                     },
                     {
-                        "src": ["web/joj.url.template.html"],
-                        "dest": "web/joj.url.template.html"
+                        "dest": "web/joj.url.template.html",
+                        "src": ["web/joj.url.template.html"]
                     }
                 ]
-            },
-            "options": {}
+            }
         },
         "pkg": grunt.file.readJSON("package.json"),
         "rename": {
             "main": {
                 "files": [
                     {
-                        "src": ["web/joj.deflate"],
-                        "dest": "web/joj"
+                        "dest": "web/joj",
+                        "src": ["web/joj.deflate"]
                     },
                     {
-                        "src": ["web/joj.css.deflate"],
-                        "dest": "web/joj.css"
+                        "dest": "web/joj.css",
+                        "src": ["web/joj.css.deflate"]
                     },
                     {
-                        "src": ["web/joj.js.deflate"],
-                        "dest": "web/joj.js"
+                        "dest": "web/joj.js",
+                        "src": ["web/joj.js.deflate"]
                     }
                 ]
             },
             "options": {"force": true}
         },
         "text2datauri": {
-            "web/joj.url": "web/joj.url.html",
             "options": {
-                "sourceCharset": "utf-8", // 'utf-8' or 'ascii'; actual format not validated (yet?)
-                "protocol": "data:", // any string; this is not validated by text2datauri
+                "encoding": "base64", // 'base64' or 'uri'; use 'uri' for encodeURIComponent() encoding
                 "mimeType": "text/html", // any string;  this is not validated by text2datauri
-                "targetCharset": "utf-8", // 'utf-8' or ''; metadata only- output is always utf-8
-                "encoding": "base64" // 'base64' or 'uri'; use 'uri' for encodeURIComponent() encoding
-            }
+                "protocol": "data:", // any string; this is not validated by text2datauri
+                "sourceCharset": "utf-8", // 'utf-8' or 'ascii'; actual format not validated (yet?)
+                "targetCharset": "utf-8" // 'utf-8' or ''; metadata only- output is always utf-8
+            },
+            "web/joj.url": "web/joj.url.html"
         },
         "uglify": {
             "options": {
-                "stats": true,
-                "maxLineLen": 32766,
-                "preserveComments": false,
-                "screwIE8": true,
-                "quoteStyle": 1,
-                "mangle": {
-                    "sort": true,
-                    "toplevel": true
+                "codegen": {
+                    "beautify": false,
+                    "bracketize": false,
+                    "comments": false,
+                    "ie_proof": false,
+                    "indent_level": 0,
+                    "max_line_len": 32766,
+                    "quote_keys": false,
+                    "quote_style": 1,
+                    "semicolons": true,
+                    "space_colon": false
                 },
                 "compress": {
-                    "sequences": true,
-                    "properties": true,
+                    "booleans": true,
+                    "cascade": true,
+                    "collapse_vars": true,
+                    "comparisons": true,
+                    "conditionals": true,
                     "dead_code": false,
                     "drop_console": false,
                     "drop_debugger": true,
-                    "unsafe": true,
-                    "conditionals": true,
-                    "comparisons": true,
                     "evaluate": true,
-                    "booleans": true,
-                    "loops": true,
-                    "unused": true,
+                    "global_defs": {},
                     "hoist_funs": false,
                     "hoist_vars": false,
                     "if_return": true,
                     "join_vars": true,
-                    "cascade": true,
-                    "collapse_vars": true,
-                    "reduce_vars": true,
-                    "warnings": true,
-                    "negate_iife": true,
                     "keep_fargs": false,
+                    "loops": true,
+                    "negate_iife": true,
+                    "properties": true,
+                    "reduce_vars": true,
+                    "sequences": true,
                     "side_effects": true,
+                    "unsafe": true,
                     "unsafe_comps": true,
                     "unsafe_math": true,
-                    "global_defs": {}
+                    "unused": true,
+                    "warnings": true
                 },
-                "codegen": {
-                    "beautify": false,
-                    "indent_level": 0,
-                    "quote_keys": false,
-                    "space_colon": false,
-                    "max_line_len": 32766,
-                    "ie_proof": false,
-                    "bracketize": false,
-                    "comments": false,
-                    "semicolons": true,
-                    "quote_style": 1
+                "mangle": {
+                    "sort": true,
+                    "toplevel": true
                 },
-                "report": "min"
+                "maxLineLen": 32766,
+                "preserveComments": false,
+                "quoteStyle": 1,
+                "report": "min",
+                "screwIE8": true,
+                "stats": true
             },
             "target": {
                 "files": [{
-                    "expand": true,
                     "cwd": "web",
-                    "src": "*.js",
-                    "dest": "web"
+                    "dest": "web",
+                    "expand": true,
+                    "src": "*.js"
                 }]
             }
         },
         "yamllint": {"files": {"src": ["*.yaml"]}},
         "zopfli": {
+            "options": {
+                "blocksplitting": true,
+                "blocksplittinglast": false,
+                "blocksplittingmax": 15,
+                "mode": "deflate",
+                "numiterations": 96,
+                "verbose": false,
+                "verbose_more": false
+            },
             "target": {
                 "files": [
                     {
-                        "src": ["web/joj.html"],
-                        "dest": "web/joj.deflate"
+                        "dest": "web/joj.deflate",
+                        "src": ["web/joj.html"]
                     },
                     {
-                        "src": ["web/joj.js"],
-                        "dest": "web/joj.js.deflate"
+                        "dest": "web/joj.js.deflate",
+                        "src": ["web/joj.js"]
                     },
                     {
-                        "src": ["web/joj.css"],
-                        "dest": "web/joj.css.deflate"
+                        "dest": "web/joj.css.deflate",
+                        "src": ["web/joj.css"]
                     }
                 ]
-            },
-            "options": {
-                "mode": "deflate",
-                "verbose": false,
-                "verbose_more": false,
-                "numiterations": 96,
-                "blocksplitting": true,
-                "blocksplittinglast": false,
-                "blocksplittingmax": 15
             }
         }
     });
