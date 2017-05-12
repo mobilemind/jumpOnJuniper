@@ -83,7 +83,7 @@ rules:
   no-unused-expressions: 2
   no-useless-call: 2
   no-useless-concat: 2
-  no-useless-escape: 2
+  no-useless-escape: 0
   no-useless-return: 2
   no-void: 2
   no-warning-comments: 2
