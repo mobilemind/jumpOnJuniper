@@ -16,27 +16,28 @@
     "grunt-contrib-csslint": ">=2.0.0",
     "grunt-contrib-cssmin": ">=2.2.0",
     "grunt-contrib-jshint": ">=1.1.0",
-    "grunt-contrib-rename": ">=0.0.3",
-    "grunt-contrib-uglify": ">=3.0.0",
+    "grunt-contrib-rename": ">=0.2.0",
+    "grunt-contrib-uglify": "2.3.0",
     "grunt-eslint": ">=19.0.0",
     "grunt-html-minify": ">=0.3.1",
     "grunt-minify-html": ">=3.0.0",
     "grunt-yamllint": ">=0.3.0",
     "grunt-zopfli-native": ">=1.0.1",
     "grunt": ">1.0.0",
-    "text2datauri": ">=1.0.4",
-    "uglify-js":"git+https://github.com/mishoo/UglifyJS2.git#harmony"
+    "text2datauri": ">=1.0.4"
   },
+  "directories": {},
   "engines": {"node": ">7.5.0"},
   "homepage": "https://github.com/mobilemind/jumpOnJuniper",
+  "keywords": ["bookmarklet"],
   "license": "MIT",
   "main": "Gruntfile.js",
   "name": "jumpOnJuniper",
+  "readmeFilename": "ReadMe.md",
   "repository": {
     "type": "git",
     "url": "git://github.com/mobilemind/jumpOnJuniper.git"
   },
   "scripts": {"test": "grunt"},
-  "keywords": ["bookmarklet"],
-  "version": "7.3.1"
+  "version": "7.3.2"
 }

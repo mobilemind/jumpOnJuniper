@@ -1,12 +1,13 @@
 # jumpOnJuniper
 
-The “jumpOnJuniper” (jOJ) bookmarklet streamlines logging in via Juniper Networks
-Infranet “VisitorNet” sites that control access to WiFi networks. The bookmarklet
-will paste in the Username and password values stored in the bookmark and then
-submit the form.
+The “jumpOnJuniper” (jOJ) bookmarklet streamlines logging in via Juniper
+Networks Infranet “VisitorNet” sites that control access to WiFi networks. The
+bookmarklet will paste in the Username and password values stored in the
+bookmark and then submit the form.
 
-Version 7.2.x releases are the final versions. I've learned as much as I needed
-to learn for this project and have no way to actually use it myself anymore.
+Version 7.2.x releases are the final versions. I've learned as much as I
+needed to learn for this project and have no way to actually use it myself
+anymore.
 
 ## Install
 
@@ -18,9 +19,9 @@ explains how to store and edit the bookmarklet on your iPad or iPhone. Tap the
 
 ### Desktop Browser
 
-Select the link below and then follow the on-screen instructions. Note that on
-a desktop machine the browser may allow you to drag or right-click and bookmark
-the underlined link that appears upon completing Step 1.
+Select the link below and then follow the on-screen instructions. Note that
+on a desktop machine the browser may allow you to drag or right-click and
+bookmark the underlined link that appears upon completing Step 1.
 
 [jOJ hosted on github.io][ghjoj]
 
@@ -28,22 +29,23 @@ the underlined link that appears upon completing Step 1.
 
 Make sure you have installed/created a bookmark first (see above).
 
-Connect to the WiFi network and open a web page. The VisitorNet sign-in page should
-appear.
+Connect to the WiFi network and open a web page. The VisitorNet sign-in page
+should appear.
 
-Activate the jOJ bookmarklet (tap on the link for it in the bookmark bar or use
-Bookmarks menu). The default bookmark title is usually "jOJ login ___name___&hellip;"
- where ___name___ is the first part of your Username (email).
+Activate the jOJ bookmarklet (tap on the link for it in the bookmark bar or
+use Bookmarks menu). The default bookmark title is usually "jOJ login
+___name___&hellip;" where ___name___ is the first part of your Username
+(email).
 
-The bookmarklet created via installation will paste in the Username, the stored
-password and then submit the form.
+The bookmarklet created via installation will paste in the Username, the
+stored password and then submit the form.
 
 ## Compatibility
 
 Requires a browser that supports `javascript:` bookmarks.
 
-Updated for Firefox 44.x, Safari 9.x and Mobile Safari 9.x (including iPhone 6/6S
-& iPhone 6/6S Plus).
+Updated for Firefox 44.x, Safari 9.x and Mobile Safari 9.x (including iPhone
+6/6S & iPhone 6/6S Plus).
 
 ## License
 
