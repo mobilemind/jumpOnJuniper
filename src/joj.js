@@ -20,8 +20,8 @@ window.addEventListener("load", function () {
     if (wl.search) {
         // reload form UI from query string
         try {
-            const q = decodeURIComponent(wl.search.substr(1));
-            var m = q.match(/^javascript:(.*?)u='(.*?)',p='(.*?)',/);
+            const q = decodeURIComponent(wl.search.substr(1)),
+                m = q.match(/^javascript:(.*?)u='(.*?)',p='(.*?)',/);
             if (!m) throw new Error("No match in: " + q);
             if (!m[2]) throw new Error("No login found in: " + m);
             d.title = "jOJ " + m[2].replace(/\W.*/, "");
