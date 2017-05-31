@@ -4,7 +4,9 @@
     "name": "'mobilemind' Tom King",
     "url": "https://mobilemind.net/"
   },
-  "bugs": {"url": "https://github.com/mobilemind/jumpOnJuniper/issues"},
+  "bugs": {
+    "url": "https://github.com/mobilemind/jumpOnJuniper/issues"
+  },
   "dependencies": {},
   "description": "A bookmarklet to streamline logging into a Juniper Networks Infranet VisitorNet site.",
   "devDependencies": {
@@ -27,9 +29,13 @@
     "text2datauri": ">=1.0.4"
   },
   "directories": {},
-  "engines": {"node": ">7.5.0"},
+  "engines": {
+    "node": ">7.5.0"
+  },
   "homepage": "https://github.com/mobilemind/jumpOnJuniper",
-  "keywords": ["bookmarklet"],
+  "keywords": [
+    "bookmarklet"
+  ],
   "license": "MIT",
   "main": "Gruntfile.js",
   "name": "jumpOnJuniper",
@@ -38,6 +44,8 @@
     "type": "git",
     "url": "git://github.com/mobilemind/jumpOnJuniper.git"
   },
-  "scripts": {"test": "grunt"},
+  "scripts": {
+    "test": "grunt"
+  },
   "version": "7.3.2"
 }
