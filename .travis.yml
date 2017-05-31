@@ -13,6 +13,7 @@ env:
 language: node_js
 node_js:
 - '7'
+- '8'
 before_script:
 - npm config set progress=false ; npm install -g grunt-cli
 notifications:
