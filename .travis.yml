@@ -2,6 +2,9 @@ branches:
   except:
   - gh-pages
 sudo: false
+cache:
+  directories:
+  - node_modules
 addons:
   apt:
     sources:
