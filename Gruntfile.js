@@ -189,7 +189,10 @@ module.exports = function (grunt) {
                 }]
             }
         },
-        "yamllint": {"files": {"src": ["*.yaml"]}},
+        "yamllint": {
+            "files": {"src": [".*.yml", "*.yml", "*.yaml"]},
+            "options": {"schema": "FAILSAFE_SCHEMA"}
+        },
         "zopfli": {
             "options": {
                 "blocksplitting": true,
