@@ -35,7 +35,8 @@ window.addEventListener("load", function () {
                 if (bl && pl) {
                     bl.style.display = "block";
                     pl.href = d.getElementById("bk").textContent;
-                    pl.innerHTML = pl.title = d.title;
+                    pl.title = d.title;
+                    pl.innerHTML.appendChild(document.createTextNode(d.title));
                 }
             }
             b.focus();
