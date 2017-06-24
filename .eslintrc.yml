@@ -233,7 +233,7 @@ rules:
   #  no-storage
   no-storage/no-browser-storage: 2
 
-  #  no-storage
+  #  no-unsanitized (by Mozilla)
   no-unsanitized/method: 2
   no-unsanitized/property: 2
 
