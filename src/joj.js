@@ -39,6 +39,7 @@ window.addEventListener("load", function () {
                     pl.innerHTML.appendChild(document.createTextNode(d.title));
                 }
             }
+            b.disabled = false;
             b.focus();
             b.select();
             // unhide remaining steps
