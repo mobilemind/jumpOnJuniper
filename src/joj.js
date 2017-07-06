@@ -17,10 +17,10 @@ function pastelet (u,p) {
 // listener to dynamically position page for initial or return-trip
 window.addEventListener("load", function () {
     const wl = window.location, d = document, n = d.getElementById("username"), w = d.getElementById("password"), b = d.getElementById("bk");
-    if (wl.search) {
+    if (wl.hash) {
         // reload form UI from query string
         try {
-            const q = decodeURIComponent(wl.search.substr(1)),
+            const q = decodeURIComponent(wl.hash.substr(1)),
                 m = q.match(/^javascript:(.*?)u='(.*?)',p='(.*?)',/);
             if (!m) throw new Error("No match in: " + q);
             if (!m[2]) throw new Error("No login found in: " + m);
@@ -36,7 +36,7 @@ window.addEventListener("load", function () {
                     bl.style.display = "block";
                     pl.href = d.getElementById("bk").textContent;
                     pl.title = d.title;
-                    pl.innerHTML.appendChild(document.createTextNode(d.title));
+                    pl.appendChild(document.createTextNode(d.title));
                 }
             }
             b.disabled = false;
@@ -59,7 +59,7 @@ window.addEventListener("load", function () {
         // reload page with new bookmarklet appended
         if (p) {
             b.textContent = p = "javascript:" + encodeURIComponent(p);
-            wl.href = "//" + wl.host + wl.port + wl.pathname + "?" + p;
+            wl.href = "//" + wl.host + wl.port + wl.pathname + "#" + p;
         }
         return false;
     };
