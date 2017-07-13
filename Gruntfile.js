@@ -18,7 +18,7 @@ module.exports = function (grunt) {
             "options": {
                 "nonull": true,
                 "noprocess": "**/*.png",
-                "process": function (content, srcpath) {
+                process (content, srcpath) {
                     const result = content.replace(/_MmVERSION_/g, grunt.config("pkg.version"));
                     return result.replace(/_MmBUILDDATE_/g, grunt.template.date(new Date(), "ddd mmm dd yyyy h:MM TT"));
                 }
