@@ -52,7 +52,7 @@ Updated for Firefox 44.x, Safari 9.x and Mobile Safari 9.x (including iPhone
 MIT License - <http://opensource.org/licenses/mit-license.php>
 
 jumpOnJuniper
-Copyright (c) 2012-2017 Tom King <mobilemind+joj@pobox.com>
+Copyright (c) 2012-2018 Tom King <mobilemind+joj@pobox.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
