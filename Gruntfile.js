@@ -113,52 +113,20 @@ module.exports = function (grunt) {
         "uglify": {
             "options": {
                 "beautify": false,
-                "codegen": {
-                    "bracketize": false,
-                    "comments": false,
-                    "ie_proof": false,
-                    "indent_level": 0,
-                    "max_line_len": 32766,
-                    "quote_keys": false,
-                    "quote_style": 1,
-                    "semicolons": true,
-                    "space_colon": false
-                },
                 "compress": {
-                    "booleans": true,
-                    "cascade": true,
-                    "collapse_vars": true,
-                    "comparisons": true,
-                    "conditionals": true,
-                    "dead_code": true,
                     "drop_console": true,
-                    "drop_debugger": true,
-                    "evaluate": true,
-                    "expression": false,
-                    "global_defs": {},
-                    "hoist_funs": false,
-                    "hoist_vars": false,
-                    "if_return": true,
-                    "join_vars": true,
+                    "expression": true,
                     "keep_fargs": false,
-                    "loops": true,
-                    "negate_iife": true,
                     "passes": 2,
-                    "properties": true,
-                    "pure_funcs": [],
                     "pure_getters": true,
-                    "reduce_vars": true,
-                    "sequences": true,
                     "side_effects": false,
-                    "top_retain": [],
                     "toplevel": true,
                     "unsafe": true,
                     "unsafe_comps": true,
                     "unsafe_math": true,
-                    "unsafe_proto": true,
-                    "unused": true,
-                    "warnings": true
+                    "unsafe_proto": true
                 },
+                "es": 6,
                 "ie8": false,
                 "mangle": {"toplevel": true},
                 "maxLineLen": 32766,
@@ -170,8 +138,7 @@ module.exports = function (grunt) {
                     "max_line_len": 32766,
                     "quote_keys": false,
                     "quote_style": 1,
-                    "semicolons": true,
-                    "space_colon": false
+                    "semicolons": true
                 },
                 "preserveComments": false,
                 "properties": false,
@@ -227,7 +194,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-csslint");
     grunt.loadNpmTasks("grunt-contrib-cssmin");
-    grunt.loadNpmTasks("grunt-contrib-uglify");
+    grunt.loadNpmTasks("grunt-contrib-uglify-es");
     grunt.loadNpmTasks("grunt-contrib-rename");
     grunt.loadNpmTasks("grunt-eslint");
     grunt.loadNpmTasks("grunt-html-minify");
