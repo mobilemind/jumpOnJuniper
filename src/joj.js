@@ -2,7 +2,7 @@
 
 //  jumpOnJuniper a bookmark-generator to simplify use of Juniper Infranet-based VisitorNet
 //  generated URL first displays as http://mmind.me/joj?javascript:var%20d='...
-//  Copyright (c) 2012-2017 Tom King. All rights reserved
+//  Copyright (c) 2012-2018 Tom King. All rights reserved
 //
 // Comments- Generated bookmarklet is carefully constructed for current version of VisitorNet
 // * Bookmarklet code is optimized for size (ie, string length of all the code).
