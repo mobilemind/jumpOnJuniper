@@ -75,6 +75,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Build
 
+REQUIRES a local command-line version of "zopfli" installed. See eiither
+<https://github.com/mathiasbynens/grunt-zopfli> for grunt-zopfli instructions
+or <https://github.com/google/zopfli> for zopfli itself.
+
 Use `npm install && grunt` at the command shell prompt to create the joj HTML
 page and manifest. See `/web/` directory for results.
 
