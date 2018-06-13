@@ -75,7 +75,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Build
 
-REQUIRES a local command-line version of "zopfli" installed. See eiither
+REQUIRES a local command-line version of "zopfli" installed. See either
 <https://github.com/mathiasbynens/grunt-zopfli> for grunt-zopfli instructions
 or <https://github.com/google/zopfli> for zopfli itself.
 
