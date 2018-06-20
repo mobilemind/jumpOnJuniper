@@ -38,7 +38,7 @@
   ],
   "start_url": "./joj",
   "background_color": "#000000",
-  "display": "browser",
+  "display": "minimal-ui",
   "orientation": "any",
   "scope": ".",
   "theme_color": "#e0e6e0"
