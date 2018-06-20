@@ -1,0 +1,35 @@
+{
+  "short_name": "jOJ",
+  "name": "jumpOnJuniper",
+  "description": "Bookmark-maker to simplify log-ing on Juniper Networks Infranet VisitorNet site",
+  "dir": "ltr",
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "img/joj-57.png",
+      "type": "image/png",
+      "sizes": "57x57"
+    },
+    {
+      "src": "img/joj-72.png",
+      "type": "image/png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "img/joj-114.png",
+      "type": "image/png",
+      "sizes": "114x114"
+    },
+    {
+      "src": "img/joj-144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    }
+  ],
+  "start_url": ".",
+  "background_color": "mint",
+  "display": "browser",
+  "orientation": "any",
+  "scope": ".",
+  "theme_color": "#e0e6e0"
+}
