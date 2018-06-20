@@ -1,6 +1,6 @@
 {
-  "short_name": "jOJ",
   "name": "jumpOnJuniper",
+  "short_name": "JoJ",
   "description": "Bookmark-maker to simplify log-ing on Juniper Networks Infranet VisitorNet site",
   "dir": "ltr",
   "lang": "en-US",
@@ -36,7 +36,7 @@
       "sizes": "512x512"
     },
   ],
-  "start_url": ".",
+  "start_url": "./joj",
   "background_color": "#000000",
   "display": "browser",
   "orientation": "any",

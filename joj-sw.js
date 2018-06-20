@@ -11,10 +11,19 @@ var version = 'v1::';
    during the installation process. If any resource fails to be downloaded,
    then the service worker won't be installed either.
 */
-var offlineFundamentals = [
-  '',
-  'css/global.css',
-  'js/global.js'
+var offlineJoJ = [
+  './joj.html',
+  './joj.css',
+  './joj.js',
+  './joj-sw.js',
+  './joj.manifest.json',
+  './img/bkaddi.png',
+  './img/bkbacki.png',
+  './img/donei.png',
+  './img/modifyi.png',
+  './img/openi.png',
+  './img/bksavei.png',
+  './img/joj-512.png'
 ];
 
 /* The install event fires when the service worker is first installed.
@@ -32,16 +41,25 @@ self.addEventListener("install", function(event) {
          a versioned cache name here so that we can remove old cache entries in
          one fell swoop later, when phasing out an older service worker.
       */
-      .open(version + 'fundamentals')
+      .open(version + 'JoJ')
       .then(function(cache) {
         /* After the cache is opened, we can fill it with the offline fundamentals.
            The method below will add all resources we've indicated to the cache,
            after making HTTP requests for each of them.
         */
         return cache.addAll([
-          '/',
-          '/css/global.css',
-          '/js/global.js'
+          './joj.html',
+          './joj.css',
+          './joj.js',
+          './joj-sw.js',
+          './joj.manifest.json',
+          './img/bkaddi.png',
+          './img/bkbacki.png',
+          './img/donei.png',
+          './img/modifyi.png',
+          './img/openi.png',
+          './img/bksavei.png',
+          './img/joj-512.png'
         ]);
       })
       .then(function() {
