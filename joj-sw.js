@@ -19,9 +19,9 @@ var offlineJoJ = [
   './joj.manifest.json',
   './img/bkaddi.png',
   './img/bkbacki.png',
-  './img/donei.png',
-  './img/modifyi.png',
-  './img/openi.png',
+  './img/bkdonei.png',
+  './img/bkmodifyi.png',
+  './img/bkopeni.png',
   './img/bksavei.png',
   './img/joj-512.png'
 ];
@@ -55,9 +55,9 @@ self.addEventListener("install", function(event) {
           './joj.manifest.json',
           './img/bkaddi.png',
           './img/bkbacki.png',
-          './img/donei.png',
-          './img/modifyi.png',
-          './img/openi.png',
+          './img/bkdonei.png',
+          './img/bkmodifyi.png',
+          './img/bkopeni.png',
           './img/bksavei.png',
           './img/joj-512.png'
         ]);
