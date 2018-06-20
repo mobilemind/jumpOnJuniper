@@ -22,6 +22,20 @@
 		Copyright (c) 2012-2018 Tom King. All rights reserved.
 	-->
 	<script type="text/javascript" src="joj.js"></script>
+	<script type="text/javascript">//<!--
+		// ServiceWorker is a progressive technology. Ignore unsupported browsers
+		if ('serviceWorker' in navigator) {
+			console.log('CLIENT: service worker registration in progress.');
+			navigator.serviceWorker.register('joj-sw.js').then(function() {
+				console.log('CLIENT: service worker registration complete.');
+			}, function() {
+    		console.log('CLIENT: service worker registration failure.');
+  		});
+		} else {
+  		console.log('CLIENT: service worker is not supported.');
+		}
+		// -->
+	</script>
 </head>
 
 <body>
