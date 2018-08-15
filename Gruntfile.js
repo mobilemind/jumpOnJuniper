@@ -42,7 +42,6 @@ module.exports = function (grunt) {
             "target": ["Gruntfile.js", "src/*.js"]
         },
         "html_minify": {
-            "options": {},
             "target": {
                 "files": [
                     {
@@ -62,7 +61,6 @@ module.exports = function (grunt) {
             }
         },
         "minifyHtml": {
-            "options": {},
             "target": {
                 "files": [
                     {
