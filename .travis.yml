@@ -2,6 +2,7 @@ branches:
   except:
   - gh-pages
 sudo: false
+dist: trusty
 cache:
   directories:
   - node_modules
@@ -9,8 +10,10 @@ language: node_js
 node_js:
 - '10'
 before_install:
-- 'curl -LO "https://github.com/google/zopfli/archive/zopfli-1.0.2.zip"; unzip zopfli-1.0.2.zip; cd zopfli-zopfli-1.0.2; make; chmod +x zopfli; export PATH="$(pwd):${PATH}"; cd ..'
-- 'npm config set progress=false ; npm install -g grunt-cli'
+- curl -LO "https://github.com/google/zopfli/archive/zopfli-1.0.2.zip"; unzip zopfli-1.0.2.zip;
+  cd zopfli-zopfli-1.0.2; make; chmod +x zopfli; export PATH="$(pwd):${PATH}"; cd
+  ..
+- npm config set progress=false ; npm install -g grunt-cli
 notifications:
   slack:
-    secure: Yv5+82+mD5lJBvYkr+gKIvpgM7wAC+sb2eezI5Q+iFtRcHfx+0LNimwm0zT4OzX2cspnfJMJq/EPQtswMa2Jx0OVB8pVt6r8SeRHkahJDIHjKf3oUV0YulgF5R7HV60J3iLLf8EolQAcKP8Rakbf5VgZj65OWlURV6foue4HEjA=
+    secure: dgQ8liggk/jgAs/srdSzZ/lRkU564sw9xrYpnnUQV2OTJ0E4a3tJgaxq3yEBBMnERGQEDbHK6m/aQuAUnaY9TOB9ERqdJXVLwoZZH45EwECZz5e3uMnB6pmRpGtN3OZ6mJPE7qHHnTOSrhLiJ3b3QyzW4Q13sMXZDR7p9TxCX2I=
