@@ -10,7 +10,7 @@
   "dependencies": {},
   "description": "A bookmarklet to streamline logging into a Juniper Networks Infranet VisitorNet site.",
   "devDependencies": {
-    "eslint-plugin-compat": ">=2.6.2",
+    "eslint-plugin-compat": ">=2.6.3",
     "eslint-plugin-no-storage": ">=1.0.2",
     "eslint-plugin-no-unsanitized": ">=3.0.2",
     "eslint-plugin-security": ">=1.4.0",
