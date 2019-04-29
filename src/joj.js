@@ -11,7 +11,7 @@
 
 // creates & returns bookmarklet given 'u' = usr ID and 'p' = pass
 function pastelet (u,p) {
-    return u + p ? "var u='" + u.match(/^\s*(\S*?)\s*$/)[1] + "',p='" + p + "',e=document,t=location.href,o=e.getElementById('proceedButton'),m=e.getElementsByName('sn-postauth-proceed')[0],n=e.getElementById('realm'),i=e.forms[0];t.match(/visitornet(.*?)p=sn-postauth-show/)?(o?o.click():m.click(),i.submit()):t.match(/^(data:)|(https?:\\/\\/((mmind\\.me\\/joj)|(mobilemind\\.github\\.io\\/.*\\/joj)|(visitornet\\.boeing\\.com\\/.*welcome\\.cgi)))/)?(n?n.selectedIndex=1:0,e.getElementById('username').value=u,e.getElementById('password').value=p,e.getElementById('frmLogin')&&e.getElementById('frmLogin').submit()):location.href='https://visitornet.boeing.com';void'_MmVERSION_'" : "";
+    return u + p ? "var u='" + u.match(/^\s*(\S*?)\s*$/)[1] + "',p='" + p + "',e=document,t=location.href,n=e.getElementById('realm'),i=e.forms[0];t.search.match(/p=sn-postauth-show/)?submitForm('sn-postauth-proceed','Proceed'):t.match(/^(data:)|(https?:\\/\\/((mobilemind\\.github\\.io\\/.*\\/joj)|(visitornet\\.boeing\\.com\\/.*welcome\\.cgi)))/)?(n?n.selectedIndex=1:0,e.getElementById('username').value=u,e.getElementById('password').value=p,e.getElementById('frmLogin')&&e.getElementById('frmLogin').submit()):location.href='https://visitornet.boeing.com';void'_MmVERSION_'" : "";
 }
 
 // listener to dynamically position page for initial or return-trip
