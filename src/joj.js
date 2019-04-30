@@ -2,7 +2,7 @@
 
 //  jumpOnJuniper a bookmark-generator to simplify use of Juniper Infranet-based VisitorNet
 //  generated URL first displays as http://mmind.me/joj?javascript:var%20d='...
-//  Copyright (c) 2012-2018 Tom King. All rights reserved
+//  Copyright (c) 2012-2019 Tom King. All rights reserved
 //
 // Comments- Generated bookmarklet is carefully constructed for current version of VisitorNet
 // * Bookmarklet code is optimized for size (ie, string length of all the code).
@@ -11,7 +11,7 @@
 
 // creates & returns bookmarklet given 'u' = usr ID and 'p' = pass
 function pastelet (u,p) {
-    return u + p ? "var u='" + u.match(/^\s*(\S*?)\s*$/)[1] + "',p='" + p + "',e=document,t=location.href,n=e.getElementById('realm'),i=e.forms[0];t.search.match(/p=sn-postauth-show/)?submitForm('sn-postauth-proceed','Proceed'):t.match(/^(data:)|(https?:\\/\\/((mobilemind\\.github\\.io\\/.*\\/joj)|(visitornet\\.boeing\\.com\\/.*welcome\\.cgi)))/)?(n?n.selectedIndex=1:0,e.getElementById('username').value=u,e.getElementById('password').value=p,e.getElementById('frmLogin')&&e.getElementById('frmLogin').submit()):location.href='https://visitornet.boeing.com';void'_MmVERSION_'" : "";
+    return u + p ? "var u='" + u.match(/^\s*(\S*?)\s*$/)[1] + "',p='" + p + "',e=document,t=location.href,n=e.getElementById('realm'),i=e.forms[0];t.match(/p=sn-postauth-show/)?submitForm('sn-postauth-proceed','Proceed'):t.match(/^(data:)|(https?:\\/\\/((mobilemind\\.github\\.io\\/.*\\/joj)|(visitornet\\.boeing\\.com\\/.*welcome\\.cgi)))/)?(n?n.selectedIndex=1:0,e.getElementById('username').value=u,e.getElementById('password').value=p,e.getElementById('frmLogin')&&e.getElementById('frmLogin').submit()):location.href='https://visitornet.boeing.com';void'_MmVERSION_'" : "";
 }
 
 // listener to dynamically position page for initial or return-trip
