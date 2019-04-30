@@ -21,7 +21,7 @@ JOJURL := http://mmind.me/$(JOJFILE)
 
 # macros/utils
 BUILDDATE := $(shell date)
-VERSION = 7.5.1g
+VERSION = 7.5.2g
 GRECHO = $(shell hash grecho >/dev/null 2>&1  && echo 'grecho' || echo 'printf')
 COMPRESSOPTIONS := -t html -c utf-8 --remove-quotes --remove-intertag-spaces --remove-surrounding-spaces all --remove-input-attr --remove-form-attr --remove-script-attr --remove-http-protocol --simple-doctype --compress-js --compress-css --nomunge
 TIDY := $(shell hash tidy >/dev/null 2>&1 && echo 'tidy' || echo 'echo "WARNING unable to: tidy"')
@@ -64,11 +64,6 @@ index.html: $(JOJFILE)
 $(JOJFILE):
 	@printf "\nDownload and trim $(JOJFILE) ...\n"
 	@curl -# $(JOJURL) | tr -d '\n' > $(JOJFILE)
-
-img:
-	@[ -d img ] || mkdir img
-	@printf "\nFetch $@/ from $$MYSERVER and update...\n"
-	@rsync -ptuq --exclude=*icon*.png --exclude=vnet*.* --exclude=pastelet.* "$$MYUSER@$$MYSERVER:$$MYSERVERHOME/me/img/*.*" img
 
 .PHONY: deploy
 deploy: default
