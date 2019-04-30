@@ -1,5 +1,10 @@
 # jumpOnJuniper
 
+[![Tag][tag-image]][tag-url]
+[![Build Status][build-image]][build-url]
+[![Dependency Status][dep-image]][dep-url]
+[![devDependency Status][devDep-image]][devDep-url]
+
 The “jumpOnJuniper” (jOJ) bookmarklet streamlines logging in via Juniper
 Networks Infranet “VisitorNet” sites that control access to WiFi networks. The
 bookmarklet will paste in the Username and password values stored in the
@@ -85,19 +90,12 @@ or <https://github.com/google/zopfli> for zopfli itself.
 Use `npm install && grunt` at the command shell prompt to create the joj HTML
 page and manifest. See `/web/` directory for results.
 
-[![Built with Grunt][built-with-grunt-img]][built-with-grunt-url]
-[![Tag][tag-image]][tag-url]
-[![Build Status][build-image]][build-url]
-
-[![Dependency Status][dep-image]][dep-url]
-[![devDependency Status][devDep-image]][devDep-url]
-
 <!-- reference URLs -->
 [ghjoj]: https://mobilemind.github.io/jumpOnJuniper/joj.html "jumpOnJuniper (github)"
 <!-- Badge links -->
 [built-with-grunt-img]: https://cdn.gruntjs.com/builtwith.png
 [built-with-grunt-url]: http://gruntjs.com/
-[build-image]: https://secure.travis-ci.com/mobilemind/jumpOnJuniper.svg?branch=master
+[build-image]: https://travis-ci.com/mobilemind/jumpOnJuniper.svg?branch=master
 [build-url]: http://travis-ci.com/mobilemind/jumpOnJuniper
 [tag-image]: https://img.shields.io/github/tag/mobilemind/jumpOnJuniper.svg
 [tag-url]: https://github.com/mobilemind/jumpOnJuniper/tags
