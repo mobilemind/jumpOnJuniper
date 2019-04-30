@@ -9,6 +9,9 @@ Version 7.2.x releases are the final versions. I've learned as much as I
 needed to learn for this project and have no way to actually use it myself
 anymore.
 
+NEVER say never. Updated in 2019 to allow longer values of user and password.
+See version 7.5.x.
+
 ## Install
 
 ### Mobile Safari
@@ -52,7 +55,7 @@ Updated for Firefox 44.x, Safari 9.x and Mobile Safari 9.x (including iPhone
 MIT License - <http://opensource.org/licenses/mit-license.php>
 
 jumpOnJuniper
-Copyright (c) 2012-2018 Tom King <mobilemind+joj@pobox.com>
+Copyright (c) 2012-2019 Tom King <mobilemind+joj@pobox.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
