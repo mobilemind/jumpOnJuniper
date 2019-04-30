@@ -97,8 +97,8 @@ page and manifest. See `/web/` directory for results.
 <!-- Badge links -->
 [built-with-grunt-img]: https://cdn.gruntjs.com/builtwith.png
 [built-with-grunt-url]: http://gruntjs.com/
-[build-image]: https://secure.travis-ci.org/mobilemind/jumpOnJuniper.svg?branch=master
-[build-url]: http://travis-ci.org/mobilemind/jumpOnJuniper
+[build-image]: https://secure.travis-ci.com/mobilemind/jumpOnJuniper.svg?branch=master
+[build-url]: http://travis-ci.com/mobilemind/jumpOnJuniper
 [tag-image]: https://img.shields.io/github/tag/mobilemind/jumpOnJuniper.svg
 [tag-url]: https://github.com/mobilemind/jumpOnJuniper/tags
 [dep-image]: https://david-dm.org/mobilemind/jumpOnJuniper.svg
