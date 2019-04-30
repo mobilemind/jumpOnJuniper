@@ -47,8 +47,8 @@ stored password and then submit the form.
 
 Requires a browser that supports `javascript:` bookmarks.
 
-Updated for Firefox 44.x, Safari 9.x and Mobile Safari 9.x (including iPhone
-6/6S & iPhone 6/6S Plus).
+Updated for Firefox 66.0.x, Safari 12 and Mobile Safari 12 (including iPhone
+7, iPhone 8 Plus & iPhone XS).
 
 ## License
 
