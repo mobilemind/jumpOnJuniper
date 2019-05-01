@@ -57,10 +57,10 @@ $(PROJ).manifest:
 	@$(REPLACETOKENS)
 
 index.html: $(JOJFILE)
-	printf "\nReplace tokens in $@ and validate...\n"
-	perl -p -i -e 'BEGIN{open F,"$(JOJFILE)";@f=<F>}s#data:text/html;charset=utf-8;base64,.*" class="desclink"#@f" class="desclink"#' $@
-	$(TIDY) -eq $@ || [ $$? -lt 2 ]
-	$(JSL) -nologo -nofilelisting -nosummary -process $@
+	@printf "\nReplace tokens in $@ and validate...\n"
+	@perl -p -i -e 'BEGIN{open F,"$(JOJFILE)";@f=<F>}s#data:text/html;charset=utf-8;base64,.*" class="desclink"#@f" class="desclink"#' $@
+	@$(TIDY) -eq $@ || [ $$? -lt 2 ]
+	@$(JSL) -nologo -nofilelisting -nosummary -process $@
 
 $(JOJFILE):
 	printf "\nDownload and trim $(JOJFILE) ...\n"
