@@ -1,6 +1,6 @@
 .ftppass
-web/
-joj.url
+index.html
+./joj.url
 node_module/
 npm-debug.log
 tmp/
