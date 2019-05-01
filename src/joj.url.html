@@ -101,8 +101,9 @@
 				<input type=text id=username name=uid placeholder=username class=t size=20 maxlength=64 required autocorrect=off autocomplete=off autocapitalize=none autofocus>
 			</label>
 			<label for=password><br>Password:&#32;
-				<input type=password id=password name=password class=t size=15 maxlength=25 required>
+				<input type=password id=password name=password placeholder=mustBe8long class=t size=10 minlength=8 maxlength=8 required>
 			</label>
+			<i>must be <u>exactly</u> 8 characters</i>
 			<br>
 			<input type=submit class="b s" id=mkPltBtn value="Make jOJ Bookmark">
 			&nbsp; &#32;

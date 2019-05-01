@@ -14,8 +14,9 @@ Version 7.2.x releases are the final versions. I've learned as much as I
 needed to learn for this project and have no way to actually use it myself
 anymore.
 
-NEVER say never. Updated in 2019 to allow longer values of user and password.
-See version 7.5.x.
+NEVER say never. Updated in 2019 to allow longer values of username and
+clarify that password must be _exactly_ 8 characters. See version 7.5.4 or
+later.
 
 ## Install
 
