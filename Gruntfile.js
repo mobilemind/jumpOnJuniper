@@ -3,7 +3,7 @@ module.exports = function (grunt) {
     // Project configuration
     grunt.initConfig({
         "clean": {
-            "build": ["web/joj.html", "web/*.deflate", "web/*.gz"],
+            "build": ["joj.url", "web/joj.html", "web/*.deflate", "web/*.gz"],
             "files": ["web/"]
         },
         "copy": {
