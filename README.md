@@ -1,9 +1,11 @@
 # jumpOnJuniper
 
 [![Tag][tag-image]][tag-url]
-[![Build Status][build-image]][build-url]
-[![Dependency Status][dep-image]][dep-url]
-[![devDependency Status][devDep-image]][devDep-url]
+ [![Build Status][build-image]][build-url]
+ [![Dependency Status][dep-image]][dep-url]
+ [![devDependency Status][devDep-image]][devDep-url]
+ [![Codacy Code Quality Rating][Codacy-image]][Codacy-dash]
+ [![Snyk Security Review Status][Snyk-image]][Snyk-dash]
 
 The “jumpOnJuniper” (jOJ) bookmarklet streamlines logging in via Juniper
 Networks Infranet “VisitorNet” sites that control access to WiFi networks. The
@@ -104,3 +106,7 @@ page and manifest. See `/web/` directory for results.
 [dep-url]: https://david-dm.org/mobilemind/jumpOnJuniper
 [devDep-image]: https://img.shields.io/david/dev/mobilemind/jumpOnJuniper.svg
 [devDep-url]: https://david-dm.org/mobilemind/jumpOnJuniper#info=devDependencies
+[Codacy-image]: https://api.codacy.com/project/badge/Grade/f1e4ca9110744143975a5e1202df99ff
+[Codacy-dash]: https://www.codacy.com/app/mobilemind/jumpOnJuniper
+[Snyk-image]: https://snyk.io/test/github/mobilemind/jumpOnJuniper/badge.svg?targetFile=package.json
+[Snyk-dash]: https://snyk.io/test/github/mobilemind/jumpOnJuniper?targetFile=package.json
