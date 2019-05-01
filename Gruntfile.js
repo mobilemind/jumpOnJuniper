@@ -20,7 +20,7 @@ module.exports = function (grunt) {
                 "noprocess": "**/*.png",
                 process (content, srcpath) {
                     const result = content.replace(/_MmVERSION_/g, grunt.config("pkg.version"));
-                    return result.replace(/_MmBUILDDATE_/g, grunt.template.date(new Date(), "ddd mmm dd yyyy h:MM TT"));
+                    return result.replace(/_MmBUILDDATE_/g, grunt.template.date(new Date(), "ddd mmm dd yyyy"));
                 }
             }
         },
