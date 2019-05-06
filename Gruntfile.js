@@ -188,7 +188,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-csslint");
     grunt.loadNpmTasks("grunt-contrib-cssmin");
-    grunt.loadNpmTasks("grunt-contrib-uglify-es");
+    grunt.loadNpmTasks("@sailshq/grunt-contrib-uglify");
     grunt.loadNpmTasks("grunt-contrib-rename");
     grunt.loadNpmTasks("grunt-eslint");
     grunt.loadNpmTasks("grunt-html-minify");
