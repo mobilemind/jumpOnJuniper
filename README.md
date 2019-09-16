@@ -96,8 +96,6 @@ page and manifest. See `/web/` directory for results.
 <!-- reference URLs -->
 [ghjoj]: https://mobilemind.github.io/jumpOnJuniper/joj.html "jumpOnJuniper (github)"
 <!-- Badge links -->
-[built-with-grunt-img]: https://cdn.gruntjs.com/builtwith.png
-[built-with-grunt-url]: http://gruntjs.com/
 [build-image]: https://travis-ci.com/mobilemind/jumpOnJuniper.svg?branch=master
 [build-url]: http://travis-ci.com/mobilemind/jumpOnJuniper
 [tag-image]: https://img.shields.io/github/tag/mobilemind/jumpOnJuniper.svg
