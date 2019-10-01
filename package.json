@@ -31,7 +31,7 @@
   },
   "directories": {},
   "engines": {
-    "node": ">=11"
+    "node": "12"
   },
   "homepage": "https://github.com/mobilemind/jumpOnJuniper",
   "keywords": [
