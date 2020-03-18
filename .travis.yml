@@ -12,6 +12,7 @@ cache:
 language: node_js
 node_js:
 - '12'
+- '13'
 before_install:
 - curl -LO "https://github.com/google/zopfli/archive/zopfli-1.0.2.zip" && unzip zopfli-1.0.2.zip
 - cd zopfli-zopfli-1.0.2 && make
