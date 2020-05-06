@@ -7,7 +7,9 @@
   "bugs": {
     "url": "https://github.com/mobilemind/jumpOnJuniper/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "snyk": "^1.319.0"
+  },
   "description": "A bookmarklet to streamline logging into a Juniper Networks Infranet VisitorNet site.",
   "devDependencies": {
     "eslint-plugin-compat": "3.5.1",
@@ -46,7 +48,10 @@
     "url": "git://github.com/mobilemind/jumpOnJuniper.git"
   },
   "scripts": {
-    "test": "grunt"
+    "test": "grunt",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
-  "version": "7.5.6"
+  "version": "7.5.6",
+  "snyk": true
 }
