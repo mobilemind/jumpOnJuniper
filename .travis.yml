@@ -12,7 +12,6 @@ cache:
 language: node_js
 node_js:
 - '12'
-- '13'
 - '14'
 before_install:
 - curl -LO "https://github.com/google/zopfli/archive/zopfli-1.0.3.zip" && unzip zopfli-1.0.3.zip
